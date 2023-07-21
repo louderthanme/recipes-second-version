@@ -1,16 +1,29 @@
 import React, { useRef, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
+import { updateBoxShadow } from '../../utils/domUtils.js';
+
 
 const InstructionsBox = ({ instructions }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    if (container) {
-      const hasOverflow = container.scrollHeight > container.clientHeight;
-      container.style.boxShadow = hasOverflow ? 'inset 0px -10px 10px -10px rgba(0, 0, 0, 0.5)' : 'none';
+    
+    const updateBoxShadowAndDebounce = () => {
+      updateBoxShadow(container);
     }
-  }, []);
+
+    updateBoxShadowAndDebounce(); // Call the function initially
+
+    let timeout; // Declare timeout variable, no value assigned so it's undefined.
+    const handleResize = () => {
+      clearTimeout(timeout); // Clear the timeout in case there's any pending timeout
+      timeout = setTimeout(updateBoxShadowAndDebounce, 100);// Assign a new timeout to the timeout variable, thus giving it a value. This will be used to clear the timeout in the next resize event.
+    }
+    window.addEventListener('resize', handleResize);
+
+    
+  }, [instructions]);
 
   return (
     <Box>

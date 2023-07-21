@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, addDoc, getDocs, deleteDoc } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA5A6zuSbiRfVUTD2AxkxZSyyFRjJUf5Y8",
@@ -14,6 +14,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(); // Initialize Firestore
 
+export const flushDatabase = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'recipes'));
+
+    // Delete each document one by one
+    const deletePromises = querySnapshot.docs.map((doc) => deleteDoc(doc.ref));
+    await Promise.all(deletePromises);
+
+    console.log('Database flushed successfully!');
+  } catch (error) {
+    console.error('Error flushing database:', error);
+  }
+};
+
 export const fetchRecipes = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'recipes'));
@@ -23,17 +37,22 @@ export const fetchRecipes = async () => {
       return [];
     }
 }
+
 export const uploadRecipes = async (recipes) => {
   try {
+    // First, flush the database before uploading new recipes
+    await flushDatabase();
+
+    // Now, upload the new recipes
     await Promise.all(
       recipes.map(async (recipe) => {
         await addDoc(collection(db, 'recipes'), recipe);
         console.log(`Recipe "${recipe.title}" uploaded to Firestore successfully!`);
       })
     );
+
+    console.log('Recipes uploaded successfully!');
   } catch (error) {
     console.error('Error uploading recipes to Firestore:', error);
   }
 };
-  
-  

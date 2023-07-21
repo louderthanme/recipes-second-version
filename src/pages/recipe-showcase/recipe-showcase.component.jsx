@@ -3,6 +3,7 @@ import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams } from 'react-router-dom';
 import { Paper, Typography, Box, Grid, Divider} from '@mui/material';
 import InstructionsBox from '../../components/instructions-box/instructions-box.component';
+import IngredientsBox from '../../components/ingredients-box/ingredients-box.component';
 
 const RecipeShowcase = () => {
   const {recipes} = useContext(RecipesContext);
@@ -28,7 +29,7 @@ const RecipeShowcase = () => {
         <Grid item xs={12} sm={6}>
           <Box p={2}>
             {/* Summary content goes here */}
-            <Typography variant="subtitle1">Recipe Summary</Typography>
+            <Typography variant='h3'>{title}</Typography>
             {/* Other summary elements */}
           </Box>
         </Grid>
@@ -41,17 +42,13 @@ const RecipeShowcase = () => {
             ...(theme) => ({
               [theme.breakpoints.down('m')]: {
                 padding: theme.spacing(2),
-                marginLeft:'4'
+                marginLeft:'4',
+                marginBottom: '3'
               },
             }),
           }}>
             {/* Ingredients content goes here */}
-            <Typography variant="subtitle1" align="center" sx={{fontWeight:'bold'}}>Ingredients</Typography>
-            <ul>
-              {ingredients.map((ingredient, index) => (
-                <li key={index}>{ingredient}</li>
-              ))}
-            </ul>
+           <IngredientsBox ingredients={ingredients} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
