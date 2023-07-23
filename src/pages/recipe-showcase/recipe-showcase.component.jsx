@@ -5,6 +5,7 @@ import { Paper, Typography, Box, Grid, Divider} from '@mui/material';
 import InstructionsBox from '../../components/instructions-box/instructions-box.component';
 import IngredientsBox from '../../components/ingredients-box/ingredients-box.component';
 import ImageBox from '../../components/image-box/image-box.component';
+import DetailsBox from '../../components/details-box/details-box.component';
 
 const RecipeShowcase = () => {
   const {recipes} = useContext(RecipesContext);
@@ -16,10 +17,10 @@ const RecipeShowcase = () => {
     return <div> no recipe found </div>;
   }
 
-  const { title, ingredients, image, instructions } = recipe;
+  const { title, ingredients, image, instructions, time: { prep, cook } } = recipe;
 
   return (
-    <Paper elevation={5} sx={{ backgroundColor: '#54676' }}>
+    <Paper elevation={12} sx={{ backgroundColor: '#FCDDBC' }}>
       <Grid container>
         {/* First Row */}
         <Grid item xs={12} sm={6}>
@@ -28,9 +29,9 @@ const RecipeShowcase = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Box p={2}>
+          <Box p={2} marginLeft={2} marginTop={4}>
             {/* Summary content goes here */}
-            <Typography variant='h3'>{title}</Typography>
+            <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title}/>
             {/* Other summary elements */}
           </Box>
         </Grid>
