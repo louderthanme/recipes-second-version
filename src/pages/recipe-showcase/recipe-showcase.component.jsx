@@ -73,4 +73,5 @@ const RecipeShowcase = () => {
   );
 };
 
+
 export default RecipeShowcase;

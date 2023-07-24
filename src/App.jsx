@@ -12,30 +12,36 @@ const App = () => {
       <Grid container marginTop={6}>
         <Grid item xs={false} sm={1} md={1} />
         <Grid item xs={12} sm={10} md={10}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-
-            <Route
-              path="/recipe/:id"
-              element={
-                <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
-                  <Grid item xs={12} sm={10} md={9}> {/* Smaller width for RecipeShowcase */}
-                    <RecipeShowcase />
+          <Grid container>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/recipe/:id"
+                element={
+                  <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
+                    <Grid item xs={12} sm={10} md={9}> {/* Smaller width for RecipeShowcase */}
+                      <RecipeShowcase />
+                    </Grid>
                   </Grid>
-                </Grid>
-              }
-            />
-              <Route path='upload' element={
-              <Grid container justifyContent="center"> {/* Centering the RecipeUpload */}
-                <Grid item xs={12} sm={10} md={9}> {/* Smaller width for RecipeUpload */}
-                  <RecipeUpload />
-                </Grid>
-              </Grid>
-            } />          </Routes>
+                }
+              />
+            <Route
+                path="/upload"
+                element={
+                  <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
+                    <Grid item xs={12} sm={7}> {/* Smaller width for RecipeShowcase */}
+                      <RecipeUpload />
+                    </Grid>
+                  </Grid>
+                }
+              />
+            </Routes>
+          </Grid>
         </Grid>
         <Grid item xs={false} sm={1} md={1} />
       </Grid>
     </Router>
   );
 };
+
 export default App;
