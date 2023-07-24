@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import Home from './pages/home/home.component';
 import RecipeShowcase from './pages/recipe-showcase/recipe-showcase.component';
 import Navigation from './pages/navigation/navigation.component';
+import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 
 const App = () => {
   return (
@@ -24,7 +25,13 @@ const App = () => {
                 </Grid>
               }
             />
-          </Routes>
+              <Route path='upload' element={
+              <Grid container justifyContent="center"> {/* Centering the RecipeUpload */}
+                <Grid item xs={12} sm={10} md={9}> {/* Smaller width for RecipeUpload */}
+                  <RecipeUpload />
+                </Grid>
+              </Grid>
+            } />          </Routes>
         </Grid>
         <Grid item xs={false} sm={1} md={1} />
       </Grid>

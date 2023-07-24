@@ -56,3 +56,12 @@ export const uploadRecipes = async (recipes) => {
     console.error('Error uploading recipes to Firestore:', error);
   }
 };
+
+export const uploadRecipe = async (recipe) => {
+  try{
+    await addDoc(collection(db, 'recipes'), recipe);
+    console.log(`Recipe "${recipe.title}" uploaded to Firestore successfully!`);
+  } catch (error){
+    console.error('Error uploading recipe to Firestore:', error);
+  }
+}
