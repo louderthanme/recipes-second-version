@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import {useDebounceEffect, updateBoxShadow} from '../../utils/domUtils'
 
 
-const IngredientsShowcaseBox = ({ ingredients }) => {
+const IngredientsDisplay = ({ ingredients }) => {
   const containerRef = useRef(null);
 
   useDebounceEffect(() => {
@@ -32,4 +32,4 @@ const IngredientsShowcaseBox = ({ ingredients }) => {
   );
 };
 
-export default IngredientsShowcaseBox;
+export default IngredientsDisplay;

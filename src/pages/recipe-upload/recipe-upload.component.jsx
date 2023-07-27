@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Button, Grid, Paper, Box, Link, FormControl } from "@mui/material";
+import { Button, Grid, Paper, Box, Link, FormControl, Typography } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 
@@ -13,7 +13,7 @@ const RecipeUpload = () => {
   return (
     <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>
       <Box p={4}>
-        <h1>Recipe Upload Page</h1>
+        <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormControl fullWidth>
             <StyledTextField
@@ -26,7 +26,7 @@ const RecipeUpload = () => {
             />
           </FormControl>
           <FormControl fullWidth>
-            <IngredientsForm control={control} />
+            <IngredientsForm control={control}  />
           </FormControl>
           <FormControl fullWidth>
             <StyledTextField

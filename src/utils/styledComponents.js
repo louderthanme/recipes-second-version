@@ -13,4 +13,6 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
       backgroundColor: 'rgb(255, 255, 255)', // maintain the white background color on focus
     },
   },
+  // manage the margin here
+  margin: theme.spacing(1, 0),  // this applies 1x the theme spacing unit on top and bottom, and 0 on left and right
 }));

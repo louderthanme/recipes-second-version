@@ -1,5 +1,5 @@
 import { useFieldArray, Controller } from "react-hook-form";
-import { IconButton, Box } from "@mui/material";
+import { IconButton, Box, Divider, Typography } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import { StyledTextField } from "../../utils/styledComponents";
 import IngredientInput from "../ingredient-input/ingredient-input.component"
@@ -13,7 +13,8 @@ const IngredientsForm = ({ control, initialIngredients }) => {
 
   return (
     <>
-      <h2>INGREDIENTS</h2>
+      <Typography variant="h5" fontWeight='bold'>Ingredients</Typography>
+      <Divider /> {/* Divider between the rows */}
       {/* Render IngredientInput for adding ingredients */}
       <IngredientInput control={control} />
       {/* Render existing ingredients */}
@@ -31,7 +32,7 @@ const IngredientsForm = ({ control, initialIngredients }) => {
                     label="Ingredient"
                     variant="filled"
                     fullWidth
-                    margin="normal"
+                    margin="none"
                   />
                 )}
               />
@@ -47,7 +48,7 @@ const IngredientsForm = ({ control, initialIngredients }) => {
                     label="Quantity"
                     variant="filled"
                     fullWidth
-                    margin="normal"
+                    margin="none"
                   />
                 )}
               />

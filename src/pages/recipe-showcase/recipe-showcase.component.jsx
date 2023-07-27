@@ -2,8 +2,8 @@ import { useContext } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams } from 'react-router-dom';
 import { Paper, Typography, Box, Grid, Divider} from '@mui/material';
-import InstructionsBox from '../../components/instructions-box/instructions-box.component';
-import IngredientsShowcaseBox from '../../components/ingredients-showcase-box/ingredients-showcase-box.component';
+import InstructionsDisplay from '../../components/instructions-display/instructions-display.component';
+import IngredientsDisplay from '../../components/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/image-box/image-box.component';
 import DetailsBox from '../../components/details-box/details-box.component';
 
@@ -50,7 +50,7 @@ const RecipeShowcase = () => {
             }),
           }}>
             {/* Ingredients content goes here */}
-           <IngredientsShowcaseBox ingredients={ingredients} />
+           <IngredientsDisplay ingredients={ingredients} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -65,7 +65,7 @@ const RecipeShowcase = () => {
             }),
           }}>
             {/* Instructions content goes here */}
-            <InstructionsBox instructions={instructions} />
+            <InstructionsDisplay instructions={instructions} />
           </Box>
         </Grid>
       </Grid>

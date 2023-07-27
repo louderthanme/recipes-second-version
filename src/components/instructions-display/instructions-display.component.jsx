@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 import { updateBoxShadow } from '../../utils/domUtils.js';
 
 
-const InstructionsBox = ({ instructions }) => {
+const InstructionsDisplay = ({ instructions }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const InstructionsBox = ({ instructions }) => {
   );
 };
 
-export default InstructionsBox;
+export default InstructionsDisplay;
