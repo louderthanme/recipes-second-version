@@ -3,7 +3,7 @@ import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams } from 'react-router-dom';
 import { Paper, Typography, Box, Grid, Divider} from '@mui/material';
 import InstructionsBox from '../../components/instructions-box/instructions-box.component';
-import IngredientsBox from '../../components/ingredients-box/ingredients-box.component';
+import IngredientsShowcaseBox from '../../components/ingredients-showcase-box/ingredients-showcase-box.component';
 import ImageBox from '../../components/image-box/image-box.component';
 import DetailsBox from '../../components/details-box/details-box.component';
 
@@ -50,7 +50,7 @@ const RecipeShowcase = () => {
             }),
           }}>
             {/* Ingredients content goes here */}
-           <IngredientsBox ingredients={ingredients} />
+           <IngredientsShowcaseBox ingredients={ingredients} />
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
