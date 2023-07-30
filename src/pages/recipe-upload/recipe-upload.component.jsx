@@ -28,6 +28,18 @@ const RecipeUpload = () => {
           </FormControl>
          
           <FormControl fullWidth>
+            <StyledTextField
+              {...control.register("image")}
+              label="Image Url"
+              variant="filled"
+              fullWidth
+              margin="normal"
+              autoFocus
+            />
+          </FormControl>
+         
+
+          <FormControl fullWidth>
             <IngredientsForm control={control}  />
           </FormControl>
 
@@ -35,6 +47,7 @@ const RecipeUpload = () => {
             <InstructionsForm control={control}  />
           </FormControl>
          
+
           {/* Add more fields here as needed, e.g., for image upload */}
           <Grid item xs={12}>
             <Box marginTop={5}>
