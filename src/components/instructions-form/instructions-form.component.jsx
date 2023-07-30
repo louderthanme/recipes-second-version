@@ -2,34 +2,34 @@ import { useFieldArray, Controller } from "react-hook-form";
 import { IconButton, Box, Divider, Typography } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import { StyledTextField } from "../../utils/styledComponents";
-import InstructionInput from "../ingredient-input/ingredient-input.component"
+import InstructionInput from "../instruction-input/instruction-input.component"
 
-const InstructionsForm = ({ control, initialIngredients }) => {
-  const { fields: ingredientFields, append: appendIngredient, remove: removeIngredient } = useFieldArray({
+const InstructionsForm = ({ control, initialInstructions }) => {
+  const { fields: instructionFields, append: appendInstruction, remove: removeInstruction } = useFieldArray({
     control,
-    name: "ingredients",
+    name: "instructions",
     shouldUnregister: true,
   });
 
   return (
     <>
-      <Typography variant="h5" fontWeight='bold'>Ingredients</Typography>
+      <Typography variant="h5" fontWeight='bold'>Instructions</Typography>
       <Divider /> {/* Divider between the rows */}
       {/* Render IngredientInput for adding ingredients */}
       <InstructionInput control={control} />
       {/* Render existing ingredients */}
-      {initialIngredients && initialIngredients.length > 0 && (
-        ingredientFields.map((item, index) => (
+      {initialInstructions && initialInstructions.length > 0 && (
+        instructionFields.map((item, index) => (
           <Box key={item.id} display="flex" alignItems="center">
-            <Box width="45%">
+            <Box width="90%">
               <Controller
-                name={`ingredients[${index}].name`}
+                name={`instructions[${index}].step`}
                 control={control}
-                defaultValue={initialIngredients[index]?.name || ""}
+                defaultValue={initialInstructions[index]?.step || ""}
                 render={({ field }) => (
                   <StyledTextField
                     {...field}
-                    label="Ingredient"
+                    label="Instruction"
                     variant="filled"
                     fullWidth
                     margin="none"
@@ -37,23 +37,7 @@ const InstructionsForm = ({ control, initialIngredients }) => {
                 )}
               />
             </Box>
-            <Box width="45%" marginLeft={2}>
-              <Controller
-                name={`ingredients[${index}].quantity`}
-                control={control}
-                defaultValue={initialIngredients[index]?.quantity || ""}
-                render={({ field }) => (
-                  <StyledTextField
-                    {...field}
-                    label="Quantity"
-                    variant="filled"
-                    fullWidth
-                    margin="none"
-                  />
-                )}
-              />
-            </Box>
-            <IconButton onClick={() => removeIngredient(index)} color="error">
+              <IconButton onClick={() => removeInstruction(index)} color="error">
               <DeleteOutline />
             </IconButton>
           </Box>

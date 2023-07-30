@@ -1,44 +1,36 @@
+import { v4 as uuidv4 } from "uuid";
 import { useFieldArray, useForm, Controller } from "react-hook-form";
 import { Button, IconButton, Box } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import { StyledTextField } from "../../utils/styledComponents";
 
 const InstructionInput = ({ control }) => {
-  const { fields: ingredientFields, append: appendIngredient, remove: removeIngredient } = useFieldArray({
+  const { fields: instructionFields, append: appendInstruction, remove: removeInstruction } = useFieldArray({
     control,
-    name: "ingredients"
+    name: "instructions"
   });
 
   return (
     <>
-      {ingredientFields.map((item, index) => (
+      {instructionFields.map((item, index) => (
         <Box key={item.id} display="flex" alignItems="center">
-          <Box width="45%">
+          <Box width="90%">
             <StyledTextField
-              {...control.register(`ingredients[${index}].name`)}
-              defaultValue={item.name}
-              label='ingredient'
+              {...control.register(`instructions[${index}].step`)}
+              defaultValue={item.step}
+              label={`Instruction ${index + 1}`} 
               variant="filled"
               fullWidth
               margin="normal"
             />
           </Box>
-          <Box width="45%" marginLeft={2}>
-            <StyledTextField
-              {...control.register(`ingredients[${index}].quantity`)}
-              defaultValue={item.quantity}
-              label="quantity"
-              variant="filled"
-              fullWidth
-              margin="normal"
-            />
-          </Box>
-          <IconButton onClick={() => removeIngredient(index)} color="error">
+          
+          <IconButton onClick={() => removeInstruction(index)} color="error">
             <DeleteOutline />
           </IconButton>
         </Box>
       ))}
-      <Button onClick={() => appendIngredient({ name: "", quantity: "" })}>Add Ingredient</Button>
+      <Button onClick={() => appendInstruction({ id: uuidv4(), step: "" })}>Add Instruction</Button>
     </>
   );
 }

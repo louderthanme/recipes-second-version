@@ -36,8 +36,8 @@ const InstructionsDisplay = ({ instructions }) => {
         }}
       >
         <ol>
-          {instructions.map((instruction) => (
-            <li key={instruction.id}>{instruction.step}</li>
+          {instructions.map((instruction, index) => (
+            <li key={instruction.id}>{instruction.index}{instruction.step}</li>
           ))}
         </ol>
       </Box>

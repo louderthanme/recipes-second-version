@@ -11,7 +11,7 @@ const RecipeShowcase = () => {
   const {recipes} = useContext(RecipesContext);
   const { id } = useParams();
 
-  const recipe = recipes.find((recipe) => recipe.id === parseInt(id));
+  const recipe = recipes.find((recipe) => recipe.id === id);
 
   if (!recipe) {
     return <div> no recipe found </div>;

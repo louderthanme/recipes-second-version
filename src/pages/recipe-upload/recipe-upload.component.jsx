@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, Link, FormControl, Typography } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
+import InstructionsForm from "../../components/instructions-form/instructions-form.component";
 
 const RecipeUpload = () => {
   const { handleSubmit, control } = useForm();
@@ -25,28 +26,24 @@ const RecipeUpload = () => {
               autoFocus
             />
           </FormControl>
+         
           <FormControl fullWidth>
             <IngredientsForm control={control}  />
           </FormControl>
+
           <FormControl fullWidth>
-            <StyledTextField
-              {...control.register("instructions")}
-              label="Instructions"
-              variant="filled"
-              fullWidth
-              multiline
-              rows={8}
-              margin="normal"
-            />
+            <InstructionsForm control={control}  />
           </FormControl>
+         
           {/* Add more fields here as needed, e.g., for image upload */}
           <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="primary">
-              Upload Recipe
-            </Button>
+            <Box marginTop={5}>
+                <Button type="submit" variant="contained" color="primary">
+                  Upload Recipe
+                </Button>
+            </Box>
           </Grid>
         </form>
-        <Link to="/">Back to Home</Link>
       </Box>
     </Paper>
   );
