@@ -26,7 +26,7 @@ const App = () => {
                 }
               />
             <Route
-                path="/upload"
+                path="/recipe/upload"
                 element={
                   <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
                     <Grid item xs={12} sm={7}> {/* Smaller width for RecipeShowcase */}
