@@ -1,4 +1,5 @@
 import {v4 as uuidv4} from "uuid";
+import { useState } from "react";
 import { Form, useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, Link, FormControl, Typography } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
@@ -7,15 +8,26 @@ import IngredientsForm from "../../components/ingredients-form/ingredients-form.
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
 import TimeForm from "../../components/time-Form/time-form.component";
 import { uploadRecipe } from "../../utils/firebase-utils";
+import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 
 const RecipeUpload = () => {
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control, reset } = useForm();
+
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const onSubmit = (data) => {
     console.log(data);
-    const recipeId = uuidv4();
-    const recipeWithId = { ...data, id: recipeId };
-    uploadRecipe(recipeWithId);
+    uploadRecipe(data);
+    setSnackbarMessage("Recipe uploaded successfully!");
+    setSnackbarSeverity("success");
+    setSnackbarOpen(true);
+    reset();
   };
 
   return (
@@ -25,7 +37,14 @@ const RecipeUpload = () => {
           <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
         </Box>
         <form onSubmit={handleSubmit(onSubmit)}>
-
+                {snackbarOpen && (
+                  <SnackbarFormMessage
+                  message={snackbarMessage}
+                  severity={snackbarSeverity}
+                  position={{ vertical: "top", horizontal: "center" }} // Set position to top-center
+                  onClose={handleSnackbarClose}
+                  />
+                )}
           <FormControl fullWidth>
             <TitleForm control={control} /> 
           </FormControl>
@@ -60,6 +79,7 @@ const RecipeUpload = () => {
                 <Button type="submit" variant="contained" color="primary">
                   Upload Recipe
                 </Button>
+
             </Box>
           </Grid>
         </form>
