@@ -4,7 +4,7 @@ import { Button, IconButton, Box } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import { StyledTextField } from "../../utils/styledComponents";
 
-const InstructionInput = ({ control }) => {
+const InstructionInput = ({ control, errors }) => {
   const { fields: instructionFields, append: appendInstruction, remove: removeInstruction } = useFieldArray({
     control,
     name: "instructions"
@@ -16,13 +16,14 @@ const InstructionInput = ({ control }) => {
         <Box key={item.id} display="flex" alignItems="center">
           <Box width="90%">
             <StyledTextField
-              {...control.register(`instructions[${index}].step`)}
+              {...control.register(`instructions[${index}].step`, { required: "This field is required" })} // Add the required validation here
               defaultValue={item.step}
               label={`Instruction ${index + 1}`} 
               variant="filled"
               fullWidth
-              margin="normal"
-            />
+              error={!!errors?.instructions?.[index]?.step}
+              helperText={errors?.instructions?.[index]?.step?.message || ""}
+               />
           </Box>
           
           <IconButton onClick={() => removeInstruction(index)} color="error">
@@ -33,6 +34,6 @@ const InstructionInput = ({ control }) => {
       <Button onClick={() => appendInstruction({ id: uuidv4(), step: "" })}>Add Instruction</Button>
     </>
   );
-}
+};
 
 export default InstructionInput;

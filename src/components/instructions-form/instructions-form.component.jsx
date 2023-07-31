@@ -4,7 +4,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import { StyledTextField } from "../../utils/styledComponents";
 import InstructionInput from "../instruction-input/instruction-input.component"
 
-const InstructionsForm = ({ control, initialInstructions }) => {
+const InstructionsForm = ({ control, initialInstructions, errors }) => {
   const { fields: instructionFields, append: appendInstruction, remove: removeInstruction } = useFieldArray({
     control,
     name: "instructions",
@@ -16,7 +16,7 @@ const InstructionsForm = ({ control, initialInstructions }) => {
       <Typography variant="h5" fontWeight='bold'>Instructions</Typography>
       <Divider /> {/* Divider between the rows */}
       {/* Render IngredientInput for adding ingredients */}
-      <InstructionInput control={control} />
+      <InstructionInput control={control} errors={errors}/>
       {/* Render existing ingredients */}
       {initialInstructions && initialInstructions.length > 0 && (
         instructionFields.map((item, index) => (
