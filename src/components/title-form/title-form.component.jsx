@@ -1,7 +1,7 @@
 import { StyledTextField } from "../../utils/styledComponents";
 import { FormControl } from "@mui/material";
 
-const TitleForm = ({ control, errors }) => {
+const TitleForm = ({ control, errors, title }) => {
   return (
     <FormControl fullWidth>
       <StyledTextField
@@ -11,7 +11,6 @@ const TitleForm = ({ control, errors }) => {
         fullWidth
         margin="normal"
         autoFocus
-        defaultValue=""
         error={!!errors.title}
         helperText={errors.title?.message || ""}
       />
