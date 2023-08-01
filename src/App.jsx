@@ -4,6 +4,7 @@ import Home from './pages/home/home.component';
 import RecipeShowcase from './pages/recipe-showcase/recipe-showcase.component';
 import Navigation from './pages/navigation/navigation.component';
 import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
+import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
 
 const App = () => {
   return (
@@ -35,7 +36,17 @@ const App = () => {
                   </Grid>
                 }
               />
-            </Routes>
+           <Route
+                path="/recipe/:id/edit"
+                element={
+                  <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
+                    <Grid item xs={12} sm={7}> {/* Smaller width for RecipeShowcase */}
+                      <RecipeEdit />
+                    </Grid>
+                  </Grid>
+                }
+            />
+          </Routes>
           </Grid>
         </Grid>
         <Grid item xs={false} sm={1} md={1} />
