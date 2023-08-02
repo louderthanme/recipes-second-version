@@ -24,7 +24,7 @@ const IngredientsDisplay = ({ ingredients }) => {
       >
         <ul>
           {ingredients.map((ingredient, index) => (
-            <li key={index}> <b> Ingredient: </b> {ingredient.name} <b>Amount: </b> {ingredient.quantity}</li>
+            <li key={index}> <b> {ingredient.quantity}</b> of <b> {ingredient.name} </b>  </li>
           ))}
         </ul>
       </Box>
