@@ -1,29 +1,30 @@
-import {v4 as uuidv4} from "uuid";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
+import { RecipesContext } from "../../contexts/recipe.context"; // Import the context
 import { StyledTextField } from "../../utils/styledComponents";
 import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
 import TimeForm from "../../components/time-Form/time-form.component";
-import { uploadRecipe } from "../../utils/firebase-utils";
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 
 const RecipeUpload = () => {
   const { handleSubmit, control, formState, reset } = useForm({
     defaultValues: {
-      title: '',
-      image: '',
+      title: "",
+      image: "",
       time: {
-        prep: '',
-        cook: '',
+        prep: "",
+        cook: "",
       },
-      ingredients: [{name: '', quantity: ''}],
-      instructions: [{step: ''}],
+      ingredients: [{ name: "", quantity: "" }],
+      instructions: [{ step: "" }],
     },
   });
-    const { errors } = formState;
+
+  const { errors } = formState;
+  const { uploadRecipeToFirestore } = useContext(RecipesContext); // Access the uploadRecipe function from the context
 
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
@@ -33,13 +34,15 @@ const RecipeUpload = () => {
     setSnackbarOpen(false);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
-    uploadRecipe(data);
-    setSnackbarMessage("Recipe uploaded successfully!");
-    setSnackbarSeverity("success");
-    setSnackbarOpen(true);
-    reset();
+    const docRef = await uploadRecipeToFirestore(data); // Use the uploadRecipe function from the context
+    if (docRef) {
+      setSnackbarMessage("Recipe uploaded successfully!");
+      setSnackbarSeverity("success");
+      setSnackbarOpen(true);
+      reset();
+    }
   };
 
   const onError = (errors, e) => {
@@ -48,7 +51,6 @@ const RecipeUpload = () => {
     setSnackbarSeverity("error");
     setSnackbarOpen(true);
   };
-
 
   return (
     <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>

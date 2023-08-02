@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, getDocs, deleteDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, setDoc, getDocs, deleteDoc, updateDoc, doc, addDoc } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA5A6zuSbiRfVUTD2AxkxZSyyFRjJUf5Y8",
@@ -57,11 +57,34 @@ export const uploadRecipes = async (recipes) => {
   }
 };
 
-export const uploadRecipe = async (recipe) => {
+
+export const uploadRecipe = async (id, recipe) => {
   try{
-    await addDoc(collection(db, 'recipes'), recipe);
+    await setDoc(doc(db, 'recipes', id), recipe);
     console.log(`Recipe "${recipe.title}" uploaded to Firestore successfully!`);
   } catch (error){
     console.error('Error uploading recipe to Firestore:', error);
+  }
+}
+
+export const updateRecipe = async (id, recipeData) => {
+  try {
+    const recipeRef = doc(db, 'recipes', id);
+    await updateDoc(recipeRef, recipeData);
+    console.log(`Recipe "${recipeData.title}" updated to Firestore successfully!`);
+  } catch (error) {
+    console.error('Error updating recipe to Firestore:', error);
+  }
+}
+
+
+export const deleteRecipe = async (recipe) => {
+  try{
+    const recipeRef = doc(db, 'recipes', recipe.id);
+    await deleteDoc(recipeRef);
+    console.log(`Recipe "${recipe.title}" deleted to Firestore successfully!`);
+  }
+  catch(error){
+    console.error('Error deleting recipe to Firestore:', error);
   }
 }

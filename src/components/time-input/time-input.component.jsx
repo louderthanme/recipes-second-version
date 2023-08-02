@@ -9,8 +9,8 @@ const TimeInput = ({ control, name }) => {
   } = useController({
     name,
     control,
-    rules: { required: "This field is required" }, 
-    defaultValue: ["", ""] 
+    rules: { required: "This field is required" },
+    defaultValue: [0, 0], // This will initialize the value as [0, 0]
   });
 
   return (
@@ -24,12 +24,12 @@ const TimeInput = ({ control, name }) => {
           variant="filled"
           fullWidth
           margin="none"
-          error={!!error} 
+          error={!!error}
           helperText={error?.message}
-          value={inputProps.value[0]} // assign the first value in array to hours
+          value={inputProps.value[0]} // First element is hours
           onChange={(e) => {
             const val = parseInt(e.target.value, 10);
-            inputProps.onChange([val, inputProps.value[1]]);
+            inputProps.onChange([val, inputProps.value[1]]); // Update hours, keep minutes same
           }}
         />
       </Box>
@@ -42,14 +42,14 @@ const TimeInput = ({ control, name }) => {
           variant="filled"
           fullWidth
           margin="none"
-          error={!!error} 
+          error={!!error}
           helperText={error?.message}
-          value={inputProps.value[1]} // assign the second value in array to minutes
+          value={inputProps.value[1]} // Second element is minutes
           onChange={(e) => {
             const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-            inputProps.onChange([val, inputProps.value[1]]);
+            inputProps.onChange([inputProps.value[0], val]); // Update minutes, keep hours same
           }}
-       />
+        />
       </Box>
     </Box>
   );

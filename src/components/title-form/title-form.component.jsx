@@ -1,7 +1,7 @@
 import { StyledTextField } from "../../utils/styledComponents";
 import { FormControl } from "@mui/material";
 
-const TitleForm = ({ control, errors, title }) => {
+const TitleForm = ({ control, errors }) => {
   return (
     <FormControl fullWidth>
       <StyledTextField

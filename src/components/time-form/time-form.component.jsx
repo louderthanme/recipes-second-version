@@ -1,18 +1,14 @@
-import { FormControl, Typography, Divider} from "@mui/material";
+import { FormControl,Typography } from "@mui/material";
 import TimeInput from "../time-input/time-input.component";
-import { StyledDivider } from "../../utils/styledComponents";
 
-const TimeForm = ({ control, errors, time }) => {
-  const { control: prepControl, name: prepName } = time.prep;
-  const { control: cookControl, name: cookName } = time.cook;
-
+const TimeForm = ({ control, errors }) => {
   return (
     <FormControl fullWidth>
       <Typography variant="h5" fontWeight="bold">Time</Typography>
       <Typography variant="body1" fontWeight="bold">Prep</Typography>
-      <TimeInput control={prepControl} name={prepName} />
-      <Typography variant="body1" fontWeight="bold">Cooking</Typography>
-      <TimeInput control={cookControl} name={cookName} />
+      <TimeInput control={control} name="time.prep" />
+      <Typography variant="body1" fontWeight="bold">Cook</Typography>
+      <TimeInput control={control} name="time.cook" />
     </FormControl>
   );
 };

@@ -1,135 +1,133 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
-import { useParams } from 'react-router-dom';
-import {useForm} from 'react-hook-form';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
-import {v4 as uuidv4} from "uuid";
 import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
 import TimeForm from "../../components/time-Form/time-form.component";
-import { uploadRecipe } from "../../utils/firebase-utils";
 
-const RecipeEdit = () =>{
-    const {recipes} = useContext(RecipesContext);
-    const { id } = useParams();
+const RecipeEdit = () => {
+  const { recipes, updateRecipeInFirestore } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
+  const { id } = useParams();
+  
+  const [recipe, setRecipe] = useState();
 
-    if(!recipes){
-      return <div>loading...</div>
-    }
+  const { handleSubmit, control, formState, reset } = useForm();
 
-    const recipe = recipes.find((recipe) =>  recipe.id === id);
+  useEffect(() => {
+    if (recipes) {
+      const foundRecipe = recipes.find((recipe) => recipe.id === id);
+      console.log(foundRecipe);
+      setRecipe(foundRecipe);
 
-    if(!recipe){
-      return <div>Recipe not found</div>
-    }
-
-    const { title, ingredients, image, instructions, time} = recipe;
-
-
-    const { handleSubmit, control, formState, reset } = useForm({
-      defaultValues: {
-        title: recipe?.title || '', // Set title to recipe title if it exists, otherwise empty string
-        image: recipe?.image || '', // Set image URL to recipe image if it exists, otherwise empty string
+      // Reset form with new defaultValues
+      reset({
+        title: foundRecipe?.title || '',
+        image: foundRecipe?.image || '',
         time: {
-          prep: recipe?.time?.prep || ['', ''], // Set prep time to recipe prep time if it exists, otherwise empty array
-          cook: recipe?.time?.cook || ['', ''], // Set cook time to recipe cook time if it exists, otherwise empty array
+          prep: foundRecipe?.time?.prep || ['', ''],
+          cook: foundRecipe?.time?.cook || ['', ''],
         },
-        ingredients: recipe?.ingredients || [{ name: '', quantity: '' }],
-        instructions: recipe?.instructions || [{ step: '' }],
-      },
-    });
-        const { errors } = formState;
-    
-      const [snackbarMessage, setSnackbarMessage] = useState("");
-      const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-      const [snackbarOpen, setSnackbarOpen] = useState(false);
-    
-      const handleSnackbarClose = () => {
-        setSnackbarOpen(false);
-      };
-    
-      const onSubmit = (data) => {
-        console.log(data);
-        uploadRecipe(data);
-        setSnackbarMessage("Recipe uploaded successfully!");
-        setSnackbarSeverity("success");
-        setSnackbarOpen(true);
-        reset();
-      };
-    
-      const onError = (errors, e) => {
-        console.error(errors, e);
-        setSnackbarMessage("Recipe upload failed!");
-        setSnackbarSeverity("error");
-        setSnackbarOpen(true);
-      };
-    
-    
-      return (
-        <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>
-          <Box p={6}>
-            <Box marginBottom={3}>
-              <Typography variant="h3" fontWeight="bold">Edit </Typography>
+        ingredients: foundRecipe?.ingredients || [{ name: '', quantity: '' }],
+        instructions: foundRecipe?.instructions || [{ step: '' }],
+      });
+    }
+  }, [recipes, id, reset]);
+
+  const { errors } = formState;
+
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    await updateRecipeInFirestore(recipe.id, data); // Use the updateRecipe function from the context
+    setSnackbarMessage("Recipe updated successfully!");
+    setSnackbarSeverity("success");
+    setSnackbarOpen(true);
+    navigate(`/recipe/${recipe.id}`);
+  };
+  
+
+  const onError = (errors, e) => {
+    console.error(errors, e);
+    setSnackbarMessage("Recipe update failed!");
+    setSnackbarSeverity("error");
+    setSnackbarOpen(true);
+  };
+
+  if (!recipe) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>
+      <Box p={6}>
+        <Box marginBottom={3}>
+          <Typography variant="h3" fontWeight="bold">Edit </Typography>
+        </Box>
+        <form onSubmit={handleSubmit(onSubmit, onError)}>
+          {snackbarOpen && (
+            <SnackbarFormMessage
+              message={snackbarMessage}
+              severity={snackbarSeverity}
+              position={{ vertical: "top", horizontal: "center" }}
+              onClose={handleSnackbarClose}
+            />
+          )}
+          <FormControl fullWidth>
+            <TitleForm control={control} errors={errors} />
+          </FormControl>
+
+          <FormControl fullWidth>
+            <StyledTextField
+              {...control.register("image", { required: "Image URL is required" })}
+              label="Image Url"
+              variant="filled"
+              fullWidth
+              margin="normal"
+            />
+          </FormControl>
+
+          <FormControl fullWidth>
+            <TimeForm control={control} errors={formState.errors} />
+          </FormControl>
+
+
+          <FormControl fullWidth>
+            <IngredientsForm control={control} errors={formState.errors} />
+          </FormControl>
+
+          <FormControl fullWidth>
+            <InstructionsForm control={control} errors={formState.errors} />
+          </FormControl>
+
+          <Grid item xs={12}>
+            <Box marginTop={5}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
+                Update Recipe
+              </Button>
             </Box>
-            <form onSubmit={handleSubmit(onSubmit, onError)}>
-                    {snackbarOpen && (
-                      <SnackbarFormMessage
-                      message={snackbarMessage}
-                      severity={snackbarSeverity}
-                      position={{ vertical: "top", horizontal: "center" }} // Set position to top-center
-                      onClose={handleSnackbarClose}
-                      />
-                    )}
-              <FormControl fullWidth>
-                <TitleForm control={control} errors={errors}  /> 
-              </FormControl>
-    
-              <FormControl fullWidth>
-              <StyledTextField
-                {...control.register("image", { required: "Image URL is required" })}
-                label="Image Url"
-                variant="filled"
-                fullWidth
-                margin="normal"
-                defaultValue={image}
-              />
-              </FormControl>
-    
-              <FormControl fullWidth>
-                <TimeForm control={control} errors={formState.errors} />
-              </FormControl>
-             
-    
-              <FormControl fullWidth>
-                <IngredientsForm control={control} errors={formState.errors} />
-              </FormControl>
-    
-              <FormControl fullWidth>
-                  <InstructionsForm control={control} errors={formState.errors}  />
-              </FormControl>
-             
-    
-              {/* Add more fields here as needed, e.g., for image upload */}
-              <Grid item xs={12}>
-                <Box marginTop={5}>
-                <Button 
-                  type="submit" 
-                  variant="contained" 
-                  color="primary" 
-                >
-                  Upload Recipe
-                </Button>
-    
-    
-                </Box>
-              </Grid>
-            </form>
-          </Box>
-        </Paper>
-      );
-    };
+          </Grid>
+        </form>
+      </Box>
+    </Paper>
+  );
+};
 
 export default RecipeEdit;
