@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { fetchRecipes, updateRecipeInFirestore,uploadRecipeToFirestore } from '../utils/firebase-utils';
+import { fetchRecipes, updateRecipeInFirestore,uploadRecipeToFirestore, deleteRecipeFromFirestore } from '../utils/firebase-utils';
 
 export const RecipesContext = createContext([]);
 
@@ -31,26 +31,30 @@ const RecipesProvider = ({ children }) => {
       console.error('Error updating recipe:', error);
     }
   };
-  
+ 
+  const uploadRecipe = async (recipe) => {
+    try {
+      const newRecipeId = await uploadRecipeToFirestore(recipe);
+      console.log(`Recipe "${recipe.title}" uploaded successfully with ID: ${newRecipeId}`);
+      setRecipes((prevRecipes) => [...prevRecipes, { id: newRecipeId, ...recipe }]);
+      return newRecipeId;
+    } catch (error) {
+      console.error("Error uploading recipe to Firestore:", error);
+      throw error;
+    }
+  };
 
+  const deleteRecipe = async (recipe) => {
+    try {
+      await deleteRecipeFromFirestore(recipe);
+      setRecipes((prevRecipes) => prevRecipes.filter((r) => r.id !== recipe.id));
+      console.log(`Recipe "${recipe.title}" deleted successfully!`);
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+    }
+  };
 
-
-const uploadRecipe = async (recipe) => {
-  try {
-    const newRecipeId = await uploadRecipeToFirestore(recipe);
-    console.log(`Recipe "${recipe.title}" uploaded successfully with ID: ${newRecipeId}`);
-    setRecipes((prevRecipes) => [...prevRecipes, { id: newRecipeId, ...recipe }]);
-    return newRecipeId;
-  } catch (error) {
-    console.error("Error uploading recipe to Firestore:", error);
-    throw error;
-  }
-};
-
-
-
-
-  const value = { recipes, updateRecipe, uploadRecipe };
+  const value = { recipes, updateRecipe, uploadRecipe, deleteRecipe };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

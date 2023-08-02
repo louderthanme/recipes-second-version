@@ -11,7 +11,7 @@ import InstructionsForm from "../../components/instructions-form/instructions-fo
 import TimeForm from "../../components/time-Form/time-form.component";
 
 const RecipeEdit = () => {
-  const { recipes, updateRecipe } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
+  const { recipes, updateRecipe, deleteRecipe } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
   const { id } = useParams();
   
   const [recipe, setRecipe] = useState();
@@ -67,6 +67,14 @@ const RecipeEdit = () => {
     setSnackbarOpen(true);
   };
 
+  const onDelete = async () => {
+    await deleteRecipe(recipe);
+    setSnackbarMessage("Recipe deleted successfully!");
+    setSnackbarSeverity("success");
+    setSnackbarOpen(true);
+    navigate(`/`);
+  }
+
   if (!recipe) {
     return <div>Loading...</div>;
   }
@@ -113,16 +121,28 @@ const RecipeEdit = () => {
             <InstructionsForm control={control} errors={formState.errors} />
           </FormControl>
 
-          <Grid item xs={12}>
-            <Box marginTop={5}>
+          <Grid container spacing={1} justifyContent="center">
+            <Grid item xs={5}>
               <Button
+                fullWidth
                 type="submit"
                 variant="contained"
                 color="primary"
               >
                 Update Recipe
               </Button>
-            </Box>
+            </Grid>
+            <Grid item xs={1}></Grid>
+            <Grid item xs={5}>
+              <Button
+                fullWidth
+                variant="contained"
+                color="warning"
+                onClick={onDelete}
+              >
+                Delete Recipe
+              </Button>
+            </Grid>
           </Grid>
         </form>
       </Box>

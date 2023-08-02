@@ -81,13 +81,12 @@ export const updateRecipeInFirestore = async (id, recipeData) => {
 }
 
 
-export const deleteRecipe = async (recipe) => {
-  try{
+export const deleteRecipeFromFirestore = async (recipe) => {
+  try {
     const recipeRef = doc(db, 'recipes', recipe.id);
     await deleteDoc(recipeRef);
-    console.log(`Recipe "${recipe.title}" deleted to Firestore successfully!`);
+    console.log(`Recipe "${recipe.title}" deleted from Firestore successfully!`);
+  } catch (error) {
+    console.error('Error deleting recipe from Firestore:', error);
   }
-  catch(error){
-    console.error('Error deleting recipe to Firestore:', error);
-  }
-}
+};
