@@ -57,17 +57,20 @@ export const uploadRecipes = async (recipes) => {
   }
 };
 
-
-export const uploadRecipe = async (id, recipe) => {
-  try{
-    await setDoc(doc(db, 'recipes', id), recipe);
-    console.log(`Recipe "${recipe.title}" uploaded to Firestore successfully!`);
-  } catch (error){
+export const uploadRecipeToFirestore = async (recipe) => {
+  try {
+    const docRef = await addDoc(collection(db, 'recipes'), recipe);
+    console.log(`Recipe "${recipe.title}" uploaded to Firestore successfully with ID: ${docRef.id}`);
+    return docRef.id; // Return the document reference
+  } catch (error) {
     console.error('Error uploading recipe to Firestore:', error);
+    throw error;
   }
-}
+};
 
-export const updateRecipe = async (id, recipeData) => {
+
+
+export const updateRecipeInFirestore = async (id, recipeData) => {
   try {
     const recipeRef = doc(db, 'recipes', id);
     await updateDoc(recipeRef, recipeData);

@@ -11,7 +11,7 @@ import InstructionsForm from "../../components/instructions-form/instructions-fo
 import TimeForm from "../../components/time-Form/time-form.component";
 
 const RecipeEdit = () => {
-  const { recipes, updateRecipeInFirestore } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
+  const { recipes, updateRecipe } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
   const { id } = useParams();
   
   const [recipe, setRecipe] = useState();
@@ -52,7 +52,7 @@ const RecipeEdit = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    await updateRecipeInFirestore(recipe.id, data); // Use the updateRecipe function from the context
+    await updateRecipe(recipe.id, data); // Use the updateRecipe function from the context
     setSnackbarMessage("Recipe updated successfully!");
     setSnackbarSeverity("success");
     setSnackbarOpen(true);

@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
 import { RecipesContext } from "../../contexts/recipe.context"; // Import the context
 import { StyledTextField } from "../../utils/styledComponents";
+import { useNavigate } from "react-router-dom";
 import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
@@ -24,7 +25,7 @@ const RecipeUpload = () => {
   });
 
   const { errors } = formState;
-  const { uploadRecipeToFirestore } = useContext(RecipesContext); // Access the uploadRecipe function from the context
+  const { uploadRecipe} = useContext(RecipesContext); // Access the uploadRecipe function from the context
 
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
@@ -34,17 +35,20 @@ const RecipeUpload = () => {
     setSnackbarOpen(false);
   };
 
+  const [newRecipeId, setNewRecipeId] = useState(null);
+  const navigate = useNavigate(); // Access the navigate function
+
   const onSubmit = async (data) => {
-    console.log(data);
-    const docRef = await uploadRecipeToFirestore(data); // Use the uploadRecipe function from the context
-    if (docRef) {
+    const newId = await uploadRecipe(data); // Use the uploadRecipe function from the context
+    if (newId) {
       setSnackbarMessage("Recipe uploaded successfully!");
       setSnackbarSeverity("success");
       setSnackbarOpen(true);
+      setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
       reset();
     }
+    return () => { mounted = false }
   };
-
   const onError = (errors, e) => {
     console.error(errors, e);
     setSnackbarMessage("Recipe upload failed!");
@@ -52,6 +56,14 @@ const RecipeUpload = () => {
     setSnackbarOpen(true);
   };
 
+
+  useEffect(() => {
+    if (newRecipeId) {
+      console.log("New recipe ID: ", newRecipeId);
+      navigate(`/recipe/${newRecipeId}`);
+    }
+  }, [newRecipeId, navigate]);
+  
   return (
     <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>
       <Box p={6}>
