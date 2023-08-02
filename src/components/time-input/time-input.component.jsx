@@ -10,8 +10,10 @@ const TimeInput = ({ control, name }) => {
     name,
     control,
     rules: { required: "This field is required" },
-    defaultValue: [0, 0], // This will initialize the value as [0, 0]
+    defaultValue: null,
   });
+
+  const [hours, minutes] = inputProps.value || [0, 0];
 
   return (
     <Box display="flex" alignItems="center">
@@ -26,10 +28,10 @@ const TimeInput = ({ control, name }) => {
           margin="none"
           error={!!error}
           helperText={error?.message}
-          value={inputProps.value[0]} // First element is hours
+          value={hours !== 0 ? hours : ""} // If hours are not 0, show hours, else show an empty string
           onChange={(e) => {
             const val = parseInt(e.target.value, 10);
-            inputProps.onChange([val, inputProps.value[1]]); // Update hours, keep minutes same
+            inputProps.onChange([val || 0, minutes]); // Update hours, keep minutes same
           }}
         />
       </Box>
@@ -44,10 +46,10 @@ const TimeInput = ({ control, name }) => {
           margin="none"
           error={!!error}
           helperText={error?.message}
-          value={inputProps.value[1]} // Second element is minutes
+          value={minutes !== 0 ? minutes : ""} // If minutes are not 0, show minutes, else show an empty string
           onChange={(e) => {
             const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-            inputProps.onChange([inputProps.value[0], val]); // Update minutes, keep hours same
+            inputProps.onChange([hours, val || 0]); // Update minutes, keep hours same
           }}
         />
       </Box>

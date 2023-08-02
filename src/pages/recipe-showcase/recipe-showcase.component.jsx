@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
-import { useParams } from 'react-router-dom';
-import { Paper, Typography, Box, Grid, Divider} from '@mui/material';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Paper, Box, Grid, Divider, Button, useTheme, useMediaQuery} from '@mui/material';
 import InstructionsDisplay from '../../components/instructions-display/instructions-display.component';
 import IngredientsDisplay from '../../components/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/image-box/image-box.component';
@@ -10,6 +10,10 @@ import DetailsBox from '../../components/details-box/details-box.component';
 const RecipeShowcase = () => {
   const {recipes} = useContext(RecipesContext);
   const { id } = useParams();
+  const navigate = useNavigate();
+
+
+  const theme = useTheme();
 
   const recipe = recipes.find((recipe) => recipe.id === id);
 
@@ -18,6 +22,10 @@ const RecipeShowcase = () => {
   }
 
   const { title, ingredients, image, instructions, time: { prep, cook } } = recipe;
+
+  const goToRecipeEdit = (id) => {
+    navigate(`/recipe/${id}/edit`);
+  };
 
   return (
     <Paper elevation={12} sx={{ backgroundColor: '#FCDDBC' }}>
@@ -69,6 +77,17 @@ const RecipeShowcase = () => {
           </Box>
         </Grid>
       </Grid>
+      
+
+      <Grid >
+        <Box p={1} display="flex" justifyContent="center">
+        <Button variant="contained" onClick={() => goToRecipeEdit(id)}>
+                      Edit Recipe
+          </Button>
+        </Box>
+      </Grid>
+      
+      
     </Paper>
   );
 };

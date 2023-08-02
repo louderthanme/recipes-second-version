@@ -6,6 +6,7 @@ import Navigation from './pages/navigation/navigation.component';
 import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
 
+
 const App = () => {
   return (
     <Router>

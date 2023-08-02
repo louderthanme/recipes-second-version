@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
-import TimeForm from "../../components/time-Form/time-form.component";
+import TimeForm from "../../components/time-form/time-form.component";
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 
 const RecipeUpload = () => {
@@ -16,8 +16,8 @@ const RecipeUpload = () => {
       title: "",
       image: "",
       time: {
-        prep: "",
-        cook: "",
+        prep: null,
+        cook: null,
       },
       ingredients: [{ name: "", quantity: "" }],
       instructions: [{ step: "" }],
