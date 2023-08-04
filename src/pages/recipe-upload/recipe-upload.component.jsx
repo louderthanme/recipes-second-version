@@ -27,33 +27,35 @@ const RecipeUpload = () => {
   const { errors } = formState;
   const { uploadRecipe} = useContext(RecipesContext); // Access the uploadRecipe function from the context
 
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
+  const showSnackbar = (message, severity) => {
+    setSnackbar({ open: true, message, severity });
+  }
+  
   const handleSnackbarClose = () => {
-    setSnackbarOpen(false);
+    setSnackbar({ open: false, message: '', severity: 'success' });
   };
 
   const [newRecipeId, setNewRecipeId] = useState(null);
   const navigate = useNavigate(); // Access the navigate function
 
   const onSubmit = async (data) => {
-    const newId = await uploadRecipe(data); // Use the uploadRecipe function from the context
-    if (newId) {
-      setSnackbarMessage("Recipe uploaded successfully!");
-      setSnackbarSeverity("success");
-      setSnackbarOpen(true);
-      setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
-      reset();
+    try {
+        const newId = await uploadRecipe(data);
+        showSnackbar("Recipe uploaded successfully!", "success");
+        setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
+        reset();
+    } catch (error) {
+        console.error(error);
+        showSnackbar("An unexpected error occurred. Please try again.", "error");
     }
-    return () => { mounted = false }
-  };
+};
+
+
   const onError = (errors, e) => {
     console.error(errors, e);
-    setSnackbarMessage("Recipe upload failed!");
-    setSnackbarSeverity("error");
-    setSnackbarOpen(true);
+    showSnackbar("Error uploading recipe", "error");
   };
 
 

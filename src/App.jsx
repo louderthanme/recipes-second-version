@@ -5,6 +5,7 @@ import RecipeShowcase from './pages/recipe-showcase/recipe-showcase.component';
 import Navigation from './pages/navigation/navigation.component';
 import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
+import AuthPage from './pages/authentication/authentication.component';
 
 
 const App = () => {
@@ -47,6 +48,16 @@ const App = () => {
                   </Grid>
                 }
             />
+            <Route
+            path='/auth'
+            element={
+              <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
+                <Grid item xs={12} sm={7}> {/* Smaller width for RecipeShowcase */}
+                  <AuthPage />
+                </Grid>
+              </Grid>
+            }
+            />          
           </Routes>
           </Grid>
         </Grid>

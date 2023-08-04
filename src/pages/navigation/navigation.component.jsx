@@ -15,9 +15,16 @@ const Navigation = () => {
                             Home
                         </Link>    
                     </Box>
-                    <Link to="/recipe/upload">
-                        Upload Recipe
-                    </Link>
+                    <Box mr={2}>
+                        <Link to="/recipe/upload">
+                            Upload Recipe
+                        </Link>
+                    </Box>
+                    <Box mr={2}>
+                        <Link to="/auth">
+                            Log In
+                        </Link>
+                    </Box>
                 </Box>
             </div>
             <Outlet /> {/* Renders child routes */}

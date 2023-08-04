@@ -40,39 +40,43 @@ const RecipeEdit = () => {
 
   const { errors } = formState;
 
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
+  const showSnackbar = (message, severity) => {
+    setSnackbar({ open: true, message, severity });
+  }
+  
   const handleSnackbarClose = () => {
-    setSnackbarOpen(false);
+    setSnackbar({ open: false, message: '', severity: 'success' });
   };
 
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    await updateRecipe(recipe.id, data); // Use the updateRecipe function from the context
-    setSnackbarMessage("Recipe updated successfully!");
-    setSnackbarSeverity("success");
-    setSnackbarOpen(true);
-    navigate(`/recipe/${recipe.id}`);
-  };
-  
+    try {
+        await updateRecipe(recipe.id, data);
+        showSnackbar("Recipe updated successfully!", "success");
+        navigate(`/recipe/${recipe.id}`);
+    } catch (error) {
+        console.error(error);
+        showSnackbar("Error updating recipe. Please try again.", "error");
+    }
+};
 
   const onError = (errors, e) => {
     console.error(errors, e);
-    setSnackbarMessage("Recipe update failed!");
-    setSnackbarSeverity("error");
-    setSnackbarOpen(true);
+    showSnackbar("Error updating recipe", "error");
   };
 
   const onDelete = async () => {
-    await deleteRecipe(recipe);
-    setSnackbarMessage("Recipe deleted successfully!");
-    setSnackbarSeverity("success");
-    setSnackbarOpen(true);
-    navigate(`/`);
+    try {
+        await deleteRecipe(recipe);
+        showSnackbar("Recipe deleted successfully!", "success");
+        navigate(`/`);
+    } catch (error) {
+        console.error(error);
+        showSnackbar("Error deleting recipe. Please try again.", "error");
+    }
   }
 
   if (!recipe) {
