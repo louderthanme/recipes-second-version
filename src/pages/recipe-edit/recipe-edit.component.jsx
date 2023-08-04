@@ -9,6 +9,7 @@ import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
 import TimeForm from "../../components/time-form/time-form.component";
+import { useSnackbar } from '../../hooks/useSnackbar';
 
 const RecipeEdit = () => {
   const { recipes, updateRecipe, deleteRecipe } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
@@ -40,16 +41,7 @@ const RecipeEdit = () => {
 
   const { errors } = formState;
 
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
-
-  const showSnackbar = (message, severity) => {
-    setSnackbar({ open: true, message, severity });
-  }
-  
-  const handleSnackbarClose = () => {
-    setSnackbar({ open: false, message: '', severity: 'success' });
-  };
-
+  const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {

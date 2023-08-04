@@ -8,6 +8,7 @@ import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
 import TimeForm from "../../components/time-form/time-form.component";
+import { useSnackbar } from '../../hooks/useSnackbar';
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 
 const RecipeUpload = () => {
@@ -27,15 +28,7 @@ const RecipeUpload = () => {
   const { errors } = formState;
   const { uploadRecipe} = useContext(RecipesContext); // Access the uploadRecipe function from the context
 
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
-
-  const showSnackbar = (message, severity) => {
-    setSnackbar({ open: true, message, severity });
-  }
-  
-  const handleSnackbarClose = () => {
-    setSnackbar({ open: false, message: '', severity: 'success' });
-  };
+  const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
 
   const [newRecipeId, setNewRecipeId] = useState(null);
   const navigate = useNavigate(); // Access the navigate function
