@@ -1,6 +1,7 @@
 import { Fragment } from "react";
-import { Outlet } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+import { Box } from "@mui/material";
+
 
 const Navigation = () => {
 
@@ -8,11 +9,16 @@ const Navigation = () => {
         <Fragment> {/* Contains the entire page */}
 
             <div>
-                <div >
-                    <Link to="/">
-                        Home
+                <Box display={'flex'} justifyContent={'flex-end'} sx={{ backgroundColor: '#FCDDBC' }}>
+                    <Box mr={2}>
+                        <Link to="/">
+                            Home
+                        </Link>    
+                    </Box>
+                    <Link to="/recipe/upload">
+                        Upload Recipe
                     </Link>
-                </div>
+                </Box>
             </div>
             <Outlet /> {/* Renders child routes */}
         </Fragment>

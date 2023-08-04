@@ -8,7 +8,7 @@ import { StyledTextField } from "../../utils/styledComponents";
 import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
-import TimeForm from "../../components/time-Form/time-form.component";
+import TimeForm from "../../components/time-form/time-form.component";
 
 const RecipeEdit = () => {
   const { recipes, updateRecipe, deleteRecipe } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
