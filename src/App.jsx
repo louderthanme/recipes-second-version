@@ -52,7 +52,7 @@ const App = () => {
             path='/auth'
             element={
               <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
-                <Grid item xs={12} sm={7}> {/* Smaller width for RecipeShowcase */}
+                <Grid item xs={12} sm={3}> {/* Smaller width for RecipeShowcase */}
                   <AuthPage />
                 </Grid>
               </Grid>

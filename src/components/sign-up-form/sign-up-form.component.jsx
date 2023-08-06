@@ -1,53 +1,68 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { TextField, Button, FormControl, FormHelperText } from '@mui/material';
+import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } from "@mui/material";
+import { StyledTextField } from "../../utils/styledComponents";
 
-
-const SignUpForm = ({switchToSignIn, showSnackbar}) => {
+const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    
+
     const onSubmit = (data) => {
         console.log(data);
         showSnackbar("Signed up successfully", "success");
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <h2>Sign Up</h2>
-            <FormControl error={errors.name ? true : false}>
-                <TextField 
-                    {...register("name", { required: true })}
-                    label="Display Name" 
-                    variant="outlined" 
-                />
-                {errors.name && <p>Name is required</p>}
-            </FormControl>
-            <FormControl error={errors.email ? true : false}>
-                <TextField 
-                    {...register("email", { required: true })}
-                    label="Email" 
-                    variant="outlined" 
-                />
-                {errors.email && <p>Email is required</p>}
-            </FormControl>	
-            <FormControl error={errors.password ? true : false}>
-                <TextField 
-                    {...register("password", { required: true })}
-                    label="Password" 
-                    variant="outlined" 
-                    type="password" 
-                />
-                {errors.password && <p>Password is required</p>}
-            </FormControl>
-
-            <Button type="submit" variant="contained" color="primary">
-                Sign Up with Email
-            </Button>
-            <Button variant="contained" color="primary">
-                Sign Up with Google
-            </Button>
-            <p>Already have an account? <Button color="primary" onClick={switchToSignIn}>Sign In</Button></p>
-        </form>
+        <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>
+            <Box p={3}>
+                <Box marginBottom={3}>
+                    <Typography variant="h3" fontWeight="bold">Sign Up</Typography>
+                </Box>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <FormControl error={errors.name ? true : false} fullWidth>
+                        <StyledTextField 
+                            {...register("name", { required: true })}
+                            label="Display Name" 
+                            variant="filled"
+                            fullWidth
+                        />
+                        {errors.name && <FormHelperText>Name is required</FormHelperText>}
+                    </FormControl>
+                    <FormControl error={errors.email ? true : false} fullWidth>
+                        <StyledTextField 
+                            {...register("email", { required: true })}
+                            label="Email" 
+                            variant="filled" 
+                            fullWidth 
+                        />
+                        {errors.email && <FormHelperText>Email is required</FormHelperText>}
+                    </FormControl>
+                    <FormControl error={errors.password ? true : false} fullWidth>
+                        <StyledTextField 
+                            {...register("password", { required: true })}
+                            label="Password" 
+                            variant="filled" 
+                            type="password" 
+                            fullWidth 
+                        />
+                        {errors.password && <FormHelperText>Password is required</FormHelperText>}
+                    </FormControl>
+                    <Grid container spacing={1} justifyContent="center" marginY={2}>
+                        <Grid item xs={5}>
+                            <Button type="submit" variant="contained" color="primary">
+                                Sign Up with Email
+                            </Button>
+                        </Grid>
+                        <Grid item xs={1}></Grid>
+                        <Grid item xs={5}>
+                            <Button variant="contained" color="primary">
+                                Sign Up with Google
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <Typography>Already have an account? <Button color="primary" onClick={switchToSignIn}>Sign In</Button></Typography>
+                </form>
+            </Box>
+        </Paper>
     );
 };
 
