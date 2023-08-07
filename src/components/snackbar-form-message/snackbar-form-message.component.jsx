@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
-const SnackbarFormMessage = ({ message, severity, position, onClose }) => {
-  const [open, setOpen] = useState(true);
 
+const SnackbarFormMessage = ({ open, message, severity, position, onClose }) => {
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpen(false);
     onClose();
   };
 
@@ -26,5 +24,6 @@ const SnackbarFormMessage = ({ message, severity, position, onClose }) => {
     </Snackbar>
   );
 };
+
 
 export default SnackbarFormMessage;

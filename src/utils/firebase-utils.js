@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, setDoc, getDocs, deleteDoc, updateDoc, doc, addDoc } from 'firebase/firestore/lite';
+import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, updateProfile} from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA5A6zuSbiRfVUTD2AxkxZSyyFRjJUf5Y8",
@@ -13,6 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(); // Initialize Firestore
+export const auth = getAuth(app);
 
 export const flushDatabase = async () => {
   try {
@@ -90,3 +92,26 @@ export const deleteRecipeFromFirestore = async (recipe) => {
     console.error('Error deleting recipe from Firestore:', error);
   }
 };
+
+export const signUpWithEmailAndPassword = async (auth, email, password, displayName) => {
+  try {
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
+    
+    if (user && displayName) {
+      await updateProfile(user, {
+        displayName: displayName
+      });
+      console.log('User display name set:', displayName);
+    }
+
+    console.log('User created successfully:', user);
+    return user;
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw error;
+  }
+}
+
+
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
+
