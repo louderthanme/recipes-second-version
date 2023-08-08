@@ -122,19 +122,32 @@ export const signUpWithEmailAndPassword = async (auth, email, password, displayN
   try {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
     
-    if (user && displayName) {
-      await updateProfile(user, {
-        displayName: displayName
-      });
-      console.log('User display name set:', displayName);
+    if (user) {
+      // If there's a displayName provided, update it.
+      if (displayName) {
+        await updateProfile(user, {
+          displayName: displayName
+        });
+        console.log('User display name set:', displayName);
+      }
+      
+      // Store the date of creation in Firebase Firestore
+      const creationDate = new Date().toISOString();  // Current date and time in ISO format
+      const userRef = firestore.collection('users').doc(user.uid);
+      await userRef.set({
+        creationDate: creationDate
+      }, { merge: true });  // The merge: true ensures we don't overwrite existing user data
+      
+      console.log('User created successfully with creation date:', user, creationDate);
     }
-    console.log('User created successfully:', user);
+
     return user;
   } catch (error) {
-      console.error('Error creating user:', error);
+    console.error('Error creating user:', error);
     throw error;
   }
 }
+
 
 export const signInUserWithEmailAndPassword = async (auth, email, password) => {
   if(!email || !password) {
@@ -149,12 +162,27 @@ export const signInWithGoogle = async () => {
   try {
     const userCredential = await signInWithPopup(auth, googleProvider);
     console.log('User signed in with Google successfully:', userCredential);
+    
+    if(userCredential.additionalUserInfo.isNewUser) {
+      console.log('This is a new user!');
+      // Store the date of creation in Firebase Firestore or Realtime Database
+      const creationDate = new Date().toISOString();  // Current date and time in ISO format
+      const userRef = firestore.collection('users').doc(userCredential.user.uid);
+      await userRef.set({
+        creationDate: creationDate
+      }, { merge: true });  // The merge: true ensures we don't overwrite existing user data
+    } else {
+      console.log('This is a returning user!');
+    }
+
     return userCredential;
   } catch (error) {
     console.error('Error signing in with Google:', error);
     throw error;
   }
 };
+
+
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 
 export const signOutUser = async () => await signOut(auth);
