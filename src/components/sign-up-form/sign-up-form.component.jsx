@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
-import { signUpWithEmailAndPassword, signInWithGoogle, auth} from "../../utils/firebase-utils";
+import { signUpWithEmailAndPassword, auth} from "../../utils/firebase-utils";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
+import handleGoogleAuthentication from "../../hooks/handleGoogleAuthentication";
 
 const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,22 +13,13 @@ const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const {user, setUser} = useContext(UserContext);
 
     useEffect(() => {
-        if(user){
+        if(user){   
             navigate("/")       
         }
     }, [user, navigate])
 
-    const handleGoogleSignUp = async () => {
-        try {
-          const { user } = await signInWithGoogle();
-          setUser(user);  // Set the user context
-          console.log(user);
-          showSnackbar("Signed up with Google successfully", "success");
-        } catch (err) {
-          showSnackbar("Failed to sign up with Google", "error");
-          console.error(err);
-        }
-      };
+
+    const googleAuthHandler = handleGoogleAuthentication(showSnackbar, "Signed up with Google successfully", "Failed to sign up with Google");
 
     const onSubmit = async (data) => {
         try { 
@@ -92,7 +84,7 @@ const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
                         </Grid>
                         <Grid item xs={1}></Grid>
                         <Grid item xs={5}>
-                            <Button variant="contained" color="primary" onClick={handleGoogleSignUp}>
+                            <Button variant="contained" color="primary" onClick={()=>googleAuthHandler}>
                                 Sign Up with Google
                             </Button>
                         </Grid>

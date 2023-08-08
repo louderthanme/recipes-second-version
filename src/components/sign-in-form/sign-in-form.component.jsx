@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 import { signInUserWithEmailAndPassword, auth } from "../../utils/firebase-utils";
+import { handleGoogleAuthentication } from "../../hooks/handleGoogleAuthentication";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
@@ -19,7 +20,10 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    
+
+    const googleAuthHandler = handleGoogleAuthentication(showSnackbar, "Signed in with Google successfully", "Failed to sign in with Google");
+ 
+
     const onSubmit = async (data) => {
         try { 
             const { user } = await signInUserWithEmailAndPassword(auth, data.email, data.password);
@@ -67,7 +71,7 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
                             </Grid>
                         <Grid item xs={1}></Grid>
                             <Grid item xs={5}>
-                                <Button variant="contained" color="primary">
+                                <Button variant="contained" color="primary" onClick={()=>googleAuthHandler}>
                                         Sign In with Google
                                 </Button>
                             </Grid>
