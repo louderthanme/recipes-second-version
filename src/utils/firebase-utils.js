@@ -16,12 +16,14 @@ import {
   onAuthStateChanged,
   updateProfile,
   signInWithEmailAndPassword,
-  signOut
+  signOut, 
+  GoogleAuthProvider,
+  signInWithPopup
 } from 'firebase/auth';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA5A6zuSbiRfVUTD2AxkxZSyyFRjJUf5Y8",
+    apiKey: "AIzaSyA_1Vv9FBH_YyWYOGVUHNI10VLeJCVJj68",
     authDomain: "recipes-second-version.firebaseapp.com",
     projectId: "recipes-second-version",
     storageBucket: "recipes-second-version.appspot.com",
@@ -33,6 +35,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(); // Initialize Firestore
 export const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+    prompt: "select_account"
+});
+
 
 export const flushDatabase = async () => {
   try {
@@ -138,7 +145,16 @@ export const signInUserWithEmailAndPassword = async (auth, email, password) => {
   return userCredential;
 };
 
-
+export const signInWithGoogle = async () => {
+  try {
+    const userCredential = await signInWithPopup(auth, googleProvider);
+    console.log('User signed in with Google successfully:', userCredential);
+    return userCredential;
+  } catch (error) {
+    console.error('Error signing in with Google:', error);
+    throw error;
+  }
+};
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 
 export const signOutUser = async () => await signOut(auth);

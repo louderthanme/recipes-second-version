@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
-import { signUpWithEmailAndPassword, auth} from "../../utils/firebase-utils";
+import { signUpWithEmailAndPassword, signInWithGoogle, auth} from "../../utils/firebase-utils";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
@@ -17,6 +17,17 @@ const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
         }
     }, [user, navigate])
 
+    const handleGoogleSignUp = async () => {
+        try {
+          const { user } = await signInWithGoogle();
+          setUser(user);  // Set the user context
+          console.log(user);
+          showSnackbar("Signed up with Google successfully", "success");
+        } catch (err) {
+          showSnackbar("Failed to sign up with Google", "error");
+          console.error(err);
+        }
+      };
 
     const onSubmit = async (data) => {
         try { 
@@ -79,12 +90,12 @@ const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
                                 Sign Up with Email
                             </Button>
                         </Grid>
-                        {/* <Grid item xs={1}></Grid>
+                        <Grid item xs={1}></Grid>
                         <Grid item xs={5}>
-                            <Button variant="contained" color="primary">
+                            <Button variant="contained" color="primary" onClick={handleGoogleSignUp}>
                                 Sign Up with Google
                             </Button>
-                        </Grid> */}
+                        </Grid>
                     </Grid>
                     <Typography>Already have an account? <Button color="primary" onClick={switchToSignIn}>Sign In</Button></Typography>
                 </form>
