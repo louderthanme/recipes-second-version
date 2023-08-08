@@ -121,11 +121,10 @@ export const signUpWithEmailAndPassword = async (auth, email, password, displayN
       });
       console.log('User display name set:', displayName);
     }
-
     console.log('User created successfully:', user);
     return user;
   } catch (error) {
-    console.error('Error creating user:', error);
+      console.error('Error creating user:', error);
     throw error;
   }
 }

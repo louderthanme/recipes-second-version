@@ -3,7 +3,7 @@ import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } fro
 import { StyledTextField } from "../../utils/styledComponents";
 import { signUpWithEmailAndPassword, auth} from "../../utils/firebase-utils";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
 
 const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
@@ -11,11 +11,11 @@ const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const navigate = useNavigate();
     const {user, setUser} = useContext(UserContext);
 
-
-    if(user){
-        navigate("/")       
-        return null 
-    }
+    useEffect(() => {
+        if(user){
+            navigate("/")       
+        }
+    }, [user, navigate])
 
 
     const onSubmit = async (data) => {

@@ -1,10 +1,9 @@
-import React from 'react';
 import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 import { signInUserWithEmailAndPassword, auth } from "../../utils/firebase-utils";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
 
 
@@ -12,10 +11,11 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
     const navigate = useNavigate();
     const {user, setUser} = useContext(UserContext);
 
-    if(user){
-        navigate("/")       
-        return null 
-    }
+    useEffect(() => {
+        if(user){
+            navigate("/")       
+        }
+    }, [user, navigate])
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -26,7 +26,6 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
             console.log(user);
             setUser(user); // Set the user in the context after successful sign in
             showSnackbar("Signed in successfully", "success");
-            history.push("/"); // Redirect to home route
         } catch (err) {
             console.error(err.message);
             showSnackbar("Failed to sign in. Please check your credentials and try again.", "error");

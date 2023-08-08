@@ -2,13 +2,14 @@ import { Fragment, useContext} from "react";
 import { Outlet, Link } from "react-router-dom";
 import { Box } from "@mui/material";
 import { UserContext } from "../../contexts/user.context";
+import { signOutUser } from "../../utils/firebase-utils";
+import { capitalizeFirstLetter } from "../../utils/utils";
 
 
 const Navigation = () => {
-    const user = useContext(UserContext);
-    const {displayName} = user;
-    console.log(user,"from navigation")
-    console.log(displayName,"from navigationr")
+    const userCredential = useContext(UserContext);
+    const {user} = userCredential;
+
 
     return (
         <Fragment> {/* Contains the entire page */}
@@ -26,8 +27,12 @@ const Navigation = () => {
                         </Link>
                     </Box>
                     <Box mr={2}>
-                        {user ? 
-                            <span>Welcome, {displayName}!</span> : 
+                        {user && user.displayName? 
+                            <span> {capitalizeFirstLetter(user.displayName)}, 
+                                <Link as='span'onClick={signOutUser}>
+                                    Sign Out
+                                </Link>
+                            </span> : 
                             <Link to="/auth">
                                 Log In
                             </Link>

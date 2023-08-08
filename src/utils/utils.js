@@ -1,4 +1,3 @@
-// domUtils.js
 import { useEffect } from 'react';
 
 export const updateBoxShadow = (container) => {
@@ -22,3 +21,8 @@ export const useDebounceEffect = (effect, dependencies, delay = 100) => {
     };
   }, dependencies);
 };
+
+
+export const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

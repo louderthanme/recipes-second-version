@@ -7,7 +7,7 @@ export const UserProvider= ({children}) => {
     const [user,setUser] = useState();
     const [loading,setLoading] = useState(true);
 
-    signOutUser();
+    // signOutUser();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener((user) => {
