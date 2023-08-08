@@ -1,6 +1,24 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, setDoc, getDocs, deleteDoc, updateDoc, doc, addDoc } from 'firebase/firestore/lite';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, updateProfile} from 'firebase/auth';
+import {
+  getFirestore,
+  collection,
+  setDoc,
+  getDocs,
+  deleteDoc,
+  updateDoc,
+  doc,
+  addDoc
+} from 'firebase/firestore/lite';
+
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  updateProfile,
+  signInWithEmailAndPassword,
+  signOut
+} from 'firebase/auth';
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyA5A6zuSbiRfVUTD2AxkxZSyyFRjJUf5Y8",
@@ -112,6 +130,16 @@ export const signUpWithEmailAndPassword = async (auth, email, password, displayN
   }
 }
 
+export const signInUserWithEmailAndPassword = async (auth, email, password) => {
+  if(!email || !password) {
+    return;
+  }
+  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  console.log('User signed in successfully:', userCredential);
+  return userCredential;
+};
+
 
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 
+export const signOutUser = async () => await signOut(auth);

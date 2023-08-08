@@ -2,13 +2,20 @@ import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 import { signUpWithEmailAndPassword, auth} from "../../utils/firebase-utils";
-import { useSnackbar } from '../../hooks/useSnackbar';
-import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
-
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
 
 const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+    const {user, setUser} = useContext(UserContext);
 
+
+    if(user){
+        navigate("/")       
+        return null 
+    }
 
 
     const onSubmit = async (data) => {

@@ -66,10 +66,10 @@ const RecipeUpload = () => {
           <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
         </Box>
         <form onSubmit={handleSubmit(onSubmit, onError)}>
-                {snackbarOpen && (
+                {snackbar.open && (
                   <SnackbarFormMessage
-                  message={snackbarMessage}
-                  severity={snackbarSeverity}
+                  message={snackbar.message}
+                  severity={snackbar.severity}
                   position={{ vertical: "top", horizontal: "center" }} // Set position to top-center
                   onClose={handleSnackbarClose}
                   />
