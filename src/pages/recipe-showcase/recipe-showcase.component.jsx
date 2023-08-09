@@ -29,7 +29,7 @@ const RecipeShowcase = () => {
 
   return (
     <Paper elevation={12} sx={{ backgroundColor: '#FCDDBC' }}>
-      <Grid container>
+      <Grid container justifyContent="center">
         {/* First Row */}
         <Grid item xs={12} sm={6}>
           <Box margin={2}>
@@ -80,10 +80,10 @@ const RecipeShowcase = () => {
       
 
       <Grid >
-        <Box p={1} display="flex" justifyContent="center">
-        <Button variant="contained" onClick={() => goToRecipeEdit(id)}>
-                      Edit Recipe
-          </Button>
+        <Box p={1} display="flex" justifyContent="center" mb={4}>
+            <Button variant="contained" onClick={() => goToRecipeEdit(id)}>
+              Edit Recipe
+            </Button>
         </Box>
       </Grid>
       
