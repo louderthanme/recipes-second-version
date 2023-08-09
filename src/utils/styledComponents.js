@@ -22,3 +22,13 @@ export const StyledDivider = styled(Divider)({
   height: '2px', // change this to control the thickness
   margin: '10px 0', // add some margin to make the divider more noticeable
 });
+
+
+export const DotMatrixBackground = styled('div')(({ theme }) => ({
+  width: '100vw',
+  height: '100vh',
+  backgroundColor: 'white',
+  backgroundImage: 'radial-gradient(#e8e3f1 1px, transparent 2px)',
+  backgroundSize: '30px 30px',
+}));
+
