@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
+import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 import { signInUserWithEmailAndPassword, auth } from "../../utils/firebase-utils";
 import { handleGoogleAuthentication } from "../../hooks/handleGoogleAuthentication";
@@ -71,7 +71,7 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
                             </Grid>
                         <Grid item xs={1}></Grid>
                             <Grid item xs={5}>
-                                <Button variant="contained" color="primary" onClick={()=>googleAuthHandler}>
+                                <Button variant="contained" color="primary" onClick={googleAuthHandler}>
                                         Sign In with Google
                                 </Button>
                             </Grid>

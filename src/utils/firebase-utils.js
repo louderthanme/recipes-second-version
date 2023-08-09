@@ -133,7 +133,7 @@ export const signUpWithEmailAndPassword = async (auth, email, password, displayN
       
       // Store the date of creation in Firebase Firestore
       const creationDate = new Date().toISOString();  // Current date and time in ISO format
-      const userRef = firestore.collection('users').doc(user.uid);
+      const userRef = db.collection('users').doc(user.uid);
       await userRef.set({
         creationDate: creationDate
       }, { merge: true });  // The merge: true ensures we don't overwrite existing user data

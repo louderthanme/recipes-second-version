@@ -5,7 +5,7 @@ import { signUpWithEmailAndPassword, auth} from "../../utils/firebase-utils";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
-import handleGoogleAuthentication from "../../hooks/handleGoogleAuthentication";
+import {handleGoogleAuthentication} from "../../hooks/handleGoogleAuthentication";
 
 const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();

@@ -117,28 +117,31 @@ const RecipeEdit = () => {
             <InstructionsForm control={control} errors={formState.errors} />
           </FormControl>
 
-          <Grid container spacing={1} justifyContent="center">
-            <Grid item xs={5}>
-              <Button
-                fullWidth
-                type="submit"
-                variant="contained"
-                color="primary"
-              >
-                Update Recipe
-              </Button>
-            </Grid>
-            <Grid item xs={1}></Grid>
-            <Grid item xs={5}>
-              <Button
-                fullWidth
-                variant="contained"
-                color="warning"
-                onClick={onDelete}
-              >
-                Delete Recipe
-              </Button>
-            </Grid>
+          <Grid container spacing={1} justifyContent="center" mt={5}>
+              <Grid item xs={5} >
+               
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                >
+                  Update Recipe
+                </Button>
+              </Grid>
+              <Grid item xs={1}></Grid>
+              <Grid item xs={5}>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="warning"
+                  onClick={onDelete}
+                >
+                  Delete Recipe
+                </Button>
+
+              </Grid>
+           
           </Grid>
         </form>
       </Box>
