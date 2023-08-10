@@ -10,6 +10,7 @@ import InstructionsForm from "../../components/instructions-form/instructions-fo
 import TimeForm from "../../components/time-form/time-form.component";
 import { useSnackbar } from '../../hooks/useSnackbar';
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
+import { UserContext } from "../../contexts/user.context";
 
 const RecipeUpload = () => {
   const { handleSubmit, control, formState, reset } = useForm({
@@ -33,8 +34,12 @@ const RecipeUpload = () => {
   const [newRecipeId, setNewRecipeId] = useState(null);
   const navigate = useNavigate(); // Access the navigate function
 
+  const { user } = useContext(UserContext);
+
+
   const onSubmit = async (data) => {
     try {
+        data.ownerUid = user.uid; 
         const newId = await uploadRecipe(data);
         showSnackbar("Recipe uploaded successfully!", "success");
         setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
