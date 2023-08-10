@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import Home from './pages/home/home.component';
 import RecipeShowcase from './pages/recipe-showcase/recipe-showcase.component';
@@ -6,9 +6,15 @@ import Navigation from './pages/navigation/navigation.component';
 import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
 import AuthPage from './pages/authentication/authentication.component';
+import { useContext } from 'react';
+import { UserContext } from './contexts/user.context';
 
 
 const App = () => {
+
+  const {user}=useContext(UserContext);   
+
+
   return (
     <Router>
       <Navigation/>
@@ -30,23 +36,23 @@ const App = () => {
               />
             <Route
                 path="/recipe/upload"
-                element={
+                element={user ?
                   <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
                     <Grid item xs={12} sm={7}> {/* Smaller width for RecipeShowcase */}
                       <RecipeUpload />
                     </Grid>
                   </Grid>
-                }
+                : <Navigate to="/auth" />}
               />
            <Route
                 path="/recipe/:id/edit"
-                element={
+                element={user ?
                   <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
                     <Grid item xs={12} sm={7}> {/* Smaller width for RecipeShowcase */}
                       <RecipeEdit />
                     </Grid>
                   </Grid>
-                }
+                : <Navigate to="/auth" />}
             />
             <Route
             path='/auth'
