@@ -1,5 +1,11 @@
 import { createContext, useState, useEffect } from 'react';
-import { fetchRecipes, updateRecipeInFirestore,uploadRecipeToFirestore, deleteRecipeFromFirestore } from '../utils/firebase-utils';
+import { 
+  fetchRecipes, 
+  updateRecipeInFirestore,
+  uploadRecipeToFirestore, 
+  deleteRecipeFromFirestore,
+  fetchRecipeByIdFromFirestore
+ } from '../utils/firebase-utils';
 
 export const RecipesContext = createContext([]);
 
@@ -18,6 +24,15 @@ const RecipesProvider = ({ children }) => {
 
     getRecipes();
   }, []);
+
+  const fetchRecipeById = async (id) => {
+    try {
+      return await fetchRecipeByIdFromFirestore(id);
+    } catch (error) {
+      console.error('Error fetching recipe:', error);
+      throw error;
+    }
+  }
 
   const updateRecipe = async (id, recipeData) => {
     try {
@@ -54,7 +69,7 @@ const RecipesProvider = ({ children }) => {
     }
   };
 
-  const value = { recipes, updateRecipe, uploadRecipe, deleteRecipe };
+  const value = { recipes, updateRecipe, uploadRecipe, deleteRecipe, fetchRecipeById };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

@@ -3,6 +3,7 @@ import {
   getFirestore,
   collection,
   setDoc,
+  getDoc,
   getDocs,
   deleteDoc,
   updateDoc,
@@ -64,6 +65,24 @@ export const fetchRecipes = async () => {
       return [];
     }
 }
+
+export const fetchRecipeByIdFromFirestore = async (id) => {
+  try {
+      const recipeRef = doc(db, 'recipes', id);
+      const recipeDoc = await getDoc(recipeRef);
+
+      if (!recipeDoc.exists()) {
+          throw new Error(`Recipe with ID ${id} does not exist!`);
+      }
+
+      return { id: recipeDoc.id, ...recipeDoc.data() };
+  } catch (error) {
+      console.error('Error fetching recipe by ID:', error);
+      throw error; // Forward the error so you can catch it elsewhere
+  }
+}
+
+
 
 export const uploadRecipes = async (recipes) => {
   try {

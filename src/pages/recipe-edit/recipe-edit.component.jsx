@@ -12,32 +12,35 @@ import TimeForm from "../../components/time-form/time-form.component";
 import { useSnackbar } from '../../hooks/useSnackbar';
 
 const RecipeEdit = () => {
-  const { recipes, updateRecipe, deleteRecipe } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
+  const { fetchRecipeById, updateRecipe, deleteRecipe } = useContext(RecipesContext); // Access the recipes array and the updateRecipe function from the context
   const { id } = useParams();
   
-  const [recipe, setRecipe] = useState();
+  const [recipe, setRecipe] = useState(null);
 
   const { handleSubmit, control, formState, reset } = useForm();
 
   useEffect(() => {
-    if (recipes) {
-      const foundRecipe = recipes.find((recipe) => recipe.id === id);
-      console.log(foundRecipe);
-      setRecipe(foundRecipe);
+    const getRecipeForEdit = async () => {
+      const fetchedRecipe = await fetchRecipeById(id);
+      if(fetchedRecipe) {
+        setRecipe(fetchedRecipe);
+        
+        // Reset form with the fetchedRecipe data
+        reset({
+          title: fetchedRecipe.title || '',
+          image: fetchedRecipe.image || '',
+          time: {
+            prep: fetchedRecipe.time?.prep || ['', ''],
+            cook: fetchedRecipe.time?.cook || ['', ''],
+          },
+          ingredients: fetchedRecipe.ingredients || [{ name: '', quantity: '' }],
+          instructions: fetchedRecipe.instructions || [{ step: '' }],
+        });
+      }
+    };
 
-      // Reset form with new defaultValues
-      reset({
-        title: foundRecipe?.title || '',
-        image: foundRecipe?.image || '',
-        time: {
-          prep: foundRecipe?.time?.prep || ['', ''],
-          cook: foundRecipe?.time?.cook || ['', ''],
-        },
-        ingredients: foundRecipe?.ingredients || [{ name: '', quantity: '' }],
-        instructions: foundRecipe?.instructions || [{ step: '' }],
-      });
-    }
-  }, [recipes, id, reset]);
+    getRecipeForEdit();
+  }, [id, fetchRecipeById, reset]);
 
   const { errors } = formState;
 

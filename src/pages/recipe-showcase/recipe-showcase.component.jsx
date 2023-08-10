@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Paper, Box, Grid, Divider, Button, useTheme, useMediaQuery} from '@mui/material';
@@ -8,18 +8,25 @@ import ImageBox from '../../components/image-box/image-box.component';
 import DetailsBox from '../../components/details-box/details-box.component';
 
 const RecipeShowcase = () => {
-  const {recipes} = useContext(RecipesContext);
+  const { fetchRecipeById} = useContext(RecipesContext);
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const [recipe, setRecipe] = useState(null);
 
-  const theme = useTheme();
+  useEffect(() => {
+    const getRecipe = async () => {
+      const currentRecipe = await fetchRecipeById(id);
+      setRecipe(currentRecipe);
+    }
 
-  const recipe = recipes.find((recipe) => recipe.id === id);
+    getRecipe();
+  }, [id, fetchRecipeById]);
 
   if (!recipe) {
-    return <div> no recipe found </div>;
+    return <div> loading </div>;
   }
+
 
   const { title, ingredients, image, instructions, time: { prep, cook } } = recipe;
 
