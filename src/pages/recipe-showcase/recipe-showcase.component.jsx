@@ -6,8 +6,11 @@ import InstructionsDisplay from '../../components/instructions-display/instructi
 import IngredientsDisplay from '../../components/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/image-box/image-box.component';
 import DetailsBox from '../../components/details-box/details-box.component';
+import { UserContext } from '../../contexts/user.context';
 
 const RecipeShowcase = () => {
+  const {user}=useContext(UserContext);   
+
   const { fetchRecipeById} = useContext(RecipesContext);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -28,7 +31,7 @@ const RecipeShowcase = () => {
   }
 
 
-  const { title, ingredients, image, instructions, time: { prep, cook } } = recipe;
+  const { title, ingredients, image, instructions, time: { prep, cook }, ownerUid } = recipe;
 
   const goToRecipeEdit = (id) => {
     navigate(`/recipe/${id}/edit`);
@@ -88,9 +91,11 @@ const RecipeShowcase = () => {
 
       <Grid >
         <Box p={1} display="flex" justifyContent="center" mb={4}>
+          { user?.uid === ownerUid &&  
             <Button variant="contained" onClick={() => goToRecipeEdit(id)}>
               Edit Recipe
             </Button>
+          }
         </Box>
       </Grid>
       
