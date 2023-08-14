@@ -3,20 +3,24 @@ import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } fro
 import { StyledTextField } from "../../utils/styledComponents";
 import { signInUserWithEmailAndPassword, auth } from "../../utils/firebase-utils";
 import { handleGoogleAuthentication } from "../../hooks/handleGoogleAuthentication";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
 
 
 const SignIn = ({switchToSignUp, showSnackbar}) => {
     const navigate = useNavigate();
+    const location = useLocation();
+    
+
     const {user, setUser} = useContext(UserContext);
 
     useEffect(() => {
         if(user){
-            navigate("/")       
+            const redirectTo= location.state?.background?.pathname || "/"; // If the user is already signed in, redirect to the previous page or the home page
+            navigate(redirectTo)       
         }
-    }, [user, navigate])
+    }, [user, navigate, location.state])
 
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -30,6 +34,9 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
             console.log(user);
             setUser(user); // Set the user in the context after successful sign in
             showSnackbar("Signed in successfully", "success");
+
+            const redirectTo= location.state?.background?.pathname || "/"; // If the user is already signed in, redirect to the previous page or the home page
+            navigate(redirectTo)
         } catch (err) {
             console.error(err.message);
             showSnackbar("Failed to sign in. Please check your credentials and try again.", "error");

@@ -18,6 +18,7 @@ const AuthPage = () => {
         <>
             {showSignUp ? <SignUpForm switchToSignIn={switchToSignIn} showSnackbar={showSnackbar} /> 
             : <SignInForm switchToSignUp={switchToSignUp} showSnackbar={showSnackbar} />}
+            
             <SnackbarFormMessage 
                 open={snackbar.open}
                 message={snackbar.message}

@@ -1,6 +1,6 @@
 import { Fragment, useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { Outlet, Link, useLocation } from "react-router-dom";
+import { Box, Typography} from "@mui/material";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase-utils";
 import { capitalizeFirstLetter } from "../../utils/utils";
@@ -8,6 +8,8 @@ import { capitalizeFirstLetter } from "../../utils/utils";
 const Navigation = () => {
   const userCredential = useContext(UserContext);
   const { user } = userCredential;
+  const location = useLocation();
+
 
   return (
     <Fragment>
@@ -44,7 +46,7 @@ const Navigation = () => {
               </Typography>
             ) : (
               <Typography variant="body1">
-                <Link to="/auth">Log In</Link>
+                <Link to= "/auth" state={{background: location}}> Log In</Link>
               </Typography>
             )}
           </Box>

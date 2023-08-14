@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const recipes = [
   {
-    usownerU:'PXhGH3KPq2dBkX4vsJkJkT476OT2',
-      title: 'Pasta Carbonara',
+    ownerUid:'PXhGH3KPq2dBkX4vsJkJkT476OT2',
+    title: 'Pasta Carbonara',
     ingredients: [
       { name: 'pasta', quantity: '8 ounces' },
       { name: 'bacon', quantity: '4 slices, chopped' },
