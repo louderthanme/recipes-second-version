@@ -44,3 +44,21 @@ h1 {
   button {
     background-color: #f9f9f9;
   }
+
+  .slick-slide {
+    padding: 0 5px;  /* Apply padding to left and right */
+    box-sizing: border-box; /* Ensures that the padding is included in the total width */
+    max-height: 400px;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 100%;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center; /* if you want to vertically center the images */
+}

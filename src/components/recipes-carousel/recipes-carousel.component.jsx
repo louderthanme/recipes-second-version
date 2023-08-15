@@ -2,20 +2,21 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
-
+import { Paper, Box } from '@mui/material';
+import Polaroid from '../recipe-polaroid/recipe-polaroid.component';
 
 const Carousel = ({recipes}) => {
-
-
   const navigate = useNavigate();
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    centerPadding: '0',
     centerMode: true,
+    className: 'polaroid-slider'
   };
 
   const goToRecipe = (id) => {
@@ -27,18 +28,19 @@ const Carousel = ({recipes}) => {
   }
 
   return (
-    <div style={{ width: '50%', margin: '0 auto', overflow:'hidden' }}>
+    <Paper elevation={3} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: '#FCDDBC'}}>
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
-          <div key={index}>
-        <img src={recipe.image} alt={recipe.title} style={{ maxWidth: '100%', height: 'auto' }} />
-            <p className="legend" onClick={() => goToRecipe(recipe.id)}>
-              {recipe.title}
-            </p>
-          </div>
+          <Box key={index} sx={{ padding: '0 5px' }}>
+            <Polaroid
+               image={recipe.image}
+               title={recipe.title}
+               onClick={() => goToRecipe(recipe.id)}
+            />
+          </Box>
         ))}
       </Slider>
-    </div>
+    </Paper>
   );
 };
 
