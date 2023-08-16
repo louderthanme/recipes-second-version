@@ -16,8 +16,8 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 20],   // 0 hours, 20 minutes
     },
-    image: 'https://preview.redd.it/c1rrqhr14s761.jpg?width=1200&format=pjpg&auto=webp&s=7ca7154e7a301fe465aa194effb2be2cd6fd290c',
-    instructions: [
+    image:'https://www.simplyrecipes.com/thmb/9bd4KXYQrjfncVmiu9YmxUCNgM4=/6240x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Spaghetti-Carbonara-LEAD-7-82d6bacf7f3848a4943b14712ab205ff.jpg',
+     instructions: [
       { id: uuidv4(), step: 'Cook the pasta according to the package instructions.' },
       { id: uuidv4(), step: 'In a separate pan, cook the bacon until crispy.' },
       { id: uuidv4(), step: 'In a bowl, whisk the eggs and mix in grated parmesan cheese and black pepper.' },
@@ -45,7 +45,7 @@ const recipes = [
       prep: [0, 20],   // 0 hours, 20 minutes
       cook: [0, 10],   // 0 hours, 10 minutes
     },
-    image: 'https://pics.wikifeet.com/Arya-Fae-Feet-3701553.jpg',
+    image: 'https://images-gmi-pmc.edge-generalmills.com/087d17eb-500e-4b26-abd1-4f9ffa96a2c6.jpg',
     instructions: [
       { id: uuidv4(), step: 'Preheat the oven to 375°F (190°C).' },
       { id: uuidv4(), step: 'In a mixing bowl, combine softened butter, granulated sugar, brown sugar, and vanilla extract. Beat until creamy.' },
@@ -78,7 +78,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 10],   // 0 hours, 10 minutes
     },
-    image: 'https://pics.wikifeet.com/Arya-Fae-Feet-2621538.jpg',
+    image: 'https://barefeetinthekitchen.com/wp-content/uploads/2017/05/Sweet-n-Sour-Chicken-Stir-Fry-4-1-of-1-copy-1.jpg',
     instructions: [
       { id: uuidv4(), step: 'In a bowl, mix soy sauce, cornstarch, and sesame oil. Add the chicken pieces and marinate for 15 minutes.' },
       { id: uuidv4(), step: 'In a large skillet or wok, heat vegetable oil over medium-high heat.' },
@@ -115,7 +115,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 30],   // 0 hours, 30 minutes
     },
-    image: 'https://pics.wikifeet.com/Athena-Rayne-Feet-4696547.jpg',
+    image: 'https://static.fanpage.it/wp-content/uploads/sites/22/2021/06/spaghetti-bolognese.jpg',
     instructions: [
       { id: uuidv4(), step: 'Cook the spaghetti according to the package instructions until al dente.' },
       { id: uuidv4(), step: 'In a large skillet or saucepan, brown the ground beef over medium heat. Drain excess fat.' },
@@ -141,7 +141,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 0],   // 0 hours, 0 minutes
     },
-    image: 'https://pics.wikifeet.com/Kimmy-Granger-Feet-6081038.jpg',
+    image: 'https://th.bing.com/th/id/R.f146a04f75961b1aeebc83aa25308f79?rik=ATIgoRBo8mdURg&pid=ImgRaw&r=0',
     instructions: [
       { id: uuidv4(), step: 'Tear the romaine lettuce into bite-sized pieces and place them in a large bowl.' },
       { id: uuidv4(), step: 'Sprinkle croutons over the lettuce.' },
@@ -170,7 +170,7 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 20],   // 0 hours, 20 minutes
     },
-    image: 'https://pics.wikifeet.com/Alex-Blake-Feet-3909193.jpg',
+    image: 'https://altiusspice.com/wp-content/uploads/2015/07/pasta-tomato-1600x1050.jpg',
     instructions: [
       { id: uuidv4(), step: 'Cook the pasta according to the package instructions until al dente.' },
       { id: uuidv4(), step: 'In a large skillet, heat olive oil over medium heat.' },
@@ -203,7 +203,7 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 30],   // 0 hours, 30 minutes
     },
-    image: 'https://dl.phncdn.com/gif/10922641.gif',
+    image: 'https://assets.epicurious.com/photos/5b23da4e0a49d7772e40f353/master/pass/Pot-Mushroom-Risotto-17042018.jpg',
     instructions: [
       { id: uuidv4(), step: 'In a saucepan, bring the vegetable broth to a simmer. Keep it warm over low heat.' },
       { id: uuidv4(), step: 'In a large skillet or pot, melt 2 tablespoons of butter with olive oil over medium heat.' },
@@ -241,7 +241,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 30],   // 0 hours, 30 minutes
     },
-    image: 'https://pics.wikifeet.com/Macy-Meadows-Feet-5488571.jpg',
+    image: 'https://fthmb.tqn.com/1xn2AoW4MEajL7Udm25zQoRvyuI=/2047x1626/filters:fill(auto,1)/Chicken-Parmesan-GettyImages-86057079-586537d25f9b586e02d24817.jpg',
     instructions: [
       { id: uuidv4(), step: 'Preheat the oven to 375°F (190°C).' },
       { id: uuidv4(), step: 'In a shallow dish, beat the eggs.' },
@@ -282,7 +282,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 15],   // 0 hours, 15 minutes
     },
-    image: 'https://pics.wikifeet.com/Molly-Little-Feet-6416951.jpg',
+    image: 'https://th.bing.com/th/id/R.7ae9864c4bd6c7719ffe86f78b011c44?rik=K%2bheliydiXi%2bvA&riu=http%3a%2f%2flife-in-the-lofthouse.com%2fwp-content%2fuploads%2f2014%2f08%2fShredded_Beef_Tacos.jpg&ehk=BzIiXSdbcOhBPFif9isvmeXYcekYfhD6jIXhkHBpOsg%3d&risl=&pid=ImgRaw&r=0',
     instructions: [
       { id: uuidv4(), step: 'In a large skillet, cook ground beef over medium heat until browned.' },
       { id: uuidv4(), step: 'Add finely chopped onion and minced garlic to the skillet. Sauté until onions are soft.' },
@@ -311,7 +311,7 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 0],   // 0 hours, 0 minutes
     },
-    image: 'https://pics.wikifeet.com/Kristen-Scott-Feet-3652961.jpg',
+    image: 'https://th.bing.com/th/id/R.d786be9b4abbf343f53f07caeff1073c?rik=OX38EBLgm4JQeA&riu=http%3a%2f%2f3.bp.blogspot.com%2f-85LFRCVIvls%2fUW7Ynrh_l_I%2fAAAAAAAAA0k%2fQ055D8-FeTY%2fs1600%2fIMG_3012.JPG&ehk=oZC1VysuGrKXq%2ffW%2bIP7kgL%2fz9cj11ILC9UUgUSVlns%3d&risl=&pid=ImgRaw&r=0',
     instructions: [
       { id: uuidv4(), step: 'Alternate slices of tomatoes and mozzarella on a serving platter.' },
       { id: uuidv4(), step: 'Tuck fresh basil leaves between the tomato and mozzarella slices.' },
@@ -342,7 +342,7 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 30],   // 0 hours, 30 minutes
     },
-    image: 'https://pics.wikifeet.com/Arya-Fae-Feet-3701566.jpg',
+    image: 'https://www.thecountrycook.net/wp-content/uploads/2013/11/Chicken-Noodle-Soup-18.jpg',
     instructions: [
       { id: uuidv4(), step: 'In a large pot, heat olive oil over medium heat.' },
       { id: uuidv4(), step: 'Add chopped onion, sliced carrots, sliced celery, and minced garlic to the pot. Sauté until vegetables are tender.' },
@@ -378,7 +378,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 0],   // 0 hours, 0 minutes
     },
-    image: 'https://cdn5-images.motherlessmedia.com/images/844339E.gif',
+    image: 'https://cappsdeli.com/wp-content/uploads/2020/05/tuna-salad-sandwich-1024x683@2x.jpg',
     instructions: [
       { id: uuidv4(), step: 'In a mixing bowl, combine drained tuna, mayonnaise, finely chopped red onion, celery, and dill pickle.' },
       { id: uuidv4(), step: 'Add dijon mustard, lemon juice, salt, and black pepper. Mix until well combined.' },
@@ -408,7 +408,7 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 15],   // 0 hours, 15 minutes
     },
-    image: 'https://dl.phncdn.com/gif/9013192.gif',
+    image: 'https://dl.https://www.thespruceeats.com/thmb/By18WZI8G5Vs8To0y8BzEH4YBR8=/4705x3117/filters:fill(auto,1)/blueberry-ricotta-pancakes-541279742-5ab2d59d04d1cf0036f81d80.jpg.com/gif/9013192.gif',
     instructions: [
       { id: uuidv4(), step: 'In a mixing bowl, whisk together flour, baking powder, salt, and granulated sugar.' },
       { id: uuidv4(), step: 'In a separate bowl, whisk together milk, egg, and melted butter.' },
@@ -438,7 +438,7 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 5],   // 0 hours, 5 minutes
     },
-    image: 'https://dl.phncdn.com/gif/39396361.gif',
+    image: 'https://mealandaspiel.com/wp-content/uploads/2016/05/avocadotoast-e1464209120541.png',
     instructions: [
       { id: uuidv4(), step: 'Cut the avocados in half, remove the pit, and scoop the flesh into a bowl.' },
       { id: uuidv4(), step: 'Mash the avocados with a fork until smooth and creamy.' },
@@ -470,7 +470,7 @@ const recipes = [
       prep: [0, 20],   // 0 hours, 20 minutes
       cook: [0, 15],   // 0 hours, 15 minutes
     },
-    image: 'https://el.phncdn.com/gif/14992092.gif',
+    image: 'https://www.washingtonpost.com/resizer/dGc6FTVJ2A4_WhbYVvuuk6Ae4Lk=/1484x0/arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JJF7HIAIAQ363C3F4HGHB7ANC4.jpg',
     instructions: [
       { id: uuidv4(), step: 'In a bowl, mix soy sauce, oyster sauce, brown sugar, and cornstarch.' },
       { id: uuidv4(), step: 'Add grated ginger and minced garlic to the bowl. Stir to combine.' },
@@ -499,7 +499,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 0],   // 0 hours, 0 minutes
     },
-    image: 'https://dl.phncdn.com/gif/35616872.gif',
+    image: 'https://th.bing.com/th/id/R.e6856129b393d3f3e676da0764dfb7a3?rik=j%2bUBdek6WFTF3g&riu=http%3a%2f%2fwww.simplesweetsavory.com%2fwp-content%2fuploads%2f2016%2f04%2fChicken-Caesar-Salad-wide.jpg&ehk=4%2bokBbzUfFmlm%2bsKNB15DXX6nrBBxqbx7CIrdaGYyHE%3d&risl=1&pid=ImgRaw&r=0',
     instructions: [
       { id: uuidv4(), step: 'Tear the romaine lettuce into bite-sized pieces and place them in a large bowl.' },
       { id: uuidv4(), step: 'Add diced cooked chicken to the bowl.' },
@@ -531,7 +531,7 @@ const recipes = [
       prep: [0, 10],   // 0 hours, 10 minutes
       cook: [0, 15],   // 0 hours, 15 minutes
     },
-    image: 'https://pics.wikifeet.com/Arya-Fae-Feet-3701560.jpg',
+    image: 'https://fthmb.tqn.com/6r0_0PVJPbNY2uX1WNgCDrteIh4=/2001x1501/filters:fill(auto,1)/155353180-56a2f6f03df78cf7727b50ff.jpg',
     instructions: [
       { id: uuidv4(), step: 'Cook the linguine pasta according to the package instructions until al dente.' },
       { id: uuidv4(), step: 'In a large skillet, melt butter with olive oil over medium heat.' },
@@ -546,7 +546,7 @@ const recipes = [
   },
   {
     ownerUid:'PXhGH3KPq2dBkX4vsJkJkT476OT2',
-    title: 'Chocolate Chip Cookies',
+    title: 'Dark Chocolate Chip Cookies',
     ingredients: [
       { name: 'all-purpose flour', quantity: '2 1/4 cups' },
       { name: 'baking soda', quantity: '1/2 teaspoon' },
@@ -563,7 +563,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 10],   // 0 hours, 10 minutes
     },
-    image: 'https://pics.wikifeet.com/Arya-Fae-Feet-3550666.jpg', 
+    image: 'https://i0.wp.com/www.modernhoney.com/wp-content/uploads/2017/08/Copycat-Doubletree-Hotel-Chocolate-Chip-Cookies-.jpg', 
     instructions: [
       { id: uuidv4(), step: 'Preheat the oven to 375°F (190°C).' },
       { id: uuidv4(), step: 'In a small bowl, whisk together all-purpose flour, baking soda, and salt.' },
@@ -594,7 +594,7 @@ const recipes = [
       prep: [0, 15],   // 0 hours, 15 minutes
       cook: [0, 0],   // 0 hours, 0 minutes
     },
-    image: 'https://pics.wikifeet.com/Arya-Fae-Feet-2595155.jpg',
+    image: 'https://www.mymommystyle.com/wp-content/uploads/2014/02/26-7105-post/mango-salsa.jpg',
     instructions: [
       { id: uuidv4(), step: 'In a bowl, combine diced ripe mango, finely chopped red bell pepper, finely chopped red onion, and minced jalapeno.' },
       { id: uuidv4(), step: 'Add chopped fresh cilantro to the bowl.' },
@@ -627,7 +627,7 @@ const recipes = [
       prep: [0, 20],   // 0 hours, 20 minutes
       cook: [0, 15],   // 0 hours, 15 minutes
     },
-    image: 'https://pics.wikifeet.com/Arya-Fae-Feet-2595147.jpg',
+    image: 'https://www.thespruceeats.com/thmb/BabYJnvh7WFGxhfSkALXeOf2rLA=/3865x2576/filters:fill(auto,1)/thai-pineapple-fried-rice-697960678-5ac53dc3a9d4f90037c73168.jpg',
     instructions: [
       { id: uuidv4(), step: 'In a large skillet or wok, heat vegetable oil over medium heat.' },
       { id: uuidv4(), step: 'Add finely chopped onion and minced garlic to the skillet. Sauté until onions are soft.' },
