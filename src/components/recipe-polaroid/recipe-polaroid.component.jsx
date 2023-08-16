@@ -16,7 +16,7 @@ const Polaroid = ({ image, title, onClick }) => (
     >
       <img src={image} alt={title} style={{display: 'block'}} />
       <Box textAlign="center" mt={1}>
-        {title}
+        <b>{title}</b>
       </Box>
     </Box>
   );
