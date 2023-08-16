@@ -64,17 +64,7 @@ const App = () => {
                 </Grid>
               </Grid>
             }
-            />
-            <Route
-            path='/carousel'
-            element={
-              <Grid container justifyContent="center">
-                <Grid item xs={12} sm={10} md={9}>
-                  <Carousel/>
-                </Grid>
-              </Grid>
-              }
-              />          
+            />     
           </Routes>
           </Grid>
         </Grid>
