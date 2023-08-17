@@ -4,7 +4,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
 import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
-import { StyledTextField } from "../../utils/styledComponents";
 import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
 import InstructionsForm from "../../components/instructions-form/instructions-form.component";
@@ -16,8 +15,10 @@ const RecipeEdit = () => {
   const { id } = useParams();
   
   const [recipe, setRecipe] = useState(null);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [imagePublicId, setImagePublicId] = useState(null);
 
-  const { handleSubmit, control, formState, reset } = useForm();
+  const { handleSubmit, control, formState, reset, setValue } = useForm();
 
   useEffect(() => {
     const getRecipeForEdit = async () => {
@@ -46,9 +47,59 @@ const RecipeEdit = () => {
 
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
   const navigate = useNavigate();
+  const uploadUrl = `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_REACT_APP_CLOUDINARY_NAME}/upload`;
+
+  const handleSnackbarClose = () => {
+    hideSnackbar();
+  };
+
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', import.meta.env.VITE_REACT_APP_CLOUDINARY_UPLOAD_PRESET); // Replace with your preset
+
+    try {
+      const response = await fetch(uploadUrl, {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      setUploadedImage(data.secure_url);
+      const publicId = data.secure_url.split('/').slice(-2).join('/');
+      setImagePublicId(publicId);
+      setValue('imagePublicId', publicId); // Update the image field in the form with the public ID
+      setValue('imageURL', data.secure_url); // Store the full URL too
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+
+  const handleImageDelete = async (publicId) => {
+    if(!publicId) return;
+
+    const url = uploadUrl + `?public_id=${publicId}`
+    try {
+      await fetch(url, { method: 'DELETE' });
+      setUploadedImage(null);
+    } catch (error) {
+      console.error("Error deleting image:", error);
+    }
+  };
+
+
 
   const onSubmit = async (data) => {
     try {
+      if(uploadedImage) {
+        await handleImageDelete(recipe.imagePublicId);
+        data.image = uploadedImage;
+        data.imagePublicId = imagePublicId;
+      }
         await updateRecipe(recipe.id, data);
         showSnackbar("Recipe updated successfully!", "success");
         navigate(`/recipe/${recipe.id}`);
@@ -98,13 +149,8 @@ const RecipeEdit = () => {
           </FormControl>
 
           <FormControl fullWidth>
-            <StyledTextField
-              {...control.register("image", { required: "Image URL is required" })}
-              label="Image Url"
-              variant="filled"
-              fullWidth
-              margin="normal"
-            />
+            <input type="file" onChange={handleImageUpload} />
+            {uploadedImage  && (<img src={uploadedImage} alt="Uploaded preview" />)}
           </FormControl>
 
           <FormControl fullWidth>
