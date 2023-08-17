@@ -31,7 +31,7 @@ const RecipeShowcase = () => {
   }
 
 
-  const { title, ingredients, image, instructions, time: { prep, cook }, ownerUid } = recipe;
+  const { title, ingredients, imageURL, instructions, time: { prep, cook }, ownerUid } = recipe;
 
   const goToRecipeEdit = (id) => {
     navigate(`/recipe/${id}/edit`);
@@ -43,7 +43,7 @@ const RecipeShowcase = () => {
         {/* First Row */}
         <Grid item xs={12} sm={6}>
           <Box margin={2}>
-              <ImageBox image={image}/>
+              <ImageBox image={imageURL}/>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

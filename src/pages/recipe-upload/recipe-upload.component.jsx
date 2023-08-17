@@ -11,9 +11,12 @@ import TimeForm from "../../components/time-form/time-form.component";
 import { useSnackbar } from '../../hooks/useSnackbar';
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 import { UserContext } from "../../contexts/user.context";
+import { AdvancedImage } from "@cloudinary/react";
+import cloudinary from '../../configs/cloudinaryConfig'
 
 const RecipeUpload = () => {
-  const { handleSubmit, control, formState, reset } = useForm({
+  
+  const { handleSubmit, control, setValue, formState, reset } = useForm({
     defaultValues: {
       title: "",
       image: "",
@@ -27,98 +30,106 @@ const RecipeUpload = () => {
   });
 
   const { errors } = formState;
-  const { uploadRecipe} = useContext(RecipesContext); // Access the uploadRecipe function from the context
+  const { uploadRecipe } = useContext(RecipesContext);
 
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [imagePublicId, setImagePublicId] = useState(null);
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
-
   const [newRecipeId, setNewRecipeId] = useState(null);
-  const navigate = useNavigate(); // Access the navigate function
-
+  const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const uploadUrl = `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_REACT_APP_CLOUDINARY_NAME}/upload`;
 
-  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', import.meta.env.VITE_REACT_APP_CLOUDINARY_UPLOAD_PRESET); // Replace with your preset
+
     try {
-        data.ownerUid = user.uid; 
-        const newId = await uploadRecipe(data);
-        showSnackbar("Recipe uploaded successfully!", "success");
-        setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
-        reset();
+      const response = await fetch(uploadUrl, {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+      setUploadedImage(data.secure_url);
+      const publicId = data.secure_url.split('/').slice(-2).join('/');
+      setImagePublicId(publicId);
+      setValue('imagePublicId', publicId); // Update the image field in the form with the public ID
+      setValue('imageURL', data.secure_url); // Store the full URL too
     } catch (error) {
-        console.error(error);
-        showSnackbar("An unexpected error occurred. Please try again.", "error");
+      console.error("Error uploading image:", error);
     }
 };
 
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    try {
+      data.ownerUid = user.uid;
+      const newId = await uploadRecipe(data);
+      showSnackbar("Recipe uploaded successfully!", "success");
+      setNewRecipeId(newId);
+      reset();
+    } catch (error) {
+      console.error(error);
+      showSnackbar("An unexpected error occurred. Please try again.", "error");
+    }
+  };
 
   const onError = (errors, e) => {
     console.error(errors, e);
     showSnackbar("Error uploading recipe", "error");
   };
 
-
   useEffect(() => {
     if (newRecipeId) {
-      console.log("New recipe ID: ", newRecipeId);
       navigate(`/recipe/${newRecipeId}`);
     }
   }, [newRecipeId, navigate]);
-  
+
   return (
     <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>
       <Box p={6}>
-        <Box marginBottom={3}>
-          <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
-        </Box>
+        <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
         <form onSubmit={handleSubmit(onSubmit, onError)}>
-                {snackbar.open && (
-                  <SnackbarFormMessage
-                  message={snackbar.message}
-                  severity={snackbar.severity}
-                  position={{ vertical: "top", horizontal: "center" }} // Set position to top-center
-                  onClose={handleSnackbarClose}
-                  />
-                )}
+          {snackbar.open && (
+            <SnackbarFormMessage
+              message={snackbar.message}
+              severity={snackbar.severity}
+              position={{ vertical: "top", horizontal: "center" }} 
+              onClose={hideSnackbar}
+            />
+          )}
           <FormControl fullWidth>
-            <TitleForm control={control} errors={errors} /> 
+            <TitleForm control={control} errors={errors} />
           </FormControl>
-
           <FormControl fullWidth>
-          <StyledTextField
-            {...control.register("image", { required: "Image URL is required" })}
-            label="Image Url"
-            variant="filled"
-            fullWidth
-            margin="normal"
-          />
+            {/* <StyledTextField
+              {...control.register("image", { required: "Image URL is required" })}
+              label="Image Url"
+              variant="filled"
+              fullWidth
+              margin="normal"
+              value={uploadedImage || ''}
+            /> */}
+            <input type="file" onChange={handleImageUpload} />
+            {uploadedImage && <AdvancedImage cldImg={cloudinary.image(imagePublicId)} />}
           </FormControl>
-
           <FormControl fullWidth>
-            <TimeForm control={control} errors={formState.errors}/>
+            <TimeForm control={control} errors={formState.errors} />
           </FormControl>
-         
-
           <FormControl fullWidth>
             <IngredientsForm control={control} errors={formState.errors} />
           </FormControl>
-
           <FormControl fullWidth>
-              <InstructionsForm control={control} errors={formState.errors} />
+            <InstructionsForm control={control} errors={formState.errors} />
           </FormControl>
-         
-
-          {/* Add more fields here as needed, e.g., for image upload */}
           <Grid item xs={12}>
             <Box marginTop={5}>
-            <Button 
-              type="submit" 
-              variant="contained" 
-              color="primary" 
-            >
-              Upload Recipe
-            </Button>
-
-
+              <Button type="submit" variant="contained" color="primary">Upload Recipe</Button>
             </Box>
           </Grid>
         </form>
