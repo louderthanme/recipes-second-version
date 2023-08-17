@@ -11,8 +11,8 @@ import TimeForm from "../../components/time-form/time-form.component";
 import { useSnackbar } from '../../hooks/useSnackbar';
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 import { UserContext } from "../../contexts/user.context";
-import { AdvancedImage } from "@cloudinary/react";
 import cloudinary from '../../configs/cloudinaryConfig'
+import ImageForm from "../../components/image-form/image-form.component";
 
 const RecipeUpload = () => {
   
@@ -107,16 +107,7 @@ const RecipeUpload = () => {
             <TitleForm control={control} errors={errors} />
           </FormControl>
           <FormControl fullWidth>
-            {/* <StyledTextField
-              {...control.register("image", { required: "Image URL is required" })}
-              label="Image Url"
-              variant="filled"
-              fullWidth
-              margin="normal"
-              value={uploadedImage || ''}
-            /> */}
-            <input type="file" onChange={handleImageUpload} />
-            {uploadedImage && <AdvancedImage cldImg={cloudinary.image(imagePublicId)} />}
+          <ImageForm handleImageUpload={handleImageUpload} cloudinary={cloudinary} imagePublicId={imagePublicId} uploadedImage={uploadedImage} />
           </FormControl>
           <FormControl fullWidth>
             <TimeForm control={control} errors={formState.errors} />
