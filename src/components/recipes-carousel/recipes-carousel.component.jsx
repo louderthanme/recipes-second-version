@@ -33,7 +33,7 @@ const Carousel = ({recipes}) => {
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
             <Polaroid
-               image={recipe.imageUrl}
+               image={recipe.imageURL}
                title={recipe.title}
                onClick={() => goToRecipe(recipe.id)}
             />
