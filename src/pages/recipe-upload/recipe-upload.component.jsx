@@ -2,7 +2,6 @@ import { useContext, useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
 import { RecipesContext } from "../../contexts/recipe.context"; // Import the context
-import { StyledTextField } from "../../utils/styledComponents";
 import { useNavigate } from "react-router-dom";
 import TitleForm from "../../components/title-form/title-form.component";
 import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
@@ -62,7 +61,7 @@ const RecipeUpload = () => {
     } catch (error) {
       console.error("Error uploading image:", error);
     }
-};
+  };
 
 
   const onSubmit = async (data) => {
