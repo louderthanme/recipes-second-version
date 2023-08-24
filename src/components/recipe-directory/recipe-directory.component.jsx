@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import RecipeCard from '../recipe-card/recipe-card.component';
-import { Box, List, ListItemButton, ListItemText } from '@mui/material';
 
 
 const propTypes = {
