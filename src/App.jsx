@@ -6,7 +6,6 @@ import Navigation from './pages/navigation/navigation.component';
 import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
 import AuthPage from './pages/authentication/authentication.component';
-import Carousel from './components/recipes-carousel/recipes-carousel.component';
 import { useContext } from 'react';
 import { UserContext } from './contexts/user.context';
 
