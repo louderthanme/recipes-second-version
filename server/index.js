@@ -1,38 +1,43 @@
 import express from 'express';
-import cloudinary from 'cloudinary';
-import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import multer from 'multer';
+import cors from 'cors';
+import { v2 as cloudinary } from 'cloudinary';
 
+const app = express();
+app.use(cors());
 
-// Initialize cloudinary configuration
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: 'recipeb00k',
+  api_key: '212433614513653',
+  api_secret: 'EaUfJb9tRhV6dt_dT2iQz8Zo4WQ',
 });
 
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: 'some_folder_name',
-    format: async (req, file) => 'png', // supports promises as well
+const storage = multer.diskStorage({
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
-const parser = multer({ storage: storage });
+const upload = multer({ storage });
 
-const app = express();
-const port = 3001;
-
-app.get('/api', (req, res) => {
-  res.send('Hello from the API!');
+app.use((req, res, next) => {
+  console.log(`New request received: ${req.method} ${req.originalUrl}`);
+  next();
 });
 
-// New upload endpoint
-app.post('/api/upload', parser.single('image'), (req, res) => {
-  res.json({ file: req.file });
+app.post('/api/upload', upload.single('image'), async (req, res) => {
+  console.log('Inside the upload route.');
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path);
+    console.log(`Cloudinary URL: ${result.url}`);
+    res.status(200).json({ message: 'Upload successful', imageUrl: result.url });
+  } catch (error) {
+    console.log(`Error while uploading to Cloudinary:`, error);
+    res.status(500).json({ message: 'Upload failed' });
+  }
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });

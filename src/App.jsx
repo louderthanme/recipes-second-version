@@ -6,6 +6,7 @@ import Navigation from './pages/navigation/navigation.component';
 import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
 import AuthPage from './pages/authentication/authentication.component';
+import ImageUploadTest from './pages/upload-test/imageUploadTest.component';
 import { useContext } from 'react';
 import { UserContext } from './contexts/user.context';
 
@@ -64,6 +65,16 @@ const App = () => {
               </Grid>
             }
             />     
+            <Route
+            path='/imageUploadTest'
+            element={
+              <Grid container justifyContent="center"> {/* Centering the RecipeShowcase */}
+                <Grid item xs={12} sm={3}> {/* Smaller width for RecipeShowcase */}
+                  <ImageUploadTest />
+                </Grid>
+              </Grid>
+            }
+            />    
           </Routes>
           </Grid>
         </Grid>
