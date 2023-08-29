@@ -2,14 +2,19 @@ import express from 'express';
 import multer from 'multer';
 import cors from 'cors';
 import { v2 as cloudinary } from 'cloudinary';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(cors());
 
+console.log(process.env.CLOUDINARY_CLOUD_NAME,process.env.CLOUDINARY_API_KEY,process.env.CLOUDINARY_API_SECRET);
+
+
 cloudinary.config({
-  cloud_name: 'recipeb00k',
-  api_key: '212433614513653',
-  api_secret: 'EaUfJb9tRhV6dt_dT2iQz8Zo4WQ',
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = multer.diskStorage({
