@@ -46,19 +46,28 @@ const RecipesProvider = ({ children }) => {
       console.error('Error updating recipe:', error);
     }
   };
- 
-  const uploadRecipe = async (recipe) => {
+  const uploadRecipe = async (recipe, imageUrl) => {
+    console.log("Received in uploadRecipe:", recipe, imageUrl); // Add this debug line
     try {
-      const newRecipeId = await uploadRecipeToFirestore(recipe);
+      const newRecipeData = { ...recipe, imageUrl }; // Add imageUrl to the recipe data
+      console.log("New recipe data before sending to Firestore:", newRecipeData); // Debug log here
+  
+      if (!imageUrl) {
+        console.error("Image URL is undefined. Aborting upload.");
+        return;
+      }
+  
+      const newRecipeId = await uploadRecipeToFirestore(newRecipeData);
       console.log(`Recipe "${recipe.title}" uploaded successfully with ID: ${newRecipeId}`);
-      setRecipes((prevRecipes) => [...prevRecipes, { id: newRecipeId, ...recipe }]);
+      setRecipes((prevRecipes) => [...prevRecipes, { id: newRecipeId, ...newRecipeData }]);
       return newRecipeId;
     } catch (error) {
       console.error("Error uploading recipe to Firestore:", error);
       throw error;
     }
   };
-
+  
+  
   const deleteRecipe = async (recipe) => {
     try {
       await deleteRecipeFromFirestore(recipe);
@@ -69,7 +78,26 @@ const RecipesProvider = ({ children }) => {
     }
   };
 
-  const value = { recipes, updateRecipe, uploadRecipe, deleteRecipe, fetchRecipeById };
+  const uploadImageToCloudinary = async (imageFile) => {
+    const formData = new FormData();
+    formData.append('image', imageFile);
+    try {
+      const response = await fetch('http://localhost:3001/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      console.log("Received from server: ", data); // Debug log here
+      return data.imageUrl;
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      throw error;
+    }
+  };
+  
+  
+
+  const value = { recipes, updateRecipe, uploadRecipe, deleteRecipe, fetchRecipeById, uploadImageToCloudinary };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

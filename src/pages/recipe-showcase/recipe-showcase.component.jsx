@@ -31,7 +31,8 @@ const RecipeShowcase = () => {
   }
 
 
-  const { title, ingredients, imageURL, instructions, time: { prep, cook }, ownerUid } = recipe;
+  const { title, ingredients, imageUrl, instructions, time: { prep, cook }, ownerUid } = recipe;
+  console.log("RecipeShowcase received imageURL:", imageUrl)
 
   const goToRecipeEdit = (id) => {
     navigate(`/recipe/${id}/edit`);
@@ -43,7 +44,7 @@ const RecipeShowcase = () => {
         {/* First Row */}
         <Grid item xs={12} sm={6}>
           <Box margin={2}>
-              <ImageBox image={imageURL}/>
+              <ImageBox image={imageUrl}/>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

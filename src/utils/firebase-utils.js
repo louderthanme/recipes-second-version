@@ -70,6 +70,7 @@ export const fetchRecipeByIdFromFirestore = async (id) => {
   try {
       const recipeRef = doc(db, 'recipes', id);
       const recipeDoc = await getDoc(recipeRef);
+      console.log("Fetched recipe data from Firestore:", recipeDoc.data());
 
       if (!recipeDoc.exists()) {
           throw new Error(`Recipe with ID ${id} does not exist!`);
