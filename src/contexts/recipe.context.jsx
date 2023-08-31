@@ -34,18 +34,23 @@ const RecipesProvider = ({ children }) => {
     }
   }
 
-  const updateRecipe = async (id, recipeData) => {
+  const updateRecipe = async (id, recipeData, newImageUrl = null) => {
     try {
-      await updateRecipeInFirestore(id, recipeData);
-      // If the update in Firestore is successful, update the local state
+      const updatedData = newImageUrl ? { ...recipeData, imageUrl: newImageUrl } : recipeData;
+      await updateRecipeInFirestore(id, updatedData);
+  
       setRecipes((prevRecipes) =>
-        prevRecipes.map((recipe) => (recipe.id === id ? { ...recipe, ...recipeData } : recipe))
+        prevRecipes.map((recipe) =>
+          recipe.id === id ? { ...recipe, ...updatedData } : recipe
+        )
       );
+  
       console.log(`Recipe "${recipeData.title}" updated successfully!`);
     } catch (error) {
       console.error('Error updating recipe:', error);
     }
   };
+  
   const uploadRecipe = async (recipe, imageUrl) => {
     console.log("Received in uploadRecipe:", recipe, imageUrl); // Add this debug line
     try {

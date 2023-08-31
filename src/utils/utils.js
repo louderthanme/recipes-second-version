@@ -26,3 +26,10 @@ export const useDebounceEffect = (effect, dependencies, delay = 100) => {
 export const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export const getPublicIdFromCloudinaryUrl = (url) => {
+  const splitUrl = url.split('/');
+  const lastSegment = splitUrl.pop() || '';
+  const publicId = lastSegment.split('.')[0];
+  return publicId;
+};

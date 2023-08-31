@@ -10,9 +10,10 @@ import TimeForm from '../../components/time-form/time-form.component';
 import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
 import { useSnackbar } from '../../hooks/useSnackbar';
 import ImageForm from '../../components/image-form/image-form.component';
+import { getPublicIdFromCloudinaryUrl } from '../../utils/utils';
 
 const RecipeEdit = () => {
-  const { fetchRecipeById, updateRecipe, deleteRecipe } = useContext(RecipesContext);
+  const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImageToCloudinary } = useContext(RecipesContext);
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -47,10 +48,18 @@ const RecipeEdit = () => {
 
   const onSubmit = async (data) => {
     try {
-      // Handle the selectedImage upload here, similar to your RecipeUpload component
-      // ...
-
-      await updateRecipe(recipe.id, data);
+      let newImageUrl = null;
+  
+      // If a new image was selected
+      if (selectedImage) {
+        newImageUrl = await uploadImageToCloudinary(selectedImage);
+        if (!newImageUrl) {
+          showSnackbar('Image upload failed. Please try again.', 'error');
+          return;
+        }
+      }
+  
+      await updateRecipe(recipe.id, data, newImageUrl);
       showSnackbar('Recipe updated successfully!', 'success');
       navigate(`/recipe/${recipe.id}`);
     } catch (error) {
@@ -79,6 +88,34 @@ const RecipeEdit = () => {
     hideSnackbar();
   };
 
+
+  
+  const handleImageDelete = async () => {
+    try {
+      const publicId = getPublicIdFromCloudinaryUrl(recipe.imageUrl);
+  
+      const response = await fetch('http://localhost:3001/api/delete-image', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ publicId }),
+      });
+  
+      const data = await response.json();
+  
+      if (data.message === 'Image deleted successfully') {
+        // Updating the UI as before
+        setRecipe((prevRecipe) => {
+          return { ...prevRecipe, imageUrl: null, publicId: null };
+        });
+      }
+    } catch (error) {
+      console.error('Failed to delete image', error);
+    }
+  };
+
+
   return (
     <Paper elevation={10} sx={{ backgroundColor: '#FCDDBC', border: '0 0 0 20px solid white' }}>
       <Box p={6}>
@@ -95,7 +132,12 @@ const RecipeEdit = () => {
             onClose={handleSnackbarClose}
           />
           <FormControl fullWidth>
-            <ImageForm handleImageChange={handleImageChange} recipe={recipe} />
+            <TitleForm control={control} errors={errors} /> 
+          </FormControl>
+
+
+          <FormControl fullWidth>
+            <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
           </FormControl>
           <FormControl fullWidth>
             <TimeForm control={control} errors={formState.errors} />
