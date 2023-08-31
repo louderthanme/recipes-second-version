@@ -6,10 +6,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-app.use(cors());
-
-console.log(process.env.CLOUDINARY_CLOUD_NAME,process.env.CLOUDINARY_API_KEY,process.env.CLOUDINARY_API_SECRET);
-
+app.use(cors({
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -29,6 +28,7 @@ app.use((req, res, next) => {
   console.log(`New request received: ${req.method} ${req.originalUrl}`);
   next();
 });
+app.use(express.json());
 
 app.post('/api/upload', upload.single('image'), async (req, res) => {
   console.log('Inside the upload route.');
@@ -41,6 +41,24 @@ app.post('/api/upload', upload.single('image'), async (req, res) => {
     res.status(500).json({ message: 'Upload failed' });
   }
 });
+
+
+app.delete('/api/delete-image', async (req, res) => {
+  console.log('Inside the delete image route.');
+  console.log('req.body:', req.body);  // Debug statement to log req.body
+  const { publicId } = req.body;
+  
+  try {
+    const result = await cloudinary.uploader.destroy(publicId);
+    console.log(`Delete result: `, result);
+    res.status(200).json({ message: 'Image deleted successfully' });
+  } catch (error) {
+    console.log(`Error while deleting image from Cloudinary:`, error);
+    res.status(500).json({ message: 'Delete image failed' });
+  }
+});
+
+
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
