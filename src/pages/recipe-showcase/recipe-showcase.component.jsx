@@ -8,6 +8,9 @@ import ImageBox from '../../components/image-box/image-box.component';
 import DetailsBox from '../../components/details-box/details-box.component';
 import { UserContext } from '../../contexts/user.context';
 
+const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"; // replace with your actual URL
+
+
 const RecipeShowcase = () => {
   const {user}=useContext(UserContext);   
 
@@ -44,7 +47,7 @@ const RecipeShowcase = () => {
         {/* First Row */}
         <Grid item xs={12} sm={6}>
           <Box margin={2}>
-              <ImageBox image={imageUrl}/>
+              <ImageBox image={imageUrl ?? noImageAvailableUrl}/>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>

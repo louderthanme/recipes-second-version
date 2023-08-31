@@ -8,7 +8,8 @@ import {
   deleteDoc,
   updateDoc,
   doc,
-  addDoc
+  addDoc,
+  deleteField
 } from 'firebase/firestore/lite';
 
 import {
@@ -117,15 +118,23 @@ export const uploadRecipeToFirestore = async (recipe) => {
 
 
 
+
 export const updateRecipeInFirestore = async (id, recipeData) => {
   try {
     const recipeRef = doc(db, 'recipes', id);
+
+    // Check if imageUrl exists and is set to null, if so delete the field
+    if ('imageUrl' in recipeData && recipeData.imageUrl === null) {
+      recipeData = { ...recipeData, imageUrl: deleteField() };  // Use deleteField() to remove the field
+    }
+    console.log(`Updating recipe in Firestore with ID: ${id}, Data: `, recipeData);
     await updateDoc(recipeRef, recipeData);
     console.log(`Recipe "${recipeData.title}" updated to Firestore successfully!`);
   } catch (error) {
     console.error('Error updating recipe to Firestore:', error);
   }
-}
+};
+
 
 
 export const deleteRecipeFromFirestore = async (recipe) => {

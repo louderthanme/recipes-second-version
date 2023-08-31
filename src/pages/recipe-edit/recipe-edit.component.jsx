@@ -14,11 +14,15 @@ import { getPublicIdFromCloudinaryUrl } from '../../utils/utils';
 
 const RecipeEdit = () => {
   const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImageToCloudinary } = useContext(RecipesContext);
+
   const { id } = useParams();
+
   const [recipe, setRecipe] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+
   const { handleSubmit, control, formState, reset } = useForm();
   const { errors } = formState;
+
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
   const navigate = useNavigate();
 
@@ -43,14 +47,12 @@ const RecipeEdit = () => {
 
   const handleImageChange = (e) => {
     setSelectedImage(e.target.files[0]);
-    console.log('Image Selected:', e.target.files[0]);
   };
 
   const onSubmit = async (data) => {
     try {
       let newImageUrl = null;
   
-      // If a new image was selected
       if (selectedImage) {
         newImageUrl = await uploadImageToCloudinary(selectedImage);
         if (!newImageUrl) {
@@ -63,13 +65,12 @@ const RecipeEdit = () => {
       showSnackbar('Recipe updated successfully!', 'success');
       navigate(`/recipe/${recipe.id}`);
     } catch (error) {
-      console.error(error);
+      console.error('Error in onSubmit:', error);
       showSnackbar('Error updating recipe. Please try again.', 'error');
     }
   };
 
   const onError = (errors, e) => {
-    console.error(errors, e);
     showSnackbar('Error updating recipe', 'error');
   };
 
@@ -79,7 +80,7 @@ const RecipeEdit = () => {
       showSnackbar('Recipe deleted successfully!', 'success');
       navigate('/');
     } catch (error) {
-      console.error(error);
+      console.error('Error in onDelete:', error);
       showSnackbar('Error deleting recipe. Please try again.', 'error');
     }
   };
@@ -87,10 +88,11 @@ const RecipeEdit = () => {
   const handleSnackbarClose = () => {
     hideSnackbar();
   };
-
-
-  
   const handleImageDelete = async () => {
+    if (!recipe.id) {
+      console.error("Cannot delete image: Recipe ID is undefined.");
+      return;
+    }
     try {
       const publicId = getPublicIdFromCloudinaryUrl(recipe.imageUrl);
   
@@ -105,18 +107,16 @@ const RecipeEdit = () => {
       const data = await response.json();
   
       if (data.message === 'Image deleted successfully') {
-        await updateRecipe(recipe.id, { }, null);
+        const updatedRecipeData = { ...recipe, imageUrl: null }; // Remove imageUrl
+        await updateRecipe(recipe.id, updatedRecipeData, null); // Update Firestore
   
-        setRecipe((prevRecipe) => {
-          return { ...prevRecipe, imageUrl: null };
-        });
+        setRecipe(updatedRecipeData); // Update local state
       }
     } catch (error) {
-      console.error('Failed to delete image', error);
+      console.error('Failed to delete image:', error);
     }
   };
-
-
+  
   return (
     <Paper elevation={10} sx={{ backgroundColor: '#FCDDBC', border: '0 0 0 20px solid white' }}>
       <Box p={6}>
@@ -135,23 +135,18 @@ const RecipeEdit = () => {
           <FormControl fullWidth>
             <TitleForm control={control} errors={errors} /> 
           </FormControl>
-
-
           <FormControl fullWidth>
             <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
           </FormControl>
           <FormControl fullWidth>
             <TimeForm control={control} errors={formState.errors} />
           </FormControl>
-
           <FormControl fullWidth>
             <IngredientsForm control={control} errors={formState.errors} />
           </FormControl>
-
           <FormControl fullWidth>
             <InstructionsForm control={control} errors={formState.errors} />
           </FormControl>
-
           <Grid container spacing={1} justifyContent="center" mt={5}>
             <Grid item xs={5}>
               <Button fullWidth type="submit" variant="contained" color="primary">
