@@ -11,6 +11,7 @@ import TimeForm from "../../components/time-form/time-form.component";
 import { useSnackbar } from '../../hooks/useSnackbar';
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 import { UserContext } from "../../contexts/user.context";
+import ImageForm from "../../components/image-form/image-form.component";
 
 const RecipeUpload = () => {
   const { handleSubmit, control, formState, reset } = useForm({
@@ -109,8 +110,7 @@ const RecipeUpload = () => {
           </FormControl>
 
           <FormControl fullWidth>
-          <input type="file" name="imageUrl" accept="image/*" onChange={handleImageChange} />
-
+            <ImageForm handleImageChange={handleImageChange}/>
           </FormControl>
 
           <FormControl fullWidth>

@@ -1,14 +1,18 @@
 import { Typography, Box} from "@mui/material";
-import { AdvancedImage } from "@cloudinary/react";
 
-const ImageForm = ({handleImageUpload, cloudinary, imagePublicId, uploadedImage}) => {
+const ImageForm = ({ handleImageChange, recipe }) => {
     return (
-        <Box my={2}>
-            <Typography variant="h5" fontWeight="bold">Image Upload</Typography>
-            <input type="file" onChange={handleImageUpload} />
-            {uploadedImage && <AdvancedImage cldImg={cloudinary.image(imagePublicId)} />}
+      <Box my={2}>
+        <Typography variant="h5" fontWeight="bold">
+          Recipe Image
+        </Typography>
+        <input type="file" name="imageUrl" accept="image/*" onChange={handleImageChange} />
+        <Box marginBottom={2}>
+          {recipe && recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.title} style={{ maxHeight: '300px' }} />}
         </Box>
+      </Box>
     );
-};
-
-export default ImageForm;
+  };
+  
+  export default ImageForm;
+  

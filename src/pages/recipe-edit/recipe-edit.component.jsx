@@ -9,6 +9,7 @@ import InstructionsForm from '../../components/instructions-form/instructions-fo
 import TimeForm from '../../components/time-form/time-form.component';
 import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
 import { useSnackbar } from '../../hooks/useSnackbar';
+import ImageForm from '../../components/image-form/image-form.component';
 
 const RecipeEdit = () => {
   const { fetchRecipeById, updateRecipe, deleteRecipe } = useContext(RecipesContext);
@@ -94,19 +95,8 @@ const RecipeEdit = () => {
             onClose={handleSnackbarClose}
           />
           <FormControl fullWidth>
-            <TitleForm control={control} errors={errors} />
+            <ImageForm handleImageChange={handleImageChange} recipe={recipe} />
           </FormControl>
-
-          <FormControl fullWidth>
-            <Typography variant="h5" fontWeight="bold">
-              Recipe Image
-            </Typography>
-            <Box marginBottom={2}>
-              {recipe && recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.title} style={{ maxHeight: '300px' }} />}
-            </Box>
-            <input type="file" name="imageUrl" accept="image/*" onChange={handleImageChange} />
-          </FormControl>
-
           <FormControl fullWidth>
             <TimeForm control={control} errors={formState.errors} />
           </FormControl>
