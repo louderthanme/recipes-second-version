@@ -1,6 +1,9 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
+const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"; // replace with your actual URL
+
+
 const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
   return (
     <Box my={2}>
@@ -12,7 +15,7 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
         {recipe && recipe.imageUrl && (
           <>
             <img 
-              src={recipe.imageUrl} 
+              src={recipe?.imageUrl || noImageAvailableUrl} 
               alt={recipe.title} 
               style={{ maxWidth: '100%', height: '100px', borderRadius: '.5em', border: '.5em solid white' }} 
             />

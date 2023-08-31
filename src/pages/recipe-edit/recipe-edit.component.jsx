@@ -105,9 +105,10 @@ const RecipeEdit = () => {
       const data = await response.json();
   
       if (data.message === 'Image deleted successfully') {
-        // Updating the UI as before
+        await updateRecipe(recipe.id, { }, null);
+  
         setRecipe((prevRecipe) => {
-          return { ...prevRecipe, imageUrl: null, publicId: null };
+          return { ...prevRecipe, imageUrl: null };
         });
       }
     } catch (error) {
