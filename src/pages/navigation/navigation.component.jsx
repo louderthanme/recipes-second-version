@@ -37,7 +37,7 @@ const Navigation = () => {
           <Box mr={2}>
             {user && user.displayName ? (
               <Typography as="span" sx={{ color: "#db9d47" }}>
-                <Link to="/profile">
+                <Link to="/profile" sx={{textDecoration: 'none' }}>
                 {capitalizeFirstLetter(user.displayName)}, &nbsp;
                 </Link>
                 <Link as="span" onClick={signOutUser}>
