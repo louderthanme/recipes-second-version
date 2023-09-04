@@ -17,11 +17,12 @@ const InstructionsForm = ({ control, initialInstructions, errors }) => {
       <Divider /> {/* Divider between the rows */}
       {/* Render IngredientInput for adding ingredients */}
       <InstructionInput control={control} errors={errors}/>
-      {/* Render existing ingredients */}
+      {/* Render existing instructions */}
       {initialInstructions && initialInstructions.length > 0 && (
         instructionFields.map((item, index) => (
           <Box key={item.id} display="flex" alignItems="center">
-            <Box width="90%">
+            {/* Updated Box style */}
+            <Box flexGrow={1} pr={2}>
               <Controller
                 name={`instructions[${index}].step`}
                 control={control}

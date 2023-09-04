@@ -21,7 +21,8 @@ const IngredientsForm = ({ control, errors, initialIngredients }) => {
       {initialIngredients && initialIngredients.length > 0 && (
         ingredientFields.map((item, index) => (
           <Box key={item.id} display="flex" alignItems="center">
-            <Box width="45%">
+            {/* Name field */}
+            <Box flexGrow={1} width={"calc(45% - 8px)"}> {/* Subtracting 8px for margins */}
               <Controller
                 name={`ingredients[${index}].name`}
                 control={control}
@@ -37,7 +38,8 @@ const IngredientsForm = ({ control, errors, initialIngredients }) => {
                 )}
               />
             </Box>
-            <Box width="25%" marginLeft={2}>
+            {/* Quantity field */}
+            <Box flexGrow={1} width={"calc(25% - 8px)"} marginLeft={2}> {/* Subtracting 8px for margins */}
               <Controller
                 name={`ingredients[${index}].quantity`}
                 control={control}
@@ -53,7 +55,8 @@ const IngredientsForm = ({ control, errors, initialIngredients }) => {
                 )}
               />
             </Box>
-            <Box width="25%" marginLeft={2}>
+            {/* Unit field */}
+            <Box flexGrow={1} width={"calc(25% - 8px)"} marginLeft={2}> {/* Subtracting 8px for margins */}
               <Controller
                 name={`ingredients[${index}].unit`}
                 control={control}
@@ -68,9 +71,12 @@ const IngredientsForm = ({ control, errors, initialIngredients }) => {
                 )}
               />
             </Box>
-            <IconButton onClick={() => removeIngredient(index)} color="error">
-              <DeleteOutline />
-            </IconButton>
+            {/* Delete button */}
+            <Box>
+              <IconButton onClick={() => removeIngredient(index)} color="error">
+                <DeleteOutline />
+              </IconButton>
+            </Box>
           </Box>
         ))
       )}

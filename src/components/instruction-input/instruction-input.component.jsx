@@ -14,16 +14,17 @@ const InstructionInput = ({ control, errors }) => {
     <>
       {instructionFields.map((item, index) => (
         <Box key={item.id} display="flex" alignItems="center">
-          <Box width="90%">
+          {/* Add flex-grow */}
+          <Box flexGrow={1} pr={2}> 
             <StyledTextField
-              {...control.register(`instructions[${index}].step`, { required: "This field is required" })} // Add the required validation here
+              {...control.register(`instructions[${index}].step`, { required: "This field is required" })}
               defaultValue={item.step}
               label={`Instruction ${index + 1}`} 
               variant="filled"
               fullWidth
               error={!!errors?.instructions?.[index]?.step}
               helperText={errors?.instructions?.[index]?.step?.message || ""}
-               />
+            />
           </Box>
           
           <IconButton onClick={() => removeInstruction(index)} color="error">

@@ -15,20 +15,21 @@ const IngredientInput = ({ control, errors }) => {
     <>
       {ingredientFields.map((item, index) => (
         <Box key={item.id} display="flex" alignItems="center">
-          <Box width="45%">
+          {/* Name field */}
+          <Box flexGrow={1} width={"calc(45% - 8px)"}> {/* Subtracting 8px for margins */}
             <StyledTextField
               {...control.register(`ingredients[${index}].name`, { required: "This field is required" })}
               defaultValue={item.name}
-              label='Ingredient'
+              label="Ingredient"
               variant="filled"
               fullWidth
               margin="normal"
               error={!!errors?.ingredients?.[index]?.name}
               helperText={errors?.ingredients?.[index]?.name?.message || ""}
-             
             />
           </Box>
-          <Box width="25%" marginLeft={2}>
+          {/* Quantity field */}
+          <Box flexGrow={1} width={"calc(25% - 8px)"} marginLeft={2}> {/* Subtracting 8px for margins */}
             <StyledTextField
               {...control.register(`ingredients[${index}].quantity`, { required: "This field is required" })}
               defaultValue={item.quantity}
@@ -37,19 +38,18 @@ const IngredientInput = ({ control, errors }) => {
               fullWidth
               margin="normal"
               error={!!errors?.ingredients?.[index]?.quantity}
-              helperText={errors?.ingredients?.[index]?.quantity?.message || ""} 
+              helperText={errors?.ingredients?.[index]?.quantity?.message || ""}
             />
           </Box>
-          <Box width="25%" marginLeft={2}>
+          {/* Unit field */}
+          <Box flexGrow={1} width={"calc(25% - 8px)"} marginLeft={2}> {/* Subtracting 8px for margins */}
             <Controller
               name={`ingredients[${index}].unit`}
               control={control}
               defaultValue={item.unit || ""}
               render={({ field }) => (
                 <StyledSelect {...field} displayEmpty fullWidth>
-                  <MenuItem value="" disabled>
-                    Unit
-                  </MenuItem>
+                  <MenuItem value="" disabled>Unit</MenuItem>
                   <MenuItem value={"Volume"} disabled>Volume</MenuItem>
                   {volumeUnits.map((unit, unitIndex) => <MenuItem key={unitIndex} value={unit}>{unit}</MenuItem>)}
                   <MenuItem value={"Weight"} disabled>Weight</MenuItem>
@@ -58,6 +58,7 @@ const IngredientInput = ({ control, errors }) => {
               )}
             />
           </Box>
+          {/* Delete button */}
           <IconButton onClick={() => removeIngredient(index)} color="error">
             <DeleteOutline />
           </IconButton>
@@ -66,6 +67,7 @@ const IngredientInput = ({ control, errors }) => {
       <Button onClick={() => appendIngredient({ name: "", quantity: "", unit: "" })}>Add Ingredient</Button>
     </>
   );
+ 
 }
 
 export default IngredientInput;
