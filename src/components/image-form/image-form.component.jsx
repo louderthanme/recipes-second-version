@@ -1,16 +1,15 @@
-import { useState } from "react"; // import useState
-import { Box, Typography, IconButton } from "@mui/material";
+import { useState } from "react";
+import { Box, Typography, IconButton, Button } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
-const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"; // replace with your actual URL
+const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg";
 
 const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
-  const [preview, setPreview] = useState(null); // state to hold the preview URL
+  const [preview, setPreview] = useState(null);
 
   const handleFileChange = (e) => {
-    handleImageChange(e); // pass the event up to the parent component
+    handleImageChange(e);
 
-    // display a preview of the image
     const file = e.target.files[0];
     const previewURL = URL.createObjectURL(file);
     setPreview(previewURL);
@@ -21,7 +20,20 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
       <Typography variant="h5" fontWeight="bold">
         Recipe Image
       </Typography>
-      <input type="file" name="imageUrl" accept="image/*" onChange={handleFileChange} />
+      <label htmlFor="contained-button-file">
+        <input
+          accept="image/*"
+          id="contained-button-file"
+          multiple
+          type="file"
+          name="imageUrl"
+          onChange={handleFileChange}
+          style={{ display: 'none' }} // Hide the default input
+        />
+        <Button variant="contained" component="span">
+          Upload Image
+        </Button>
+      </label>
       <Box my={2} position="relative" style={{ display: 'inline-block' }}>
         {(recipe && recipe.imageUrl) || preview ? (
           <>
@@ -32,7 +44,7 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
             />
             <IconButton 
               aria-label="delete-image" 
-              onClick={handleImageDelete || (() => setPreview(null))} // Reset preview to null if handleImageDelete is not provided
+              onClick={handleImageDelete || (() => setPreview(null))}
               style={{ position: 'absolute', top: '0', right: '0', backgroundColor: 'white' }}
             >
               <CloseIcon />

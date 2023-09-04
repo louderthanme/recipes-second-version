@@ -1,4 +1,4 @@
-import { useController } from "react-hook-form";
+import { useController, Controller } from "react-hook-form";
 import { Box, Typography } from "@mui/material";
 import { StyledTextField } from "../../utils/styledComponents";
 
@@ -10,47 +10,53 @@ const TimeInput = ({ control, name }) => {
     name,
     control,
     rules: { required: "This field is required" },
-    defaultValue: null,
+    defaultValue: [0, 0],
   });
 
   const [hours, minutes] = inputProps.value || [0, 0];
 
   return (
     <Box display="flex" alignItems="center">
-      <Box width="45%">
-        <StyledTextField
-          {...inputProps}
-          inputRef={ref}
-          label="Hours"
-          type="number"
-          variant="filled"
-          fullWidth
-          margin="none"
-          error={!!error}
-          helperText={error?.message}
-          value={hours !== 0 ? hours : ""} // If hours are not 0, show hours, else show an empty string
-          onChange={(e) => {
-            const val = parseInt(e.target.value, 10);
-            inputProps.onChange([val || 0, minutes]); // Update hours, keep minutes same
-          }}
+      <Box flexGrow={1} width={"calc(45% - 8px)"}> {/* Subtracting 8px for margins */}
+        <Controller
+          name={`${name}.hours`}
+          control={control}
+          render={({ field }) => (
+            <StyledTextField
+              {...field}
+              label="Hours"
+              type="number"
+              variant="filled"
+              fullWidth
+              margin="normal"
+              value={hours !== 0 ? hours : ""}
+              onChange={(e) => {
+                const val = parseInt(e.target.value, 10);
+                inputProps.onChange([val || 0, minutes]);
+              }}
+            />
+          )}
         />
       </Box>
-      <Box width="45%" marginLeft={2}>
-        <StyledTextField
-          {...inputProps}
-          inputRef={ref}
-          label="Minutes"
-          type="number"
-          variant="filled"
-          fullWidth
-          margin="none"
-          error={!!error}
-          helperText={error?.message}
-          value={minutes !== 0 ? minutes : ""} // If minutes are not 0, show minutes, else show an empty string
-          onChange={(e) => {
-            const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
-            inputProps.onChange([hours, val || 0]); // Update minutes, keep hours same
-          }}
+      <Box flexGrow={1} width={"calc(45% - 8px)"} marginLeft={2}> {/* Subtracting 8px for margins */}
+        <Controller
+          name={`${name}.minutes`}
+          control={control}
+          render={({ field }) => (
+            <StyledTextField
+              {...field}
+              label="Minutes"
+              type="number"
+              variant="filled"
+              fullWidth
+              margin="normal"
+              value={minutes !== 0 ? minutes : ""}
+              onChange={(e) => {
+                const val = e.target.value === "" ? 0 : parseInt(e.target.value, 10);
+                inputProps.onChange([hours, val || 0]);
+              }}
+            />
+          )}
         />
       </Box>
     </Box>

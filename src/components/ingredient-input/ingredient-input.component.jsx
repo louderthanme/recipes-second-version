@@ -1,5 +1,5 @@
-import { useFieldArray, useForm, Controller } from "react-hook-form";
-import { Button, IconButton, Box, MenuItem, Select } from "@mui/material";
+import { useFieldArray,  Controller, Form } from "react-hook-form";
+import { Button, IconButton, Box, MenuItem, FormControl } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 import { StyledTextField, StyledSelect } from "../../utils/styledComponents";
 import { volumeUnits, weightUnits } from "../../constants/units";
@@ -17,6 +17,7 @@ const IngredientInput = ({ control, errors }) => {
         <Box key={item.id} display="flex" alignItems="center">
           {/* Name field */}
           <Box flexGrow={1} width={"calc(45% - 8px)"}> {/* Subtracting 8px for margins */}
+            <FormControl fullWidth margin="normal" error={!!errors?.ingredients?.[index]?.name}>
             <StyledTextField
               {...control.register(`ingredients[${index}].name`, { required: "This field is required" })}
               defaultValue={item.name}
@@ -27,9 +28,11 @@ const IngredientInput = ({ control, errors }) => {
               error={!!errors?.ingredients?.[index]?.name}
               helperText={errors?.ingredients?.[index]?.name?.message || ""}
             />
+            </FormControl>
           </Box>
           {/* Quantity field */}
           <Box flexGrow={1} width={"calc(25% - 8px)"} marginLeft={2}> {/* Subtracting 8px for margins */}
+          <FormControl fullWidth margin="normal" error={!!errors?.ingredients?.[index]?.quantity}>
             <StyledTextField
               {...control.register(`ingredients[${index}].quantity`, { required: "This field is required" })}
               defaultValue={item.quantity}
@@ -40,6 +43,7 @@ const IngredientInput = ({ control, errors }) => {
               error={!!errors?.ingredients?.[index]?.quantity}
               helperText={errors?.ingredients?.[index]?.quantity?.message || ""}
             />
+            </FormControl>
           </Box>
           {/* Unit field */}
           <Box flexGrow={1} width={"calc(25% - 8px)"} marginLeft={2}> {/* Subtracting 8px for margins */}
@@ -48,6 +52,7 @@ const IngredientInput = ({ control, errors }) => {
               control={control}
               defaultValue={item.unit || ""}
               render={({ field }) => (
+                <FormControl fullWidth margin="normal" error={!!errors?.ingredients?.[index]?.unit}>
                 <StyledSelect {...field} displayEmpty fullWidth>
                   <MenuItem value="" disabled>Unit</MenuItem>
                   <MenuItem value={"Volume"} disabled>Volume</MenuItem>
@@ -55,6 +60,7 @@ const IngredientInput = ({ control, errors }) => {
                   <MenuItem value={"Weight"} disabled>Weight</MenuItem>
                   {weightUnits.map((unit, unitIndex) => <MenuItem key={unitIndex} value={unit}>{unit}</MenuItem>)}
                 </StyledSelect>
+                </FormControl>
               )}
             />
           </Box>
