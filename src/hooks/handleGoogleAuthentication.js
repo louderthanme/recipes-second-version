@@ -1,7 +1,7 @@
 import { signInWithGoogle } from "../utils/firebase-utils";
 
 
-        const handleGoogleAuthentication = (showSnackbar, successMessage, errorMessage) => async (setUser) => {
+const handleGoogleAuthentication = (showSnackbar, successMessage, errorMessage) => async (setUser) => {
     try {
         const { user } = await signInWithGoogle();
         setUser(user);

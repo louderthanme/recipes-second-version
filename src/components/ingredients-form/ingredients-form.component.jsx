@@ -1,8 +1,10 @@
 import { useFieldArray, Controller } from "react-hook-form";
-import { IconButton, Box, Divider, Typography } from "@mui/material";
+import { IconButton, Box, Typography, MenuItem, Select } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
-import { StyledTextField, StyledDivider } from "../../utils/styledComponents";
+import { StyledTextField, StyledDivider, StyledSelect } from "../../utils/styledComponents";
 import IngredientInput from "../ingredient-input/ingredient-input.component"
+import { volumeUnits, weightUnits } from "../../constants/units";
+
 
 const IngredientsForm = ({ control, errors, initialIngredients }) => {
   const { fields: ingredientFields, append: appendIngredient, remove: removeIngredient } = useFieldArray({
@@ -14,9 +16,7 @@ const IngredientsForm = ({ control, errors, initialIngredients }) => {
   return (
     <>
       <Typography variant="h5" fontWeight='bold'>Ingredients</Typography>
-      <StyledDivider /> {/* Divider between the rows */}
-      {/* Render IngredientInput for adding ingredients */}
-      <IngredientInput control={control} errors={errors} />
+      <StyledDivider />
       {/* Render existing ingredients */}
       {initialIngredients && initialIngredients.length > 0 && (
         ingredientFields.map((item, index) => (
@@ -37,7 +37,7 @@ const IngredientsForm = ({ control, errors, initialIngredients }) => {
                 )}
               />
             </Box>
-            <Box width="45%" marginLeft={2}>
+            <Box width="25%" marginLeft={2}>
               <Controller
                 name={`ingredients[${index}].quantity`}
                 control={control}
@@ -53,12 +53,29 @@ const IngredientsForm = ({ control, errors, initialIngredients }) => {
                 )}
               />
             </Box>
+            <Box width="25%" marginLeft={2}>
+              <Controller
+                name={`ingredients[${index}].unit`}
+                control={control}
+                defaultValue={initialIngredients[index]?.unit || ""}
+                render={({ field }) => (
+                  <StyledSelect {...field} fullWidth>
+                    <MenuItem value={"Volume"} disabled>Volume</MenuItem>
+                    {volumeUnits.map(unit => <MenuItem value={unit}>{unit}</MenuItem>)}
+                    <MenuItem value={"Weight"} disabled>Weight</MenuItem>
+                    {weightUnits.map(unit => <MenuItem value={unit}>{unit}</MenuItem>)}
+                  </StyledSelect>
+                )}
+              />
+            </Box>
             <IconButton onClick={() => removeIngredient(index)} color="error">
               <DeleteOutline />
             </IconButton>
           </Box>
         ))
       )}
+      {/* Render IngredientInput for adding ingredients */}
+      <IngredientInput control={control} errors={errors} />
     </>
   );
 }
