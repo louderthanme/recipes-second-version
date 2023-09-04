@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { Button, Grid, Paper, Box, FormControl, Typography } from '@mui/material';
 import TitleForm from '../../components/title-form/title-form.component';
 import IngredientsForm from '../../components/ingredients-form/ingredients-form.component';
@@ -17,6 +17,11 @@ const RecipeEdit = () => {
 
   const { id } = useParams();
 
+  const [isLoading, setIsLoading] = useState(true);  
+
+
+
+
   const [recipe, setRecipe] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -28,8 +33,9 @@ const RecipeEdit = () => {
 
   useEffect(() => {
     const getRecipeForEdit = async () => {
+      setIsLoading(true);
       const fetchedRecipe = await fetchRecipeById(id);
-      if (fetchedRecipe) {
+      if (fetchedRecipe) {       
         setRecipe(fetchedRecipe);
         reset({
           title: fetchedRecipe.title || '',
@@ -41,6 +47,7 @@ const RecipeEdit = () => {
           instructions: fetchedRecipe.instructions || [{ step: '' }],
         });
       }
+      setIsLoading(false);
     };
     getRecipeForEdit();
   }, [id, fetchRecipeById, reset]);
@@ -116,6 +123,10 @@ const RecipeEdit = () => {
       console.error('Failed to delete image:', error);
     }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   
   return (
     <Paper elevation={10} sx={{ backgroundColor: '#FCDDBC', border: '0 0 0 20px solid white' }}>
