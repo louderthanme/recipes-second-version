@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 import { Paper, Box } from '@mui/material';
 import Polaroid from '../recipe-polaroid/recipe-polaroid.component';
+import { transformImage } from '../../utils/utils';
 
 const Carousel = ({recipes}) => {
   const navigate = useNavigate();
@@ -23,11 +24,6 @@ const Carousel = ({recipes}) => {
     navigate(`/recipe/${id}`);
   };
 
-  const transformImage = (url, height) => {
-    const segments = url.split('/');
-    segments.splice(-2, 0, `h_${height}`);
-    return segments.join('/');
-  };
   
   if (!Array.isArray(recipes) || recipes.length === 0) {
     return <div>No recipes available.</div>;

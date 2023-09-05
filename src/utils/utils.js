@@ -33,3 +33,9 @@ export const getPublicIdFromCloudinaryUrl = (url) => {
   const publicId = lastSegment.split('.')[0];
   return publicId;
 };
+
+export const transformImage = (url, height) => {
+  const segments = url.split('/');
+  segments.splice(-2, 0, `h_${height}`);
+  return segments.join('/');
+};
