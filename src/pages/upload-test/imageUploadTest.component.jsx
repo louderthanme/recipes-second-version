@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const ImageUploadTest = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [data, setData] = useState(null); 
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -20,11 +21,13 @@ const ImageUploadTest = () => {
         
         console.log(`Response Status: ${response.status}, Status Text: ${response.statusText}`);
         const data = await response.json();
+        setData(data);  
         console.log('Upload response:', data);
       } catch (error) {
         console.error('Upload error:', error);
       }
     }
+  
   };
   
   const testServer = async () => {
@@ -49,7 +52,7 @@ const ImageUploadTest = () => {
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
       <button onClick={testServer}>Test Server</button>
-
+      {data && <div>{data}</div>}   
     </div>
   );
 };
