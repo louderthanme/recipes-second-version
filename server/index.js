@@ -32,6 +32,11 @@ app.use(express.json());
 
 app.post('/api/upload', upload.single('image'), async (req, res) => {
   console.log('Inside the upload route.');
+  const fileType= req.file.mimetype
+  if (fileType !== 'image/png' && fileType !== 'image/jpeg') {
+    return res.status(400).json({ message: 'Only PNG and JPEG file types are allowed' });
+  }
+  
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
     console.log(`Cloudinary URL: ${result.url}`);

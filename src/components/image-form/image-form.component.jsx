@@ -10,6 +10,15 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
   const handleFileChange = (e) => {
     handleImageChange(e);
     const file = e.target.files[0];
+    const fileType = file.type;
+
+    // Check for acceptable file types
+    if (fileType !== "image/jpeg" && fileType !== "image/png") {
+      alert("Only JPEG or PNG images are allowed.");
+      return;
+    }
+
+    handleImageChange(e)
     const previewURL = URL.createObjectURL(file);
     setPreview(previewURL);
   }
@@ -32,7 +41,7 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
       </Box>
       <label htmlFor="contained-button-file">
         <input
-          accept="image/*"
+          accept="image/jpeg, image/png"
           id="contained-button-file"
           multiple
           type="file"
