@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const ImageUploadTest = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [data, setData] = useState(null); 
+  const [data, setData] = useState(null); // for testing server
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -52,7 +52,7 @@ const ImageUploadTest = () => {
       <input type="file" onChange={handleFileChange} />
       <button onClick={handleUpload}>Upload</button>
       <button onClick={testServer}>Test Server</button>
-      {data && <div>{data}</div>}   
+      {data && <div>{data.imageUrl}</div>}   
     </div>
   );
 };
