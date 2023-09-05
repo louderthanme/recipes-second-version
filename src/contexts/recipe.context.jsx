@@ -1,16 +1,21 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { 
+  fetchRecipesByUser,
   fetchRecipes, 
   updateRecipeInFirestore,
   uploadRecipeToFirestore, 
   deleteRecipeFromFirestore,
   fetchRecipeByIdFromFirestore
  } from '../utils/firebase-utils';
+import { UserContext } from './user.context';
 
 export const RecipesContext = createContext([]);
 
 const RecipesProvider = ({ children }) => {
+  const { user } = useContext(UserContext);
+
   const [recipes, setRecipes] = useState([]);
+  const [userRecipes, setUserRecipes] = useState([]); 
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -24,6 +29,21 @@ const RecipesProvider = ({ children }) => {
 
     getRecipes();
   }, []);
+  
+  const fetchUserRecipes = async (userId) => {
+    if (!userId) return;
+    try {
+      const recipesFromFirebase = await fetchRecipesByUser(user);
+      console.log("Received from Firebase:", recipesFromFirebase);
+      setUserRecipes(recipesFromFirebase);
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+    }
+  };
+
+  
+  
+
 
   const fetchRecipeById = async (id) => {
     try {
@@ -102,7 +122,7 @@ const RecipesProvider = ({ children }) => {
   
   
 
-  const value = { recipes, updateRecipe, uploadRecipe, deleteRecipe, fetchRecipeById, uploadImageToCloudinary };
+  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, fetchRecipeById, uploadImageToCloudinary };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

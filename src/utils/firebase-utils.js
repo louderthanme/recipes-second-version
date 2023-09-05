@@ -9,7 +9,9 @@ import {
   updateDoc,
   doc,
   addDoc,
-  deleteField
+  deleteField,
+  query,
+  where,
 } from 'firebase/firestore/lite';
 
 import {
@@ -54,6 +56,18 @@ export const flushDatabase = async () => {
     console.log('Database flushed successfully!');
   } catch (error) {
     console.error('Error flushing database:', error);
+  }
+};
+
+export const fetchRecipesByUser = async (user) => {
+  const userId = user.uid;
+  try {
+    const q = query(collection(db, 'recipes'), where('ownerUid', '==', userId));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    console.error('Error fetching recipes:', error);
+    return [];
   }
 };
 

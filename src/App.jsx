@@ -7,6 +7,7 @@ import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
 import AuthPage from './pages/authentication/authentication.component';
 import ImageUploadTest from './pages/upload-test/imageUploadTest.component';
+import UserProfile from './pages/user-profile/user-profile.component';
 import { useContext } from 'react';
 import { UserContext } from './contexts/user.context';
 
@@ -54,6 +55,17 @@ const App = () => {
                     </Grid>
                   </Grid>
                 : <Navigate to="/auth" />}
+            />
+            <Route
+              path="/user/profile"
+              element={user ? 
+                <Grid container justifyContent="center">
+                  <Grid item xs={12} sm={7}>
+                    <UserProfile />
+                  </Grid>
+                </Grid> 
+              : <Navigate to="/auth" />
+              }
             />
             <Route
             path='/auth'
