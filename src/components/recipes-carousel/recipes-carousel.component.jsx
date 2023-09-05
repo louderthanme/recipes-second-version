@@ -23,6 +23,12 @@ const Carousel = ({recipes}) => {
     navigate(`/recipe/${id}`);
   };
 
+  const transformImage = (url, height) => {
+    const segments = url.split('/');
+    segments.splice(-2, 0, `h_${height}`);
+    return segments.join('/');
+  };
+  
   if (!Array.isArray(recipes) || recipes.length === 0) {
     return <div>No recipes available.</div>;
   }
@@ -33,9 +39,9 @@ const Carousel = ({recipes}) => {
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
             <Polaroid
-               image={recipe.imageUrl}
-               title={recipe.title}
-               onClick={() => goToRecipe(recipe.id)}
+              image={transformImage(recipe.imageUrl, 300)}
+              title={recipe.title}
+              onClick={() => goToRecipe(recipe.id)}
             />
           </Box>
         ))}

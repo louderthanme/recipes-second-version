@@ -61,7 +61,7 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 300px !important;
   display: block;
 }
 
@@ -69,6 +69,7 @@ h1 {
   display: flex;
   align-items: center;
 }
+
 
 
 /* ==============================
