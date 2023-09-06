@@ -38,7 +38,7 @@ const UserProfile = () => {
             image={transformImage(recipe.imageUrl, 300)}
             title={recipe.title}
             onClick={() => goToRecipe(recipe.id)}
-            onDelete={() => deleteRecipe(recipe.id)}  // Implement deleteRecipe function
+            onDelete={() => deleteRecipe(recipe.id)}  
           />
         ))}
       </Box>
