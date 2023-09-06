@@ -3,8 +3,9 @@ import { UserContext } from "../../contexts/user.context";
 import { RecipesContext } from "../../contexts/recipe.context";	
 import { Paper, Box} from "@mui/material";
 import { StyledDivider } from "../../utils/styledComponents";
-import Polaroid from "../../components/recipe-polaroid/recipe-polaroid.component";
 import { transformImage } from "../../utils/utils";
+import UserProfilePolaroid from "../../components/user-profile-polaroid/user-profile-polaroid.component";
+
 const UserProfile = () => {
   const { userRecipes, fetchUserRecipes } = useContext(RecipesContext); // Use userRecipes
 
@@ -30,16 +31,15 @@ const UserProfile = () => {
         <h2>{user.email}</h2>
       </Box>
       <StyledDivider />
-      <Box p={3}>
-        <h2>Recipes</h2>
+      <Box p={3} sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px' }}>
         {userRecipes.map((recipe, index) => (
-          <Box key={index} sx={{ padding: '0 5px' }}>
-            <Polaroid
-              image={transformImage(recipe.imageUrl, 300)}
-              title={recipe.title}
-              onClick={() => goToRecipe(recipe.id)}
-            />
-          </Box>
+          <UserProfilePolaroid
+            key={index}
+            image={transformImage(recipe.imageUrl, 300)}
+            title={recipe.title}
+            onClick={() => goToRecipe(recipe.id)}
+            onDelete={() => deleteRecipe(recipe.id)}  // Implement deleteRecipe function
+          />
         ))}
       </Box>
     </Paper>
