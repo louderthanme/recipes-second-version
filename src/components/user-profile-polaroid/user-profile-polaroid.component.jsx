@@ -5,7 +5,7 @@ import { transformImage } from "../../utils/utils";
 
 const UserProfilePolaroid = ({ image, title, onClick, onDelete }) => {
 
-    const transformedImage = transformImage(image, 300);  // Transform the image here
+    const transformedImage = transformImage(image, 300, 400);  // Transform the image here
 
     return (
         <Box 
