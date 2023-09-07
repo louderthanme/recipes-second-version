@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Paper, Box, Grid, Divider, Button, useTheme, useMediaQuery} from '@mui/material';
-import InstructionsDisplay from '../../components/instructions-display/instructions-display.component';
-import IngredientsDisplay from '../../components/ingredients-display/ingredients-display.component';
-import ImageBox from '../../components/image-box/image-box.component';
-import DetailsBox from '../../components/details-box/details-box.component';
+import InstructionsDisplay from '../../components/Recipe/instructions-display/instructions-display.component';
+import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingredients-display.component';
+import ImageBox from '../../components/Recipe/image-box/image-box.component';
+import DetailsBox from '../../components/Recipe/details-box/details-box.component';
 import { UserContext } from '../../contexts/user.context';
+import { RecipesContext } from '../../contexts/recipe.context';
 
 const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"; // replace with your actual URL
 

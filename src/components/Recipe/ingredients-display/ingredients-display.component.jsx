@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Box, Typography } from '@mui/material';
-import {useDebounceEffect, updateBoxShadow} from '../../utils/utils'
+import {useDebounceEffect, updateBoxShadow} from '../../../utils/utils'
 
 
 const IngredientsDisplay = ({ ingredients }) => {

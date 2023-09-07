@@ -3,13 +3,18 @@ import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams, useNavigate } from 'react-router-dom';
 import { set, useForm } from 'react-hook-form';
 import { Button, Grid, Paper, Box, FormControl, Typography } from '@mui/material';
-import TitleForm from '../../components/title-form/title-form.component';
-import IngredientsForm from '../../components/ingredients-form/ingredients-form.component';
-import InstructionsForm from '../../components/instructions-form/instructions-form.component';
-import TimeForm from '../../components/time-form/time-form.component';
+
+
+import IngredientsForm from '../../components/Recipe/ingredients-form/ingredients-form.component';
+import InstructionsForm from '../../components/Recipe/instructions-form/instructions-form.component';
+import TimeForm from '../../components/Recipe/time-form/time-form.component';
+import TitleForm from '../../components/Recipe/title-form/title-form.component';
+import ImageForm from '../../components/Recipe/image-form/image-form.component';
+
+
+
 import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
 import { useSnackbar } from '../../hooks/useSnackbar';
-import ImageForm from '../../components/image-form/image-form.component';
 import { getPublicIdFromCloudinaryUrl } from '../../utils/utils';
 
 const RecipeEdit = () => {

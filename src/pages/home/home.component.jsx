@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
 import { Box } from '@mui/system';
-import Carousel from '../../components/recipes-carousel/recipes-carousel.component'
+import Carousel from '../../components/Carousel/recipes-carousel/recipes-carousel.component';
 
 const Home = () => {
 

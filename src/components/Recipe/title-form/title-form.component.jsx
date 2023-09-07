@@ -1,4 +1,4 @@
-import { StyledTextField } from "../../utils/styledComponents";
+import { StyledTextField } from "../../../utils/styledComponents";
 import { FormControl } from "@mui/material";
 
 const TitleForm = ({ control, errors }) => {

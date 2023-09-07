@@ -3,7 +3,7 @@ import { UserContext } from "../../contexts/user.context";
 import { RecipesContext } from "../../contexts/recipe.context";	
 import { Paper, Box} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import UserRecipesDisplay from "../../components/user-recipes-display/user-recipes-display.component";
+import UserRecipesDisplay from "../../components/User/user-recipes-display/user-recipes-display.component";
 
 const UserProfile = () => {
   const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes } = useContext(RecipesContext); // Use userRecipes

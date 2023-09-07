@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
-import { updateBoxShadow } from '../../utils/utils.js';
+import { updateBoxShadow } from '../../../utils/utils.js';
 
 
 const InstructionsDisplay = ({ instructions }) => {

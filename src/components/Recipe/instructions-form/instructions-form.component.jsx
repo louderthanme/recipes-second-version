@@ -1,7 +1,7 @@
 import { useFieldArray, Controller } from "react-hook-form";
 import { IconButton, Box, Divider, Typography } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
-import { StyledTextField } from "../../utils/styledComponents";
+import { StyledTextField } from "../../../utils/styledComponents";
 import InstructionInput from "../instruction-input/instruction-input.component"
 
 const InstructionsForm = ({ control, initialInstructions, errors }) => {

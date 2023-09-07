@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import SignUpForm from '../../components/sign-up-form/sign-up-form.component';
-import SignInForm from '../../components/sign-in-form/sign-in-form.component';
+
+import SignInForm from '../../components/Authentication/sign-in-form/sign-in-form.component';
+import SignUpForm from '../../components/Authentication/sign-up-form/sign-up-form.component';
 import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
 
 import { useSnackbar } from '../../hooks/useSnackbar';

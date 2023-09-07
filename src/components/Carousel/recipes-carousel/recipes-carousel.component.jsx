@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 import { Paper, Box } from '@mui/material';
 import CarouselPolaroid from '../carousel-polaroid/carousel-polaroid.component';
-import { transformImage } from '../../utils/utils';
+import { transformImage } from '../../../utils/utils';
 
 const Carousel = ({recipes}) => {
   const navigate = useNavigate();

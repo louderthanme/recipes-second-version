@@ -10,11 +10,11 @@ import { RecipesContext } from "../../contexts/recipe.context";
 import { UserContext } from "../../contexts/user.context";
 
 // Custom Components
-import TitleForm from "../../components/title-form/title-form.component";
-import IngredientsForm from "../../components/ingredients-form/ingredients-form.component";
-import InstructionsForm from "../../components/instructions-form/instructions-form.component";
-import TimeForm from "../../components/time-form/time-form.component";
-import ImageForm from "../../components/image-form/image-form.component";
+import TitleForm from "../../components/Recipe/title-form/title-form.component";
+import IngredientsForm from "../../components/Recipe/ingredients-form/ingredients-form.component";
+import InstructionsForm from "../../components/Recipe/instructions-form/instructions-form.component";
+import TimeForm from "../../components/Recipe/time-form/time-form.component";
+import ImageForm from "../../components/Recipe/image-form/image-form.component";
 import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
 
 // Custom Hooks and Utilities

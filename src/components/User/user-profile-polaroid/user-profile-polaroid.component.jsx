@@ -2,7 +2,7 @@ import { Box, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import { red, green, common } from '@mui/material/colors';
-import { transformImage } from "../../utils/utils";
+import { transformImage } from "../../../utils/utils";
 
 const UserProfilePolaroid = ({ image, title, onClick, onDelete, onEdit, id, user, ownerUid }) => {
   const transformedImage = transformImage(image, 300, 400);

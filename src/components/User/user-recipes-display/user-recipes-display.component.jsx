@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, FormControlLabel, Switch } from "@mui/material";
-import { StyledDivider } from "../../utils/styledComponents";
+import { StyledDivider } from "../../../utils/styledComponents";
 import UserProfilePolaroid from "../user-profile-polaroid/user-profile-polaroid.component";
 
 const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEditRecipe }) => {

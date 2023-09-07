@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { Button, Grid, Paper, Box, FormControl, Typography, FormHelperText } from "@mui/material";
-import { StyledTextField } from "../../utils/styledComponents";
-import { signUpWithEmailAndPassword, auth} from "../../utils/firebase-utils";
+import { StyledTextField } from "../../../utils/styledComponents";
+
+import { signUpWithEmailAndPassword, auth} from "../../../utils/firebase-utils";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../contexts/user.context";
-import {handleGoogleAuthentication} from "../../hooks/handleGoogleAuthentication";
+import { UserContext } from "../../../contexts/user.context";
+import {handleGoogleAuthentication} from "../../../hooks/handleGoogleAuthentication";
 
 const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();

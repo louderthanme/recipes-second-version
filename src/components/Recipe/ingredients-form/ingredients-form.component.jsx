@@ -1,9 +1,9 @@
 import { useFieldArray, Controller } from "react-hook-form";
 import { IconButton, Box, Typography, MenuItem, Select } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
-import { StyledTextField, StyledDivider, StyledSelect } from "../../utils/styledComponents";
+import { StyledTextField, StyledDivider, StyledSelect } from "../../../utils/styledComponents";
 import IngredientInput from "../ingredient-input/ingredient-input.component"
-import { volumeUnits, weightUnits } from "../../constants/units";
+import { volumeUnits, weightUnits } from "../../../constants/units";
 
 
 const IngredientsForm = ({ control, errors, initialIngredients }) => {

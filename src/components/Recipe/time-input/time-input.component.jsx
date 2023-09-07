@@ -1,6 +1,6 @@
 import { useController, Controller } from "react-hook-form";
 import { Box, Typography } from "@mui/material";
-import { StyledTextField } from "../../utils/styledComponents";
+import { StyledTextField } from "../../../utils/styledComponents";
 
 const TimeInput = ({ control, name }) => {
   const {
