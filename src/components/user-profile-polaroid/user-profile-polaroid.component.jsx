@@ -4,12 +4,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import { red, green, common } from '@mui/material/colors';
 import { transformImage } from "../../utils/utils";
 
-const UserProfilePolaroid = ({ image, title, onClick, onDelete, id, user, ownerUid, navigate }) => {
+const UserProfilePolaroid = ({ image, title, onClick, onDelete, onEdit, id, user, ownerUid }) => {
   const transformedImage = transformImage(image, 300, 400);
 
-  const goToRecipeEdit = (id) => {
-    navigate(`/recipe/${id}/edit`);
-  };
 
   return (
     <Box
@@ -51,7 +48,7 @@ const UserProfilePolaroid = ({ image, title, onClick, onDelete, id, user, ownerU
             },
           }}
         >
-          <CloseIcon sx={{ color: common.white }} />
+          <CloseIcon sx={{ color: common.white, fontSize:'22px' }} />
         </IconButton>
         
         { user?.uid === ownerUid &&
@@ -59,7 +56,7 @@ const UserProfilePolaroid = ({ image, title, onClick, onDelete, id, user, ownerU
             aria-label="edit-recipe"
             onClick={(e) => {
               e.stopPropagation();
-              goToRecipeEdit(id);
+              onEdit(id);
             }}
             size="small"
             sx={{
@@ -74,7 +71,7 @@ const UserProfilePolaroid = ({ image, title, onClick, onDelete, id, user, ownerU
               },
             }}
           >
-            <EditIcon sx={{ color: common.white }} />
+          <EditIcon sx={{ color: common.white, fontSize: '14px' }} />
           </IconButton>
         }
       </Box>

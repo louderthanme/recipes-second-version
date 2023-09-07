@@ -29,8 +29,13 @@ const UserProfile = () => {
   };
 
   const goToRecipe = (id) => {
+    console.log('id:', id)
     navigate(`/recipe/${id}`);
   };
+
+  const goToRecipeEdit = (id) => {
+    navigate(`/recipe/${id}/edit`);
+  }
   
 
   if (userRecipes === null) {
@@ -47,6 +52,7 @@ const UserProfile = () => {
         userRecipes={userRecipes}
         onDeleteRecipe={handleDeleteRecipe} 
         onClickRecipe={goToRecipe}
+        onEditRecipe={goToRecipeEdit}
       />
     </Paper>
   );
