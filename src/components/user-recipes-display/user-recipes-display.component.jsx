@@ -28,7 +28,6 @@ const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe }) => {
                 title={recipe.title}
                 onDelete={() => onDeleteRecipe(recipe)}
                 onClick={() => onClickRecipe(recipe.id)}
-                // onDelete={() => deleteRecipe(recipe.id)}  
               />
             </Grid>
           ))}
