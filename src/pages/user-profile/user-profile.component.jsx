@@ -6,7 +6,7 @@ import { StyledDivider } from "../../utils/styledComponents";
 import UserRecipesDisplay from "../../components/user-recipes-display/user-recipes-display.component";
 
 const UserProfile = () => {
-  const { userRecipes, fetchUserRecipes } = useContext(RecipesContext); // Use userRecipes
+  const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes } = useContext(RecipesContext); // Use userRecipes
 
   const { user } = useContext(UserContext);
 
@@ -17,7 +17,16 @@ const UserProfile = () => {
     }
   }, [userId]);
 
-  console.log('after useeffect', userRecipes);
+  const handleDeleteRecipe = async (recipe) => {
+    console.log('recipeId:', recipe.id);
+    try {
+      await deleteRecipe(recipe);
+      setUserRecipes((prevUserRecipes) => prevUserRecipes.filter((r) => r.id !== recipe.id));
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+    }
+  };
+  
 
   if (userRecipes === null) {
     return <div>Loading...</div>;
@@ -31,8 +40,8 @@ const UserProfile = () => {
       </Box>
       <UserRecipesDisplay
         userRecipes={userRecipes}
+        onDeleteRecipe={handleDeleteRecipe} 
         // goToRecipe={goToRecipe}
-        // deleteRecipe={deleteRecipe}
       />
     </Paper>
   );

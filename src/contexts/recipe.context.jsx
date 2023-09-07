@@ -41,10 +41,6 @@ const RecipesProvider = ({ children }) => {
     }
   };
 
-  
-  
-
-
   const fetchRecipeById = async (id) => {
     try {
       return await fetchRecipeByIdFromFirestore(id);
@@ -94,6 +90,8 @@ const RecipesProvider = ({ children }) => {
   
   
   const deleteRecipe = async (recipe) => {
+    console.log("recipe context, recipe id", recipe.id)
+
     try {
       await deleteRecipeFromFirestore(recipe);
       setRecipes((prevRecipes) => prevRecipes.filter((r) => r.id !== recipe.id));
@@ -122,7 +120,7 @@ const RecipesProvider = ({ children }) => {
   
   
 
-  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, fetchRecipeById, uploadImageToCloudinary };
+  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImageToCloudinary };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

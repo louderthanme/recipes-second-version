@@ -9,7 +9,7 @@ const Polaroid = ({ image, title, onClick }) => (
         backgroundColor: 'white', 
         img: {
           maxWidth: '100%',
-          height: 'auto'
+          maxheight: 'auto'
         }
       }}
       onClick={onClick}

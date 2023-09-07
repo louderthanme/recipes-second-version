@@ -4,7 +4,9 @@ import { red, common } from '@mui/material/colors';
 import { transformImage } from "../../utils/utils";
 
 const UserProfilePolaroid = ({ image, title, onClick, onDelete }) => {
+
     const transformedImage = transformImage(image, 300);  // Transform the image here
+
     return (
         <Box 
             sx={{ 
@@ -19,7 +21,7 @@ const UserProfilePolaroid = ({ image, title, onClick, onDelete }) => {
             }}
             onClick={onClick}
         >
-            <img src={image} alt={title} style={{display: 'block'}} />
+            <img src={transformedImage} alt={title} style={{display: 'block'}} />
             <Box textAlign="center" mt={1}>
             <b>{title}</b>
             </Box>
