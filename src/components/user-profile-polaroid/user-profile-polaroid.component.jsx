@@ -4,7 +4,6 @@ import { red, common } from '@mui/material/colors';
 import { transformImage } from "../../utils/utils";
 
 const UserProfilePolaroid = ({ image, title, onClick, onDelete }) => {
-
     const transformedImage = transformImage(image, 300, 400);  // Transform the image here
 
     return (
@@ -27,7 +26,10 @@ const UserProfilePolaroid = ({ image, title, onClick, onDelete }) => {
             </Box>
             <IconButton 
             aria-label="delete-recipe" 
-            onClick={onDelete}
+            onClick={(e) => {
+                e.stopPropagation();  // Stop the click from bubbling up
+                onDelete();
+            }}
             size="small"  
             sx={{
                 position: 'absolute', 
@@ -46,6 +48,5 @@ const UserProfilePolaroid = ({ image, title, onClick, onDelete }) => {
         </Box>
     )
 };
-
 
 export default UserProfilePolaroid;

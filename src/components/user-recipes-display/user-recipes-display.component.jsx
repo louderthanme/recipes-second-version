@@ -3,7 +3,7 @@ import { Box, Grid, FormControlLabel, Switch } from "@mui/material";
 import { StyledDivider } from "../../utils/styledComponents";
 import UserProfilePolaroid from "../user-profile-polaroid/user-profile-polaroid.component";
 
-const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe }) => {
+const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe }) => {
   return (
     <>
       <StyledDivider />
@@ -27,7 +27,7 @@ const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe }) => {
                 image={recipe.imageUrl}
                 title={recipe.title}
                 onDelete={() => onDeleteRecipe(recipe)}
-                // onClick={() => goToRecipe(recipe.id)}
+                onClick={() => onClickRecipe(recipe.id)}
                 // onDelete={() => deleteRecipe(recipe.id)}  
               />
             </Grid>

@@ -2,15 +2,16 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { RecipesContext } from "../../contexts/recipe.context";	
 import { Paper, Box} from "@mui/material";
-import { StyledDivider } from "../../utils/styledComponents";
+import { useNavigate } from "react-router-dom";
 import UserRecipesDisplay from "../../components/user-recipes-display/user-recipes-display.component";
 
 const UserProfile = () => {
   const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes } = useContext(RecipesContext); // Use userRecipes
-
   const { user } = useContext(UserContext);
-
   const userId = user ? user.uid : null;
+  const navigate = useNavigate();
+
+
   useEffect(() => {
     if (userId) {
       fetchUserRecipes(userId);
@@ -25,6 +26,10 @@ const UserProfile = () => {
     } catch (error) {
       console.error('Error deleting recipe:', error);
     }
+  };
+
+  const goToRecipe = (id) => {
+    navigate(`/recipe/${id}`);
   };
   
 
@@ -41,7 +46,7 @@ const UserProfile = () => {
       <UserRecipesDisplay
         userRecipes={userRecipes}
         onDeleteRecipe={handleDeleteRecipe} 
-        // goToRecipe={goToRecipe}
+        onClickRecipe={goToRecipe}
       />
     </Paper>
   );
