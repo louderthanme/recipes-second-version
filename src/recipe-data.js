@@ -6,19 +6,19 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Classic Chocolate Chip Cookies",
     ingredients: [
-      { name: "all-purpose flour", quantity: "2 1/4", unit: "cups" },
-      { name: "baking soda", quantity: "1", unit: "teaspoon" },
-      { name: "salt", quantity: "1", unit: "teaspoon" },
-      { name: "unsalted butter", quantity: "1", unit: "cup" },
-      { name: "granulated sugar", quantity: "3/4", unit: "cup" },
-      { name: "brown sugar", quantity: "3/4", unit: "cup" },
-      { name: "vanilla extract", quantity: "1", unit: "teaspoon" },
+      { name: "all-purpose flour", quantity: "2 1/4", unit: "cup(s)" },
+      { name: "baking soda", quantity: "1", unit: "teaspoon(s)" },
+      { name: "salt", quantity: "1", unit: "teaspoon(s)" },
+      { name: "unsalted butter", quantity: "1", unit: "cup(s)" },
+      { name: "granulated sugar", quantity: "3/4", unit: "cup(s)" },
+      { name: "brown sugar", quantity: "3/4", unit: "cup(s)" },
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" },
       { name: "large eggs", quantity: "2", unit: "" },
-      { name: "chocolate chips", quantity: "2", unit: "cups" }
+      { name: "chocolate chips", quantity: "2", unit: "cup(s)" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [10, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693927572/ico5eurursodimaxuyik.jpg",
     instructions: [
@@ -28,7 +28,7 @@ const recipes = [
       { id: "4", step: "Add the eggs one at a time, beating well after each addition." },
       { id: "5", step: "Gradually add the flour mixture to the wet ingredients, mixing just until combined." },
       { id: "6", step: "Stir in the chocolate chips." },
-      { id: "7", step: "Drop rounded tablespoons of dough onto the prepared baking sheet." },
+      { id: "7", step: "Drop rounded tablespoon(s)s of dough onto the prepared baking sheet." },
       { id: "8", step: "Bake for 9-11 minutes or until the cookies are golden brown." },
       { id: "9", step: "Remove from the oven and allow to cool on the baking sheet for a few minutes before transferring to a wire rack to cool completely." }
     ]
@@ -36,23 +36,23 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Classic Spaghetti Carbonara",
     ingredients: [
-      { name: "spaghetti", quantity: "400", unit: "g" },
-      { name: "guanciale or pancetta", quantity: "150", unit: "g" },
-      { name: "pecorino cheese", quantity: "1", unit: "cup" },
+      { name: "spaghetti", quantity: "400", unit: "gram(s)" },
+      { name: "guanciale or pancetta", quantity: "150", unit: "gram(s)" },
+      { name: "pecorino cheese", quantity: "1", unit: "cup(s)" },
       { name: "large eggs", quantity: "4", unit: "" },
-      { name: "freshly ground black pepper", quantity: "1", unit: "tsp" },
+      { name: "freshly ground black pepper", quantity: "1", unit: "teaspoon(s)" },
       { name: "salt", quantity: "to taste", unit: "" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [12, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "https://res.cloudinary.com/recipeb00k/image/upload/v1693928473/csctgn8gbmh9dtdioewg.jpg",
     instructions: [
       { id: "1", step: "Bring a large pot of salted water to boil for the spaghetti." },
       { id: "2", step: "In a separate large skillet over medium heat, cook the guanciale or pancetta until it becomes crispy. Remove from heat and set aside." },
       { id: "3", step: "In a bowl, whisk together the eggs, pecorino cheese, and freshly ground black pepper." },
-      { id: "4", step: "Cook the spaghetti in the boiling water until al dente. Reserve about a cup of pasta cooking water and then drain the spaghetti." },
+      { id: "4", step: "Cook the spaghetti in the boiling water until al dente. Reserve about a cup(s) of pasta cooking water and then drain the spaghetti." },
       { id: "5", step: "Add the drained spaghetti to the skillet with the guanciale or pancetta. Toss to combine." },
       { id: "6", step: "Remove the skillet from heat, and quickly mix in the egg and cheese mixture. Stir rapidly to avoid scrambling the eggs." },
       { id: "7", step: "If the sauce is too thick, add a little reserved pasta cooking water to reach your desired consistency." },
@@ -62,20 +62,20 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Vegan Coconut Curry",
     ingredients: [
-      { name: "coconut oil", quantity: "2", unit: "tbsp" },
+      { name: "coconut oil", quantity: "2", unit: "tablespoon(s)" },
       { name: "onion", quantity: "1", unit: "medium" },
       { name: "garlic cloves", quantity: "4", unit: "" },
       { name: "ginger", quantity: "1", unit: "inch" },
-      { name: "curry powder", quantity: "2", unit: "tbsp" },
+      { name: "curry powder", quantity: "2", unit: "tablespoon(s)" },
       { name: "chickpeas", quantity: "1", unit: "can (15 oz)" },
-      { name: "coconut milk", quantity: "1", unit: "can (400 ml)" },
+      { name: "coconut milk", quantity: "400", unit: "milliliter(s)" },
       { name: "salt", quantity: "to taste", unit: "" },
       { name: "pepper", quantity: "to taste", unit: "" },
-      { name: "spinach", quantity: "2", unit: "cups" }
+      { name: "spinach", quantity: "2", unit: "cup(s)" }
     ],
     time: {
-      prep: [10, "minutes"],
-      cook: [20, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693929261/ansetnt1oldafetdadcb.jpg"
     ,
@@ -94,27 +94,27 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Chicken Marsala",
     ingredients: [
-      { name: "chicken breasts", quantity: "4", unit: "medium-sized" },
-      { name: "all-purpose flour", quantity: "1", unit: "cup" },
-      { name: "salt", quantity: "1", unit: "tsp" },
-      { name: "black pepper", quantity: "1/2", unit: "tsp" },
-      { name: "olive oil", quantity: "2", unit: "tbsp" },
-      { name: "butter", quantity: "2", unit: "tbsp" },
-      { name: "Marsala wine", quantity: "3/4", unit: "cup" },
-      { name: "chicken stock", quantity: "3/4", unit: "cup" },
+      { name: "chicken breasts", quantity: "4", unit: "" },
+      { name: "all-purpose flour", quantity: "1", unit: "cup(s)" },
+      { name: "salt", quantity: "1", unit: "teaspoon(s)" },
+      { name: "black pepper", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "olive oil", quantity: "2", unit: "tablespoon(s)" },
+      { name: "butter", quantity: "2", unit: "tablespoon(s)" },
+      { name: "Marsala wine", quantity: "3/4", unit: "cup(s)" },
+      { name: "chicken stock", quantity: "3/4", unit: "cup(s)" },
       { name: "mushrooms", quantity: "8", unit: "oz" },
       { name: "garlic", quantity: "2", unit: "cloves" },
-      { name: "parsley", quantity: "1", unit: "tbsp" }
+      { name: "parsley", quantity: "1", unit: "tablespoon(s)" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [20, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693929704/nvhhgbhpev54lmvivn7o.jpg",
     instructions: [
       { id: "1", step: "Place chicken breasts between sheets of plastic wrap and pound them to an even thickness of about 1/2 inch." },
       { id: "2", step: "In a shallow dish, combine flour, salt, and pepper. Dredge each chicken breast in the mixture, shaking off excess." },
-      { id: "3", step: "Heat olive oil and 1 tablespoon of butter in a large skillet over medium-high heat. Add the chicken and cook for about 4 minutes per side, or until browned. Remove chicken and set aside." },
+      { id: "3", step: "Heat olive oil and 1 tablespoon(s) of butter in a large skillet over medium-high heat. Add the chicken and cook for about 4 minutes per side, or until browned. Remove chicken and set aside." },
       { id: "4", step: "In the same skillet, add the remaining butter and mushrooms. Cook until the mushrooms are browned." },
       { id: "5", step: "Add minced garlic to the skillet and sauté for about 1 minute." },
       { id: "6", step: "Pour in Marsala wine and chicken stock, bringing the mixture to a boil. Reduce heat and simmer for 10 minutes, or until the sauce is reduced by half." },
@@ -126,27 +126,27 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Vegetable Stir-Fry",
     ingredients: [
-      { name: "carrot", quantity: "1", unit: "large" },
+      { name: "carrot", quantity: "1", unit: "" },
       { name: "bell pepper", quantity: "1", unit: "" },
-      { name: "broccoli", quantity: "1", unit: "cup" },
-      { name: "snap peas", quantity: "1", unit: "cup" },
-      { name: "soy sauce", quantity: "1/4", unit: "cup" },
-      { name: "sesame oil", quantity: "2", unit: "tbsp" },
-      { name: "garlic", quantity: "2", unit: "cloves" },
-      { name: "ginger", quantity: "1", unit: "inch" },
-      { name: "cornstarch", quantity: "1", unit: "tbsp" },
-      { name: "water", quantity: "1/4", unit: "cup" }
+      { name: "broccoli", quantity: "1", unit: "cup(s)" },
+      { name: "snap peas", quantity: "1", unit: "cup(s)" },
+      { name: "soy sauce", quantity: "1/4", unit: "cup(s)" },
+      { name: "sesame oil", quantity: "2", unit: "tablespoon(s)" },
+      { name: "garlic", quantity: "4", unit: "gram(s)" },
+      { name: "ginger", quantity: "10", unit: "gram(s)" },
+      { name: "cornstarch", quantity: "1", unit: "tablespoon(s)" },
+      { name: "water", quantity: "1/4", unit: "cup(s)" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [10, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930060/t09wpseys6zgdgl7l0zl.jpg",
     instructions: [
       { id: "1", step: "Prepare all the vegetables by cutting them into bite-sized pieces." },
       { id: "2", step: "In a small bowl, mix together the soy sauce, sesame oil, minced garlic, and grated ginger." },
       { id: "3", step: "In another small bowl, make a slurry by mixing the cornstarch and water." },
-      { id: "4", step: "Heat a wok or large skillet over high heat. Once hot, add 1 tablespoon of sesame oil." },
+      { id: "4", step: "Heat a wok or large skillet over high heat. Once hot, add 1 tablespoon(s) of sesame oil." },
       { id: "5", step: "Add the prepared vegetables to the wok and stir-fry for 5-7 minutes or until tender-crisp." },
       { id: "6", step: "Pour the soy sauce mixture over the vegetables and stir well to combine." },
       { id: "7", step: "Add the cornstarch slurry to the wok and continue to stir. Cook for another 2-3 minutes until the sauce thickens." },
@@ -158,18 +158,18 @@ const recipes = [
     title: "Banana Bread",
     ingredients: [
       { name: "ripe bananas", quantity: "3", unit: "" },
-      { name: "all-purpose flour", quantity: "1 1/2", unit: "cups" },
-      { name: "sugar", quantity: "3/4", unit: "cup" },
-      { name: "unsalted butter", quantity: "1/2", unit: "cup" },
+      { name: "all-purpose flour", quantity: "1 1/2", unit: "cup(s)" },
+      { name: "sugar", quantity: "3/4", unit: "cup(s)" },
+      { name: "unsalted butter", quantity: "1/2", unit: "cup(s)" },
       { name: "eggs", quantity: "2", unit: "" },
-      { name: "vanilla extract", quantity: "1", unit: "tsp" },
-      { name: "baking soda", quantity: "1", unit: "tsp" },
-      { name: "salt", quantity: "1/4", unit: "tsp" },
-      { name: "chopped walnuts", quantity: "1/2", unit: "cup" }
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" },
+      { name: "baking soda", quantity: "1", unit: "teaspoon(s)" },
+      { name: "salt", quantity: "1/4", unit: "teaspoon(s)" },
+      { name: "chopped walnuts", quantity: "1/2", unit: "cup(s)" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [60, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930169/dl6owvop8pvpus61yywu.webp",
     instructions: [
@@ -191,24 +191,24 @@ const recipes = [
     ingredients: [
       { name: "chicken breasts", quantity: "2", unit: "" },
       { name: "mango", quantity: "1", unit: "" },
-      { name: "chili sauce", quantity: "1/4", unit: "cup" },
+      { name: "chili sauce", quantity: "1/4", unit: "cup(s)" },
       { name: "tortillas", quantity: "6", unit: "" },
       { name: "red onion", quantity: "1", unit: "" },
       { name: "lime", quantity: "1", unit: "" },
-      { name: "fresh cilantro", quantity: "1/4", unit: "cup" },
-      { name: "olive oil", quantity: "2", unit: "tbsp" },
+      { name: "fresh cilantro", quantity: "1/4", unit: "cup(s)" },
+      { name: "olive oil", quantity: "2", unit: "tablespoon(s)" },
       { name: "salt", quantity: "to taste", unit: "" },
       { name: "black pepper", quantity: "to taste", unit: "" }
     ],
     time: {
-      prep: [20, "minutes"],
-      cook: [15, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930387/xqraombcrfwikep1cajf.jpg",
     instructions: [
       { id: "1", step: "Marinate chicken breasts with half of the chili sauce, juice of half a lime, salt, and pepper. Let sit for at least 15 minutes." },
       { id: "2", step: "Peel and dice the mango, and chop the red onion and cilantro." },
-      { id: "3", step: "In a skillet, heat 1 tablespoon of olive oil over medium heat. Add the marinated chicken and cook until done, about 6-8 minutes per side depending on thickness. Remove and let rest for a few minutes before slicing." },
+      { id: "3", step: "In a skillet, heat 1 tablespoon(s) of olive oil over medium heat. Add the marinated chicken and cook until done, about 6-8 minutes per side depending on thickness. Remove and let rest for a few minutes before slicing." },
       { id: "4", step: "In the same skillet, add the remaining olive oil and sauté the red onion until translucent." },
       { id: "5", step: "Add the diced mango and remaining chili sauce to the skillet. Cook for about 2-3 minutes, stirring occasionally." },
       { id: "6", step: "Slice the cooked chicken into strips and add to the mango-chili mixture. Stir well to combine." },
@@ -220,23 +220,23 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Blueberry and Mint Iced Tea",
     ingredients: [
-      { name: "water", quantity: "4", unit: "cups" },
+      { name: "water", quantity: "4", unit: "cup(s)" },
       { name: "black tea bags", quantity: "2", unit: "" },
-      { name: "blueberries", quantity: "1", unit: "cup" },
+      { name: "blueberries", quantity: "1", unit: "cup(s)" },
       { name: "fresh mint leaves", quantity: "10-12", unit: "" },
-      { name: "sugar", quantity: "1/2", unit: "cup" },
+      { name: "sugar", quantity: "1/2", unit: "cup(s)" },
       { name: "ice cubes", quantity: "as needed", unit: "" },
       { name: "lemon slices", quantity: "for garnish", unit: "" },
       { name: "mint sprigs", quantity: "for garnish", unit: "" }
     ],
     time: {
-      prep: [5, "minutes"],
-      cook: [15, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930707/xg4yjy83j82lfaatzrzj.jpg",
     instructions: [
-      { id: "1", step: "In a saucepan, bring 4 cups of water to a boil. Once boiling, remove from heat and add the tea bags. Allow to steep for 5 minutes." },
-      { id: "2", step: "While the tea is steeping, prepare a simple syrup by combining the sugar and 1/2 cup of water in a small saucepan. Stir over low heat until the sugar is fully dissolved." },
+      { id: "1", step: "In a saucepan, bring 4 cup(s) of water to a boil. Once boiling, remove from heat and add the tea bags. Allow to steep for 5 minutes." },
+      { id: "2", step: "While the tea is steeping, prepare a simple syrup by combining the sugar and 1/2 cup(s) of water in a small saucepan. Stir over low heat until the sugar is fully dissolved." },
       { id: "3", step: "Add the blueberries and mint leaves to the simple syrup. Simmer for an additional 5 minutes, muddling the blueberries and mint with a spoon to release their flavors." },
       { id: "4", step: "Remove the tea bags from the steeped tea and discard. Combine the tea with the blueberry-mint simple syrup in a large pitcher." },
       { id: "5", step: "Allow the mixture to cool to room temperature before transferring to the refrigerator to chill." },
@@ -247,25 +247,25 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Vegetarian Sushi Bowl",
     ingredients: [
-      { name: "sushi rice", quantity: "1", unit: "cup" },
-      { name: "water", quantity: "1 1/2", unit: "cups" },
-      { name: "rice vinegar", quantity: "2", unit: "tbsp" },
-      { name: "sugar", quantity: "1", unit: "tbsp" },
+      { name: "sushi rice", quantity: "1", unit: "cup(s)" },
+      { name: "water", quantity: "1 1/2", unit: "cup(s)" },
+      { name: "rice vinegar", quantity: "2", unit: "tablespoon(s)" },
+      { name: "sugar", quantity: "1", unit: "tablespoon(s)" },
       { name: "avocado", quantity: "1", unit: "" },
       { name: "cucumber", quantity: "1", unit: "" },
       { name: "carrot", quantity: "1", unit: "" },
-      { name: "edamame", quantity: "1", unit: "cup" },
+      { name: "edamame", quantity: "1", unit: "cup(s)" },
       { name: "nori sheets", quantity: "2", unit: "" },
       { name: "soy sauce", quantity: "for serving", unit: "" },
       { name: "sesame seeds", quantity: "for garnish", unit: "" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [20, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930867/yfy9mb17xeqmrouf5w7b.jpg",
     instructions: [
-      { id: "1", step: "Rinse the sushi rice until the water runs clear. Combine with 1 1/2 cups of water in a saucepan. Bring to a boil, then reduce heat to low, cover, and simmer for 20 minutes." },
+      { id: "1", step: "Rinse the sushi rice until the water runs clear. Combine with 1 1/2 cup(s) of water in a saucepan. Bring to a boil, then reduce heat to low, cover, and simmer for 20 minutes." },
       { id: "2", step: "In a small bowl, mix together the rice vinegar and sugar until the sugar dissolves. Stir this into the cooked rice and set aside to cool." },
       { id: "3", step: "Dice the avocado, thinly slice the cucumber and carrot, and prepare the edamame according to package instructions." },
       { id: "4", step: "Cut the nori sheets into thin strips." },
@@ -277,24 +277,24 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Pumpkin Spice Latte",
     ingredients: [
-      { name: "brewed coffee", quantity: "1", unit: "cup" },
-      { name: "milk", quantity: "1", unit: "cup" },
-      { name: "pumpkin puree", quantity: "2", unit: "tbsp" },
-      { name: "sugar", quantity: "2", unit: "tbsp" },
-      { name: "vanilla extract", quantity: "1", unit: "tsp" },
-      { name: "pumpkin spice", quantity: "1/2", unit: "tsp" },
+      { name: "brewed coffee", quantity: "1", unit: "cup(s)" },
+      { name: "milk", quantity: "1", unit: "cup(s)" },
+      { name: "pumpkin puree", quantity: "2", unit: "tablespoon(s)" },
+      { name: "sugar", quantity: "2", unit: "tablespoon(s)" },
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" },
+      { name: "pumpkin spice", quantity: "1/2", unit: "teaspoon(s)" },
       { name: "whipped cream", quantity: "for topping", unit: "" },
       { name: "cinnamon stick", quantity: "for garnish", unit: "" }
     ],
     time: {
-      prep: [5, "minutes"],
-      cook: [5, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693931123/fu3hcxxyg9yia1ry3dul.webp",
     instructions: [
       { id: "1", step: "In a saucepan, combine the milk, pumpkin puree, sugar, and pumpkin spice. Heat over medium heat, stirring constantly, until hot but not boiling." },
       { id: "2", step: "Remove the saucepan from heat and whisk in the vanilla extract." },
-      { id: "3", step: "Brew a cup of your favorite coffee." },
+      { id: "3", step: "Brew a cup(s) of your favorite coffee." },
       { id: "4", step: "Pour the hot coffee into a mug, followed by the pumpkin spice milk mixture. Stir to combine." },
       { id: "5", step: "Top with whipped cream and garnish with a cinnamon stick, if desired." }
     ]
@@ -303,26 +303,26 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Quinoa Stuffed Bell Peppers",
     ingredients: [
-      { name: "quinoa", quantity: "1", unit: "cup" },
-      { name: "water", quantity: "2", unit: "cups" },
+      { name: "quinoa", quantity: "1", unit: "cup(s)" },
+      { name: "water", quantity: "2", unit: "cup(s)" },
       { name: "bell peppers", quantity: "4", unit: "" },
-      { name: "black beans", quantity: "1", unit: "cup" },
-      { name: "corn kernels", quantity: "1", unit: "cup" },
+      { name: "black beans", quantity: "1", unit: "cup(s)" },
+      { name: "corn kernels", quantity: "1", unit: "cup(s)" },
       { name: "tomato", quantity: "1", unit: "" },
-      { name: "cheddar cheese", quantity: "1", unit: "cup" },
-      { name: "olive oil", quantity: "1", unit: "tbsp" },
+      { name: "cheddar cheese", quantity: "1", unit: "cup(s)" },
+      { name: "olive oil", quantity: "1", unit: "tablespoon(s)" },
       { name: "salt", quantity: "to taste", unit: "" },
       { name: "black pepper", quantity: "to taste", unit: "" },
-      { name: "garlic powder", quantity: "1/2", unit: "tsp" }
+      { name: "garlic powder", quantity: "1/2", unit: "teaspoon(s)" }
     ],
     time: {
-      prep: [20, "minutes"],
-      cook: [30, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932089/wariqgft13zuqzzfgdas.jpg",
     instructions: [
       { id: "1", step: "Preheat the oven to 375°F (190°C)." },
-      { id: "2", step: "In a saucepan, bring 2 cups of water to a boil. Add the quinoa and a pinch of salt. Reduce heat to low, cover, and cook for 15 minutes, or until quinoa is cooked and water is absorbed. Remove from heat and let sit for 5 minutes, then fluff with a fork." },
+      { id: "2", step: "In a saucepan, bring 2 cup(s) of water to a boil. Add the quinoa and a pinch of salt. Reduce heat to low, cover, and cook for 15 minutes, or until quinoa is cooked and water is absorbed. Remove from heat and let sit for 5 minutes, then fluff with a fork." },
       { id: "3", step: "Cut the tops off the bell peppers and remove the seeds and membranes." },
       { id: "4", step: "In a large bowl, mix together the cooked quinoa, black beans, corn, diced tomato, half of the cheddar cheese, olive oil, salt, black pepper, and garlic powder." },
       { id: "5", step: "Stuff the bell peppers with the quinoa mixture and place them in a baking dish." },
@@ -334,18 +334,18 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Lemon Garlic Roast Chicken",
     ingredients: [
-      { name: "whole chicken", quantity: "1", unit: "(about 4 lbs)" },
+      { name: "chicken", quantity: "4", unit: "pound(s)" },
       { name: "lemons", quantity: "2", unit: "" },
       { name: "garlic cloves", quantity: "6", unit: "" },
-      { name: "olive oil", quantity: "1/4", unit: "cup" },
+      { name: "olive oil", quantity: "1/4", unit: "cup(s)" },
       { name: "rosemary", quantity: "2", unit: "sprigs" },
       { name: "thyme", quantity: "2", unit: "sprigs" },
       { name: "salt", quantity: "to taste", unit: "" },
       { name: "black pepper", quantity: "to taste", unit: "" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [90, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932220/tilwa9kidxhmadfe4mfc.webp",
     instructions: [
@@ -363,22 +363,22 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Vegan Coconut Curry",
     ingredients: [
-      { name: "coconut oil", quantity: "2", unit: "tbsp" },
+      { name: "coconut oil", quantity: "2", unit: "tablespoon(s)" },
       { name: "onion", quantity: "1", unit: "" },
       { name: "garlic cloves", quantity: "3", unit: "" },
       { name: "ginger", quantity: "1", unit: "inch" },
-      { name: "curry powder", quantity: "2", unit: "tbsp" },
-      { name: "turmeric", quantity: "1", unit: "tsp" },
-      { name: "canned chickpeas", quantity: "1", unit: "cup" },
-      { name: "canned coconut milk", quantity: "1", unit: "can" },
-      { name: "vegetable broth", quantity: "2", unit: "cups" },
-      { name: "spinach", quantity: "2", unit: "cups" },
+      { name: "curry powder", quantity: "2", unit: "tablespoon(s)" },
+      { name: "turmeric", quantity: "1", unit: "teaspoon(s)" },
+      { name: "canned chickpeas", quantity: "1", unit: "cup(s)" },
+      { name: "canned coconut milk", quantity: "500", unit: "milliliter(s)" },
+      { name: "vegetable broth", quantity: "2", unit: "cup(s)" },
+      { name: "spinach", quantity: "2", unit: "cup(s)" },
       { name: "salt", quantity: "to taste", unit: "" },
       { name: "black pepper", quantity: "to taste", unit: "" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [30, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932317/qjfoadxs8d4viyhlv5kp.jpg",
     instructions: [
@@ -395,19 +395,19 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Blueberry Pancakes",
     ingredients: [
-      { name: "all-purpose flour", quantity: "1", unit: "cup" },
-      { name: "sugar", quantity: "2", unit: "tbsp" },
-      { name: "baking powder", quantity: "2", unit: "tsp" },
-      { name: "salt", quantity: "1/4", unit: "tsp" },
-      { name: "milk", quantity: "3/4", unit: "cup" },
+      { name: "all-purpose flour", quantity: "1", unit: "cup(s)" },
+      { name: "sugar", quantity: "2", unit: "tablespoon(s)" },
+      { name: "baking powder", quantity: "2", unit: "teaspoon(s)" },
+      { name: "salt", quantity: "1/4", unit: "teaspoon(s)" },
+      { name: "milk", quantity: "3/4", unit: "cup(s)" },
       { name: "egg", quantity: "1", unit: "" },
-      { name: "unsalted butter", quantity: "2", unit: "tbsp" },
-      { name: "blueberries", quantity: "1", unit: "cup" },
+      { name: "unsalted butter", quantity: "2", unit: "tablespoon(s)" },
+      { name: "blueberries", quantity: "1", unit: "cup(s)" },
       { name: "additional butter", quantity: "for greasing", unit: "" }
     ],
     time: {
-      prep: [10, "minutes"],
-      cook: [15, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932404/b7nkeefmq6eh4nokx2xj.jpg",
     instructions: [
@@ -415,7 +415,7 @@ const recipes = [
       { id: "2", step: "In another bowl, whisk together the milk, egg, and melted butter." },
       { id: "3", step: "Combine the wet and dry ingredients, stirring just until the batter comes together. Gently fold in the blueberries." },
       { id: "4", step: "Heat a non-stick skillet or griddle over medium heat and lightly grease with additional butter." },
-      { id: "5", step: "Pour 1/4 cup of batter onto the skillet for each pancake. Cook until bubbles form on the surface, then flip and cook until golden brown on the other side." },
+      { id: "5", step: "Pour 1/4 cup(s) of batter onto the skillet for each pancake. Cook until bubbles form on the surface, then flip and cook until golden brown on the other side." },
       { id: "6", step: "Serve immediately, topped with additional blueberries, butter, and your choice of syrup." }
     ]
   },
@@ -423,25 +423,25 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Homemade Sushi Rolls",
     ingredients: [
-      { name: "sushi rice", quantity: "2", unit: "cups" },
-      { name: "water", quantity: "2 1/2", unit: "cups" },
-      { name: "rice vinegar", quantity: "1/4", unit: "cup" },
-      { name: "sugar", quantity: "1", unit: "tbsp" },
-      { name: "salt", quantity: "1/2", unit: "tsp" },
+      { name: "sushi rice", quantity: "2", unit: "cup(s)" },
+      { name: "water", quantity: "2 1/2", unit: "cup(s)" },
+      { name: "rice vinegar", quantity: "1/4", unit: "cup(s)" },
+      { name: "sugar", quantity: "1", unit: "tablespoon(s)" },
+      { name: "salt", quantity: "1/2", unit: "teaspoon(s)" },
       { name: "nori sheets", quantity: "4", unit: "" },
       { name: "cucumber", quantity: "1", unit: "" },
       { name: "avocado", quantity: "1", unit: "" },
-      { name: "smoked salmon", quantity: "1/2", unit: "lb" },
+      { name: "smoked salmon", quantity: "1/2", unit: "pound(s)" },
       { name: "soy sauce", quantity: "for dipping", unit: "" },
       { name: "wasabi", quantity: "for dipping", unit: "" }
     ],
     time: {
-      prep: [30, "minutes"],
-      cook: [20, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932501/ni0buqrcmpb3mnqmtzgf.jpg",
     instructions: [
-      { id: "1", step: "Rinse the sushi rice under cold water until the water runs clear. Combine with 2 1/2 cups water and bring to a boil. Reduce heat to low, cover, and cook for 20 minutes. Let it sit, covered, for an additional 10 minutes." },
+      { id: "1", step: "Rinse the sushi rice under cold water until the water runs clear. Combine with 2 1/2 cup(s) water and bring to a boil. Reduce heat to low, cover, and cook for 20 minutes. Let it sit, covered, for an additional 10 minutes." },
       { id: "2", step: "Combine rice vinegar, sugar, and salt in a small saucepan. Heat until the sugar dissolves. Fold this mixture into the cooked rice until well combined. Let the rice cool to room temperature." },
       { id: "3", step: "Cut the cucumber, avocado, and smoked salmon into thin strips." },
       { id: "4", step: "Place a nori sheet, shiny side down, on a bamboo sushi rolling mat. Wet your fingers to prevent the rice from sticking and evenly spread a layer of rice over the nori, leaving a small margin at the top." },
@@ -455,17 +455,17 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Vegan Chocolate Avocado Smoothie",
     ingredients: [
-      { name: "avocado", quantity: "1", unit: "medium-sized" },
+      { name: "avocado", quantity: "1", unit: "" },
       { name: "banana", quantity: "1", unit: "" },
-      { name: "unsweetened cocoa powder", quantity: "2", unit: "tbsp" },
-      { name: "almond milk", quantity: "1", unit: "cup" },
-      { name: "maple syrup", quantity: "2", unit: "tbsp" },
-      { name: "vanilla extract", quantity: "1", unit: "tsp" },
-      { name: "ice cubes", quantity: "1", unit: "cup" }
+      { name: "unsweetened cocoa powder", quantity: "2", unit: "tablespoon(s)" },
+      { name: "almond milk", quantity: "1", unit: "cup(s)" },
+      { name: "maple syrup", quantity: "2", unit: "tablespoon(s)" },
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" },
+      { name: "ice cubes", quantity: "1", unit: "cup(s)" }
     ],
     time: {
-      prep: [5, "minutes"],
-      cook: [0, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932617/oqkqhaicmy2g4irawyyg.jpg",
     instructions: [
@@ -481,18 +481,18 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Zucchini Noodles with Pesto",
     ingredients: [
-      { name: "zucchinis", quantity: "3", unit: "medium-sized" },
-      { name: "basil leaves", quantity: "2", unit: "cups" },
-      { name: "pine nuts", quantity: "1/4", unit: "cup" },
+      { name: "zucchinis", quantity: "3", unit: "" },
+      { name: "basil leaves", quantity: "2", unit: "cup(s)" },
+      { name: "pine nuts", quantity: "1/4", unit: "cup(s)" },
       { name: "garlic cloves", quantity: "2", unit: "" },
-      { name: "Parmesan cheese", quantity: "1/2", unit: "cup" },
-      { name: "olive oil", quantity: "1/2", unit: "cup" },
+      { name: "Parmesan cheese", quantity: "1/2", unit: "cup(s)" },
+      { name: "olive oil", quantity: "1/2", unit: "cup(s)" },
       { name: "salt", quantity: "to taste", unit: "" },
       { name: "black pepper", quantity: "to taste", unit: "" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [5, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932702/y0marsyxi0mvusuzja21.jpg",
     instructions: [
@@ -508,22 +508,22 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Vegan Lentil Soup",
     ingredients: [
-      { name: "olive oil", quantity: "2", unit: "tbsp" },
-      { name: "onion", quantity: "1", unit: "medium" },
+      { name: "olive oil", quantity: "2", unit: "tablespoon(s)" },
+      { name: "onion", quantity: "1", unit: "" },
       { name: "garlic cloves", quantity: "3", unit: "" },
       { name: "carrots", quantity: "2", unit: "" },
       { name: "celery stalks", quantity: "2", unit: "" },
-      { name: "green lentils", quantity: "1", unit: "cup" },
-      { name: "vegetable broth", quantity: "6", unit: "cups" },
-      { name: "cumin", quantity: "1", unit: "tsp" },
-      { name: "coriander", quantity: "1", unit: "tsp" },
+      { name: "green lentils", quantity: "1", unit: "cup(s)" },
+      { name: "vegetable broth", quantity: "6", unit: "cup(s)" },
+      { name: "cumin", quantity: "1", unit: "teaspoon(s)(s)" },
+      { name: "coriander", quantity: "1", unit: "teaspoon(s)(s)" },
       { name: "salt", quantity: "to taste", unit: "" },
-      { name: "black pepper", quantity: "to taste", unit: "" },
-      { name: "spinach leaves", quantity: "2", unit: "cups" }
+      { name: "black pepper", quantity: "2", unit: "gram(s)" },
+      { name: "spinach leaves", quantity: "2", unit: "cup(s)" }
     ],
     time: {
-      prep: [10, "minutes"],
-      cook: [40, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932879/holw872kf2vfrefpqwes.jpg",
     instructions: [
@@ -541,17 +541,17 @@ const recipes = [
     ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
     title: "Gluten-Free Almond Cookies",
     ingredients: [
-      { name: "almond flour", quantity: "2", unit: "cups" },
-      { name: "baking powder", quantity: "1/2", unit: "tsp" },
-      { name: "salt", quantity: "1/4", unit: "tsp" },
-      { name: "coconut oil", quantity: "1/3", unit: "cup" },
-      { name: "maple syrup", quantity: "1/3", unit: "cup" },
-      { name: "vanilla extract", quantity: "1", unit: "tsp" },
-      { name: "slivered almonds", quantity: "1/4", unit: "cup" }
+      { name: "almond flour", quantity: "2", unit: "cup(s)" },
+      { name: "baking powder", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "salt", quantity: "1/4", unit: "teaspoon(s)" },
+      { name: "coconut oil", quantity: "1/3", unit: "cup(s)" },
+      { name: "maple syrup", quantity: "1/3", unit: "cup(s)" },
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" },
+      { name: "slivered almonds", quantity: "1/4", unit: "cup(s)" }
     ],
     time: {
-      prep: [10, "minutes"],
-      cook: [12, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932998/ciflrn3svw1e1m8pr21r.jpg",
     instructions: [
@@ -570,16 +570,16 @@ const recipes = [
     title: "Spicy Mango Salsa",
     ingredients: [
       { name: "ripe mango", quantity: "2", unit: "" },
-      { name: "red onion", quantity: "1", unit: "small" },
+      { name: "red onion", quantity: "1", unit: "" },
       { name: "jalapeño", quantity: "1", unit: "" },
-      { name: "cilantro", quantity: "1/4", unit: "cup" },
+      { name: "cilantro", quantity: "1/4", unit: "cup(s)" },
       { name: "lime", quantity: "1", unit: "" },
-      { name: "salt", quantity: "to taste", unit: "" },
+      { name: "salt", quantity: "3", unit: "grams" },
       { name: "black pepper", quantity: "to taste", unit: "" }
     ],
     time: {
-      prep: [15, "minutes"],
-      cook: [0, "minutes"]
+      prep: ["0", "15"], //hours, minutes
+      cook: ["0", "15"]
     },
     imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693933116/oatzexydbrrqmtkf2o53.jpg",
     instructions: [
@@ -592,30 +592,7 @@ const recipes = [
       { id: "7", step: "Season with salt and black pepper to taste." },
       { id: "8", step: "Mix well and serve immediately, or refrigerate for up to 24 hours to let the flavors meld." }
     ]
-  }
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  
-  
-
-  
-  
+  } 
 ];
 
 

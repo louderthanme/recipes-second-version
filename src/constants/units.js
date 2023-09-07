@@ -1,13 +1,13 @@
 export const volumeUnits = [
-    'teaspoon', 
-    'tablespoon', 
-    'fluid ounce', 
-    'cup', 
-    'pint', 
-    'quart', 
-    'gallon', 
-    'milliliter', 
-    'liter'
+    'teaspoon(s)', 
+    'tablespoon(s)', 
+    'fluid ounce(s)', 
+    'cup(s)', 
+    'pint(s)', 
+    'quart(s)', 
+    'gallon(s)', 
+    'milliliter(s)', 
+    'liter(s)'
   ];
   
   export const weightUnits = [

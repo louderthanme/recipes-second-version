@@ -82,8 +82,9 @@ const RecipeEdit = () => {
   };
 
   const onDelete = async () => {
+    console.log("Received in onDelete:", recipe);
     try {
-      await deleteRecipe(recipe.id);
+      await deleteRecipe(recipe);
       showSnackbar('Recipe deleted successfully!', 'success');
       navigate('/');
     } catch (error) {

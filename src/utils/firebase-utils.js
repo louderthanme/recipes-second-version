@@ -152,6 +152,7 @@ export const updateRecipeInFirestore = async (id, recipeData) => {
 
 
 export const deleteRecipeFromFirestore = async (recipe) => {
+  console.log(recipe.id)
   try {
     const recipeRef = doc(db, 'recipes', recipe.id);
     await deleteDoc(recipeRef);
