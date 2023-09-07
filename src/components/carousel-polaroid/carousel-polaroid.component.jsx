@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-const Polaroid = ({ image, title, onClick }) => (
+const CarouselPolaroid = ({ image, title, onClick }) => (
     <Box 
       sx={{ 
         position: 'relative',
@@ -22,4 +22,4 @@ const Polaroid = ({ image, title, onClick }) => (
   );
   
 
-export default Polaroid;
+export default CarouselPolaroid;

@@ -3,7 +3,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 import { Paper, Box } from '@mui/material';
-import Polaroid from '../recipe-polaroid/recipe-polaroid.component';
+import CarouselPolaroid from '../carousel-polaroid/carousel-polaroid.component';
 import { transformImage } from '../../utils/utils';
 
 const Carousel = ({recipes}) => {
@@ -34,8 +34,8 @@ const Carousel = ({recipes}) => {
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
-            <Polaroid
-              image={transformImage(recipe.imageUrl, 300)}
+            <CarouselPolaroid
+              image={transformImage(recipe.imageUrl, 300, 400)}
               title={recipe.title}
               onClick={() => goToRecipe(recipe.id)}
             />
