@@ -3,7 +3,11 @@ import { UserContext } from "../../contexts/user.context";
 import { RecipesContext } from "../../contexts/recipe.context";	
 import { Paper, Box} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import {StyledDivider} from "../../utils/styledComponents"
+
+import UserProfileInformation from "../../components/User/user-profile-information/user-profile-information.component";
 import UserRecipesDisplay from "../../components/User/user-recipes-display/user-recipes-display.component";
+import UserProfileControls from "../../components/User/user-profile-controls/user-profile-controls.component";
 
 const UserProfile = () => {
   const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes } = useContext(RecipesContext); // Use userRecipes
@@ -44,10 +48,10 @@ const UserProfile = () => {
 
   return (
     <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white", margin:'20px'}}>
-      <Box p={2}>
-        <h1>{user.displayName}</h1>
-        <h2>{user.email}</h2>
-      </Box>
+      <UserProfileInformation user={user} />
+      <StyledDivider />
+       <UserProfileControls />
+      <StyledDivider />
       <UserRecipesDisplay
         userRecipes={userRecipes}
         onDeleteRecipe={handleDeleteRecipe} 

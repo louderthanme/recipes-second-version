@@ -1,24 +1,10 @@
 import React from "react";
-import { Box, Grid, FormControlLabel, Switch } from "@mui/material";
-import { StyledDivider } from "../../../utils/styledComponents";
+import { Box, Grid } from "@mui/material";
 import UserProfilePolaroid from "../user-profile-polaroid/user-profile-polaroid.component";
 
 const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEditRecipe }) => {
   return (
     <>
-      <StyledDivider />
-      <Box 
-      px={2}
-      sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}
-      >
-        <h2>My Recipes</h2>
-        <FormControlLabel control={<Switch color="secondary" />} label="Manage" />
-      </Box>
-      <StyledDivider />
       <Box p={3}>
         <Grid container spacing={3}>
           {userRecipes.map((recipe, index) => (
