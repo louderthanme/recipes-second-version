@@ -8,7 +8,7 @@ const UserProfileInformation = ({ user }) => {
     navigate('/recipe/upload');
   }
 
-  const placeholderImage = "/path/to/placeholder-image.jpg"; // replace this with the actual path
+  const placeholderImage = "http://res.cloudinary.com/recipeb00k/image/upload/v1694386289/tqqagkq9y73ejzhglo8a.png"  // replace this with the actual path
 
   return (
     <Box>

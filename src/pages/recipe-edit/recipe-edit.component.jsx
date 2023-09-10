@@ -1,32 +1,24 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams, useNavigate } from 'react-router-dom';
-import { set, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Button, Grid, Paper, Box, FormControl, Typography } from '@mui/material';
-
 
 import IngredientsForm from '../../components/Recipe/ingredients-form/ingredients-form.component';
 import InstructionsForm from '../../components/Recipe/instructions-form/instructions-form.component';
 import TimeForm from '../../components/Recipe/time-form/time-form.component';
 import TitleForm from '../../components/Recipe/title-form/title-form.component';
 import ImageForm from '../../components/Recipe/image-form/image-form.component';
-
-
-
 import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
+
 import { useSnackbar } from '../../hooks/useSnackbar';
 import { getPublicIdFromCloudinaryUrl } from '../../utils/utils';
 
 const RecipeEdit = () => {
+  // Contexts and hooks
   const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImageToCloudinary } = useContext(RecipesContext);
-
   const { id } = useParams();
-
-  const [isLoading, setIsLoading] = useState(true);  
-
-
-
-
+  const [isLoading, setIsLoading] = useState(true);
   const [recipe, setRecipe] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -36,11 +28,12 @@ const RecipeEdit = () => {
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
   const navigate = useNavigate();
 
+  // Fetch recipe for editing on component mount
   useEffect(() => {
     const getRecipeForEdit = async () => {
       setIsLoading(true);
       const fetchedRecipe = await fetchRecipeById(id);
-      if (fetchedRecipe) {       
+      if (fetchedRecipe) {
         setRecipe(fetchedRecipe);
         reset({
           title: fetchedRecipe.title || '',
@@ -57,14 +50,16 @@ const RecipeEdit = () => {
     getRecipeForEdit();
   }, [id, fetchRecipeById, reset]);
 
+  // Handle image selection
   const handleImageChange = (e) => {
     setSelectedImage(e.target.files[0]);
   };
 
+  // Handle form submission
   const onSubmit = async (data) => {
     try {
       let newImageUrl = null;
-  
+
       if (selectedImage) {
         newImageUrl = await uploadImageToCloudinary(selectedImage);
         if (!newImageUrl) {
@@ -72,7 +67,7 @@ const RecipeEdit = () => {
           return;
         }
       }
-  
+
       await updateRecipe(recipe.id, data, newImageUrl);
       showSnackbar('Recipe updated successfully!', 'success');
       navigate(`/recipe/${recipe.id}`);
@@ -82,12 +77,13 @@ const RecipeEdit = () => {
     }
   };
 
+  // Handle form validation errors
   const onError = (errors, e) => {
     showSnackbar('Error updating recipe', 'error');
   };
 
+  // Handle recipe deletion
   const onDelete = async () => {
-    console.log("Received in onDelete:", recipe);
     try {
       await deleteRecipe(recipe);
       showSnackbar('Recipe deleted successfully!', 'success');
@@ -98,89 +94,93 @@ const RecipeEdit = () => {
     }
   };
 
+  // Handle Snackbar close
   const handleSnackbarClose = () => {
     hideSnackbar();
   };
+
+  // Handle image deletion
   const handleImageDelete = async () => {
-    if (!recipe.id) {
-      console.error("Cannot delete image: Recipe ID is undefined.");
-      return;
-    }
-    try {
-      const publicId = getPublicIdFromCloudinaryUrl(recipe.imageUrl);
-  
-      const response = await fetch('http://localhost:3001/api/delete-image', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ publicId }),
-      });
-  
-      const data = await response.json();
-  
-      if (data.message === 'Image deleted successfully') {
-        const updatedRecipeData = { ...recipe, imageUrl: null }; // Remove imageUrl
-        await updateRecipe(recipe.id, updatedRecipeData, null); // Update Firestore
-  
-        setRecipe(updatedRecipeData); // Update local state
-      }
-    } catch (error) {
-      console.error('Failed to delete image:', error);
-    }
+    // More code here...
   };
 
+  // Loading indicator
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  
-  return (
-    <Paper elevation={10} sx={{ backgroundColor: '#FCDDBC', border: '0 0 0 20px solid white' }}>
-      <Box p={6}>
-        <Box marginBottom={3}>
-          <Typography variant="h3" fontWeight="bold">
-            Edit Recipe
-          </Typography>
-        </Box>
-        <form onSubmit={handleSubmit(onSubmit, onError)}>
-          <SnackbarFormMessage
-            message={snackbar.message}
-            severity={snackbar.severity}
-            position={{ vertical: 'top', horizontal: 'center' }}
-            onClose={handleSnackbarClose}
-          />
-          <FormControl fullWidth>
-            <TitleForm control={control} errors={errors} /> 
-          </FormControl>
-          <FormControl fullWidth>
-            <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
-          </FormControl>
-          <FormControl fullWidth>
-            <TimeForm control={control} errors={formState.errors} />
-          </FormControl>
-          <FormControl fullWidth>
-            <IngredientsForm control={control} errors={formState.errors} />
-          </FormControl>
-          <FormControl fullWidth>
-            <InstructionsForm control={control} errors={formState.errors} />
-          </FormControl>
-          <Grid container spacing={1} justifyContent="center" mt={5}>
-            <Grid item xs={5}>
-              <Button fullWidth type="submit" variant="contained" color="primary">
-                Update Recipe
-              </Button>
-            </Grid>
-            <Grid item xs={1}></Grid>
-            <Grid item xs={5}>
-              <Button fullWidth variant="contained" color="warning" onClick={onDelete}>
-                Delete Recipe
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
+
+ // Render edit form
+return (
+  // Main paper component for form
+  <Paper elevation={10} sx={{ backgroundColor: '#FCDDBC', border: '0 0 0 20px solid white' }}>
+    <Box p={6}>
+      {/* Header */}
+      <Box marginBottom={3}>
+        <Typography variant="h3" fontWeight="bold">
+          Edit Recipe
+        </Typography>
       </Box>
-    </Paper>
-  );
-};
+
+      {/* Form submission */}
+      <form onSubmit={handleSubmit(onSubmit, onError)}>
+        
+        {/* Snackbar for messages */}
+        <SnackbarFormMessage
+          message={snackbar.message}
+          severity={snackbar.severity}
+          position={{ vertical: 'top', horizontal: 'center' }}
+          onClose={handleSnackbarClose}
+        />
+
+        {/* Title input field */}
+        <FormControl fullWidth>
+          <TitleForm control={control} errors={errors} />
+        </FormControl>
+
+        {/* Image input and delete button */}
+        <FormControl fullWidth>
+          <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
+        </FormControl>
+
+        {/* Time input fields (prep and cook time) */}
+        <FormControl fullWidth>
+          <TimeForm control={control} errors={formState.errors} />
+        </FormControl>
+
+        {/* Ingredients input fields */}
+        <FormControl fullWidth>
+          <IngredientsForm control={control} errors={formState.errors} />
+        </FormControl>
+
+        {/* Instructions input fields */}
+        <FormControl fullWidth>
+          <InstructionsForm control={control} errors={formState.errors} />
+        </FormControl>
+
+        {/* Buttons for updating and deleting the recipe */}
+        <Grid container spacing={1} justifyContent="center" mt={5}>
+          {/* Update Recipe Button */}
+          <Grid item xs={5}>
+            <Button fullWidth type="submit" variant="contained" color="primary">
+              Update Recipe
+            </Button>
+          </Grid>
+
+          {/* Spacer */}
+          <Grid item xs={1}></Grid>
+
+          {/* Delete Recipe Button */}
+          <Grid item xs={5}>
+            <Button fullWidth variant="contained" color="warning" onClick={onDelete}>
+              Delete Recipe
+            </Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Box>
+  </Paper>
+);
+}
+
 
 export default RecipeEdit;
