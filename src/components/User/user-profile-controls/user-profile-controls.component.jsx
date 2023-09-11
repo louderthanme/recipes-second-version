@@ -3,7 +3,7 @@ import { Box, FormControlLabel, Switch } from "@mui/material";
 const UserProfileControls = ()=>{
     return (
         <Box 
-        px={2}
+        px={4}
         sx={{
         display: 'flex',
         justifyContent: 'space-between',
