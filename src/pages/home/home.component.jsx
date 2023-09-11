@@ -9,11 +9,11 @@ const Home = () => {
   return (
     <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
       <Grid item xs={11} sm={10} md={8}>
-      <Paper elevation={3} style={{ height: '100vh', backgroundColor: '#db9d47', color: 'white', borderRadius: '20px' }}>
-          <Typography variant="h2" gutterBottom ml={10} mb={6} mt={4} pt={4} sx={{ color: 'white' }}> Featured Recipes</Typography>
+      <Paper elevation={6} style={{ height: '100vh', backgroundColor: '#FCDDBC', color: 'white', borderRadius: '20px' }}>
+          <Typography variant="h2" gutterBottom ml={9} mb={6} mt={4} pt={4} sx={{ color: '#517664' }}> Featured Recipes</Typography>
           <Carousel recipes={recipes} />
-          <Typography variant="h2" gutterBottom ml={10} mb={6} mt={4} pt={4} sx={{ color: 'white' }}> Mexican Recipes</Typography>
-          <Carousel recipes={recipes} />
+          <Typography variant="h2" gutterBottom ml={9} mb={6} mt={4} pt={4} sx={{ color: '#a17c6b' }}> Mexican Recipes</Typography>
+          <Carousel recipes={recipes} />  
         </Paper>
       </Grid>
     </Grid>

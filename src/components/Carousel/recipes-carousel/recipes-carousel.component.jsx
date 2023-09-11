@@ -30,7 +30,7 @@ const Carousel = ({recipes}) => {
   }
 
   return (
-    <Paper elevation={3} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: '#FCDDBC'}}>
+    <Paper elevation={4} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: '#66101F'}}>
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
