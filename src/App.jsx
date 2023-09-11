@@ -12,63 +12,24 @@ import { useContext } from 'react';
 import { UserContext } from './contexts/user.context';
 
 const App = () => {
-  const { user } = useContext(UserContext);   
+  const { user } = useContext(UserContext);
 
   return (
     <Router>
       <Navigation />
-      <Box style={{ paddingTop: '60px' }}> {/* Padding instead of margin */}
-        <Grid container>
+      <Box style={{ paddingTop: '60px' }}>
+        <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={false} sm={1} md={1} />
           <Grid item xs={12} sm={10} md={10}>
-            <Grid container>
+            <Grid container justifyContent="center" alignItems="center">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/recipe/:id" element={
-                  <Grid container justifyContent="center">
-                    <Grid item xs={12} sm={10} md={9}>
-                      <RecipeShowcase />
-                    </Grid>
-                  </Grid>
-                } />
-                <Route path="/recipe/upload" element={user ?
-                  <Grid container justifyContent="center">
-                    <Grid item xs={12} sm={7}>
-                      <RecipeUpload />
-                    </Grid>
-                  </Grid>
-                  : <Navigate to="/auth" />
-                } />
-                <Route path="/recipe/:id/edit" element={user ?
-                  <Grid container justifyContent="center">
-                    <Grid item xs={12} sm={7}>
-                      <RecipeEdit />
-                    </Grid>
-                  </Grid>
-                  : <Navigate to="/auth" />
-                } />
-                <Route path="/user/profile" element={user ?
-                  <Grid container justifyContent="center">
-                    <Grid item xs={12} sm={7}>
-                      <UserProfile />
-                    </Grid>
-                  </Grid>
-                  : <Navigate to="/auth" />
-                } />
-                <Route path="/auth" element={
-                  <Grid container justifyContent="center">
-                    <Grid item xs={12} sm={3}>
-                      <AuthPage />
-                    </Grid>
-                  </Grid>
-                } />
-                <Route path="/imageUploadTest" element={
-                  <Grid container justifyContent="center">
-                    <Grid item xs={12} sm={3}>
-                      <ImageUploadTest />
-                    </Grid>
-                  </Grid>
-                } />
+                <Route path="/recipe/:id" element={<RecipeShowcase />} />
+                <Route path="/recipe/upload" element={user ? <RecipeUpload /> : <Navigate to="/auth" />} />
+                <Route path="/recipe/:id/edit" element={user ? <RecipeEdit /> : <Navigate to="/auth" />} />
+                <Route path="/user/profile" element={user ? <UserProfile /> : <Navigate to="/auth" />} />
+                <Route path="/auth" element={<AuthPage />} />
+                <Route path="/imageUploadTest" element={<ImageUploadTest />} />
               </Routes>
             </Grid>
           </Grid>
