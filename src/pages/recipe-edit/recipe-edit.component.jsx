@@ -9,7 +9,8 @@ import InstructionsForm from '../../components/Recipe/instructions-form/instruct
 import TimeForm from '../../components/Recipe/time-form/time-form.component';
 import TitleForm from '../../components/Recipe/title-form/title-form.component';
 import ImageForm from '../../components/Recipe/image-form/image-form.component';
-import SnackbarFormMessage from '../../components/snackbar-form-message/snackbar-form-message.component';
+import SnackbarFormMessage from '../../components/ui/snackbar-form-message/snackbar-form-message.component';
+import RecipeEditLoading from '../../components/ui/loading-screens/recipe-edit-loading.component';
 
 import { useSnackbar } from '../../hooks/useSnackbar';
 import { getPublicIdFromCloudinaryUrl } from '../../utils/utils';
@@ -106,7 +107,7 @@ const RecipeEdit = () => {
 
   // Loading indicator
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <RecipeEditLoading />;
   }
 
  // Render edit form

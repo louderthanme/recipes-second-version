@@ -15,7 +15,7 @@ import IngredientsForm from "../../components/Recipe/ingredients-form/ingredient
 import InstructionsForm from "../../components/Recipe/instructions-form/instructions-form.component";
 import TimeForm from "../../components/Recipe/time-form/time-form.component";
 import ImageForm from "../../components/Recipe/image-form/image-form.component";
-import SnackbarFormMessage from "../../components/snackbar-form-message/snackbar-form-message.component";
+import SnackbarFormMessage from "../../components/ui/snackbar-form-message/snackbar-form-message.component";
 
 // Custom Hooks and Utilities
 import { useNavigate } from "react-router-dom";
