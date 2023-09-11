@@ -14,16 +14,20 @@ const Navigation = () => {
   return (
     <Fragment>
       <div>
-        <Box
-          p={1}
-          display={"flex"}
-          justifyContent={"flex-end"}
-          alignItems={"center"}
-          sx={{
-            backgroundColor: "#517664",
-            boxShadow: "0px 0px 2px rgba(0,0,0,0.1)"
-          }}
-        >
+      <Box
+        p={1}
+        display={"flex"}
+        justifyContent={"flex-end"}
+        alignItems={"center"}
+        sx={{
+          backgroundColor: "#517664",
+          boxShadow: "0px 0px 2px rgba(0,0,0,0.1)",
+          position: 'fixed',  // this line fixes the navbar to the top
+          top: 0,             // this line positions the navbar at the top
+          width: '100%',      // this line makes the navbar span the full width
+          zIndex: 1           // this line ensures the navbar stays above other content
+        }}
+      >
           <Box mr={2}>
             <Typography variant="body1">
               <Link to="/">Home</Link>

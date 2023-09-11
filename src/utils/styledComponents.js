@@ -41,9 +41,8 @@ export const StyledDivider = styled(Divider)({
 
 export const DotMatrixBackground = styled('div')(({ theme }) => ({
   width: '100vw',
-  height: '100vh',
+  minHeight: '100vh',  // Set minimum height to 100vh
   backgroundColor: 'white',
   backgroundImage: 'radial-gradient(#e8e3f1 1px, transparent 2px)',
   backgroundSize: '30px 30px',
 }));
-
