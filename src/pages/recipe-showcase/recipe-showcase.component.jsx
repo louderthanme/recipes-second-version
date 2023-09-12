@@ -1,10 +1,16 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Paper, Box, Grid, Divider, Button, useTheme, useMediaQuery} from '@mui/material';
+
+
+import RecipeShowcaseLoading from '../../components/ui/loading-screens/recipe-showcase-loading.component';
+
 import InstructionsDisplay from '../../components/Recipe/instructions-display/instructions-display.component';
 import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/Recipe/image-box/image-box.component';
 import DetailsBox from '../../components/Recipe/details-box/details-box.component';
+
+
 import { UserContext } from '../../contexts/user.context';
 import { RecipesContext } from '../../contexts/recipe.context';
 
@@ -30,7 +36,7 @@ const RecipeShowcase = () => {
   }, [id, fetchRecipeById]);
 
   if (!recipe) {
-    return <div> loading </div>;
+    return <RecipeShowcaseLoading />;
   }
 
 

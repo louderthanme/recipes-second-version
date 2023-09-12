@@ -1,6 +1,7 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
+import CarouselLoading from '../../ui/loading-screens/carousel-loading.component';
 import { useNavigate } from "react-router-dom";
 import { Paper, Box } from '@mui/material';
 import CarouselPolaroid from '../carousel-polaroid/carousel-polaroid.component';
@@ -26,7 +27,7 @@ const Carousel = ({recipes}) => {
 
   
   if (!Array.isArray(recipes) || recipes.length === 0) {
-    return <div>No recipes available.</div>;
+    return  <CarouselLoading />;
   }
 
   return (
