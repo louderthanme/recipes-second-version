@@ -64,6 +64,15 @@ h1 {
   align-items: center;
 }
 
+.css-9mc7sf-MuiInputAdornment-root.MuiInputAdornment-positionStart.css-9mc7sf-MuiInputAdornment-root:not(.MuiInputAdornment-hiddenLabel) {
+  margin-top: 0 !important;
+}
+
+.css-9mc7sf-MuiInputAdornment-root {
+  height: auto !important;
+  max-height: none !important;
+}
+
 
 
 /* ==============================

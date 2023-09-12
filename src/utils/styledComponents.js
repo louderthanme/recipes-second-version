@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { TextField, Divider, Select, Toolbar } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
   "& .MuiFilledInput-root": {
@@ -48,4 +49,31 @@ export const DotMatrixBackground = styled('div')(({ theme }) => ({
   backgroundColor: 'white',
   backgroundImage: 'radial-gradient(#e8e3f1 1px, transparent 2px)',
   backgroundSize: '30px 30px',
+}));
+
+export const StyledSearchBar = styled(TextField)(({ theme }) => ({
+  "& .MuiFilledInput-root": {
+    background: "rgb(255, 255, 255)",
+    transition: "box-shadow 0.3s",
+    "&:hover": {
+      boxShadow: `0 0 8px ${theme.palette.primary.main}`,
+      backgroundColor: "rgb(255, 255, 255)"
+    },
+    '&.Mui-focused': {
+      backgroundColor: "rgb(255, 255, 255)"
+    },
+  },
+  '& .MuiFilledInput-input': {
+    paddingTop: '10px',
+    paddingBottom: '10px',
+  },
+  margin: theme.spacing(1, 0),
+  '& .MuiInputAdornment-root': {
+    height: 'auto !important',
+    maxHeight: 'none !important',
+    alignItems: 'center !important',
+  },
+  '& .MuiSvgIcon-root': {
+    verticalAlign: 'middle !important',
+  } 
 }));
