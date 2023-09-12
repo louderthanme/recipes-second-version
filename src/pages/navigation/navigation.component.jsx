@@ -1,61 +1,54 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import { Box, Typography} from "@mui/material";
+import { AppBar, Typography, Button, Box } from "@mui/material";
 import { UserContext } from "../../contexts/user.context";
 import { signOutUser } from "../../utils/firebase-utils";
-import { capitalizeFirstLetter } from "../../utils/utils";
+import { capitalize } from "../../utils/utils";
+import { StyledToolbar } from "../../utils/styledComponents";
+
 
 const Navigation = () => {
   const userCredential = useContext(UserContext);
   const { user } = userCredential;
   const location = useLocation();
 
-
   return (
     <Fragment>
-      <div>
-      <Box
-        p={1}
-        display={"flex"}
-        justifyContent={"flex-end"}
-        alignItems={"center"}
-        sx={{
-          backgroundColor: "#517664",
-          boxShadow: "0px 0px 2px rgba(0,0,0,0.1)",
-          position: 'fixed',  // this line fixes the navbar to the top
-          top: 0,             // this line positions the navbar at the top
-          width: '100%',      // this line makes the navbar span the full width
-          zIndex: 1           // this line ensures the navbar stays above other content
-        }}
-      >
-          <Box mr={2}>
-            <Typography variant="body1">
-              <Link to="/">Home</Link>
+      <AppBar position="fixed" sx={{ backgroundColor: "#517664" }}>
+        <StyledToolbar>
+          <Box sx={{ flexGrow: 1 }}>
+            <Typography 
+              variant="body1" 
+              sx={{ display:'inline-block', fontSize:'16px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}
+            >
+              <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>HOME</Link>
             </Typography>
           </Box>
-          <Box mr={2}>
-            <Typography variant="body1">
-              <Link to="/recipe/upload">Upload Recipe</Link>
-            </Typography>
-          </Box>
-          <Box mr={2}>
-            {user && user.displayName ? (
-              <Typography as="span" sx={{ color: "#db9d47" }}>
-                <Link to="/user/profile" sx={{textDecoration: 'none' }}>
-                {capitalizeFirstLetter(user.displayName)}, &nbsp;
-                </Link>
-                <Link as="span" onClick={signOutUser}>
-                  Sign Out
+          <Button sx={{ fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}>
+            <Link to="/recipe/upload" style={{ textDecoration: 'none', color: 'inherit' }}>Upload Recipe</Link>
+          </Button>
+          {user && user.displayName ? (
+            <Fragment>
+              <Typography 
+                variant="body1" 
+                sx={{ fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}
+              >
+                <Link to="/user/profile" style={{ textDecoration: 'none', color: 'inherit' }}>
+                  {capitalize(user.displayName)}
                 </Link>
               </Typography>
-            ) : (
-              <Typography variant="body1">
-                <Link to= "/auth" state={{background: location}}> Log In</Link>
-              </Typography>
-            )}
-          </Box>
-        </Box>
-      </div>
+              <Button sx={{ fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }} onClick={signOutUser}>
+                Sign Out
+              </Button>
+            </Fragment>
+          ) : (
+            <Button sx={{ fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}>
+              <Link to="/auth" state={{background: location}} style={{ textDecoration: 'none', color: 'inherit' }}>Log In</Link>
+            </Button>
+          )}
+        </StyledToolbar>
+      </AppBar>
+      <StyledToolbar />
       <Outlet />
     </Fragment>
   );

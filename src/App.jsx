@@ -20,7 +20,7 @@ const App = () => {
       <Box style={{ paddingTop: '60px' }}>
         <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={false} sm={1} md={1} />
-          <Grid item xs={12} sm={10} md={8}>
+          <Grid item xs={12} sm={10}>
             <Grid container justifyContent="center" alignItems="center">
               <Routes>
                 <Route path="/" element={<Home />} />

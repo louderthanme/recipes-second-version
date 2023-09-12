@@ -27,13 +27,6 @@ body {
   overflow-x: hidden; /* Hide horizontal scroll */
 }
 
-/* Global anchor styles */
-body a, a {
-  color: #ffffff !important;
-  text-decoration: none !important;
-} a:hover {
-  color: #FF784F !important;
-}
 
 
 /* ==============================

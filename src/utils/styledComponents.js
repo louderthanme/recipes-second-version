@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { TextField, Divider, Select } from "@mui/material";
+import { TextField, Divider, Select, Toolbar } from "@mui/material";
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
   "& .MuiFilledInput-root": {
@@ -38,6 +38,9 @@ export const StyledDivider = styled(Divider)({
   margin: '10px 0', // add some margin to make the divider more noticeable
 });
 
+export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  minHeight: '48px !important', // change this to adjust the height of the toolbar
+}));
 
 export const DotMatrixBackground = styled('div')(({ theme }) => ({
   width: '100vw',
