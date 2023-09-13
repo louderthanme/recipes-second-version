@@ -9,7 +9,6 @@ const UserProfileInformation = ({ user }) => {
   };
 
   const placeholderImage = "http://res.cloudinary.com/recipeb00k/image/upload/v1694386289/tqqagkq9y73ejzhglo8a.png";
-
   return (
     <Box>
       <Grid container alignItems="center">
@@ -17,22 +16,22 @@ const UserProfileInformation = ({ user }) => {
         <Grid item xs={12} md={9}>
           <Grid container alignItems="center">
             {/* Avatar */}
-            <Grid item xs={12} md={2} sx={{ textAlign: { xs: 'center', md: 'left' }}}>
-              <Box 
-                pt={3} 
-                pl={{ xs: 0, md: 4 }}
-                sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }}  // Added this line
+            <Grid item xs={12} md={1} sx={{ textAlign: { xs: 'center', md: 'left' }}}> 
+              <Box
+                pt={3}
+                pl={{ xs: 0, md:3, lg: 2 }}
+                sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }}
               >
-                <Avatar 
+                <Avatar
                   src={user.photoURL || placeholderImage}
                   alt="Profile Pic"
-                  sx={{ width: 100, height: 100, marginRight: { md: 2 }, border: '5px solid white' }}
+                  sx={{ width: 100, height: 100, border: '5px solid white' }} 
                 />
               </Box>
             </Grid>
             {/* User Info */}
-            <Grid item xs={12} md={10} sx={{ textAlign: { xs: 'center', md: 'left' }}}>
-              <Box pt={3} px={2}>
+            <Grid item xs={12} md={11} sx={{ textAlign: { xs: 'center', md: 'left' }}}>
+              <Box pt={3} px={{ xs: 2, sm:3, md:12, lg: 9, xl:5 }} > 
                 <Typography variant="h6" gutterBottom>
                   {user.displayName}
                 </Typography>
@@ -48,7 +47,7 @@ const UserProfileInformation = ({ user }) => {
         </Grid>
         {/* Upload Button */}
         <Grid item xs={12} md={3} sx={{ textAlign: { xs: 'center', md: 'right' }}}>
-          <Box 
+          <Box
             pt={3}
             pr={{ md: 4 }}
           >
@@ -60,6 +59,6 @@ const UserProfileInformation = ({ user }) => {
       </Grid>
     </Box>
   );
-};
-
-export default UserProfileInformation;
+  }
+  export default UserProfileInformation;
+  

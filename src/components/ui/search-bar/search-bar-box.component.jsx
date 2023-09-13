@@ -3,8 +3,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import { StyledSearchBar } from "../../../utils/styledComponents";
 
 const SearchBarBox = ({ placeholder, handleChange }) => (
-    <Box px={2} py={1}>
-        <Typography variant="h4" fontWeight='bold' mt={2} sx={{ color: 'black' }}> Welcome to Recipe Book</Typography>
+    <Box px={4} py={2}>
+        <Typography variant="h3" fontWeight='bold' mt={2} mb={1}  sx={{ color: 'black' }}> Welcome to Recipe Book</Typography>
         <StyledSearchBar
             variant="filled"
             fullWidth

@@ -56,7 +56,6 @@ export const StyledSearchBar = styled(TextField)(({ theme }) => ({
     background: "rgb(255, 255, 255)",
     transition: "box-shadow 0.3s",
     "&:hover": {
-      boxShadow: `0 0 8px ${theme.palette.primary.main}`,
       backgroundColor: "rgb(255, 255, 255)"
     },
     '&.Mui-focused': {
@@ -75,5 +74,16 @@ export const StyledSearchBar = styled(TextField)(({ theme }) => ({
   },
   '& .MuiSvgIcon-root': {
     verticalAlign: 'middle !important',
-  } 
+  },  
+  "& .MuiFilledInput-underline:before": { // default underline color
+    borderBottom: "1px solid #66101F",
+  },
+
+  "& .MuiFilledInput-underline:after": { // underline color when input is focused
+    borderBottom: "2px solid #66101F",
+  },
+
+  "& .MuiFilledInput-underline:hover:before": { // underline color when hovered
+    borderBottom: "2px solid #FF784F",
+  }
 }));
