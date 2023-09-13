@@ -109,23 +109,6 @@ const RecipesProvider = ({ children }) => {
       console.error('Error deleting recipe:', error);
     }
   };
-
-  const uploadImageToCloudinary = async (imageFile) => {
-    const formData = new FormData();
-    formData.append('image', imageFile);
-    try {
-      const response = await fetch('http://localhost:3001/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await response.json();
-      console.log("Received from server: ", data); // Debug log here
-      return data.imageUrl;
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      throw error;
-    }
-  };
   
   const uploadImagesToCloudinary = async (imageFiles) => {
     const formData = new FormData();
@@ -148,7 +131,7 @@ const RecipesProvider = ({ children }) => {
   
   
 
-  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImageToCloudinary, uploadImagesToCloudinary };
+  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImagesToCloudinary };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

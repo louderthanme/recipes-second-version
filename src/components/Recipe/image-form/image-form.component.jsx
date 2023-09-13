@@ -23,6 +23,12 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
     setPreviews(allPreviewURLs);
   };
 
+  const handlePreviewDelete = (idx) => {
+    const newPreviews = [...previews];
+    newPreviews.splice(idx, 1);
+    setPreviews(newPreviews);
+  };
+
   
 
   return (
@@ -37,7 +43,7 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
               <UploadPreviewImage key={idx} imageUrl={url} handleImageDelete={() => handleImageDelete(idx)} />
             ))}
             {previews.map((previewUrl, idx) => (
-              <UploadPreviewImage key={idx} imageUrl={previewUrl} handleImageDelete={() => { /* logic to remove preview */ }} />
+              <UploadPreviewImage key={idx} imageUrl={previewUrl} handleImageDelete={() => handlePreviewDelete(idx)} />
             ))}
           </Box>
         ) : null}

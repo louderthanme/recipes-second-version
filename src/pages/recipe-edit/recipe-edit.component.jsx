@@ -13,15 +13,14 @@ import SnackbarFormMessage from '../../components/ui/snackbar-form-message/snack
 import RecipeEditLoading from '../../components/ui/loading-screens/recipe-edit-loading.component';
 
 import { useSnackbar } from '../../hooks/useSnackbar';
-import { getPublicIdFromCloudinaryUrl } from '../../utils/utils';
 
 const RecipeEdit = () => {
   // Contexts and hooks
-  const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImageToCloudinary } = useContext(RecipesContext);
+  const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImagesToCloudinary } = useContext(RecipesContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [recipe, setRecipe] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImages, setSelectedImages] = useState([]);
 
   const { handleSubmit, control, formState, reset } = useForm();
   const { errors } = formState;
@@ -53,30 +52,47 @@ const RecipeEdit = () => {
 
   // Handle image selection
   const handleImageChange = (e) => {
-    setSelectedImage(e.target.files[0]);
+    setSelectedImages([...selectedImages, ...Array.from(e.target.files)]);
   };
+  
 
-  // Handle form submission
-  const onSubmit = async (data) => {
-    try {
-      let newImageUrl = null;
+// Handle form submission
+const onSubmit = async (data) => {
+  try {
+    // Handle image upload
+    let newImageUrls = recipe.imageUrls ? [...recipe.imageUrls] : [];
 
-      if (selectedImage) {
-        newImageUrl = await uploadImageToCloudinary(selectedImage);
-        if (!newImageUrl) {
-          showSnackbar('Image upload failed. Please try again.', 'error');
-          return;
-        }
+    if (selectedImages.length > 0) {
+      const uploadedImageUrls = await uploadImagesToCloudinary(selectedImages);
+      if (!uploadedImageUrls || uploadedImageUrls.length === 0) {
+        showSnackbar('Image upload failed. Please try again.', 'error');
+        return;
       }
-
-      await updateRecipe(recipe.id, data, newImageUrl);
-      showSnackbar('Recipe updated successfully!', 'success');
-      navigate(`/recipe/${recipe.id}`);
-    } catch (error) {
-      console.error('Error in onSubmit:', error);
-      showSnackbar('Error updating recipe. Please try again.', 'error');
+      newImageUrls = [...newImageUrls, ...uploadedImageUrls];
     }
-  };
+
+    // Create the recipe object
+    const updatedRecipeData = {
+      title: data.title,
+      time: data.time,
+      ingredients: data.ingredients,
+      instructions: data.instructions,
+      imageUrls: newImageUrls,
+      // Add any other properties needed
+    };
+
+    // Update recipe
+    await updateRecipe(recipe.id, updatedRecipeData);
+    showSnackbar('Recipe updated successfully!', 'success');
+    navigate(`/recipe/${recipe.id}`);
+  } catch (error) {
+    console.error('Error in onSubmit:', error);
+    showSnackbar('Error updating recipe. Please try again.', 'error');
+  }
+};
+
+
+
 
   // Handle form validation errors
   const onError = (errors, e) => {
@@ -101,9 +117,16 @@ const RecipeEdit = () => {
   };
 
   // Handle image deletion
-  const handleImageDelete = async () => {
-    // More code here...
+  const handleImageDelete = async (imageUrl) => {
+    // Remove the image URL from the recipe object and update it
+    const remainingImageUrls = recipe.imageUrls.filter(url => url !== imageUrl);
+    await updateRecipe(recipe.id, { ...recipe, imageUrls: remainingImageUrls });
+  
+    // Update the state
+    setRecipe({ ...recipe, imageUrls: remainingImageUrls });
+    showSnackbar('Image deleted successfully!', 'success');
   };
+  
 
   // Loading indicator
   if (isLoading) {
