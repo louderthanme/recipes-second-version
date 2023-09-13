@@ -23,7 +23,6 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
     setPreviews(allPreviewURLs);
   };
 
-  console.log(recipe)
   
 
   return (

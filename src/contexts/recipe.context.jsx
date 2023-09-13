@@ -67,26 +67,35 @@ const RecipesProvider = ({ children }) => {
     }
   };
   
-  const uploadRecipe = async (recipe, imageUrl) => {
-    console.log("Received in uploadRecipe:", recipe, imageUrl); // Add this debug line
+  const uploadRecipe = async (recipe) => {
+    if (!recipe) {
+      console.error("No recipe data provided. Aborting upload.");
+      return;
+    }
+  
+    console.log("Received in uploadRecipe:", recipe);
+    
     try {
-      const newRecipeData = { ...recipe, imageUrl }; // Add imageUrl to the recipe data
-      console.log("New recipe data before sending to Firestore:", newRecipeData); // Debug log here
-  
-      if (!imageUrl) {
-        console.error("Image URL is undefined. Aborting upload.");
-        return;
+      if (!recipe.imageUrls) {
+        console.warn("No image URLs found. Proceeding without images.");
       }
-  
+      
+      const newRecipeData = { ...recipe };
+      console.log("New recipe data before sending to Firestore:", newRecipeData);
+      
       const newRecipeId = await uploadRecipeToFirestore(newRecipeData);
       console.log(`Recipe "${recipe.title}" uploaded successfully with ID: ${newRecipeId}`);
+      
       setRecipes((prevRecipes) => [...prevRecipes, { id: newRecipeId, ...newRecipeData }]);
+      
       return newRecipeId;
     } catch (error) {
       console.error("Error uploading recipe to Firestore:", error);
+      // Optionally, you can handle this error in a more user-friendly way
       throw error;
     }
   };
+  
   
   
   const deleteRecipe = async (recipe) => {
@@ -118,9 +127,28 @@ const RecipesProvider = ({ children }) => {
     }
   };
   
+  const uploadImagesToCloudinary = async (imageFiles) => {
+    const formData = new FormData();
+    for (let i = 0; i < imageFiles.length; i++) {
+      formData.append('image', imageFiles[i]);
+    }
+    try {
+      const response = await fetch('http://localhost:3001/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      console.log("Received from server: ", data); // Debug log here
+      return data.imageUrls; // Note this has changed from imageUrl to imageUrls to match your new server logic
+    } catch (error) {
+      console.error('Error uploading images:', error);
+      throw error;
+    }
+  };
+  
   
 
-  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImageToCloudinary };
+  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImageToCloudinary, uploadImagesToCloudinary };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

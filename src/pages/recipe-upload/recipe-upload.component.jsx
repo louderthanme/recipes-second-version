@@ -35,7 +35,7 @@ const RecipeUpload = () => {
   const { errors } = formState;
   
   // Contexts
-  const { uploadRecipe, uploadImageToCloudinary } = useContext(RecipesContext);
+  const { uploadRecipe, uploadImagesToCloudinary } = useContext(RecipesContext);
   const { user } = useContext(UserContext);
   
   // Hooks and State
@@ -45,57 +45,51 @@ const RecipeUpload = () => {
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
   
   // Functions and Handlers
-  // const onSubmit = async (data) => {
-  //   try {
-  //     // First, upload the image if selected
-  //     if (selectedImage) {
-  //       try {
-  //         const imageUrl = await uploadImageToCloudinary(selectedImage);
-  //         data.imageUrl = imageUrl;  // Add imageUrl to the data object
-  //       } catch (error) {
-  //         showSnackbar("Image upload failed. Please try again.", "error");
-  //         return; // Exit the function if image upload fails
-  //       }
-  //     }
-  //     // Then proceed with uploading the recipe
-  //     data.ownerUid = user.uid;
-  //     const newId = await uploadRecipe(data, data.imageUrl); // Pass data and data.imageUrl
-  //     showSnackbar("Recipe uploaded successfully!", "success");
-  //     setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
-  //     reset();
-  //   } catch (error) {
-  //     showSnackbar("An unexpected error occurred. Please try again.", "error");
-  //   }
-  // };
   const onSubmit = async (data) => {
+    console.log("onSubmit started"); // Log when onSubmit starts
+  
     try {
+      console.log("Selected Images: ", selectedImages); // Log the selected images
+  
       let imageUrls = [];
   
+      // If images are selected, upload them
       if (selectedImages.length > 0) {
-        for (const image of selectedImages) {
-          try {
-            const imageUrl = await uploadImageToCloudinary(image);
-            if (imageUrl) {
-              imageUrls.push(imageUrl);
-            }
-          } catch (error) {
-            showSnackbar("Image upload failed. Please try again.", "error");
-          }
+        try {
+          console.log("Uploading images: ", selectedImages); // Log the images that are being uploaded
+  
+          // Note the change here to handle multiple images
+          imageUrls = await uploadImagesToCloudinary(selectedImages);
+  
+          console.log("Image URLs received: ", imageUrls); // Log the received image URLs
+        } catch (error) {
+          console.log("Image upload failed: ", error); // Log errors if image upload fails
+          showSnackbar("Image upload failed. Please try again.", "error");
         }
       }
+  
+      console.log("Total Image URLs: ", imageUrls); // Log all the image URLs
   
       // Only proceed if at least one image upload succeeded or no images were selected
       if (imageUrls.length > 0 || selectedImages.length === 0) {
         data.imageUrls = imageUrls;
         data.ownerUid = user.uid;
+  
+        console.log("Uploading recipe with data: ", data); // Log the final data object
+  
         const newId = await uploadRecipe(data);
+  
+        console.log("Recipe uploaded with ID: ", newId); // Log the new recipe ID
+  
         showSnackbar("Recipe uploaded successfully!", "success");
         setNewRecipeId(newId);
         reset();
       } else {
+        console.log("All image uploads failed"); // Log if all image uploads failed
         showSnackbar("All image uploads failed. Please try again.", "error");
       }
     } catch (error) {
+      console.log("An unexpected error occurred: ", error); // Log any unexpected errors
       showSnackbar("An unexpected error occurred. Please try again.", "error");
     }
   };
