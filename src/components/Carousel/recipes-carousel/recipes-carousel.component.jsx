@@ -5,10 +5,10 @@ import CarouselLoading from '../../ui/loading-screens/carousel-loading.component
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { Paper, Box, useTheme, useMediaQuery} from '@mui/material';
-import CarouselPolaroid from '../carousel-polaroid/carousel-polaroid.component';
+import RecipesCarouselPolaroid from '../recipes-carousel-polaroid/recipes-carousel-polaroid.component';
 import { transformImage } from '../../../utils/utils';
 
-const Carousel = ({recipes}) => {
+const Carousel = ({recipes, backgroundColor}) => {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -46,13 +46,15 @@ const Carousel = ({recipes}) => {
     return  <CarouselLoading />;
   }
 
+  console.log(backgroundColor)
+
   return (
-    <Paper elevation={4} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: '#66101F'}}>
+    <Paper elevation={4} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: backgroundColor}}>
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
-            <CarouselPolaroid
-              image={transformImage(recipe.imageUrl, 300, 400)}
+            <RecipesCarouselPolaroid
+              image={transformImage(recipe.imageUrls[0], 300, 400)}
               title={recipe.title}
               onClick={() => goToRecipe(recipe.id)}
             />
