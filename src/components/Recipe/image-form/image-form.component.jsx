@@ -2,26 +2,29 @@ import { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import UploadPreviewImage from "../upload-preview-image/upload-preview-image.component";
 
-const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg";
+const noImageAvailableUrl =["https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"];
 
 const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
-  const [preview, setPreview] = useState(null);
+  const [previews, setPreviews] = useState([]);
 
   const handleFileChange = (e) => {
-    handleImageChange(e);
-    const file = e.target.files[0];
-    const fileType = file.type;
+    const files = Array.from(e.target.files);
+    handleImageChange(e);  
+  
+    const allPreviewURLs = files.map(file => {
+      const fileType = file.type;
+      if (fileType !== "image/jpeg" && fileType !== "image/png") {
+        alert("Only JPEG or PNG images are allowed.");
+        return null;
+      }
+      return URL.createObjectURL(file);
+    }).filter(Boolean);  // Removes nulls
+  
+    setPreviews(allPreviewURLs);
+  };
 
-    // Check for acceptable file types
-    if (fileType !== "image/jpeg" && fileType !== "image/png") {
-      alert("Only JPEG or PNG images are allowed.");
-      return;
-    }
-
-    handleImageChange(e)
-    const previewURL = URL.createObjectURL(file);
-    setPreview(previewURL);
-  }
+  console.log(recipe)
+  
 
   return (
     <Box my={2}>
@@ -29,16 +32,18 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
         Recipe Image
       </Typography>
       <Box my={2}>
-        {(recipe && recipe.imageUrl) || preview ? (
-          <Box style={{ display: 'block' }}>
-            <UploadPreviewImage
-              imageUrl={recipe?.imageUrl || preview || noImageAvailableUrl}
-              alt={recipe?.title || "Preview"}
-              handleImageDelete={handleImageDelete || (() => setPreview(null))}
-            />
+        {(recipe?.imageUrls?.length || previews.length) ? (
+          <Box style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {recipe?.imageUrls?.map((url, idx) => (
+              <UploadPreviewImage key={idx} imageUrl={url} handleImageDelete={() => handleImageDelete(idx)} />
+            ))}
+            {previews.map((previewUrl, idx) => (
+              <UploadPreviewImage key={idx} imageUrl={previewUrl} handleImageDelete={() => { /* logic to remove preview */ }} />
+            ))}
           </Box>
         ) : null}
       </Box>
+
       <label htmlFor="contained-button-file">
         <input
           accept="image/jpeg, image/png"

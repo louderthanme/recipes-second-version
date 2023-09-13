@@ -40,41 +40,75 @@ const RecipeUpload = () => {
   
   // Hooks and State
   const [newRecipeId, setNewRecipeId] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImages, setSelectedImages] = useState([]);
   const navigate = useNavigate();
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
   
   // Functions and Handlers
+  // const onSubmit = async (data) => {
+  //   try {
+  //     // First, upload the image if selected
+  //     if (selectedImage) {
+  //       try {
+  //         const imageUrl = await uploadImageToCloudinary(selectedImage);
+  //         data.imageUrl = imageUrl;  // Add imageUrl to the data object
+  //       } catch (error) {
+  //         showSnackbar("Image upload failed. Please try again.", "error");
+  //         return; // Exit the function if image upload fails
+  //       }
+  //     }
+  //     // Then proceed with uploading the recipe
+  //     data.ownerUid = user.uid;
+  //     const newId = await uploadRecipe(data, data.imageUrl); // Pass data and data.imageUrl
+  //     showSnackbar("Recipe uploaded successfully!", "success");
+  //     setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
+  //     reset();
+  //   } catch (error) {
+  //     showSnackbar("An unexpected error occurred. Please try again.", "error");
+  //   }
+  // };
   const onSubmit = async (data) => {
     try {
-      // First, upload the image if selected
-      if (selectedImage) {
-        try {
-          const imageUrl = await uploadImageToCloudinary(selectedImage);
-          data.imageUrl = imageUrl;  // Add imageUrl to the data object
-        } catch (error) {
-          showSnackbar("Image upload failed. Please try again.", "error");
-          return; // Exit the function if image upload fails
+      let imageUrls = [];
+  
+      if (selectedImages.length > 0) {
+        for (const image of selectedImages) {
+          try {
+            const imageUrl = await uploadImageToCloudinary(image);
+            if (imageUrl) {
+              imageUrls.push(imageUrl);
+            }
+          } catch (error) {
+            showSnackbar("Image upload failed. Please try again.", "error");
+          }
         }
       }
-      // Then proceed with uploading the recipe
-      data.ownerUid = user.uid;
-      const newId = await uploadRecipe(data, data.imageUrl); // Pass data and data.imageUrl
-      showSnackbar("Recipe uploaded successfully!", "success");
-      setNewRecipeId(newId); // Set the ID of the newly uploaded recipe
-      reset();
+  
+      // Only proceed if at least one image upload succeeded or no images were selected
+      if (imageUrls.length > 0 || selectedImages.length === 0) {
+        data.imageUrls = imageUrls;
+        data.ownerUid = user.uid;
+        const newId = await uploadRecipe(data);
+        showSnackbar("Recipe uploaded successfully!", "success");
+        setNewRecipeId(newId);
+        reset();
+      } else {
+        showSnackbar("All image uploads failed. Please try again.", "error");
+      }
     } catch (error) {
       showSnackbar("An unexpected error occurred. Please try again.", "error");
     }
   };
+  
 
   const onError = (errors, e) => {
     showSnackbar("Error uploading recipe", "error");
   };
 
   const handleImageChange = (e) => {
-    setSelectedImage(e.target.files[0]);
+    setSelectedImages([...e.target.files]);
   };
+  
 
   const handleSnackbarClose = () => {
     hideSnackbar();
@@ -89,7 +123,7 @@ const RecipeUpload = () => {
   
   // Rendering
   return (
-    <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white" }}>
+    <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white", width:"70%" }} m={1}>
       <Box p={6}>
         <Box marginBottom={3}>
           <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
