@@ -10,7 +10,7 @@ const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEdit
           {userRecipes.map((recipe, index) => (
             <Grid item  sm={12} md={6} lg={3} key={index}>
               <UserProfilePolaroid
-                image={recipe.imageUrl}
+                images={recipe.imageUrls}
                 title={recipe.title}
                 onDelete={() => onDeleteRecipe(recipe)}
                 onClick={() => onClickRecipe(recipe.id)}

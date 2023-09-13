@@ -8,6 +8,8 @@ import SearchBarBox from '../../components/ui/search-bar/search-bar-box.componen
 const Home = () => {
   const { recipes } = useContext(RecipesContext);
 
+  const backgroundColor="#66101F"
+
   return (
     <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
       <Grid item xs={11} sm={10} md={8}>
@@ -15,9 +17,9 @@ const Home = () => {
           <SearchBarBox />
           <StyledDivider />
           <Typography variant="h2" gutterBottom ml={9} mb={6} mt={4} pt={4} sx={{ color: '#517664' }}> Featured Recipes</Typography>
-          <Carousel recipes={recipes} />
+          <Carousel recipes={recipes} backgroundColor={backgroundColor} />
           <Typography variant="h2" gutterBottom ml={9} mb={6} mt={4} pt={4} sx={{ color: '#a17c6b' }}> Mexican Recipes</Typography>
-          <Carousel recipes={recipes} />  
+          <Carousel recipes={recipes} backgroundColor={backgroundColor} />  
         </Paper>
       </Grid>
     </Grid>

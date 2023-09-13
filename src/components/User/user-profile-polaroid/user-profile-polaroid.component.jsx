@@ -4,8 +4,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import { red, green, common } from '@mui/material/colors';
 import { transformImage } from "../../../utils/utils";
 
-const UserProfilePolaroid = ({ image, title, onClick, onDelete, onEdit, id, user, ownerUid }) => {
-  const transformedImage = transformImage(image, 300, 400);
+const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, user, ownerUid }) => {
+  const transformedImage = transformImage(images[1], 300, 400);
 
 
   return (
