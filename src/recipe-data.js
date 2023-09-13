@@ -20,7 +20,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693927572/ico5eurursodimaxuyik.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693927572/ico5eurursodimaxuyik.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693927572/ico5eurursodimaxuyik.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693927572/ico5eurursodimaxuyik.jpg"],
     instructions: [
       { id: "1", step: "Preheat your oven to 375°F (190°C). Line a baking sheet with parchment paper." },
       { id: "2", step: "In a medium bowl, whisk together the all-purpose flour, baking soda, and salt. Set aside." },
@@ -47,7 +47,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "https://res.cloudinary.com/recipeb00k/image/upload/v1693928473/csctgn8gbmh9dtdioewg.jpg",
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1693928473/csctgn8gbmh9dtdioewg.jpg","https://res.cloudinary.com/recipeb00k/image/upload/v1693928473/csctgn8gbmh9dtdioewg.jpg","https://res.cloudinary.com/recipeb00k/image/upload/v1693928473/csctgn8gbmh9dtdioewg.jpg"],
     instructions: [
       { id: "1", step: "Bring a large pot of salted water to boil for the spaghetti." },
       { id: "2", step: "In a separate large skillet over medium heat, cook the guanciale or pancetta until it becomes crispy. Remove from heat and set aside." },
@@ -77,8 +77,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693929261/ansetnt1oldafetdadcb.jpg"
-    ,
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693929261/ansetnt1oldafetdadcb.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693929261/ansetnt1oldafetdadcb.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693929261/ansetnt1oldafetdadcb.jpg"],
     instructions: [
       { id: "1", step: "Heat coconut oil in a large pot over medium heat." },
       { id: "2", step: "Dice the onion, mince the garlic, and grate the ginger. Add them to the pot and sauté until the onion is translucent." },
@@ -110,7 +109,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693929704/nvhhgbhpev54lmvivn7o.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693929704/nvhhgbhpev54lmvivn7o.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693929704/nvhhgbhpev54lmvivn7o.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693929704/nvhhgbhpev54lmvivn7o.jpg"],
     instructions: [
       { id: "1", step: "Place chicken breasts between sheets of plastic wrap and pound them to an even thickness of about 1/2 inch." },
       { id: "2", step: "In a shallow dish, combine flour, salt, and pepper. Dredge each chicken breast in the mixture, shaking off excess." },
@@ -141,7 +140,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930060/t09wpseys6zgdgl7l0zl.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693930060/t09wpseys6zgdgl7l0zl.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930060/t09wpseys6zgdgl7l0zl.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930060/t09wpseys6zgdgl7l0zl.jpg"],
     instructions: [
       { id: "1", step: "Prepare all the vegetables by cutting them into bite-sized pieces." },
       { id: "2", step: "In a small bowl, mix together the soy sauce, sesame oil, minced garlic, and grated ginger." },
@@ -171,7 +170,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930169/dl6owvop8pvpus61yywu.webp",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693930169/dl6owvop8pvpus61yywu.webp","http://res.cloudinary.com/recipeb00k/image/upload/v1693930169/dl6owvop8pvpus61yywu.webp","http://res.cloudinary.com/recipeb00k/image/upload/v1693930169/dl6owvop8pvpus61yywu.webp"],
     instructions: [
       { id: "1", step: "Preheat your oven to 350°F (175°C). Grease a 9x5-inch loaf pan." },
       { id: "2", step: "In a large mixing bowl, mash the ripe bananas until smooth." },
@@ -204,7 +203,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930387/xqraombcrfwikep1cajf.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693930387/xqraombcrfwikep1cajf.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930387/xqraombcrfwikep1cajf.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930387/xqraombcrfwikep1cajf.jpg"],
     instructions: [
       { id: "1", step: "Marinate chicken breasts with half of the chili sauce, juice of half a lime, salt, and pepper. Let sit for at least 15 minutes." },
       { id: "2", step: "Peel and dice the mango, and chop the red onion and cilantro." },
@@ -233,7 +232,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930707/xg4yjy83j82lfaatzrzj.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693930707/xg4yjy83j82lfaatzrzj.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930707/xg4yjy83j82lfaatzrzj.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930707/xg4yjy83j82lfaatzrzj.jpg"],
     instructions: [
       { id: "1", step: "In a saucepan, bring 4 cup(s) of water to a boil. Once boiling, remove from heat and add the tea bags. Allow to steep for 5 minutes." },
       { id: "2", step: "While the tea is steeping, prepare a simple syrup by combining the sugar and 1/2 cup(s) of water in a small saucepan. Stir over low heat until the sugar is fully dissolved." },
@@ -263,7 +262,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693930867/yfy9mb17xeqmrouf5w7b.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693930867/yfy9mb17xeqmrouf5w7b.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930867/yfy9mb17xeqmrouf5w7b.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693930867/yfy9mb17xeqmrouf5w7b.jpg"],
     instructions: [
       { id: "1", step: "Rinse the sushi rice until the water runs clear. Combine with 1 1/2 cup(s) of water in a saucepan. Bring to a boil, then reduce heat to low, cover, and simmer for 20 minutes." },
       { id: "2", step: "In a small bowl, mix together the rice vinegar and sugar until the sugar dissolves. Stir this into the cooked rice and set aside to cool." },
@@ -290,7 +289,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693931123/fu3hcxxyg9yia1ry3dul.webp",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693931123/fu3hcxxyg9yia1ry3dul.webp","http://res.cloudinary.com/recipeb00k/image/upload/v1693931123/fu3hcxxyg9yia1ry3dul.webp","http://res.cloudinary.com/recipeb00k/image/upload/v1693931123/fu3hcxxyg9yia1ry3dul.webp"],
     instructions: [
       { id: "1", step: "In a saucepan, combine the milk, pumpkin puree, sugar, and pumpkin spice. Heat over medium heat, stirring constantly, until hot but not boiling." },
       { id: "2", step: "Remove the saucepan from heat and whisk in the vanilla extract." },
@@ -319,7 +318,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932089/wariqgft13zuqzzfgdas.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932089/wariqgft13zuqzzfgdas.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932089/wariqgft13zuqzzfgdas.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932089/wariqgft13zuqzzfgdas.jpg"],
     instructions: [
       { id: "1", step: "Preheat the oven to 375°F (190°C)." },
       { id: "2", step: "In a saucepan, bring 2 cup(s) of water to a boil. Add the quinoa and a pinch of salt. Reduce heat to low, cover, and cook for 15 minutes, or until quinoa is cooked and water is absorbed. Remove from heat and let sit for 5 minutes, then fluff with a fork." },
@@ -347,7 +346,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932220/tilwa9kidxhmadfe4mfc.webp",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932220/tilwa9kidxhmadfe4mfc.webp","http://res.cloudinary.com/recipeb00k/image/upload/v1693932220/tilwa9kidxhmadfe4mfc.webp","http://res.cloudinary.com/recipeb00k/image/upload/v1693932220/tilwa9kidxhmadfe4mfc.webp"],
     instructions: [
       { id: "1", step: "Preheat your oven to 425°F (220°C). Place a rack inside a roasting pan." },
       { id: "2", step: "Rinse the chicken inside and out, then pat dry with paper towels." },
@@ -380,7 +379,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932317/qjfoadxs8d4viyhlv5kp.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932317/qjfoadxs8d4viyhlv5kp.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932317/qjfoadxs8d4viyhlv5kp.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932317/qjfoadxs8d4viyhlv5kp.jpg"],
     instructions: [
       { id: "1", step: "Heat the coconut oil in a large pot over medium heat." },
       { id: "2", step: "Dice the onion, mince the garlic and ginger, and add them to the pot. Sauté for 5 minutes until the onion is translucent." },
@@ -409,7 +408,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932404/b7nkeefmq6eh4nokx2xj.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932404/b7nkeefmq6eh4nokx2xj.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932404/b7nkeefmq6eh4nokx2xj.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932404/b7nkeefmq6eh4nokx2xj.jpg"],
     instructions: [
       { id: "1", step: "In a large bowl, mix together the flour, sugar, baking powder, and salt." },
       { id: "2", step: "In another bowl, whisk together the milk, egg, and melted butter." },
@@ -439,7 +438,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932501/ni0buqrcmpb3mnqmtzgf.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932501/ni0buqrcmpb3mnqmtzgf.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932501/ni0buqrcmpb3mnqmtzgf.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932501/ni0buqrcmpb3mnqmtzgf.jpg"],
     instructions: [
       { id: "1", step: "Rinse the sushi rice under cold water until the water runs clear. Combine with 2 1/2 cup(s) water and bring to a boil. Reduce heat to low, cover, and cook for 20 minutes. Let it sit, covered, for an additional 10 minutes." },
       { id: "2", step: "Combine rice vinegar, sugar, and salt in a small saucepan. Heat until the sugar dissolves. Fold this mixture into the cooked rice until well combined. Let the rice cool to room temperature." },
@@ -467,7 +466,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932617/oqkqhaicmy2g4irawyyg.jpg",
+    imageUrls:[ "http://res.cloudinary.com/recipeb00k/image/upload/v1693932617/oqkqhaicmy2g4irawyyg.jpg", "http://res.cloudinary.com/recipeb00k/image/upload/v1693932617/oqkqhaicmy2g4irawyyg.jpg", "http://res.cloudinary.com/recipeb00k/image/upload/v1693932617/oqkqhaicmy2g4irawyyg.jpg"],
     instructions: [
       { id: "1", step: "Cut the avocado in half, remove the pit, and scoop out the flesh." },
       { id: "2", step: "Peel the banana and break it into smaller pieces." },
@@ -494,7 +493,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932702/y0marsyxi0mvusuzja21.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932702/y0marsyxi0mvusuzja21.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932702/y0marsyxi0mvusuzja21.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932702/y0marsyxi0mvusuzja21.jpg"],
     instructions: [
       { id: "1", step: "Use a spiralizer to turn the zucchinis into noodles. Set aside." },
       { id: "2", step: "In a food processor, combine the basil leaves, pine nuts, garlic cloves, and Parmesan cheese." },
@@ -525,7 +524,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932879/holw872kf2vfrefpqwes.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932879/holw872kf2vfrefpqwes.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932702/y0marsyxi0mvusuzja21.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932702/y0marsyxi0mvusuzja21.jpg"],
     instructions: [
       { id: "1", step: "Heat the olive oil in a large pot over medium heat." },
       { id: "2", step: "Add the chopped onion and garlic and sauté until translucent." },
@@ -553,7 +552,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693932998/ciflrn3svw1e1m8pr21r.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693932998/ciflrn3svw1e1m8pr21r.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932998/ciflrn3svw1e1m8pr21r.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693932998/ciflrn3svw1e1m8pr21r.jpg"],
     instructions: [
       { id: "1", step: "Preheat the oven to 350°F (175°C). Line a baking sheet with parchment paper." },
       { id: "2", step: "In a medium bowl, mix together the almond flour, baking powder, and salt." },
@@ -581,7 +580,7 @@ const recipes = [
       prep: ["0", "15"], //hours, minutes
       cook: ["0", "15"]
     },
-    imageUrl: "http://res.cloudinary.com/recipeb00k/image/upload/v1693933116/oatzexydbrrqmtkf2o53.jpg",
+    imageUrls: ["http://res.cloudinary.com/recipeb00k/image/upload/v1693933116/oatzexydbrrqmtkf2o53.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693933116/oatzexydbrrqmtkf2o53.jpg","http://res.cloudinary.com/recipeb00k/image/upload/v1693933116/oatzexydbrrqmtkf2o53.jpg"],
     instructions: [
       { id: "1", step: "Peel and dice the mangoes into small cubes." },
       { id: "2", step: "Finely chop the red onion." },

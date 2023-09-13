@@ -1,11 +1,13 @@
 import { Box } from "@mui/material";
+import RecipeImageCarousel from "../../Carousel/recipe-image-carousel/recipe-image-carousel.component";
 
-const ImageBox = ({ image }) => {
+const ImageBox = ({ images }) => {
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" height="100%">
-      <img src={image} alt="Recipe" style={{ maxWidth: '100%', height: 'auto', borderRadius:'.5em', border:'.5em solid white'}} />
+    <Box display="flex" justifyContent="center" alignItems="center" height="auto" width="auto">
+      <RecipeImageCarousel images={images} />
     </Box>
   );
+  
 };
 
 export default ImageBox;
