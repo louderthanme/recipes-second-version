@@ -3,18 +3,34 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
 import CarouselLoading from '../../ui/loading-screens/carousel-loading.component';
 import { useNavigate } from "react-router-dom";
-import { Paper, Box } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { Paper, Box, useTheme, useMediaQuery} from '@mui/material';
 import CarouselPolaroid from '../carousel-polaroid/carousel-polaroid.component';
 import { transformImage } from '../../../utils/utils';
 
 const Carousel = ({recipes}) => {
+  const [slidesToShow, setSlidesToShow] = useState(3);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isMobile) {
+      setSlidesToShow(1);
+    } else if (isTablet) {
+      setSlidesToShow(2);
+    } else {
+      setSlidesToShow(3);
+    }
+  }, [isMobile, isTablet]);
+
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     centerPadding: '0',
     centerMode: true,
