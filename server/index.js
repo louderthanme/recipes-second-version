@@ -76,6 +76,19 @@ app.delete('/api/delete-image', async (req, res) => {
   }
 });
 
+app.delete('/api/delete-images', async (req, res) => {
+  console.log('Inside the delete images route.');
+  console.log('req.body:', req.body);  // Debug statement to log req.body
+  const { publicIds } = req.body;
+  try{
+    const result = await cloudinary.api.delete_resources(publicIds);
+    console.log(`Delete result: `, result);
+    res.status(200).json({ message: 'Images deleted successfully' });
+  } catch (error) {
+    console.log(`Error while deleting images from Cloudinary:`, error);
+    res.status(500).json({ message: 'Delete images failed' });
+  }
+});
 
 
 const PORT = process.env.PORT || 3001;

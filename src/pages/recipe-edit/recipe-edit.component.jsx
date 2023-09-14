@@ -16,11 +16,12 @@ import { useSnackbar } from '../../hooks/useSnackbar';
 
 const RecipeEdit = () => {
   // Contexts and hooks
-  const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImagesToCloudinary } = useContext(RecipesContext);
+  const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImagesToCloudinary, batchDeleteImagesFromCloudinary } = useContext(RecipesContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [recipe, setRecipe] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
+  const [deletedImageUrls, setDeletedImageUrls] = useState([]); 
 
   const { handleSubmit, control, formState, reset } = useForm();
   const { errors } = formState;
@@ -52,8 +53,27 @@ const RecipeEdit = () => {
 
   // Handle image selection
   const handleImageChange = (e) => {
+    console.log("newly added images:", Array.from(e.target.files));
+    console.log("Before:", selectedImages);
     setSelectedImages([...selectedImages, ...Array.from(e.target.files)]);
+    console.log("After:", [...selectedImages, ...Array.from(e.target.files)]);
   };
+    // Handle image deletion
+    const handleImageDelete = (imageUrl) => {
+      // Remove the image URL from the list of image URLs in the recipe
+      console.log("Before Deletion: ", recipe.imageUrls);
+      const remainingImageUrls = recipe.imageUrls.filter(url => url !== imageUrl);
+      console.log("After Deletion: ", remainingImageUrls);
+
+      // Update the recipe state
+      setRecipe({...recipe, imageUrls: remainingImageUrls});
+      
+      // Update the state to include the deleted image URL
+      setDeletedImageUrls([...deletedImageUrls, imageUrl]);
+    
+      showSnackbar('Image deleted successfully!', 'success');
+    };
+    
   
 
 // Handle form submission
@@ -61,6 +81,7 @@ const onSubmit = async (data) => {
   try {
     // Handle image upload
     let newImageUrls = recipe.imageUrls ? [...recipe.imageUrls] : [];
+    newImageUrls = newImageUrls.filter(url => !deletedImageUrls.includes(url));
 
     if (selectedImages.length > 0) {
       const uploadedImageUrls = await uploadImagesToCloudinary(selectedImages);
@@ -80,6 +101,8 @@ const onSubmit = async (data) => {
       imageUrls: newImageUrls,
       // Add any other properties needed
     };
+
+    await batchDeleteImagesFromCloudinary(deletedImageUrls);
 
     // Update recipe
     await updateRecipe(recipe.id, updatedRecipeData);
@@ -116,17 +139,7 @@ const onSubmit = async (data) => {
     hideSnackbar();
   };
 
-  // Handle image deletion
-  const handleImageDelete = async (imageUrl) => {
-    // Remove the image URL from the recipe object and update it
-    const remainingImageUrls = recipe.imageUrls.filter(url => url !== imageUrl);
-    await updateRecipe(recipe.id, { ...recipe, imageUrls: remainingImageUrls });
-  
-    // Update the state
-    setRecipe({ ...recipe, imageUrls: remainingImageUrls });
-    showSnackbar('Image deleted successfully!', 'success');
-  };
-  
+
 
   // Loading indicator
   if (isLoading) {
@@ -136,7 +149,7 @@ const onSubmit = async (data) => {
  // Render edit form
 return (
   // Main paper component for form
-  <Paper elevation={10} sx={{ backgroundColor: '#FCDDBC', border: '0 0 0 20px solid white' }}>
+  <Paper elevation={10} sx={{ backgroundColor: '#FCDDBC', width:'70%', marginBottom:'40px' }} mb={2}>
     <Box p={6}>
       {/* Header */}
       <Box marginBottom={3}>

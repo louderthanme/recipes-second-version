@@ -11,7 +11,7 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
     const files = Array.from(e.target.files);
     handleImageChange(e);  
   
-    const allPreviewURLs = files.map(file => {
+    const newPreviewURLs = files.map(file => {
       const fileType = file.type;
       if (fileType !== "image/jpeg" && fileType !== "image/png") {
         alert("Only JPEG or PNG images are allowed.");
@@ -20,7 +20,7 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
       return URL.createObjectURL(file);
     }).filter(Boolean);  // Removes nulls
   
-    setPreviews(allPreviewURLs);
+    setPreviews(prevPreviews => [...prevPreviews, ...newPreviewURLs]); 
   };
 
   const handlePreviewDelete = (idx) => {
@@ -40,7 +40,8 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
         {(recipe?.imageUrls?.length || previews.length) ? (
           <Box style={{ display: 'flex', flexWrap: 'wrap' }}>
             {recipe?.imageUrls?.map((url, idx) => (
-              <UploadPreviewImage key={idx} imageUrl={url} handleImageDelete={() => handleImageDelete(idx)} />
+              <UploadPreviewImage key={idx} imageUrl={url} handleImageDelete={() => handleImageDelete(url)} />
+
             ))}
             {previews.map((previewUrl, idx) => (
               <UploadPreviewImage key={idx} imageUrl={previewUrl} handleImageDelete={() => handlePreviewDelete(idx)} />

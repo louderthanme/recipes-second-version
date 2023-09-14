@@ -8,10 +8,11 @@ const UploadPreviewImage = ({ imageUrl, alt, handleImageDelete }) => (
       src={imageUrl} 
       alt={alt}
       style={{ maxWidth: '100%', height: '100px', borderRadius: '.5em', border: '.5em solid white' }} 
-    />
+    />  
         <IconButton
           aria-label="delete-recipe"
           size="small"
+          onClick={()=>handleImageDelete(imageUrl)}
           sx={{
             position: 'absolute',
             top: '-8px',
@@ -24,7 +25,7 @@ const UploadPreviewImage = ({ imageUrl, alt, handleImageDelete }) => (
             },
           }}
         >
-          <CloseIcon sx={{ color: common.white, fontSize:'22px' }} />
+          <CloseIcon sx={{ color: common.white, fontSize:'22px' }}  />
         </IconButton>
   </Box>
 );

@@ -122,16 +122,36 @@ const RecipesProvider = ({ children }) => {
       });
       const data = await response.json();
       console.log("Received from server: ", data); // Debug log here
-      return data.imageUrls; // Note this has changed from imageUrl to imageUrls to match your new server logic
+      return data.imageUrls; 
     } catch (error) {
       console.error('Error uploading images:', error);
       throw error;
     }
   };
-  
+
+  const batchDeleteImagesFromCloudinary = async (publicIds) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/delete-images', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify({ publicIds }),
+      });
+      const data = await response.json();
+      console.log("Received from server: ", data); // Debug log here
+      return data.imageUrls;
+    } catch (error) {
+      console.error('Error uploading images:', error);
+      throw error;
+    }
+  };
+
   
 
-  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImagesToCloudinary };
+
+
+  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImagesToCloudinary,batchDeleteImagesFromCloudinary };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };
