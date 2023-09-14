@@ -12,18 +12,37 @@ const Carousel = ({recipes, backgroundColor}) => {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isMobile) {
-      setSlidesToShow(1);
-    } else if (isTablet) {
-      setSlidesToShow(2);
-    } else {
-      setSlidesToShow(3);
-    }
-  }, [isMobile, isTablet]);
+    const updateSlidesToShow = () => {
+      const width = window.innerWidth;
+  
+      if (width <= theme.breakpoints.values.sm) {
+        setSlidesToShow(1);
+      } else if (width > theme.breakpoints.values.sm && width <= theme.breakpoints.values.md) {
+        setSlidesToShow(2);
+      } else if (width > theme.breakpoints.values.md && width <= theme.breakpoints.values.lg) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+  
+    // Initialize slides
+    updateSlidesToShow();
+  
+    // Update slides when the window resizes
+    window.addEventListener('resize', updateSlidesToShow);
+  
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', updateSlidesToShow);
+    };
+  }, [theme.breakpoints]);
+  
+  
 
 
   const settings = {
