@@ -4,9 +4,12 @@ import { Paper, Grid, Box} from '@mui/material'; // Import Typography from Mater
 import { StyledDivider, StyledSearchBar } from '../../utils/styledComponents';
 import SearchBarBox from '../../components/Home/search-bar/search-bar-box.component';
 import Featured from '../../components/Home/featured/featured.component';
+import SearchResults from '../../components/Home/search-results/search-results.component';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
+  const navigate = useNavigate();
   const { recipes, searchRecipes, searchResults } = useContext(RecipesContext);
   const [isSearching, setIsSearching] = useState(false);
 
@@ -21,10 +24,14 @@ const Home = () => {
     }
   };
 
+  const goToRecipe = (id) => {
+    navigate(`/recipe/${id}`);
+  };
+
   return (
-    <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
+    <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={11} sm={10} md={8}>
-      <Paper elevation={6} style={{ height: '100vh', backgroundColor: '#FCDDBC', color: 'white', borderRadius: '20px' }}>
+      <Paper elevation={6} pb={3} style={{ backgroundColor: '#FCDDBC', color: 'white', borderRadius: '20px', marginBottom:'30px' }}>
        
        
         <SearchBarBox handleChange={handleChange} />
@@ -33,15 +40,14 @@ const Home = () => {
         {isSearching ? (
           // Render the search results here
           <Box>
-            {searchResults.map((recipe, index) => (
-              <Box key={index}>{recipe.title}</Box>
-            ))}
+            <SearchResults 
+              searchResults={searchResults}
+              onClickRecipe={goToRecipe}
+            />
           </Box>
         ) : (
           <Featured recipes={recipes} />
         )}
-
-
       </Paper>
       </Grid>
     </Grid>
