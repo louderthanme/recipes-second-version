@@ -1,7 +1,8 @@
 import { Box, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
-import { red, green, common } from '@mui/material/colors';
+import ShareIcon from '@mui/icons-material/Share';
+import { red, green, blue, common } from '@mui/material/colors';
 import { transformImage } from "../../../utils/utils";
 
 const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, user, ownerUid, isToggled }) => {
@@ -29,7 +30,7 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
       >
         <img src={transformedImage} alt={title} style={{ display: 'block' }} />
         
-        { isToggled && 
+        { isToggled && user?.uid === ownerUid &&
                <IconButton
           aria-label="delete-recipe"
           onClick={(e) => {
@@ -62,7 +63,7 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
             size="small"
             sx={{
               position: 'absolute',
-              top: '50%',  // Now relative to the new container
+              top: '45%',  // Now relative to the new container
               right: '-16px',
               width: '24px',
               height: '24px',
@@ -75,6 +76,24 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
           <EditIcon sx={{ color: common.white, fontSize: '14px' }} />
           </IconButton>
         }
+          <IconButton
+            aria-label="share-recipe"
+            size="small"
+            sx={{
+              position: 'absolute',
+              top: '95%',  // Now relative to the new container
+              right: '-16px',
+              width: '24px',
+              height: '24px',
+              backgroundColor: blue[500],
+              '&:hover': {
+                backgroundColor: blue[700],
+              },
+            }}
+          >
+          <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
+          </IconButton>
+        
       </Box>
       
       <Box textAlign="center" mt={1}>
