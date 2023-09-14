@@ -1,4 +1,6 @@
-import { Box } from "@mui/material";
+import { Box, IconButton} from "@mui/material";
+import { blue, common } from '@mui/material/colors';
+import ShareIcon from '@mui/icons-material/Share';
 
 const RecipesCarouselPolaroid = ({ image, title, onClick }) => (
   <Box 
@@ -15,6 +17,23 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => (
     onClick={onClick}
   >
     <img src={image} alt={title} style={{display: 'block'}} />
+    <IconButton
+            aria-label="share-recipe"
+            size="small"
+            sx={{
+              position: 'absolute',
+              top: '70%',  
+              right: '-10px',
+              width: '24px',
+              height: '24px',
+              backgroundColor: blue[500],
+              '&:hover': {
+                backgroundColor: blue[700],
+              },
+            }}
+          >
+          <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
+          </IconButton>
     <Box 
       sx={{ 
         display: 'flex', 
@@ -27,6 +46,7 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => (
     >
       <b>{title}</b>
     </Box>
+    
   </Box>
 );
 

@@ -63,7 +63,7 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
             size="small"
             sx={{
               position: 'absolute',
-              top: '45%',  // Now relative to the new container
+              top: '45%',  
               right: '-16px',
               width: '24px',
               height: '24px',
@@ -81,7 +81,7 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
             size="small"
             sx={{
               position: 'absolute',
-              top: '95%',  // Now relative to the new container
+              top: '95%',  
               right: '-16px',
               width: '24px',
               height: '24px',

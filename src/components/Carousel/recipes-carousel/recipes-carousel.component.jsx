@@ -65,10 +65,11 @@ const Carousel = ({recipes, backgroundColor}) => {
     return  <CarouselLoading />;
   }
 
-  console.log(backgroundColor)
 
   return (
-    <Paper elevation={4} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: backgroundColor}}>
+   
+   
+   <Paper elevation={4} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: backgroundColor}}>
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
@@ -81,6 +82,10 @@ const Carousel = ({recipes, backgroundColor}) => {
         ))}
       </Slider>
     </Paper>
+
+
+
+
   );
 };
 

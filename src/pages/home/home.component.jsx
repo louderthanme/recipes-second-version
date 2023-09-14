@@ -5,6 +5,7 @@ import { StyledDivider, StyledSearchBar } from '../../utils/styledComponents';
 import SearchBarBox from '../../components/Home/search-bar/search-bar-box.component';
 import Featured from '../../components/Home/featured/featured.component';
 
+
 const Home = () => {
   const { recipes, searchRecipes, searchResults } = useContext(RecipesContext);
   const [isSearching, setIsSearching] = useState(false);
@@ -19,7 +20,6 @@ const Home = () => {
       setIsSearching(false);
     }
   };
-
 
   return (
     <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
@@ -40,6 +40,7 @@ const Home = () => {
         ) : (
           <Featured recipes={recipes} />
         )}
+
 
       </Paper>
       </Grid>
