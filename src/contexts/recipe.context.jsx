@@ -16,6 +16,7 @@ const RecipesProvider = ({ children }) => {
 
   const [recipes, setRecipes] = useState([]);
   const [userRecipes, setUserRecipes] = useState([]); 
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -147,11 +148,25 @@ const RecipesProvider = ({ children }) => {
     }
   };
 
+  const searchRecipes = (query) => {
+    console.log("Searching for recipes with query:", query);
+      const filteredRecipes = recipes.filter((recipe) => {
+        if (recipe.title.toLowerCase().includes(query.toLowerCase())) {
+          return true;
+        }
+        if (recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(query.toLowerCase()))) {
+          return true;
+        }
+        return false;
+      });
+      setSearchResults(filteredRecipes);
+  }
+
   
 
 
 
-  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImagesToCloudinary,batchDeleteImagesFromCloudinary };
+  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImagesToCloudinary,batchDeleteImagesFromCloudinary, searchRecipes, searchResults };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };
