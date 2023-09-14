@@ -4,7 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { red, green, common } from '@mui/material/colors';
 import { transformImage } from "../../../utils/utils";
 
-const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, user, ownerUid }) => {
+const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, user, ownerUid, isToggled }) => {
   const transformedImage = transformImage(images[1], 300, 400);
 
 
@@ -29,7 +29,8 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
       >
         <img src={transformedImage} alt={title} style={{ display: 'block' }} />
         
-        <IconButton
+        { isToggled && 
+               <IconButton
           aria-label="delete-recipe"
           onClick={(e) => {
             e.stopPropagation();
@@ -50,8 +51,8 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
         >
           <CloseIcon sx={{ color: common.white, fontSize:'22px' }} />
         </IconButton>
-        
-        { user?.uid === ownerUid &&
+      }
+      { isToggled && user?.uid === ownerUid &&
           <IconButton
             aria-label="edit-recipe"
             onClick={(e) => {

@@ -1,6 +1,6 @@
 import { Box, FormControlLabel, Switch } from "@mui/material";
 
-const UserProfileControls = ()=>{
+const UserProfileControls = ({handleToggle})=>{
     return (
         <Box 
         px={4}
@@ -11,7 +11,7 @@ const UserProfileControls = ()=>{
         }}
         >
         <h2>My Recipes</h2>
-         <FormControlLabel control={<Switch color="secondary" />} label="Manage" />
+         <FormControlLabel control={<Switch color="secondary" />} label="Manage" onClick={handleToggle}/>
         </Box>
 )
 }

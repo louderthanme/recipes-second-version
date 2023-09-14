@@ -15,6 +15,12 @@ const UserProfile = () => {
   const { user } = useContext(UserContext);
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
+  
+  const [isToggled, setIsToggled] = useState(false);
+
+  const handleToggle = () => {  
+    setIsToggled(!isToggled);
+  };
 
 
   useEffect(() => {
@@ -51,13 +57,16 @@ const UserProfile = () => {
     <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC", border: "0 0 0 20px solid white", margin:'20px'}}>
       <UserProfileInformation user={user} />
       <StyledDivider />
-       <UserProfileControls />
+       <UserProfileControls
+          handleToggle={handleToggle}
+       />
       <StyledDivider />
       <UserRecipesDisplay
         userRecipes={userRecipes}
         onDeleteRecipe={handleDeleteRecipe} 
         onClickRecipe={goToRecipe}
         onEditRecipe={goToRecipeEdit}
+        isToggled={isToggled}
       />
     </Paper>
   );
