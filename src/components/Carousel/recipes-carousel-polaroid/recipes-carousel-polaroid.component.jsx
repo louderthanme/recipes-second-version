@@ -25,6 +25,7 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
         position: 'relative',
         padding: '10px', 
         borderRadius: '10px',
+        marginX: '2px',
         backgroundColor: 'white', 
         img: {
           maxWidth: '100%',
@@ -66,7 +67,7 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
       </Box>
       {showShareWindow.show && (
         <ShareWindowPortal x={showShareWindow.x} y={showShareWindow.y}>
-          <ShareWindow />
+          <ShareWindow onClose={()=> setShowShareWindow({show:false})}/>
         </ShareWindowPortal>
       )}
     </Box>

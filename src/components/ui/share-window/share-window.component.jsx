@@ -1,9 +1,9 @@
-import { Box, Paper, Grid, Typography, Divider, useMediaQuery, useTheme } from "@mui/material";
-import { useEffect } from "react";
+import { Box, Paper, Grid, Typography, Divider, useMediaQuery, useTheme, IconButton} from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton, FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
 import { useLocation } from "react-router-dom";
 
-const ShareWindow = ({ x, y }) => {
+const ShareWindow = ({ x, y, onClose }) => {
   const location = useLocation();
   const shareUrl = `${window.location.origin}${location.pathname}`;
   const theme = useTheme();
@@ -18,11 +18,32 @@ const ShareWindow = ({ x, y }) => {
           left: `${x}px`,
           top: `${y}px`,
           transform: 'translate(54%, -97%)',
-          backgroundColor: '#70809090',
+          backgroundColor: 'rgba(235, 235, 235, 0.97)',
           padding: '20px',
           zIndex: 1000
         }}
       >
+        <IconButton
+          aria-label="close-share-window"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose()
+          }}
+          sx={{
+            position: 'absolute',
+            top: '-10px',
+            right: '-10px',
+            width: '20px',
+            height: '20px',
+            backgroundColor: '#f44336',  // Or any color you prefer
+            '&:hover': {
+              backgroundColor: '#e53935',  // Or any color you prefer
+            },
+          }}
+        >
+          <CloseIcon sx={{ color: '#ffffff', fontSize: '18px' }} />
+        </IconButton>
+
         <Grid container direction="column" spacing={3}>
           {/* Row for Title */}
           {!isXSmall && (
