@@ -4,17 +4,12 @@ import { blue, common } from '@mui/material/colors';
 import ShareIcon from '@mui/icons-material/Share';
 import ShareWindowPortal from "../../ui/share-window-portal/share-window-portal.component";
 import ShareWindow from "../../ui/share-window/share-window.component";
+import { useShareWindow } from "../../../hooks/useShareWindow";
 
 const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
-  const [showShareWindow, setShowShareWindow] = useState(false);
 
-  const handleShareClick = (e) => {
-    e.stopPropagation();  
-    const rect = e.currentTarget.getBoundingClientRect(); // change from e.target to e.currentTarget
-    const x = rect.left;
-    const y = rect.top;
-    setShowShareWindow({ show: !showShareWindow.show, x, y });
-  };
+  const [handleShareClick, ShareWindowComponent] = useShareWindow();
+
   
 
   return(
@@ -51,6 +46,7 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
             >
             <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
             </IconButton>
+            {ShareWindowComponent()}
       <Box 
         sx={{ 
           display: 'flex', 
@@ -63,11 +59,7 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
       >
         <b>{title}</b>
       </Box>
-      {showShareWindow.show && (
-        <ShareWindowPortal x={showShareWindow.x} y={showShareWindow.y}>
-          <ShareWindow onClose={()=> setShowShareWindow({show:false})}/>
-        </ShareWindowPortal>
-      )}
+
     </Box>
   );
 };
