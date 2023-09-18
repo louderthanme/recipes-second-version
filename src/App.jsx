@@ -6,6 +6,7 @@ import Navigation from './pages/navigation/navigation.component';
 import RecipeUpload from './pages/recipe-upload/recipe-upload.component';
 import RecipeEdit from './pages/recipe-edit/recipe-edit.component';
 import AuthPage from './pages/authentication/authentication.component';
+import ShareWindow from './components/ui/share-window/share-window.component';
 import UserProfile from './pages/user-profile/user-profile.component';
 import { useContext } from 'react';
 import { UserContext } from './contexts/user.context';
@@ -28,6 +29,7 @@ const App = () => {
                 <Route path="/recipe/:id/edit" element={user ? <RecipeEdit /> : <Navigate to="/auth" />} />
                 <Route path="/user/profile" element={user ? <UserProfile /> : <Navigate to="/auth" />} />
                 <Route path="/auth" element={<AuthPage />} />
+                <Route path="/share" element={<ShareWindow />} />
               </Routes>
             </Grid>
           </Grid>

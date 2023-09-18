@@ -34,18 +34,18 @@ export const StyledSelect = styled(Select)(({ theme }) => ({
 
 
 export const StyledDivider = styled(Divider)({
-  backgroundColor: '#40000', // change this color to fit your design
-  height: '2px', // change this to control the thickness
-  margin: '10px 0', // add some margin to make the divider more noticeable
+  backgroundColor: '#40000', 
+  height: '2px', 
+  margin: '10px 0',
 });
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  minHeight: '48px !important', // change this to adjust the height of the toolbar
+  minHeight: '48px !important',
 }));
 
 export const DotMatrixBackground = styled('div')(({ theme }) => ({
   width: '100vw',
-  minHeight: '100vh',  // Set minimum height to 100vh
+  minHeight: '100vh',  
   backgroundColor: 'white',
   backgroundImage: 'radial-gradient(#e8e3f1 1px, transparent 2px)',
   backgroundSize: '30px 30px',
