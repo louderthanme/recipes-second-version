@@ -2,6 +2,7 @@ import { Box, Paper, Grid, Typography, Divider, useMediaQuery, useTheme, IconBut
 import CloseIcon from '@mui/icons-material/Close';
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton, FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
 import { useLocation } from "react-router-dom";
+import StopPropagationWrapper from "../stop-propagation-wrapper/stop-propagation-wrapper.component";
 
 const ShareWindow = ({ x, y, onClose }) => {
   const location = useLocation();
@@ -49,7 +50,7 @@ const ShareWindow = ({ x, y, onClose }) => {
           {!isXSmall && (
             <Grid item xs={12}>
               <Box>
-                <Typography variant="h6" align="left">Share Window</Typography>
+                <Typography variant="h6" align="left">Share this recipe!</Typography>
               </Box>
             </Grid>
           )}
@@ -66,19 +67,25 @@ const ShareWindow = ({ x, y, onClose }) => {
             <Box>
               <Grid container spacing={2} direction={isXSmall ? "column" : "row"} justifyContent="space-between">
                 <Grid item>
-                  <FacebookShareButton url={shareUrl}>
-                    <FacebookIcon size={32} round={true} />
-                  </FacebookShareButton>
+                  <StopPropagationWrapper>
+                    <FacebookShareButton url={shareUrl}>
+                      <FacebookIcon size={32} round={true} />
+                    </FacebookShareButton>
+                  </StopPropagationWrapper>
                 </Grid>
                 <Grid item>
-                  <WhatsappShareButton url={shareUrl}>
-                    <WhatsappIcon size={32} round={true} />
-                  </WhatsappShareButton>
+                  <StopPropagationWrapper>
+                    <WhatsappShareButton url={shareUrl}>
+                      <WhatsappIcon size={32} round={true} />
+                    </WhatsappShareButton>
+                  </StopPropagationWrapper>
                 </Grid>
                 <Grid item>
-                  <TwitterShareButton url={shareUrl}>
-                    <TwitterIcon size={32} round={true} />
-                  </TwitterShareButton>
+                  <StopPropagationWrapper>
+                    <TwitterShareButton url={shareUrl}>
+                      <TwitterIcon size={32} round={true} />
+                    </TwitterShareButton>
+                  </StopPropagationWrapper>
                 </Grid>
               </Grid>
             </Box>
