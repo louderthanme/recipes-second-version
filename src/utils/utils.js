@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { set } from 'react-hook-form';
 
 export const updateBoxShadow = (container) => {
   if (container) {
@@ -49,3 +50,4 @@ export const transformImage = (url, height, width) => {
   segments.splice(-2, 0, transformation);
   return segments.join('/');
 };
+
