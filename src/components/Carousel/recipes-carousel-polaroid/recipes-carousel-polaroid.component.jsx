@@ -10,9 +10,7 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
 
   const handleShareClick = (e) => {
     e.stopPropagation();  
-    console.log("Event Target: ", e.target); // See what is being targeted
     const rect = e.currentTarget.getBoundingClientRect(); // change from e.target to e.currentTarget
-    console.log("Coordinates: ", rect.left, rect.top); // Check the coordinates
     const x = rect.left;
     const y = rect.top;
     setShowShareWindow({ show: !showShareWindow.show, x, y });
