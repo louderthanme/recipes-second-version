@@ -6,8 +6,8 @@ const ShareWindow = () => {
     const location = useLocation();
     const shareUrl = `${window.location.origin}${location.pathname}`;
 
-    return (
-<Box sx={{ display: 'flex', justifyContent: 'center', width:'100%' }}>
+    return (    
+        <Box sx={{ display: 'flex', justifyContent: 'center', width:'100%' }}>
             <Paper elevation={6} sx={{ width: '20%', minHeight: '20%', backgroundColor:'#FCDDBC', padding:'20px' }}>
                 <Grid container direction="column" spacing={3}>
                     {/* Row for Title */}

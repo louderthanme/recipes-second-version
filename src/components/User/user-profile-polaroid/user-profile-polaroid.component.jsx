@@ -4,9 +4,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import ShareIcon from '@mui/icons-material/Share';
 import { red, green, blue, common } from '@mui/material/colors';
 import { transformImage } from "../../../utils/utils";
+import { useShareWindow } from "../../../hooks/useShareWindow";
+import ShareWindow from "../../ui/share-window/share-window.component";
 
 const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, user, ownerUid, isToggled }) => {
   const transformedImage = transformImage(images[1], 300, 400);
+  const [showShareWindow, toggleShareWindow] = useShareWindow();
 
 
   return (
@@ -76,23 +79,28 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, use
           <EditIcon sx={{ color: common.white, fontSize: '14px' }} />
           </IconButton>
         }
-          <IconButton
-            aria-label="share-recipe"
-            size="small"
-            sx={{
-              position: 'absolute',
-              top: '95%',  
-              right: '-16px',
-              width: '24px',
-              height: '24px',
-              backgroundColor: blue[500],
-              '&:hover': {
-                backgroundColor: blue[700],
-              },
-            }}
-          >
-          <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
-          </IconButton>
+                <IconButton
+        aria-label="share-recipe"
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleShareWindow();
+        }}
+        size="small"
+        sx={{
+          position: 'absolute',
+          top: '95%',  
+          right: '-16px',
+          width: '24px',
+          height: '24px',
+          backgroundColor: blue[500],
+          '&:hover': {
+            backgroundColor: blue[700],
+          }
+        }}
+      >
+        <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
+      </IconButton>
+      {showShareWindow && <ShareWindow/>}
         
       </Box>
       
