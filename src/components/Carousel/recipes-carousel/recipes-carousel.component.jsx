@@ -11,8 +11,6 @@ import { transformImage } from '../../../utils/utils';
 const Carousel = ({recipes, backgroundColor}) => {
   const [slidesToShow, setSlidesToShow] = useState(3);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'));
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -22,12 +22,11 @@ const RecipeImageCarousel = ({ images }) => {
   }
 
   return (
-    <Paper elevation={4} sx={{ 
+    <Box  sx={{ 
       width: '300px', // set the width
-      height: '400px', // set the height
       margin: '0 auto', 
       padding: '20px', 
-      backgroundColor: '#ffffff' 
+    
     }}>
       <Slider {...settings}>
         {images.map((url, index) => (
@@ -38,7 +37,7 @@ const RecipeImageCarousel = ({ images }) => {
           </Box>
         ))}
       </Slider>
-    </Paper>
+    </Box>
   );
 };
 
