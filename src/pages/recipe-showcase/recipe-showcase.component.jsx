@@ -7,6 +7,7 @@ import InstructionsDisplay from '../../components/Recipe/instructions-display/in
 import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/Recipe/image-box/image-box.component';
 import DetailsBox from '../../components/Recipe/details-box/details-box.component';
+import {useShareWindow} from '../../hooks/useShareWindow';
 
 import { UserContext } from '../../contexts/user.context';
 import { RecipesContext } from '../../contexts/recipe.context';
@@ -14,6 +15,8 @@ import { RecipesContext } from '../../contexts/recipe.context';
 const noImageAvailableUrl = ["https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"];
 
 const RecipeShowcase = () => {
+  const [handleShareClick, ShareWindowComponent] = useShareWindow();
+
   const { user } = useContext(UserContext);
   const { fetchRecipeById } = useContext(RecipesContext);
   const { id } = useParams();
@@ -38,6 +41,8 @@ const RecipeShowcase = () => {
   const goToRecipeEdit = (id) => {
     navigate(`/recipe/${id}/edit`);
   };
+
+
 
   return (
     <Paper elevation={12} sx={{ backgroundColor: '#FCDDBC', width: '70%', height:'80%', padding: '20px', marginBottom:'20px' }}>
@@ -69,13 +74,21 @@ const RecipeShowcase = () => {
         </Grid>
         {/* Third Row */}
         <Grid item xs={12}>
-          <Box p={1} display="flex" justifyContent="center">
-            {user?.uid === ownerUid &&
+        <Box p={1} display="flex" justifyContent="center">
+          {user?.uid === ownerUid && (
+            <>
               <Button variant="contained" onClick={() => goToRecipeEdit(id)}>
                 Edit Recipe
               </Button>
-            }
-          </Box>
+              <Box mx={1}></Box>
+            </>
+          )}
+          <Button variant="contained" color="secondary" onClick={handleShareClick}>
+            Share Recipe
+          </Button>
+          {ShareWindowComponent()}
+        </Box>
+
         </Grid>
       </Grid>
     </Paper>

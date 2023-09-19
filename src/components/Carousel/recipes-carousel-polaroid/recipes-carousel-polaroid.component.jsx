@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { Box, IconButton} from "@mui/material";
 import { blue, common } from '@mui/material/colors';
 import ShareIcon from '@mui/icons-material/Share';
-import ShareWindowPortal from "../../ui/share-window-portal/share-window-portal.component";
-import ShareWindow from "../../ui/share-window/share-window.component";
 import { useShareWindow } from "../../../hooks/useShareWindow";
 
 const RecipesCarouselPolaroid = ({ image, title, onClick }) => {

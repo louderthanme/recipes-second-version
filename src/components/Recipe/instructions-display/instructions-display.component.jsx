@@ -27,7 +27,7 @@ const InstructionsDisplay = ({ instructions }) => {
 
   return (
     <Box>
-      <Typography variant="subtitle1" align='center' sx={{fontWeight:'bold'}}>Instructions</Typography>
+      <Typography variant="h6" align='center'>Instructions</Typography>
       <Box
         ref={containerRef}
         sx={{

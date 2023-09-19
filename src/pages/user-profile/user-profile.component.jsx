@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { RecipesContext } from "../../contexts/recipe.context";	
-import { Paper, Box} from "@mui/material";
+import { Paper} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {StyledDivider} from "../../utils/styledComponents"
 import UserProfileLoading from "../../components/ui/loading-screens/user-profile-loading.component";

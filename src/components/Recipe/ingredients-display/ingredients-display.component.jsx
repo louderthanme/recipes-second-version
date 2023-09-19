@@ -14,7 +14,7 @@ const IngredientsDisplay = ({ ingredients }) => {
 
   return (
     <Box>
-      <Typography variant="subtitle1" align='center' sx={{ fontWeight: 'bold' }}>Ingredients</Typography>
+      <Typography variant="h6" align='center' sx={{ fontWeight: 'bold' }}> <b>Ingredients</b></Typography>
       <Box
         ref={containerRef}
         sx={{
@@ -24,7 +24,7 @@ const IngredientsDisplay = ({ ingredients }) => {
       >
         <ul>
           {ingredients.map((ingredient, index) => (
-            <li key={index}> <b> {ingredient.quantity}</b> of <b> {ingredient.name} </b>  </li>
+            <li key={index}>  {ingredient.quantity}{ingredient.unit} of  {ingredient.name} </li>
           ))}
         </ul>
       </Box>

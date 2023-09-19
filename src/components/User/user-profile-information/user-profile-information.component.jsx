@@ -31,7 +31,7 @@ const UserProfileInformation = ({ user }) => {
             </Grid>
             {/* User Info */}
             <Grid item xs={12} md={11} sx={{ textAlign: { xs: 'center', md: 'left' }}}>
-              <Box pt={3} px={{ xs: 2, sm:3, md:12, lg: 9, xl:5 }} ml={2} > 
+              <Box pt={3} px={{ xs: 2, sm:3, md:12, lg: 9, xl:7 }} ml={2} > 
                 <Typography variant="h6" gutterBottom>
                   {user.displayName}
                 </Typography>
