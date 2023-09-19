@@ -7,7 +7,7 @@ import { useShareWindow } from "../../../hooks/useShareWindow";
 
 const SearchResultsPolariod = ({ images, title, onClick }) => {
 
-    const [handleShareClick, ShareWindowComponent] = useShareWindow();
+    const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
 
     const transformedImage = transformImage(images[1], 300, 400);
 

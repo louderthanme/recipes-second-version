@@ -15,7 +15,6 @@ import { RecipesContext } from '../../contexts/recipe.context';
 const noImageAvailableUrl = ["https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"];
 
 const RecipeShowcase = () => {
-  const [handleShareClick, ShareWindowComponent] = useShareWindow();
 
   const { user } = useContext(UserContext);
   const { fetchRecipeById } = useContext(RecipesContext);
@@ -31,6 +30,9 @@ const RecipeShowcase = () => {
 
     getRecipe();
   }, [id, fetchRecipeById]);
+
+  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:recipe?.title});
+
 
   if (!recipe) {
     return <RecipeShowcaseLoading />;

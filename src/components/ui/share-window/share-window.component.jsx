@@ -4,7 +4,7 @@ import { FacebookShareButton, WhatsappShareButton, TwitterShareButton, FacebookI
 import { useLocation } from "react-router-dom";
 import StopPropagationWrapper from "../stop-propagation-wrapper/stop-propagation-wrapper.component";
 
-const ShareWindow = ({ x, y, onClose }) => {
+const ShareWindow = ({ x, y, onClose, recipe }) => {
   const location = useLocation();
   const shareUrl = `${window.location.origin}${location.pathname}`;
   const theme = useTheme();
@@ -50,7 +50,7 @@ const ShareWindow = ({ x, y, onClose }) => {
           {!isXSmall && (
             <Grid item xs={12}>
               <Box>
-                <Typography variant="h6" align="left">Share this recipe!</Typography>
+                <Typography variant="h7" align="left">Share <b>{recipe.title}</b>!</Typography>
               </Box>
             </Grid>
           )}
@@ -64,7 +64,7 @@ const ShareWindow = ({ x, y, onClose }) => {
 
           {/* Row for Social Share Buttons */}
           <Grid item xs={12}>
-            <Box>
+            <Box p={0}>
               <Grid container spacing={2} direction={isXSmall ? "column" : "row"} justifyContent="space-between">
                 <Grid item>
                   <StopPropagationWrapper>

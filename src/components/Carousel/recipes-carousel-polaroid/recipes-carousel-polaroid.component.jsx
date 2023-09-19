@@ -5,7 +5,7 @@ import { useShareWindow } from "../../../hooks/useShareWindow";
 
 const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
 
-  const [handleShareClick, ShareWindowComponent] = useShareWindow();
+  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
 
   
 
