@@ -1,4 +1,4 @@
-import { Paper, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import RecipeImagePolaroid from "../recipe-image-polaroid/recipe-image-polaroid.component";
 import Slider from "react-slick";
 import CarouselLoading from "../../ui/loading-screens/carousel-loading.component";
