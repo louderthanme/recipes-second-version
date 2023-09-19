@@ -47,36 +47,38 @@ const RecipeShowcase = () => {
 
 
   return (
-    <Paper elevation={12} sx={{ backgroundColor: '#FCDDBC', width: '70%', height:'80%', padding: '20px', marginBottom:'20px' }}>
-      <Grid container spacing={3}>
-        {/* First Row */}
-        <Grid item xs={12} sm={6} md={5}>
-          <Box mt={2}>
-            <ImageBox images={imageUrls ?? noImageAvailableUrl} />
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6} md={7}>
-          <Box p={2}>
-            <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} />
-          </Box>
-        </Grid>
-        <Grid item xs={12}>
-          <Divider />
-        </Grid>
-        {/* Second Row */}
-        <Grid item xs={12} sm={6}>
-          <Box p={2}>
-            <IngredientsDisplay ingredients={ingredients} />
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Box p={2}>
-            <InstructionsDisplay instructions={instructions} />
-          </Box>
-        </Grid>
-        {/* Third Row */}
-        <Grid item xs={12}>
+    <Paper elevation={12} sx={{ backgroundColor: '#FCDDBC', width: '70%',  padding: '10px', marginBottom: '30px' }}>
+    <Grid container spacing={3}>
+      {/* First Row */}
+      <Grid item xs={12} sm={12} md={12} lg={5}>
+        <Box mt={2}>
+          <ImageBox images={imageUrls ?? noImageAvailableUrl} />
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={7}>
+        <Box p={2}>
+          <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} />
+        </Box>
+      </Grid>
+      {/* Divider */}
+      <Grid item xs={12}>
+        <Divider />
+      </Grid>
+      {/* Second Row */}
+      <Grid item xs={12} sm={6} md={6} lg={6}>
+        <Box p={2}>
+          <IngredientsDisplay ingredients={ingredients} />
+        </Box>
+      </Grid>
+      <Grid item xs={12} sm={6} md={6} lg={6}>
+        <Box p={2}>
+          <InstructionsDisplay instructions={instructions} />
+        </Box>
+      </Grid>
+      {/* Third Row */}
+      <Grid item xs={12}>
         <Box p={1} display="flex" justifyContent="center">
+        
           {user?.uid === ownerUid && (
             <>
               <Button variant="contained" onClick={() => goToRecipeEdit(id)}>

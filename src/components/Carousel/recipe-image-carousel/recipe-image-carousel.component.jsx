@@ -22,11 +22,11 @@ const RecipeImageCarousel = ({ images }) => {
   }
 
   return (
-    <Box  sx={{ 
-      width: '300px', // set the width
+    <Box 
+     sx={{ 
+      width: '400px', // set the width
       margin: '0 auto', 
-      padding: '20px', 
-    
+      paddingY: '5px', 
     }}>
       <Slider {...settings}>
         {images.map((url, index) => (
