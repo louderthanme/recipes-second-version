@@ -9,12 +9,14 @@ const RecipeImageCarousel = ({ images }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     centerPadding: '0',
     centerMode: true,
     className: 'polaroid-slider',
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   if (!Array.isArray(images) || images.length === 0) {
@@ -24,7 +26,7 @@ const RecipeImageCarousel = ({ images }) => {
   return (
     <Box 
      sx={{ 
-      width: '400px', // set the width
+      width: '350px', // set the width
       margin: '0 auto', 
       paddingY: '5px', 
     }}>

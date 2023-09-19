@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={11} sm={10} md={8}>
-      <Paper elevation={6} pb={3} style={{ backgroundColor: '#FCDDBC', color: 'white', borderRadius: '20px', marginBottom:'30px' }}>
+      <Paper elevation={6} pb={3} style={{ backgroundColor: '#fdebd7', color: 'white', borderRadius: '20px', marginBottom:'30px' }}>
        
        
         <SearchBarBox handleChange={handleChange} />

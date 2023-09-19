@@ -56,10 +56,10 @@ export const StyledSearchBar = styled(TextField)(({ theme }) => ({
     background: "rgb(255, 255, 255)",
     transition: "box-shadow 0.3s",
     "&:hover": {
-      backgroundColor: "rgb(255, 255, 255)"
+      backgroundColor: "rgb(255, 255, 255)",
     },
     '&.Mui-focused': {
-      backgroundColor: "rgb(255, 255, 255)"
+      backgroundColor: "rgb(255, 255, 255)",
     },
   },
   '& .MuiFilledInput-input': {
@@ -75,15 +75,24 @@ export const StyledSearchBar = styled(TextField)(({ theme }) => ({
   '& .MuiSvgIcon-root': {
     verticalAlign: 'middle !important',
   },  
-  "& .MuiFilledInput-underline:before": { // default underline color
-    borderBottom: "1px solid #66101F",
+  "& .MuiFilledInput-underline:before": {
+    // Default underline color
+    borderBottom: "1px solid #fcbcfb",
   },
 
-  "& .MuiFilledInput-underline:after": { // underline color when input is focused
-    borderBottom: "2px solid #66101F",
+  "& .MuiFilledInput-underline:after": {
+    // Underline color when input is focused
+    borderBottom: "2px solid #fcbcfb",
   },
 
-  "& .MuiFilledInput-underline:hover:before": { // underline color when hovered
-    borderBottom: "2px solid #FF784F",
-  }
+  "&:hover .MuiFilledInput-underline:before": { 
+    // Underline color when hovered (before focus)
+    borderBottom: "1px solid #a77da6 !important",
+  },
+
+  "&:hover .MuiFilledInput-underline:after": { 
+    // Underline color when hovered (after focus)
+    borderBottom: "2px solid #523d52 !important",
+  },
 }));
+

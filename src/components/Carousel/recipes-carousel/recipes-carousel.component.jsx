@@ -9,7 +9,7 @@ import RecipesCarouselPolaroid from '../recipes-carousel-polaroid/recipes-carous
 import { transformImage } from '../../../utils/utils';
 
 const Carousel = ({recipes, backgroundColor}) => {
-  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [slidesToShow, setSlidesToShow] = useState(4);
   const theme = useTheme();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Carousel = ({recipes, backgroundColor}) => {
       } else if (width > theme.breakpoints.values.md && width <= theme.breakpoints.values.lg) {
         setSlidesToShow(2);
       } else {
-        setSlidesToShow(3);
+        setSlidesToShow(4);
       }
     };
   
@@ -48,10 +48,12 @@ const Carousel = ({recipes, backgroundColor}) => {
     infinite: true,
     speed: 500,
     slidesToShow: slidesToShow,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     centerPadding: '0',
     centerMode: true,
-    className: 'polaroid-slider'
+    className: 'polaroid-slider',
+    autoplay: true,
+    autoplaySpeed: 2500,
   };
 
   const goToRecipe = (id) => {
@@ -67,7 +69,7 @@ const Carousel = ({recipes, backgroundColor}) => {
   return (
    
    
-   <Paper elevation={4} sx={{ width: '70%', margin: '0 auto', padding: '20px', backgroundColor: backgroundColor}}>
+   <Paper elevation={4} sx={{ width: '82%', margin: '0 auto', padding: '10px', backgroundColor: backgroundColor}}>
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
