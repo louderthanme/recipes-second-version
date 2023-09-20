@@ -36,6 +36,8 @@ const RecipeShowcase = () => {
 
     getRecipe();
   }, [id, fetchRecipeById]);
+
+  const displaysMaxHeight= '300px'
   
   useEffect(() => {
     const handleResize = () => {
@@ -102,12 +104,12 @@ const RecipeShowcase = () => {
       {/* Second Row */}
       <Grid item xs={12} sm={6} md={6} lg={6}>
         <Box p={2}>
-          <IngredientsDisplay ingredients={ingredients} height={displayHeight} ref={ingredientsRef} />
+          <IngredientsDisplay ingredients={ingredients} height={displayHeight} maxHeight={displaysMaxHeight} ref={ingredientsRef} />
         </Box>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={6}>
         <Box p={2}>
-          <InstructionsDisplay instructions={instructions} height={displayHeight} ref={instructionsRef} />
+          <InstructionsDisplay instructions={instructions} height={displayHeight} maxHeight={displaysMaxHeight} ref={instructionsRef} />
         </Box>
       </Grid>
       {/* Third Row */}

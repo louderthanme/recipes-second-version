@@ -1,7 +1,7 @@
 import React, { useRef, forwardRef } from 'react';
 import { Box, Typography } from '@mui/material';
 
-const IngredientsDisplay = React.forwardRef(({ ingredients, height }, ref) => {
+const IngredientsDisplay = React.forwardRef(({ ingredients, height, maxHeight }, ref) => {
 
 
   return (
@@ -11,7 +11,7 @@ const IngredientsDisplay = React.forwardRef(({ ingredients, height }, ref) => {
         ref={ref}
         sx={{
           height: `${height}px`,
-          maxHeight:'400px',
+          maxHeight:maxHeight,
           overflow: 'auto',
         }}
       >
