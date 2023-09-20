@@ -31,7 +31,7 @@ const IngredientsDisplay = ({ ingredients }) => {
       <Box
         ref={containerRef}
         sx={{
-          maxHeight: '300px',
+          maxHeight: '350px',
           overflow: 'auto',
         }}
       >
