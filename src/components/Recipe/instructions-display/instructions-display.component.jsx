@@ -26,12 +26,12 @@ const InstructionsDisplay = ({ instructions }) => {
   }, [instructions]);
 
   return (
-    <Box>
-      <Typography variant="h6" align='center'>Instructions</Typography>
+    <Box sx={{backgroundColor:'#c3bcfc',  color:'#430342', borderRadius:'8px', border:'.5em solid white'}}>
+      <Typography variant="h6" align='center' pt={2} pb={2}>Instructions</Typography>
       <Box
         ref={containerRef}
         sx={{
-          maxHeight: '300px',
+          maxHeight: '350px',
           overflow: 'auto',
         }}
       >

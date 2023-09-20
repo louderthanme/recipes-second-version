@@ -26,7 +26,7 @@ const RecipeImageCarousel = ({ images }) => {
   return (
     <Box 
      sx={{ 
-      width: '350px', // set the width
+      width: '420px', // set the width
       margin: '0 auto', 
       paddingY: '5px', 
     }}>

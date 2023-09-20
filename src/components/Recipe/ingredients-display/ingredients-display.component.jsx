@@ -13,8 +13,8 @@ const IngredientsDisplay = ({ ingredients }) => {
 
 
   return (
-    <Box>
-      <Typography variant="h6" align='center' sx={{ fontWeight: 'bold' }}> <b>Ingredients</b></Typography>
+    <Box sx={{backgroundColor:'#bcfcbd', color:'#430342', borderRadius:'8px', border:'.5em solid white'}}>
+      <Typography variant="h6" align='center' pt={2} pb={2}> <b>Ingredients</b></Typography>
       <Box
         ref={containerRef}
         sx={{

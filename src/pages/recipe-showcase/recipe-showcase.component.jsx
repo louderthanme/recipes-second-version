@@ -47,7 +47,7 @@ const RecipeShowcase = () => {
 
 
   return (
-    <Paper elevation={12} sx={{ backgroundColor: '#FCDDBC', width: '70%',  padding: '10px', marginBottom: '30px' }}>
+    <Paper elevation={12} sx={{ backgroundColor: '#fdebd7', width: '70%',  padding: '10px', marginBottom: '30px' }}>
     <Grid container spacing={3}>
       {/* First Row */}
       <Grid item xs={12} sm={12} md={12} lg={5}>
