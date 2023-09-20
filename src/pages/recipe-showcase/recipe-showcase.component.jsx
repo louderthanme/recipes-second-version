@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Paper, Box, Grid, Divider, Button } from '@mui/material';
 
@@ -7,6 +7,8 @@ import InstructionsDisplay from '../../components/Recipe/instructions-display/in
 import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/Recipe/image-box/image-box.component';
 import DetailsBox from '../../components/Recipe/details-box/details-box.component';
+
+import { updateBoxShadow } from '../../utils/utils'
 import {useShareWindow} from '../../hooks/useShareWindow';
 
 import { UserContext } from '../../contexts/user.context';
@@ -21,6 +23,10 @@ const RecipeShowcase = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState(null);
+  const [displayHeight, setDisplayHeight] = useState(350);
+  const ingredientsRef = useRef(null);
+  const instructionsRef = useRef(null);
+  
 
   useEffect(() => {
     const getRecipe = async () => {
@@ -30,7 +36,33 @@ const RecipeShowcase = () => {
 
     getRecipe();
   }, [id, fetchRecipeById]);
-
+  
+  useEffect(() => {
+    const handleResize = () => {
+      const ingredientsHeight = ingredientsRef.current ? ingredientsRef.current.scrollHeight : 0;
+      const instructionsHeight = instructionsRef.current ? instructionsRef.current.scrollHeight : 0;
+      
+      const height = Math.max(ingredientsHeight, instructionsHeight);
+      
+      setDisplayHeight(height);
+  
+      // Update the box shadow based on new maxHeight
+      updateBoxShadow(ingredientsRef.current);
+      updateBoxShadow(instructionsRef.current);
+    };
+  
+    // Initialize max height and box shadows
+    handleResize();
+  
+    // Listen for window resize events
+    window.addEventListener('resize', handleResize);
+  
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [recipe, displayHeight]);
+  
   const [handleShareClick, ShareWindowComponent] = useShareWindow({title:recipe?.title});
 
 
@@ -39,6 +71,9 @@ const RecipeShowcase = () => {
   }
 
   const { title, ingredients, imageUrls, instructions, time: { prep, cook }, ownerUid } = recipe;
+
+
+  
 
   const goToRecipeEdit = (id) => {
     navigate(`/recipe/${id}/edit`);
@@ -67,12 +102,12 @@ const RecipeShowcase = () => {
       {/* Second Row */}
       <Grid item xs={12} sm={6} md={6} lg={6}>
         <Box p={2}>
-          <IngredientsDisplay ingredients={ingredients} />
+          <IngredientsDisplay ingredients={ingredients} height={displayHeight} ref={ingredientsRef} />
         </Box>
       </Grid>
       <Grid item xs={12} sm={6} md={6} lg={6}>
         <Box p={2}>
-          <InstructionsDisplay instructions={instructions} />
+          <InstructionsDisplay instructions={instructions} height={displayHeight} ref={instructionsRef} />
         </Box>
       </Grid>
       {/* Third Row */}

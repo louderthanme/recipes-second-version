@@ -4,24 +4,11 @@ import { set } from 'react-hook-form';
 export const updateBoxShadow = (container) => {
   if (container) {
     const hasOverflow = container.scrollHeight > container.clientHeight;
-    container.style.boxShadow = hasOverflow ? 'inset 0px -5px 5px -5px rgba(0, 0, 0, 0.5)' : 'none';
+    container.style.boxShadow = hasOverflow ? 'inset 0px -5px 10px -4px rgba(0, 0, 0, 0.5)' : 'none';
   }
 };
 
-export const useDebounceEffect = (effect, dependencies, delay = 100) => {
-  useEffect(() => {
-    let timeout;
-    const debouncedEffect = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(effect, delay);
-    };
-    debouncedEffect(); // Call the effect initially
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, dependencies);
-};
 
 
 export const capitalizeFirstLetter = (string) => {
