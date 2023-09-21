@@ -3,7 +3,7 @@ import {Box, Typography} from '@mui/material';
 const DetailsBox = ({prep, cook, ingredients, title}) => {
 return (
     <Box>   
-        <Typography variant='h3'>{title}</Typography>
+        <Typography variant='h3' sx={{fontFamily:'Architects Daughter'}}>{title}</Typography>
             
         <Box marginTop={8} align={'left'} marginLeft={3}> 
             {
