@@ -1,7 +1,15 @@
 import { Chip, Box, TextField } from "@mui/material";
 import { StyledTextField } from "../../../utils/styledComponents";
+import { useEffect } from "react";
 
-const TagForm = ({ tags, setTags, tagInput, setTagInput, handleAddTag, handleDeleteTag }) => {
+const TagForm = ({ tags, setTags, tagInput, setTagInput, handleAddTag, handleDeleteTag, existingTags }) => {
+
+    useEffect(() => {
+        if(existingTags.length > 0){
+            setTags(existingTags)
+        }
+    }   , [existingTags])
+    
     return(
         <Box>
             <StyledTextField

@@ -9,6 +9,7 @@ import InstructionsForm from '../../components/Recipe/instructions-form/instruct
 import TimeForm from '../../components/Recipe/time-form/time-form.component';
 import TitleForm from '../../components/Recipe/title-form/title-form.component';
 import ImageForm from '../../components/Recipe/image-form/image-form.component';
+import TagForm from '../../components/Recipe/tag-form/tag-form.component';
 import SnackbarFormMessage from '../../components/ui/snackbar-form-message/snackbar-form-message.component';
 import RecipeEditLoading from '../../components/ui/loading-screens/recipe-edit-loading.component';
 
@@ -23,6 +24,8 @@ const RecipeEdit = () => {
   const [recipe, setRecipe] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const [deletedImageUrls, setDeletedImageUrls] = useState([]); 
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
 
   const { handleSubmit, control, formState, reset } = useForm();
   const { errors } = formState;
@@ -45,6 +48,7 @@ const RecipeEdit = () => {
           },
           ingredients: fetchedRecipe.ingredients || [{ name: '', quantity: '' }],
           instructions: fetchedRecipe.instructions || [{ step: '' }],
+          tags: fetchedRecipe.tags || [],
         });
       }
       setIsLoading(false);
@@ -101,6 +105,7 @@ const onSubmit = async (data) => {
       ingredients: data.ingredients,
       instructions: data.instructions,
       imageUrls: newImageUrls,
+      tags: tags,
       // Add any other properties needed
     };
 
@@ -142,7 +147,21 @@ const onSubmit = async (data) => {
     hideSnackbar();
   };
 
-
+  const handleAddTag = (e) => {
+    if(e.key === "Enter" || e.key === "Tab" || e.key === "," || e.key === " ") {
+      e.preventDefault();
+      const newTag = tagInput.trim().toLocaleLowerCase();
+      if (newTag && !tags.includes(newTag)) {
+        setTags([...tags, newTag]);
+      }
+      setTagInput("");
+    }
+  }
+  
+  const handleDeleteTag = (tagToDelete) => {
+    setTags(tags.filter((tag) => tag !== tagToDelete));
+  }
+  
 
   // Loading indicator
   if (isLoading) {
@@ -199,6 +218,18 @@ return (
           <FormControl fullWidth>
             <InstructionsForm control={control} errors={formState.errors} />
           </FormControl>
+          {/* Tags input fields */}
+          <FormControl fullWidth>
+            <TagForm 
+                tags={tags}
+                existingTags={recipe.tags} 
+                setTags={setTags} 
+                tagInput={tagInput} 
+                setTagInput={setTagInput} 
+                handleAddTag={handleAddTag} 
+                handleDeleteTag={handleDeleteTag}
+              />
+            </FormControl>
 
           {/* Buttons for updating and deleting the recipe */}
           <Grid container spacing={1} justifyContent="center" mt={5}>
