@@ -15,7 +15,9 @@ import IngredientsForm from "../../components/Recipe/ingredients-form/ingredient
 import InstructionsForm from "../../components/Recipe/instructions-form/instructions-form.component";
 import TimeForm from "../../components/Recipe/time-form/time-form.component";
 import ImageForm from "../../components/Recipe/image-form/image-form.component";
+import TagForm from "../../components/Recipe/tag-form/tag-form.component";
 import SnackbarFormMessage from "../../components/ui/snackbar-form-message/snackbar-form-message.component";
+
 
 // Custom Hooks and Utilities
 import { useNavigate } from "react-router-dom";
@@ -29,7 +31,7 @@ const RecipeUpload = () => {
       time: { prep: null, cook: null },
       ingredients: [{ name: "", quantity: "" }],
       instructions: [{ step: "" }],
-      tags: [""],
+      tags: [],
     },
   });
   
@@ -166,27 +168,8 @@ const RecipeUpload = () => {
             <FormControl fullWidth><TimeForm control={control} errors={formState.errors} /></FormControl>
             <FormControl fullWidth><IngredientsForm control={control} errors={formState.errors} /></FormControl>
             <FormControl fullWidth><InstructionsForm control={control} errors={formState.errors} /></FormControl>
-            <FormControl fullWidth>
-                <TextField
-                    label="Add Tags"
-                    variant="outlined"
-                    value={tagInput}
-                    onChange={(e) => setTagInput(e.target.value)}
-                    onKeyDown={handleAddTag}
-                    helperText="Press enter or comma to add tags."
-                    margin="normal"
-                />
-                <div>
-                    {tags.map((tag) => (
-                        <Chip
-                            key={tag}
-                            label={tag}
-                            onDelete={()=>handleDeleteTag(tag)}
-                            style={{ margin: '4px' }}
-                        />
-                    ))}
-                </div>
-            </FormControl>
+            <FormControl fullWidth><TagForm tags={tags} setTags={setTags} tagInput={tagInput} setTagInput={setTagInput}  control={control} errors={formState.errors} handleAddTag={handleAddTag} handleDeleteTag={handleDeleteTag} /></FormControl>
+      
             {/* Submit Button */}
             <Grid item xs={12}>
               <Box marginTop={5}>

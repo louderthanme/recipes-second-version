@@ -23,7 +23,7 @@ export const StyledSelect = styled(Select)(({ theme }) => ({
     backgroundColor: 'rgb(255, 255, 255)',
   },
   "& .MuiSelect-select:hover": {
-    boxShadow: `0 0 8px ${theme.palette.primary.main}`,
+    boxShadow: `0 0 8px ${theme.palette.secondary}`,
     backgroundColor: 'rgb(255, 255, 255)',
   },
   '& .MuiSelect-select.Mui-focused': {
