@@ -140,7 +140,6 @@ const RecipeUpload = () => {
             )}
             {/* Form Fields */}
             <FormControl fullWidth><TitleForm control={control} errors={errors} /></FormControl>
-
             <FormControl fullWidth><ImageForm handleImageChange={handleImageChange} /></FormControl>
             <FormControl fullWidth><TimeForm control={control} errors={formState.errors} /></FormControl>
             <FormControl fullWidth><IngredientsForm control={control} errors={formState.errors} /></FormControl>

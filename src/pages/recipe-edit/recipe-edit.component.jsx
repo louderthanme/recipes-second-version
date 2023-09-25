@@ -163,7 +163,7 @@ return (
       <Box>
             {isUpdating && <LinearProgress color="secondary" />}
       </Box>
-      <Box sx={{ opacity: isUpdating ? 0.5 : 1, pointerEvents: isUpdating ? 'none' : 'auto' }}>
+      <Box sx={{ opacity: isUpdating ? 0.5 : 1, pointerEvents: isUpdating ? 'none' : 'auto' }} >
         {/* Form submission */}
         <form onSubmit={handleSubmit(onSubmit, onError)}>
           
