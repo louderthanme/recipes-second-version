@@ -34,7 +34,7 @@ const RecipeImageCarousel = ({ images }) => {
         {images.map((url, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
             <RecipeImagePolaroid
-              image={transformImage(url, 300, 400)}
+              image={transformImage(url, 600, 800)}
             />
           </Box>
         ))}

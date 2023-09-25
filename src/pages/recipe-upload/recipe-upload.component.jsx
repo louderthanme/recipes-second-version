@@ -1,9 +1,9 @@
 // React Core and Hooks
 import { useContext, useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 
 // Material UI Components
-import { Button, Grid, Paper, Box, FormControl, Typography } from "@mui/material";
+import { Button, Grid, Paper, Box, FormControl, Typography, LinearProgress } from "@mui/material";
 
 // Contexts
 import { RecipesContext } from "../../contexts/recipe.context";
@@ -39,6 +39,7 @@ const RecipeUpload = () => {
   const { user } = useContext(UserContext);
   
   // Hooks and State
+  const [loading, setLoading] = useState(false); // Loading state for form submission
   const [newRecipeId, setNewRecipeId] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const RecipeUpload = () => {
   
     try {
       console.log("Selected Images: ", selectedImages); // Log the selected images
+      setLoading(true); // Set loading to true to display a progress bar
   
       let imageUrls = [];
   
@@ -92,6 +94,7 @@ const RecipeUpload = () => {
       console.log("An unexpected error occurred: ", error); // Log any unexpected errors
       showSnackbar("An unexpected error occurred. Please try again.", "error");
     }
+    setLoading(false); // Set loading to false when onSubmit finishes (success or error)
   };
   
 
@@ -122,30 +125,36 @@ const RecipeUpload = () => {
         <Box marginBottom={3}>
           <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
         </Box>
-        <form onSubmit={handleSubmit(onSubmit, onError)}>
-          {snackbar.open && (
-            <SnackbarFormMessage
-              message={snackbar.message}
-              severity={snackbar.severity}
-              position={{ vertical: "top", horizontal: "center" }}
-              onClose={handleSnackbarClose}
-            />
-          )}
-          {/* Form Fields */}
-          <FormControl fullWidth><TitleForm control={control} errors={errors} /></FormControl>
-          <FormControl fullWidth><ImageForm handleImageChange={handleImageChange} /></FormControl>
-          <FormControl fullWidth><TimeForm control={control} errors={formState.errors} /></FormControl>
-          <FormControl fullWidth><IngredientsForm control={control} errors={formState.errors} /></FormControl>
-          <FormControl fullWidth><InstructionsForm control={control} errors={formState.errors} /></FormControl>
-          {/* Submit Button */}
-          <Grid item xs={12}>
-            <Box marginTop={5}>
-              <Button type="submit" variant="contained" color="primary">
-                Upload Recipe
-              </Button>
-            </Box>
-          </Grid>
-        </form>
+        <Box>
+            {loading && <LinearProgress color="secondary" />}
+        </Box>
+        <Box sx={{ opacity: loading ? 0.5 : 1, pointerEvents: loading ? 'none' : 'auto' }}>
+          <form onSubmit={handleSubmit(onSubmit, onError)}>
+            {snackbar.open && (
+              <SnackbarFormMessage
+                message={snackbar.message}
+                severity={snackbar.severity}
+                position={{ vertical: "top", horizontal: "center" }}
+                onClose={handleSnackbarClose}
+              />
+            )}
+            {/* Form Fields */}
+            <FormControl fullWidth><TitleForm control={control} errors={errors} /></FormControl>
+
+            <FormControl fullWidth><ImageForm handleImageChange={handleImageChange} /></FormControl>
+            <FormControl fullWidth><TimeForm control={control} errors={formState.errors} /></FormControl>
+            <FormControl fullWidth><IngredientsForm control={control} errors={formState.errors} /></FormControl>
+            <FormControl fullWidth><InstructionsForm control={control} errors={formState.errors} /></FormControl>
+            {/* Submit Button */}
+            <Grid item xs={12}>
+              <Box marginTop={5}>
+                <Button type="submit" variant="contained" color="primary">
+                  Upload Recipe
+                </Button>
+              </Box>
+            </Grid>
+          </form>
+        </Box>
       </Box>
     </Paper>
   );
