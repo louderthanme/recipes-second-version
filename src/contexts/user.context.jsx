@@ -1,5 +1,7 @@
 import { useEffect,useState,createContext } from "react";
 import { onAuthStateChangedListener, signOutUser } from "../utils/firebase-utils";
+import GeneralLoadingSpinner from "../components/ui/loading-screens/general-loading-spinner.component";
+
 
 export const UserContext = createContext();
 
@@ -18,7 +20,7 @@ export const UserProvider= ({children}) => {
     } ,[]);
     
     if (loading) {
-        return <p>Loading...</p>;
+        return <GeneralLoadingSpinner/>;
     }
         
     return (
