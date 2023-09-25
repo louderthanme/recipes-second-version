@@ -39,7 +39,7 @@ const RecipeUpload = () => {
   const { user } = useContext(UserContext);
   
   // Hooks and State
-  const [loading, setLoading] = useState(false); // Loading state for form submission
+  const [isLoading, setIsLoading] = useState(false); // Loading state for form submission
   const [newRecipeId, setNewRecipeId] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const RecipeUpload = () => {
   
     try {
       console.log("Selected Images: ", selectedImages); // Log the selected images
-      setLoading(true); // Set loading to true to display a progress bar
+      setIsLoading(true); // Set loading to true to display a progress bar
   
       let imageUrls = [];
   
@@ -94,7 +94,7 @@ const RecipeUpload = () => {
       console.log("An unexpected error occurred: ", error); // Log any unexpected errors
       showSnackbar("An unexpected error occurred. Please try again.", "error");
     }
-    setLoading(false); // Set loading to false when onSubmit finishes (success or error)
+    setIsLoading(false); // Set loading to false when onSubmit finishes (success or error)
   };
   
 
@@ -126,9 +126,9 @@ const RecipeUpload = () => {
           <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
         </Box>
         <Box>
-            {loading && <LinearProgress color="secondary" />}
+            {isLoading && <LinearProgress color="secondary" />}
         </Box>
-        <Box sx={{ opacity: loading ? 0.5 : 1, pointerEvents: loading ? 'none' : 'auto' }}>
+        <Box sx={{ opacity: isLoading ? 0.5 : 1, pointerEvents: isLoading ? 'none' : 'auto' }}>
           <form onSubmit={handleSubmit(onSubmit, onError)}>
             {snackbar.open && (
               <SnackbarFormMessage

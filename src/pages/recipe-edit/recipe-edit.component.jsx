@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Button, Grid, Paper, Box, FormControl, Typography } from '@mui/material';
+import { Button, Grid, Paper, Box, FormControl, Typography, LinearProgress } from '@mui/material';
 
 import IngredientsForm from '../../components/Recipe/ingredients-form/ingredients-form.component';
 import InstructionsForm from '../../components/Recipe/instructions-form/instructions-form.component';
@@ -19,6 +19,7 @@ const RecipeEdit = () => {
   const { fetchRecipeById, updateRecipe, deleteRecipe, uploadImagesToCloudinary, batchDeleteImagesFromCloudinary } = useContext(RecipesContext);
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [isUpdating, setIsUpdating] = useState(false); // Loading state for form submission 
   const [recipe, setRecipe] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
   const [deletedImageUrls, setDeletedImageUrls] = useState([]); 
@@ -78,6 +79,7 @@ const RecipeEdit = () => {
 
 // Handle form submission
 const onSubmit = async (data) => {
+  setIsUpdating(true);
   try {
     // Handle image upload
     let newImageUrls = recipe.imageUrls ? [...recipe.imageUrls] : [];
@@ -112,6 +114,7 @@ const onSubmit = async (data) => {
     console.error('Error in onSubmit:', error);
     showSnackbar('Error updating recipe. Please try again.', 'error');
   }
+  setIsUpdating(false);
 };
 
 
@@ -157,63 +160,67 @@ return (
           Edit Recipe
         </Typography>
       </Box>
+      <Box>
+            {isUpdating && <LinearProgress color="secondary" />}
+      </Box>
+      <Box sx={{ opacity: isUpdating ? 0.5 : 1, pointerEvents: isUpdating ? 'none' : 'auto' }}>
+        {/* Form submission */}
+        <form onSubmit={handleSubmit(onSubmit, onError)}>
+          
+          {/* Snackbar for messages */}
+          <SnackbarFormMessage
+            message={snackbar.message}
+            severity={snackbar.severity}
+            position={{ vertical: 'top', horizontal: 'center' }}
+            onClose={handleSnackbarClose}
+          />
 
-      {/* Form submission */}
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
-        
-        {/* Snackbar for messages */}
-        <SnackbarFormMessage
-          message={snackbar.message}
-          severity={snackbar.severity}
-          position={{ vertical: 'top', horizontal: 'center' }}
-          onClose={handleSnackbarClose}
-        />
+          {/* Title input field */}
+          <FormControl fullWidth>
+            <TitleForm control={control} errors={errors} />
+          </FormControl>
 
-        {/* Title input field */}
-        <FormControl fullWidth>
-          <TitleForm control={control} errors={errors} />
-        </FormControl>
+          {/* Image input and delete button */}
+          <FormControl fullWidth>
+            <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
+          </FormControl>
 
-        {/* Image input and delete button */}
-        <FormControl fullWidth>
-          <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
-        </FormControl>
+          {/* Time input fields (prep and cook time) */}
+          <FormControl fullWidth>
+            <TimeForm control={control} errors={formState.errors} />
+          </FormControl>
 
-        {/* Time input fields (prep and cook time) */}
-        <FormControl fullWidth>
-          <TimeForm control={control} errors={formState.errors} />
-        </FormControl>
+          {/* Ingredients input fields */}
+          <FormControl fullWidth>
+            <IngredientsForm control={control} errors={formState.errors} />
+          </FormControl>
 
-        {/* Ingredients input fields */}
-        <FormControl fullWidth>
-          <IngredientsForm control={control} errors={formState.errors} />
-        </FormControl>
+          {/* Instructions input fields */}
+          <FormControl fullWidth>
+            <InstructionsForm control={control} errors={formState.errors} />
+          </FormControl>
 
-        {/* Instructions input fields */}
-        <FormControl fullWidth>
-          <InstructionsForm control={control} errors={formState.errors} />
-        </FormControl>
+          {/* Buttons for updating and deleting the recipe */}
+          <Grid container spacing={1} justifyContent="center" mt={5}>
+            {/* Update Recipe Button */}
+            <Grid item xs={5}>
+              <Button fullWidth type="submit" variant="contained" color="primary">
+                Update Recipe
+              </Button>
+            </Grid>
 
-        {/* Buttons for updating and deleting the recipe */}
-        <Grid container spacing={1} justifyContent="center" mt={5}>
-          {/* Update Recipe Button */}
-          <Grid item xs={5}>
-            <Button fullWidth type="submit" variant="contained" color="primary">
-              Update Recipe
-            </Button>
+            {/* Spacer */}
+            <Grid item xs={1}></Grid>
+
+            {/* Delete Recipe Button */}
+            <Grid item xs={5}>
+              <Button fullWidth variant="contained" color="warning" onClick={onDelete}>
+                Delete Recipe
+              </Button>
+            </Grid>
           </Grid>
-
-          {/* Spacer */}
-          <Grid item xs={1}></Grid>
-
-          {/* Delete Recipe Button */}
-          <Grid item xs={5}>
-            <Button fullWidth variant="contained" color="warning" onClick={onDelete}>
-              Delete Recipe
-            </Button>
-          </Grid>
-        </Grid>
-      </form>
+        </form>
+      </Box>
     </Box>
   </Paper>
 );
