@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { set, useForm } from "react-hook-form";
 
 // Material UI Components
-import { Button, Grid, Paper, Box, FormControl, Typography, LinearProgress } from "@mui/material";
+import { Button, Grid, Paper, Box, FormControl, Typography, LinearProgress, TextField, Chip } from "@mui/material";
 
 // Contexts
 import { RecipesContext } from "../../contexts/recipe.context";
@@ -29,6 +29,7 @@ const RecipeUpload = () => {
       time: { prep: null, cook: null },
       ingredients: [{ name: "", quantity: "" }],
       instructions: [{ step: "" }],
+      tags: [""],
     },
   });
   
@@ -42,6 +43,10 @@ const RecipeUpload = () => {
   const [isLoading, setIsLoading] = useState(false); // Loading state for form submission
   const [newRecipeId, setNewRecipeId] = useState(null);
   const [selectedImages, setSelectedImages] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
+
+
   const navigate = useNavigate();
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
   
@@ -111,6 +116,23 @@ const RecipeUpload = () => {
     hideSnackbar();
   };
 
+  const handleAddTag = (e) => {
+   
+    if(e.key === "Enter" || e.key === "Tab" || e.key === "," || e.key === " ") {
+      e.preventDefault();
+    const newTag = tagInput.trim().toLocaleLowerCase();
+      if (newTag && !tags.includes(newTag)) {
+        setTags([...tags, newTag]);
+      }
+      setTagInput("");
+    }
+  }
+
+  const handleDeleteTag = (tagToDelete) => {
+    setTags(tags.filter((tag) => tag !== tagToDelete));
+  }
+
+  
   // Effects
   useEffect(() => {
     if (newRecipeId) {
@@ -144,6 +166,27 @@ const RecipeUpload = () => {
             <FormControl fullWidth><TimeForm control={control} errors={formState.errors} /></FormControl>
             <FormControl fullWidth><IngredientsForm control={control} errors={formState.errors} /></FormControl>
             <FormControl fullWidth><InstructionsForm control={control} errors={formState.errors} /></FormControl>
+            <FormControl fullWidth>
+                <TextField
+                    label="Add Tags"
+                    variant="outlined"
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
+                    onKeyDown={handleAddTag}
+                    helperText="Press enter or comma to add tags."
+                    margin="normal"
+                />
+                <div>
+                    {tags.map((tag) => (
+                        <Chip
+                            key={tag}
+                            label={tag}
+                            onDelete={()=>handleDeleteTag(tag)}
+                            style={{ margin: '4px' }}
+                        />
+                    ))}
+                </div>
+            </FormControl>
             {/* Submit Button */}
             <Grid item xs={12}>
               <Box marginTop={5}>
