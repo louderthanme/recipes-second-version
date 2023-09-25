@@ -157,6 +157,9 @@ const RecipesProvider = ({ children }) => {
         if (recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(query.toLowerCase()))) {
           return true;
         }
+        if(recipe.tags.some((tag) => tag.toLowerCase().includes(query.toLowerCase()))){
+          return true;
+        }
         return false;
       });
       setSearchResults(filteredRecipes);
