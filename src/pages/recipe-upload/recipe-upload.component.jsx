@@ -83,6 +83,7 @@ const RecipeUpload = () => {
       if (imageUrls.length > 0 || selectedImages.length === 0) {
         data.imageUrls = imageUrls;
         data.ownerUid = user.uid;
+        data.tags = tags;
   
         console.log("Uploading recipe with data: ", data); // Log the final data object
   
