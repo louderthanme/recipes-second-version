@@ -72,7 +72,7 @@ const RecipeShowcase = () => {
     return <RecipeShowcaseLoading />;
   }
 
-  const { title, ingredients, imageUrls, instructions, time: { prep, cook }, ownerUid } = recipe;
+  const { title, ingredients, imageUrls, instructions, time: { prep, cook }, ownerUid, tags } = recipe;
 
 
   
@@ -94,7 +94,7 @@ const RecipeShowcase = () => {
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={7}>
         <Box p={2}>
-          <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} />
+          <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} tags={tags}/>
         </Box>
       </Grid>
       {/* Divider */}
