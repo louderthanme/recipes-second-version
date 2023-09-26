@@ -61,7 +61,7 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
           onChange={handleFileChange}
           style={{ display: 'none' }}
         />
-        <StyledButton scomponent="span"  sx={{width:'20%' }}>
+        <StyledButton component="span"  sx={{width:'200px' }}>
           Upload Image
         </StyledButton>
       </label>

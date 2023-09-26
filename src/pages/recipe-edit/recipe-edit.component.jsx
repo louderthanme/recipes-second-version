@@ -235,7 +235,7 @@ return (
           <Grid container spacing={1} justifyContent="center" mt={5}>
             {/* Update Recipe Button */}
             <Grid item xs={5}>
-              <Button fullWidth type="submit" variant="contained" color="primary">
+              <Button fullWidth type="submit" variant="contained" color="secondary">
                 Update Recipe
               </Button>
             </Grid>
@@ -245,7 +245,7 @@ return (
 
             {/* Delete Recipe Button */}
             <Grid item xs={5}>
-              <Button fullWidth variant="contained" color="warning" onClick={onDelete}>
+              <Button fullWidth variant="contained" color="error" onClick={onDelete}>
                 Delete Recipe
               </Button>
             </Grid>
