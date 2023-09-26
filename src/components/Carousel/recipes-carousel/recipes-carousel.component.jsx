@@ -46,11 +46,11 @@ const Carousel = ({recipes, backgroundColor}) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: slidesToShow,
-    slidesToScroll: 3,
+    slidesToScroll: 2,
     centerPadding: '0',
-    centerMode: true,
+    
     className: 'polaroid-slider',
     autoplay: true,
     autoplaySpeed: 2500,

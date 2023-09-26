@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Box, Typography, Button } from "@mui/material";
+import { StyledButton } from "../../../utils/styledComponents";
 import UploadPreviewImage from "../upload-preview-image/upload-preview-image.component";
 
 const noImageAvailableUrl =["https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"];
@@ -60,9 +61,9 @@ const ImageForm = ({ handleImageChange, handleImageDelete, recipe }) => {
           onChange={handleFileChange}
           style={{ display: 'none' }}
         />
-        <Button variant="contained" component="span">
+        <StyledButton scomponent="span"  sx={{width:'20%' }}>
           Upload Image
-        </Button>
+        </StyledButton>
       </label>
     </Box>
   );

@@ -5,7 +5,8 @@ import { useEffect } from "react";
 const TagForm = ({ tags, setTags, tagInput, setTagInput, handleAddTag, handleDeleteTag, existingTags }) => {
 
     useEffect(() => {
-        if(existingTags.length > 0){
+        
+        if(existingTags && existingTags.length > 0){
             setTags(existingTags)
         }
     }   , [existingTags])
@@ -14,7 +15,7 @@ const TagForm = ({ tags, setTags, tagInput, setTagInput, handleAddTag, handleDel
         <Box>
             <StyledTextField
             label="Add Tags"
-            variant="outlined"
+            variant="filled"
             value={tagInput}
             onChange={(e) => setTagInput(e.target.value)}
             onKeyDown={handleAddTag}

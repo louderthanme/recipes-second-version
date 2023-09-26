@@ -1,7 +1,7 @@
 import { useFieldArray,  Controller, Form } from "react-hook-form";
 import { Button, IconButton, Box, MenuItem, FormControl } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
-import { StyledTextField, StyledSelect } from "../../../utils/styledComponents";
+import { StyledTextField, StyledSelect, StyledButton } from "../../../utils/styledComponents";
 import { volumeUnits, weightUnits } from "../../../constants/units";
 
 
@@ -70,7 +70,7 @@ const IngredientInput = ({ control, errors }) => {
           </IconButton>
         </Box>
       ))}
-      <Button onClick={() => appendIngredient({ name: "", quantity: "", unit: "" })}>Add Ingredient</Button>
+      <StyledButton onClick={() => appendIngredient({ name: "", quantity: "", unit: "" })}>Add Ingredient</StyledButton>
     </>
   );
  

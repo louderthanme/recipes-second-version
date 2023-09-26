@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useFieldArray, useForm, Controller } from "react-hook-form";
 import { Button, IconButton, Box } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
-import { StyledTextField } from "../../../utils/styledComponents";
+import { StyledTextField, StyledButton } from "../../../utils/styledComponents";
 
 const InstructionInput = ({ control, errors }) => {
   const { fields: instructionFields, append: appendInstruction, remove: removeInstruction } = useFieldArray({
@@ -32,7 +32,7 @@ const InstructionInput = ({ control, errors }) => {
           </IconButton>
         </Box>
       ))}
-      <Button onClick={() => appendInstruction({ id: uuidv4(), step: "" })}>Add Instruction</Button>
+      <StyledButton onClick={() => appendInstruction({ id: uuidv4(), step: "" })}>Add Instruction</StyledButton>
     </>
   );
 };
