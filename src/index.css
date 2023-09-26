@@ -4,8 +4,8 @@
 
 /* Base root styles for fonts, line heights, and colors */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif, 'Architects Daughter';
-  font-weight: 400;
+  font-family: Gluten, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 300;
   line-height: 1.5;
   font-synthesis: none;
 

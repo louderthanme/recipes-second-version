@@ -6,7 +6,7 @@ const InstructionsDisplay = React.forwardRef(({ instructions, maxHeight, height 
 
 
   return (
-    <Box sx={{backgroundColor:'#c3bcfc',  color:'#430342', borderRadius:'8px', border:'.5em solid white'}}>
+    <Box sx={{backgroundColor:'#c3bcfc',  color:'#430342', borderRadius:'8px', border:'.5em solid white'}} pr={2}>
       <Typography variant="h6" align='center' pt={2} pb={2}>Instructions</Typography>
       <Box
         ref={ref}

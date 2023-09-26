@@ -17,7 +17,7 @@ const IngredientsDisplay = React.forwardRef(({ ingredients, height, maxHeight },
       >
         <ul>
           {ingredients.map((ingredient, index) => (
-            <li key={index}>  {ingredient.quantity}{ingredient.unit} of  {ingredient.name} </li>
+            <li key={index}>  {ingredient.quantity} {ingredient.unit} of  {ingredient.name} </li>
           ))}
         </ul>
       </Box>
