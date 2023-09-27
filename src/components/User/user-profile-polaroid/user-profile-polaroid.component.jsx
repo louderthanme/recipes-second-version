@@ -8,7 +8,9 @@ import ShareWindow from "../../ui/share-window/share-window.component";
 import { useShareWindow } from "../../../hooks/useShareWindow";
 
 const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, id, user, ownerUid, isToggled }) => {
-  const transformedImage = transformImage(images[1], 300, 400);
+  console.log('these are the images', images)
+  
+  const transformedImage = transformImage(images[0], 300, 400);
   const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
 
 

@@ -14,6 +14,7 @@ import SnackbarFormMessage from '../../components/ui/snackbar-form-message/snack
 import RecipeEditLoading from '../../components/ui/loading-screens/recipe-edit-loading.component';
 
 import { useSnackbar } from '../../hooks/useSnackbar';
+import { noImageAvailableUrl } from '../../constants/constants';
 
 const RecipeEdit = () => {
   // Contexts and hooks
@@ -63,21 +64,23 @@ const RecipeEdit = () => {
     setSelectedImages([...selectedImages, ...Array.from(e.target.files)]);
     console.log("After:", [...selectedImages, ...Array.from(e.target.files)]);
   };
-    // Handle image deletion
-    const handleImageDelete = (imageUrl) => {
-      // Remove the image URL from the list of image URLs in the recipe
-      console.log("Before Deletion: ", recipe.imageUrls);
-      const remainingImageUrls = recipe.imageUrls.filter(url => url !== imageUrl);
-      console.log("After Deletion: ", remainingImageUrls);
-
-      // Update the recipe state
-      setRecipe({...recipe, imageUrls: remainingImageUrls});
-      
-      // Update the state to include the deleted image URL
-      setDeletedImageUrls([...deletedImageUrls, imageUrl]);
-    
-      showSnackbar('Image deleted successfully!', 'success');
-    };
+  
+  // Handle image deletion
+  const handleImageDelete = (imageUrl) => {
+    // Remove the image URL from the list of image URLs in the recipe
+    console.log("Before Deletion: ", recipe.imageUrls);
+    const remainingImageUrls = recipe.imageUrls.filter(url => url !== imageUrl);
+    console.log("After Deletion: ", remainingImageUrls);
+    if(remainingImageUrls.length === 0) {
+      remainingImageUrls.push(noImageAvailableUrl);
+    }
+    // Update the recipe state
+    setRecipe({...recipe, imageUrls: remainingImageUrls});
+    // Update the state to include the deleted image URL
+    setDeletedImageUrls([...deletedImageUrls, imageUrl]);
+  
+    showSnackbar('Image deleted successfully!', 'success');
+  };
     
   
 
@@ -96,6 +99,9 @@ const onSubmit = async (data) => {
         return;
       }
       newImageUrls = [...newImageUrls, ...uploadedImageUrls];
+      if(newImageUrls.length === 0) {
+        newImageUrls = [noImageAvailableUrl];
+      }
     }
 
     // Create the recipe object

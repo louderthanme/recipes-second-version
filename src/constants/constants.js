@@ -17,3 +17,4 @@ export const volumeUnits = [
     'kilogram(s)'
   ];
 
+export const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1695839821/No_Image_Available.png";

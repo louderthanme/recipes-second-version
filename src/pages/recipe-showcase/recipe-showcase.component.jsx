@@ -14,7 +14,6 @@ import {useShareWindow} from '../../hooks/useShareWindow';
 import { UserContext } from '../../contexts/user.context';
 import { RecipesContext } from '../../contexts/recipe.context';
 
-const noImageAvailableUrl = ["https://res.cloudinary.com/recipeb00k/image/upload/v1670364997/Yelp%20Camp/No_Image_Available_dcvsug.jpg"];
 
 const RecipeShowcase = () => {
 
@@ -89,7 +88,7 @@ const RecipeShowcase = () => {
       {/* First Row */}
       <Grid item xs={12} sm={12} md={12} lg={5}>
         <Box mt={2}>
-          <ImageBox images={imageUrls ?? noImageAvailableUrl} />
+          <ImageBox images={imageUrls} />
         </Box>
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={7}>

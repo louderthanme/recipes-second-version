@@ -23,6 +23,9 @@ import SnackbarFormMessage from "../../components/ui/snackbar-form-message/snack
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from '../../hooks/useSnackbar';
 
+//constnats
+import { noImageAvailableUrl } from '../../constants/constants';
+
 const RecipeUpload = () => {
   // Form setup
   const { handleSubmit, control, formState, reset } = useForm({
@@ -55,10 +58,11 @@ const RecipeUpload = () => {
   // Functions and Handlers
   const onSubmit = async (data) => {
     console.log("onSubmit started"); // Log when onSubmit starts
+    setIsLoading(true); // Set loading to true to display a progress bar
+
   
     try {
       console.log("Selected Images: ", selectedImages); // Log the selected images
-      setIsLoading(true); // Set loading to true to display a progress bar
   
       let imageUrls = [];
   
@@ -76,11 +80,19 @@ const RecipeUpload = () => {
           showSnackbar("Image upload failed. Please try again.", "error");
         }
       }
-  
+        
       console.log("Total Image URLs: ", imageUrls); // Log all the image URLs
-  
+      // if there are no images, add a placeholder image
+      if (imageUrls.length === 0 && selectedImages.length === 0) {
+        console.log('before adding no image available', imageUrls)
+        imageUrls = [noImageAvailableUrl];
+        console.log('after adding no image available', imageUrls)
+      }
+
       // Only proceed if at least one image upload succeeded or no images were selected
       if (imageUrls.length > 0 || selectedImages.length === 0) {
+
+        
         data.imageUrls = imageUrls;
         data.ownerUid = user.uid;
         data.tags = tags;
