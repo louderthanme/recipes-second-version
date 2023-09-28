@@ -177,7 +177,7 @@ export const signUpWithEmailAndPassword = async (auth, email, password, displayN
       
       // Store the date of creation in Firebase Firestore
       const creationDate = new Date().toISOString();  // Current date and time in ISO format
-      const userRef = db.collection('users').doc(user.uid);
+      const userRef = doc(db, 'users', user.uid);
       await userRef.set({
         creationDate: creationDate
       }, { merge: true });  // The merge: true ensures we don't overwrite existing user data
@@ -211,7 +211,8 @@ export const signInWithGoogle = async () => {
       console.log('This is a new user!');
       // Store the date of creation in Firebase Firestore or Realtime Database
       const creationDate = new Date().toISOString();  // Current date and time in ISO format
-      const userRef = firestore.collection('users').doc(userCredential.user.uid);
+      const userRef = doc(db, 'users', user.uid);
+
       await userRef.set({
         creationDate: creationDate
       }, { merge: true });  // The merge: true ensures we don't overwrite existing user data
