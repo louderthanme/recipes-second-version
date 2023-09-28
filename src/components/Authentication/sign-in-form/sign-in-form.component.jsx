@@ -78,7 +78,7 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
                             </Grid>
                         <Grid item xs={1}></Grid>
                             <Grid item xs={5}>
-                                <Button variant="contained" color="primary" onClick={googleAuthHandler}>
+                                <Button variant="contained" color="primary" onClick={() => googleAuthHandler(setUser)}>
                                         Sign In with Google
                                 </Button>
                             </Grid>

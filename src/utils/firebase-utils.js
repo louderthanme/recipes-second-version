@@ -27,14 +27,14 @@ import {
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA_1Vv9FBH_YyWYOGVUHNI10VLeJCVJj68",
-    authDomain: "recipes-second-version.firebaseapp.com",
-    projectId: "recipes-second-version",
-    storageBucket: "recipes-second-version.appspot.com",
-    messagingSenderId: "71725641206",
-    appId: "1:71725641206:web:a7507594770df750ac6bd7",
-    measurementId: "G-0ZWJJWSNCJ"
-  };
+  apiKey: "AIzaSyADhdTtYG1vcZ1J3moLF7Y1H-14VzdPRIo",
+  authDomain: "recipes-8e041.firebaseapp.com",
+  projectId: "recipes-8e041",
+  storageBucket: "recipes-8e041.appspot.com",
+  messagingSenderId: "317539405043",
+  appId: "1:317539405043:web:6ed215d8441e1ee1657b86",
+  measurementId: "G-EWYNP7VSG9"
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(); // Initialize Firestore
@@ -178,7 +178,7 @@ export const signUpWithEmailAndPassword = async (auth, email, password, displayN
       // Store the date of creation in Firebase Firestore
       const creationDate = new Date().toISOString();  // Current date and time in ISO format
       const userRef = doc(db, 'users', user.uid);
-      await userRef.set({
+      await setDoc(userRef, {
         creationDate: creationDate
       }, { merge: true });  // The merge: true ensures we don't overwrite existing user data
       
@@ -206,16 +206,21 @@ export const signInWithGoogle = async () => {
   try {
     const userCredential = await signInWithPopup(auth, googleProvider);
     console.log('User signed in with Google successfully:', userCredential);
-    
-    if(userCredential.additionalUserInfo.isNewUser) {
+
+    const isNewUser = userCredential._tokenResponse.isNewUser;
+
+    console.log("Is New User?", isNewUser);
+
+      
+    if(isNewUser) {
+
       console.log('This is a new user!');
       // Store the date of creation in Firebase Firestore or Realtime Database
       const creationDate = new Date().toISOString();  // Current date and time in ISO format
-      const userRef = doc(db, 'users', user.uid);
-
-      await userRef.set({
+      const userRef = doc(db, 'users', userCredential.user.uid);
+      await setDoc(userRef, {
         creationDate: creationDate
-      }, { merge: true });  // The merge: true ensures we don't overwrite existing user data
+      }, { merge: true }); // The merge: true ensures we don't overwrite existing user data
     } else {
       console.log('This is a returning user!');
     }

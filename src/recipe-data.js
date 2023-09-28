@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const recipes = [
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2", 
     title: "Classic Chocolate Chip Cookies",
     ingredients: [
       { name: "all-purpose flour", quantity: "2 1/4", unit: "cup(s)" },
@@ -39,7 +39,7 @@ const recipes = [
     tags: ["dessert", "cookies", "chocolate", "baking", "sweet", "oven-baked"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Classic Spaghetti Carbonara",
     ingredients: [
       { name: "spaghetti", quantity: "400", unit: "gram(s)" },
@@ -71,7 +71,7 @@ const recipes = [
     tags: ["pasta", "Italian", "carbonara", "main course", "spaghetti", "guanciale", "pecorino", "egg-based"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Vegan Coconut Curry",
     ingredients: [
       { name: "coconut oil", quantity: "2", unit: "tablespoon(s)" },
@@ -107,7 +107,7 @@ const recipes = [
     tags: ["vegan", "curry", "coconut", "chickpeas", "spinach", "gluten-free", "dinner", "main course"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Chicken Marsala",
     ingredients: [
       { name: "chicken breasts", quantity: "4", unit: "" },
@@ -144,7 +144,7 @@ const recipes = [
     tags: ["chicken", "marsala", "wine", "mushrooms", "Italian", "main course", "dinner"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Vegetable Stir-Fry",
     ingredients: [
       { name: "carrot", quantity: "1", unit: "" },
@@ -180,7 +180,7 @@ const recipes = [
     tags: ["vegetable", "stir-fry", "Asian", "main course", "vegan", "dinner", "vegetarian"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Banana Bread",
     ingredients: [
       { name: "ripe bananas", quantity: "3", unit: "" },
@@ -217,7 +217,7 @@ const recipes = [
     tags: ["banana", "bread", "dessert", "sweet", "breakfast", "snack", "walnuts"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Mango and Chili-Glazed Chicken Tacos",
     ingredients: [
       { name: "chicken breasts", quantity: "2", unit: "pieces" },
@@ -254,7 +254,7 @@ const recipes = [
   }
   ,
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Blueberry and Mint Iced Tea",
     ingredients: [
       { name: "water", quantity: "4", unit: "cup(s)" },
@@ -286,7 +286,7 @@ const recipes = [
     tags: ["blueberry", "mint", "iced tea", "drink", "refreshing", "summer"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Vegetarian Sushi Bowl",
     ingredients: [
       { name: "sushi rice", quantity: "1", unit: "cup(s)" },
@@ -321,7 +321,7 @@ const recipes = [
     tags: ["vegetarian", "sushi bowl", "Japanese", "healthy", "rice", "avocado", "nori"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Pumpkin Spice Latte",
     ingredients: [
       { name: "brewed coffee", quantity: "1", unit: "cup(s)" },
@@ -352,7 +352,7 @@ const recipes = [
     tags: ["pumpkin spice", "latte", "coffee", "autumn", "beverage", "caffeine", "pumpkin"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Lemon Garlic Roast Chicken",
     ingredients: [
       { name: "chicken", quantity: "4", unit: "pound(s)" },
@@ -386,7 +386,7 @@ const recipes = [
     tags: ["chicken", "roast", "lemon", "garlic", "main dish", "herbs"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Vegan Coconut Curry",
     ingredients: [
       { name: "coconut oil", quantity: "2", unit: "tablespoon(s)" },
@@ -423,7 +423,7 @@ const recipes = [
     tags: ["vegan", "curry", "coconut", "main dish", "chickpeas", "spinach", "spicy"]
   },  
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2", 
     title: "Blueberry Pancakes",
     ingredients: [
       { name: "all-purpose flour", quantity: "1", unit: "cup(s)" },
@@ -456,7 +456,7 @@ const recipes = [
     tags: ["breakfast", "pancakes", "blueberries", "dessert", "sweet", "vegetarian"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Homemade Sushi Rolls",
     ingredients: [
       { name: "sushi rice", quantity: "2", unit: "cup(s)" },
@@ -493,7 +493,7 @@ const recipes = [
     tags: ["sushi", "japanese", "fish", "dinner", "seafood", "rolls"]
   },  
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Vegan Chocolate Avocado Smoothie",
     ingredients: [
       { name: "avocado", quantity: "1", unit: "avocado" },
@@ -524,7 +524,7 @@ const recipes = [
     tags: ["vegan", "smoothie", "chocolate", "avocado", "breakfast", "healthy", "drink"]
   },  
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Zucchini Noodles with Pesto",
     ingredients: [
       { name: "zucchinis", quantity: "3", unit: "zucchinis" },
@@ -556,7 +556,7 @@ const recipes = [
     tags: ["vegetarian", "pesto", "zucchini", "noodles", "gluten-free", "main course"]
   },  
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Vegan Lentil Soup",
     ingredients: [
       { name: "olive oil", quantity: "2", unit: "tablespoon(s)" },
@@ -594,7 +594,7 @@ const recipes = [
     tags: ["vegan", "soup", "lentil", "gluten-free", "main course"]
   },  
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Gluten-Free Almond Cookies",
     ingredients: [
       { name: "almond flour", quantity: "2", unit: "cup(s)" },
@@ -627,7 +627,7 @@ const recipes = [
     tags: ["gluten-free", "cookies", "almond", "dessert", "baked"]
   },
   {
-    ownerUid: "PXhGH3KPq2dBkX4vsJkJkT476OT2",
+    ownerUid: "7yz1w2NnGDTHz1uzcyffpBCBmhU2",
     title: "Spicy Mango Salsa",
     ingredients: [
       { name: "ripe mango", quantity: "2", unit: "" },
