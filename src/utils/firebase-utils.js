@@ -179,7 +179,10 @@ export const signUpWithEmailAndPassword = async (auth, email, password, displayN
       const creationDate = new Date().toISOString();  // Current date and time in ISO format
       const userRef = doc(db, 'users', user.uid);
       await setDoc(userRef, {
-        creationDate: creationDate
+        creationDate: creationDate,
+        displayName: displayName,
+        email: email,
+        userId: user.uid,
       }, { merge: true });  // The merge: true ensures we don't overwrite existing user data
       
       console.log('User created successfully with creation date:', user, creationDate);
@@ -219,7 +222,10 @@ export const signInWithGoogle = async () => {
       const creationDate = new Date().toISOString();  // Current date and time in ISO format
       const userRef = doc(db, 'users', userCredential.user.uid);
       await setDoc(userRef, {
-        creationDate: creationDate
+        creationDate: creationDate,
+        displayName: userCredential.user.displayName,
+        email: userCredential.user.email,
+        userId: userCredential.user.uid,
       }, { merge: true }); // The merge: true ensures we don't overwrite existing user data
     } else {
       console.log('This is a returning user!');
