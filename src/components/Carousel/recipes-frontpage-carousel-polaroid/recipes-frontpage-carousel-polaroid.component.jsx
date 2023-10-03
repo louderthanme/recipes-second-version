@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Box, IconButton, Tooltip } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -8,9 +8,17 @@ import { UserContext } from "../../../contexts/user.context"
 
 const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) => {
 
-  const { addRecipeToFavorites, removeRecipeFromFavorites } = useContext(UserContext);
+  const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
 
+  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
   const [isFavorited, setIsFavorited] = useState(false);
+
+  useEffect(() => {
+      setIsFavorited(favoriteRecipes.includes(recipeId));
+  }, [favoriteRecipes, recipeId]);
+
+
+
   const toggleFavorite = async (e, recipeId) => {
     if (isFavorited) {
       await removeRecipeFromFavorites(recipeId);
@@ -19,9 +27,7 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
     }
     setIsFavorited(!isFavorited);
   };
-  
-  
-  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
+ 
 
   return (
     <Box 
