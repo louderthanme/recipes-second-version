@@ -100,7 +100,7 @@ const SearchResultsPolaroid = ({ images, title, recipeId, onClick }) => {
                 {ShareWindowComponent()}
             
             
-            <Box textAlign="center" mt={1} sx={{color:'black'}}>
+            <Box textAlign="center" mt={1} sx={{color:'black', fontSize:'20px'}}>
                 <b>{title}</b>
             </Box>
         </Box>

@@ -98,6 +98,7 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
           display: 'flex', 
           alignItems: 'center', 
           minHeight: '4em', 
+          fontSize: '20px',
           justifyContent: 'center', 
           textAlign: 'center' 
         }} 

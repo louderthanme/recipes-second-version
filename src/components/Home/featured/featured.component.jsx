@@ -7,9 +7,9 @@ const Featured = ({recipes}) => {
 
     return(
         <Box pb={5}>
-          <Typography variant="h3" gutterBottom ml={9} mb={4} mt={4} pt={1} sx={{ color: '#021428' }}> Featured Recipes</Typography>
+          <Typography variant="h3" gutterBottom ml={7} mb={4} mt={4} pt={1} sx={{ color: '#021428', fontFamily:'caveat', fontWeight:'800' }}> Featured Recipes</Typography>
           <RecipesFrontpageCarousel recipes={recipes} backgroundColor={backgroundColor} />
-          <Typography variant="h3" gutterBottom ml={9} mb={6} mt={4} pt={1} sx={{ color: '#021428' }}> Mexican Recipes</Typography>
+          <Typography variant="h3" gutterBottom ml={7} mb={6} mt={4} pt={1} sx={{ color: '#021428', fontFamily:'caveat', fontWeight:'800' }}> Mexican Recipes</Typography>
           <RecipesFrontpageCarousel recipes={recipes} backgroundColor={backgroundColor} />  
         </Box>
     )

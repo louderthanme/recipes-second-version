@@ -17,8 +17,8 @@ const SearchBarBox = ({ handleChange }) => {
 
   return (
     <Box px={4} py={2}>
-      <Typography variant="h3" fontWeight="bold" mt={2} mb={1} textAlign={'center'} sx={{ color: '#750303' }}>
-        Welcome to Recipe Book
+      <Typography variant="h1" fontWeight="bold" mt={2} mb={1} textAlign={'center'} sx={{ color: '#750303', fontFamily: 'Caveat' }}>
+        Nibble Notebook
       </Typography>
       <StyledSearchBar
         variant="filled"

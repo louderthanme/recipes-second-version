@@ -4,7 +4,7 @@
 
 /* Base root styles for fonts, line heights, and colors */
 :root {
-  font-family: 'Architects Daughter', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Caveat', cursive, 'Architects Daughter', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.5;
   font-synthesis: none;
@@ -19,12 +19,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+
 }
 
 /* Global body styles */
 body {
   margin: 0;
   overflow-x: hidden; /* Hide horizontal scroll */
+  
 }
 
 
@@ -93,3 +96,4 @@ h1 {
 
 
 }
+

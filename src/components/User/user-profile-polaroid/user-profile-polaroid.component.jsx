@@ -130,7 +130,7 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, onRemov
         
       </Box>
       
-      <Box textAlign="center" mt={1}>
+      <Box textAlign="center" mt={1} sx={{fontSize:'20px'}}>
         <b>{title}</b>
       </Box>
     </Box>

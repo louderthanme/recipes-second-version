@@ -142,6 +142,9 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
   // Override the color of the text to be black for both unselected and selected tabs
   "& .MuiTab-root": {
     color: "black",
+    fontFamily:'Caveat',
+    fontWeight:'bold',
+    fontSize:'20px', 
     "&.Mui-selected": {
       color: "black",
     },
@@ -149,6 +152,6 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
 
   // Override the ripple effect color when the tab is clicked
   "& .MuiTouchRipple-root": {
-    color: "#desiredColor", // replace #desiredColor with the color you want
+    color: "#ebd7fd", // replace #desiredColor with the color you want
   }
 }));

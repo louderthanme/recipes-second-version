@@ -69,7 +69,7 @@ const RecipesFrontpageCarousel = ({recipes, backgroundColor}) => {
   return (
    
    
-   <Paper elevation={4} sx={{ width: '82%', margin: '0 auto', padding: '10px', backgroundColor: backgroundColor}}>
+   <Paper elevation={4} sx={{ width: '82%', margin: '0 auto', padding: '10px', paddingX:'30px', backgroundColor: backgroundColor, overflow:'hidden'}}>
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>

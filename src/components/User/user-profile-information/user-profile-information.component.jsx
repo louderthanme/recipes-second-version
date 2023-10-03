@@ -32,14 +32,14 @@ const UserProfileInformation = ({ user }) => {
             {/* User Info */}
             <Grid item xs={12} md={11} sx={{ textAlign: { xs: 'center', md: 'left' }}}>
               <Box pt={3} px={{ xs: 2, sm:3, md:12, lg: 9, xl:7 }} ml={2} > 
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom sx={{fontFamily:'caveat', fontSize:'30px', fontWeight:'bold', marginBottom:'-10px'}}>
                   {user.displayName}
                 </Typography>
-                <Typography variant="body2" gutterBottom>
+                <Typography variant="body2" gutterBottom sx={{fontFamily:'caveat', fontSize:'20px', fontWeight:'semibold', marginBottom: '-10px'}}>
                   {user.email}
                 </Typography>
-                <Typography variant="body2">
-                  Member since: {new Date(user.metadata.creationTime).toLocaleDateString()}
+                <Typography variant="body2" sx={{fontFamily:'caveat', fontSize:'20px', fontWeight:'medium', marginBottom:'-10px'}}>
+                  member since: {new Date(user.metadata.creationTime).toLocaleDateString()}
                 </Typography>
               </Box>
             </Grid>
