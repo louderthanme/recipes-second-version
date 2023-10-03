@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import UserProfilePolaroid from "../user-profile-polaroid/user-profile-polaroid.component";
 
-const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEditRecipe, isToggled }) => {
+const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEditRecipe, isToggled, onRemoveFromFavorites, type }) => {
   return (
     <>
       <Box p={3}>
@@ -16,6 +16,8 @@ const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEdit
                 onDelete={() => onDeleteRecipe(recipe)}
                 onClick={() => onClickRecipe(recipe.id)}
                 onEdit={() => onEditRecipe(recipe.id)}
+                onRemove={() => onRemoveFromFavorites(recipe.id)}
+                type={type}
               />
             </Grid>
           ))}

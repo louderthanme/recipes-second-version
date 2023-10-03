@@ -6,24 +6,33 @@ import { useNavigate } from "react-router-dom";
 import {StyledDivider} from "../../utils/styledComponents"
 import UserProfileLoading from "../../components/ui/loading-screens/user-profile-loading.component";
 
-import UserFavoriteRecipesDisplay from "../../components/User/user-favorite-recipes-display/user-favorite-recipes-display.component";
 import UserProfileInformation from "../../components/User/user-profile-information/user-profile-information.component";
 import UserRecipesDisplay from "../../components/User/user-recipes-display/user-recipes-display.component";
 import UserProfileControls from "../../components/User/user-profile-controls/user-profile-controls.component";
 
 const UserProfile = () => {
   const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes, fetchFavoriteRecipes, favoriteFullRecipes } = useContext(RecipesContext); // Use userRecipes
-  const { user, favoriteRecipes } = useContext(UserContext);
+  const { user, favoriteRecipes, removeRecipeFromFavorites } = useContext(UserContext);
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
 
   console.log('userRecipes:', userRecipes)
   
   const [isToggled, setIsToggled] = useState(false);
+  const [activeTab, setActiveTab] = useState('myRecipes');
 
   const handleToggle = () => {  
     setIsToggled(!isToggled);
   };
+
+  const handleTabChange = (selectedTab) => {
+    setActiveTab(selectedTab);
+  }
+
+  const handleRemoveFromFavorites = async (recipeId) => {
+    await removeRecipeFromFavorites(recipeId);
+  }
+
 
 
   useEffect(() => {
@@ -37,8 +46,6 @@ const UserProfile = () => {
       fetchFavoriteRecipes(favoriteRecipes);
     }
   }, [favoriteRecipes]);
-
-  console.log('favoriteRecipes:', favoriteFullRecipes)
 
   const handleDeleteRecipe = async (recipe) => {
     console.log('recipeId:', recipe.id);
@@ -64,29 +71,38 @@ const UserProfile = () => {
     return <UserProfileLoading />;
   }
 
+  let displayRecipes, displayType;
+
+  if (activeTab === 'myRecipes') {
+    displayRecipes = userRecipes;
+    displayType = 'own';
+  } else {
+    displayRecipes = favoriteFullRecipes;
+    displayType = 'favorite';
+  }
+
   return (
     <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC",  margin:'20px', width:'70%'}}>
       <UserProfileInformation user={user} />
       <StyledDivider />
        <UserProfileControls
           handleToggle={handleToggle}
+          activeTab={activeTab}
+          handleTabChange={handleTabChange}
        />
       <StyledDivider />
+
       <UserRecipesDisplay
-        userRecipes={userRecipes}
-        onDeleteRecipe={handleDeleteRecipe} 
+        userRecipes={displayRecipes}
+        onDeleteRecipe={handleDeleteRecipe}
         onClickRecipe={goToRecipe}
         onEditRecipe={goToRecipeEdit}
+        onRemoveFromFavorites={handleRemoveFromFavorites}
         isToggled={isToggled}
+        type={displayType}
       />
-      <StyledDivider />
-      <UserFavoriteRecipesDisplay
-        userRecipes={favoriteFullRecipes}
-        onDeleteRecipe={handleDeleteRecipe} 
-        onClickRecipe={goToRecipe}
-        onEditRecipe={goToRecipeEdit}
-        isToggled={isToggled}
-      />
+
+      
 
 
     </Paper>
