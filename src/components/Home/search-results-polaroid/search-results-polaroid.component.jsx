@@ -12,7 +12,7 @@ import { UserContext } from "../../../contexts/user.context";
 const SearchResultsPolaroid = ({ images, title, recipeId, onClick }) => {
     const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
 
-    const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
+    const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title, recipeId:recipeId});
     const [isFavorited, setIsFavorited] = useState(false);
 
     useEffect(() => {

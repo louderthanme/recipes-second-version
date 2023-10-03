@@ -11,7 +11,7 @@ import { useShareWindow } from "../../../hooks/useShareWindow";
 const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, onRemove, id, user, ownerUid, isToggled, type}) => {
   
   const transformedImage = transformImage(images[0], 300, 400);
-  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
+  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title, recipeId:id});
 
 
   return (

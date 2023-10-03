@@ -4,9 +4,11 @@ import { FacebookShareButton, WhatsappShareButton, TwitterShareButton, FacebookI
 import { useLocation } from "react-router-dom";
 import StopPropagationWrapper from "../stop-propagation-wrapper/stop-propagation-wrapper.component";
 
-const ShareWindow = ({ x, y, onClose, recipe }) => {
+const ShareWindow = ({ x, y, onClose, recipe}) => {
+
+  console.log("ShareWindow: recipe", recipe);
   const location = useLocation();
-  const shareUrl = `${window.location.origin}${location.pathname}`;
+  const shareUrl = `${window.location.origin}/recipe/${recipe.recipeId}`;
   const theme = useTheme();
   let isXSmall = useMediaQuery(theme.breakpoints.down('sm'));
 

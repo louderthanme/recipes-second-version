@@ -10,7 +10,7 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
 
   const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
 
-  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
+  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title, recipeId:recipeId});
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
