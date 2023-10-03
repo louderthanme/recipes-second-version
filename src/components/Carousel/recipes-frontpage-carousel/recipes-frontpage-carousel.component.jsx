@@ -76,6 +76,7 @@ const RecipesFrontpageCarousel = ({recipes, backgroundColor}) => {
             <RecipesFrontpageCarouselPolaroid
               image={transformImage(recipe.imageUrls[0], 300, 400)}
               title={recipe.title}
+              recipeId={recipe.id}
               onClick={() => goToRecipe(recipe.id)}
             />
           </Box>
