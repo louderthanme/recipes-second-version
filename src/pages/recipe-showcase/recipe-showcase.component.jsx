@@ -17,7 +17,7 @@ import { RecipesContext } from '../../contexts/recipe.context';
 
 const RecipeShowcase = () => {
 
-  const { user } = useContext(UserContext);
+  const { user, addRecipeToFavorites, removeRecipeFromFavorites } = useContext(UserContext);
   const { fetchRecipeById } = useContext(RecipesContext);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -127,6 +127,9 @@ const RecipeShowcase = () => {
             Share Recipe
           </Button>
           {ShareWindowComponent()}
+          <Button onClick={()=> addRecipeToFavorites(id)}>
+            Add to Favorites
+          </Button>
         </Box>
 
         </Grid>

@@ -27,13 +27,13 @@ import {
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyADhdTtYG1vcZ1J3moLF7Y1H-14VzdPRIo",
-  authDomain: "recipes-8e041.firebaseapp.com",
-  projectId: "recipes-8e041",
-  storageBucket: "recipes-8e041.appspot.com",
-  messagingSenderId: "317539405043",
-  appId: "1:317539405043:web:6ed215d8441e1ee1657b86",
-  measurementId: "G-EWYNP7VSG9"
+  apiKey: "AIzaSyB9doOMvl2kSX2hpKnvvgok7OS8u9ebhaE",
+  authDomain: "recipes-8b856.firebaseapp.com",
+  projectId: "recipes-8b856",
+  storageBucket: "recipes-8b856.appspot.com",
+  messagingSenderId: "178568120389",
+  appId: "1:178568120389:web:a97afcfba5f53bcccafb2c",
+  measurementId: "G-PKW7RWPCVB"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -237,6 +237,50 @@ export const signInWithGoogle = async () => {
     throw error;
   }
 };
+
+export const addRecipeToUserFavorites = async (recipeId, user) => {
+  console.log("User:", user, "Recipe ID:", recipeId);
+  try {
+    const userRef = doc(db, 'users', user);
+    const userDoc = await getDoc(userRef);
+    
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      const favoriteRecipes = userData.favoriteRecipes || [];
+
+      if (!favoriteRecipes.includes(recipeId)) {
+        favoriteRecipes.push(recipeId);
+        await updateDoc(userRef, { favoriteRecipes });
+        console.log(`Recipe with ID ${recipeId} added to user favorites successfully!`);
+      }
+    }
+  } catch (error) {
+    console.error('Error adding recipe to user favorites:', error);
+  }
+};
+
+
+
+export const removeRecipeFromUserFavorites = async (recipeId, user) => {
+  console.log("User:", user, "Recipe ID:", recipeId);
+  try {
+    const userRef = doc(db, 'users', user.uid);
+    const userDoc = await getDoc(userRef);
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      const favoriteRecipes = userData.favoriteRecipes || [];
+
+      if (favoriteRecipes.includes(recipeId)) {
+        const updatedFavorites = favoriteRecipes.filter(id => id !== recipeId);
+        await updateDoc(userRef, { favoriteRecipes: updatedFavorites });
+        console.log(`Recipe with ID ${recipeId} removed from user favorites successfully!`);
+      }
+    }
+  } catch (error) {
+    console.error('Error removing recipe from user favorites:', error);
+  }
+};
+
 
 
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
