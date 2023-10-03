@@ -1,15 +1,20 @@
-import { Box, IconButton} from "@mui/material";
-import { blue, common } from '@mui/material/colors';
-import ShareIcon from '@mui/icons-material/Share';
+import React, { useState } from 'react';
+import { Box, IconButton, Tooltip } from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { blue, red, common, grey } from '@mui/material/colors';import ShareIcon from '@mui/icons-material/Share';
 import { useShareWindow } from "../../../hooks/useShareWindow";
 
 const RecipesFrontpageCarouselPolaroid = ({ image, title, onClick }) => {
 
+  const [isFavorited, setIsFavorited] = useState(false);
+  const toggleFavorite = (e) => {
+    setIsFavorited(!isFavorited);
+  };
+  
   const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
 
-  
-
-  return(
+  return (
     <Box 
       sx={{ 
         position: 'relative',
@@ -25,25 +30,52 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, onClick }) => {
       onClick={onClick}
     >
       <img src={image} alt={title} style={{display: 'block'}} />
-      <IconButton
-              aria-label="share-recipe"
-              size="small"
-              onClick={handleShareClick}
-              sx={{
-                position: 'absolute',
-                top: '70%',  
-                right: '-10px',
-                width: '24px',
-                height: '24px',
-                backgroundColor: blue[500],
-                '&:hover': {
-                  backgroundColor: blue[700],
-                },
-              }}
-            >
-            <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
+      <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
+        <IconButton
+          aria-label="toggle-favorite"
+          size="small"
+          onClick={(e)=>{
+            e.stopPropagation();
+            toggleFavorite();
+          }}
+          sx={{
+            position: 'absolute',
+            top: '30%',  
+            right: '-10px',
+            width: '24px',
+            height: '24px',
+            backgroundColor: grey[500],  // Set to grey[500] for a specific shade of grey
+            '&:hover': {
+              backgroundColor: isFavorited ? red[700] : grey[700], // Modify hover color for consistency
+            },
+          }}
+        >
+          {isFavorited ? 
+            <FavoriteIcon sx={{ color: red[500], fontSize: '14px' }} /> // red heart when favorited
+            :
+            <FavoriteBorderIcon sx={{ color: common.white, fontSize: '14px' }} /> // white border heart when not favorited
+          }
         </IconButton>
-        {ShareWindowComponent()}
+      </Tooltip>
+      <IconButton
+        aria-label="share-recipe"
+        size="small"
+        onClick={handleShareClick}
+        sx={{
+          position: 'absolute',
+          top: '70%',  
+          right: '-10px',
+          width: '24px',
+          height: '24px',
+          backgroundColor: blue[500],
+          '&:hover': {
+            backgroundColor: blue[700],
+          },
+        }}
+      >
+        <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
+      </IconButton>
+      {ShareWindowComponent()}
       <Box 
         sx={{ 
           display: 'flex', 
@@ -56,7 +88,6 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, onClick }) => {
       >
         <b>{title}</b>
       </Box>
-
     </Box>
   );
 };
