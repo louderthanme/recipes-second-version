@@ -5,10 +5,10 @@ import CarouselLoading from '../../ui/loading-screens/carousel-loading.component
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { Paper, Box, useTheme, useMediaQuery} from '@mui/material';
-import RecipesCarouselPolaroid from '../recipes-carousel-polaroid/recipes-carousel-polaroid.component';
+import RecipesFrontpageCarouselPolaroid from '../recipes-frontpage-carousel-polaroid/recipes-frontpage-carousel-polaroid.component';
 import { transformImage } from '../../../utils/utils';
 
-const Carousel = ({recipes, backgroundColor}) => {
+const RecipesFrontpageCarousel = ({recipes, backgroundColor}) => {
   const [slidesToShow, setSlidesToShow] = useState(4);
   const theme = useTheme();
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ const Carousel = ({recipes, backgroundColor}) => {
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
-            <RecipesCarouselPolaroid
+            <RecipesFrontpageCarouselPolaroid
               image={transformImage(recipe.imageUrls[0], 300, 400)}
               title={recipe.title}
               onClick={() => goToRecipe(recipe.id)}
@@ -89,4 +89,4 @@ const Carousel = ({recipes, backgroundColor}) => {
   );
 };
 
-export default Carousel;
+export default RecipesFrontpageCarousel;

@@ -3,7 +3,7 @@ import { blue, common } from '@mui/material/colors';
 import ShareIcon from '@mui/icons-material/Share';
 import { useShareWindow } from "../../../hooks/useShareWindow";
 
-const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
+const RecipesFrontpageCarouselPolaroid = ({ image, title, onClick }) => {
 
   const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
 
@@ -42,8 +42,8 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
               }}
             >
             <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
-            </IconButton>
-            {ShareWindowComponent()}
+        </IconButton>
+        {ShareWindowComponent()}
       <Box 
         sx={{ 
           display: 'flex', 
@@ -61,4 +61,4 @@ const RecipesCarouselPolaroid = ({ image, title, onClick }) => {
   );
 };
 
-export default RecipesCarouselPolaroid;
+export default RecipesFrontpageCarouselPolaroid;

@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
-import RecipeImagePolaroid from "../recipe-image-polaroid/recipe-image-polaroid.component";
+import RecipeShowcaseImagePolaroid from "../recipe-showcase-image-polaroid/recipe-showcase-image-polaroid.component";
 import Slider from "react-slick";
 import CarouselLoading from "../../ui/loading-screens/carousel-loading.component";
 import { transformImage } from "../../../utils/utils";
 
 
-const RecipeImageCarousel = ({ images }) => {
+const RecipeShowcaseImageCarousel = ({ images }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -33,7 +33,7 @@ const RecipeImageCarousel = ({ images }) => {
       <Slider {...settings}>
         {images.map((url, index) => (
           <Box key={index} sx={{ padding: '0 5px' }}>
-            <RecipeImagePolaroid
+            <RecipeShowcaseImagePolaroid
               image={transformImage(url, 600, 800)}
             />
           </Box>
@@ -43,4 +43,4 @@ const RecipeImageCarousel = ({ images }) => {
   );
 };
 
-export default RecipeImageCarousel;
+export default RecipeShowcaseImageCarousel;

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 
-const RecipeImagePolaroid = ({ image, title, onClick }) => {
+const RecipeShowcaseImagePolaroid = ({ image, title, onClick }) => {
     return (
         <Box 
             sx={{ 
@@ -20,4 +20,4 @@ const RecipeImagePolaroid = ({ image, title, onClick }) => {
     );
 }
 
-export default RecipeImagePolaroid;
+export default RecipeShowcaseImagePolaroid;
