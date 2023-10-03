@@ -5,7 +5,8 @@ import {
   updateRecipeInFirestore,
   uploadRecipeToFirestore, 
   deleteRecipeFromFirestore,
-  fetchRecipeByIdFromFirestore
+  fetchRecipeByIdFromFirestore,
+  fetchRecipesByIdsFromFirestore
  } from '../utils/firebase-utils';
 import { UserContext } from './user.context';
 
@@ -17,6 +18,8 @@ const RecipesProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [userRecipes, setUserRecipes] = useState([]); 
   const [searchResults, setSearchResults] = useState([]);
+  const [favoriteFullRecipes, setFavoriteFullRecipes] = useState([]);
+
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -41,6 +44,18 @@ const RecipesProvider = ({ children }) => {
       console.error('Error fetching recipes:', error);
     }
   };
+
+  const fetchFavoriteRecipes = async (favoriteRecipeIds) => {
+    if (!favoriteRecipeIds || favoriteRecipeIds.length === 0) return [];
+    try {
+      const favoriteRecipesFromFirebase = await fetchRecipesByIdsFromFirestore(favoriteRecipeIds);
+      console.log("Favorite recipes from Firebase:", favoriteRecipesFromFirebase);
+      setFavoriteFullRecipes(favoriteRecipesFromFirebase); 
+    } catch (error) {
+      console.error('Error fetching favorite recipes:', error);
+    }
+  };
+  
 
   const fetchRecipeById = async (id) => {
     try {
@@ -169,7 +184,7 @@ const RecipesProvider = ({ children }) => {
 
 
 
-  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, uploadImagesToCloudinary,batchDeleteImagesFromCloudinary, searchRecipes, searchResults };
+  const value = { recipes, userRecipes, updateRecipe, uploadRecipe, deleteRecipe, fetchUserRecipes, setUserRecipes, fetchRecipeById, fetchFavoriteRecipes, uploadImagesToCloudinary,batchDeleteImagesFromCloudinary, searchRecipes, searchResults, favoriteFullRecipes };
 
   return <RecipesContext.Provider value={value}>{children}</RecipesContext.Provider>;
 };

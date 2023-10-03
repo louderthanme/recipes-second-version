@@ -12,7 +12,7 @@ import UserRecipesDisplay from "../../components/User/user-recipes-display/user-
 import UserProfileControls from "../../components/User/user-profile-controls/user-profile-controls.component";
 
 const UserProfile = () => {
-  const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes } = useContext(RecipesContext); // Use userRecipes
+  const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes, fetchFavoriteRecipes, favoriteFullRecipes } = useContext(RecipesContext); // Use userRecipes
   const { user, favoriteRecipes } = useContext(UserContext);
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
@@ -32,6 +32,13 @@ const UserProfile = () => {
     }
   }, [userId]);
 
+  useEffect(() => {
+    if (favoriteRecipes) {
+      fetchFavoriteRecipes(favoriteRecipes);
+    }
+  }, [favoriteRecipes]);
+
+  console.log('favoriteRecipes:', favoriteFullRecipes)
 
   const handleDeleteRecipe = async (recipe) => {
     console.log('recipeId:', recipe.id);
@@ -72,13 +79,14 @@ const UserProfile = () => {
         onEditRecipe={goToRecipeEdit}
         isToggled={isToggled}
       />
-      {/* <UserFavoriteRecipesDisplay
-        userRecipes={favoriteRecipes}
+      <StyledDivider />
+      <UserFavoriteRecipesDisplay
+        userRecipes={favoriteFullRecipes}
         onDeleteRecipe={handleDeleteRecipe} 
         onClickRecipe={goToRecipe}
         onEditRecipe={goToRecipeEdit}
         isToggled={isToggled}
-      /> */}
+      />
 
 
     </Paper>

@@ -25,6 +25,16 @@ import {
   signInWithPopup
 } from 'firebase/auth';
 
+const chunkArray = (array, size) => {
+  const chunkedArr = [];
+  let index = 0;
+  while (index < array.length) {
+    chunkedArr.push(array.slice(index, size + index));
+    index += size;
+  }
+  return chunkedArr;
+};
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyB9doOMvl2kSX2hpKnvvgok7OS8u9ebhaE",
@@ -98,6 +108,28 @@ export const fetchRecipeByIdFromFirestore = async (id) => {
   }
 }
 
+export const fetchRecipesByIdsFromFirestore = async (ids) => {
+  const recipesCollection = collection(db, 'recipes');
+  // Split array into chunks of 10 due to Firestore's 'in' query limitation
+  const chunkedIds = chunkArray(ids, 10);
+  let results = [];
+  for (let chunk of chunkedIds) {
+    try {
+      const q = query(recipesCollection, where('__name__', 'in', chunk));
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach(doc => {
+        results.push({ id: doc.id, ...doc.data() });
+      });
+
+    } catch (error) {
+      console.error('Error fetching recipes by IDs:', error);
+      throw error; // Forward the error so you can catch it elsewhere
+    }
+  }
+  return results;
+}
+  
 
 
 export const uploadRecipes = async (recipes) => {
