@@ -238,10 +238,10 @@ export const signInWithGoogle = async () => {
   }
 };
 
-export const addRecipeToUserFavorites = async (recipeId, user) => {
-  console.log("User:", user, "Recipe ID:", recipeId);
+export const addRecipeToUserFavorites = async (recipeId, userId) => {
+  console.log("UserId", userId, "Recipe ID:", recipeId);
   try {
-    const userRef = doc(db, 'users', user);
+    const userRef = doc(db, 'users', userId);
     const userDoc = await getDoc(userRef);
     
     if (userDoc.exists()) {
@@ -252,6 +252,7 @@ export const addRecipeToUserFavorites = async (recipeId, user) => {
         favoriteRecipes.push(recipeId);
         await updateDoc(userRef, { favoriteRecipes });
         console.log(`Recipe with ID ${recipeId} added to user favorites successfully!`);
+        return favoriteRecipes
       }
     }
   } catch (error) {
@@ -261,10 +262,10 @@ export const addRecipeToUserFavorites = async (recipeId, user) => {
 
 
 
-export const removeRecipeFromUserFavorites = async (recipeId, user) => {
-  console.log("User:", user, "Recipe ID:", recipeId);
+export const removeRecipeFromUserFavorites = async (recipeId, userId) => {
+  console.log("userId:", userId, "Recipe ID:", recipeId);
   try {
-    const userRef = doc(db, 'users', user.uid);
+    const userRef = doc(db, 'users', userId);
     const userDoc = await getDoc(userRef);
     if (userDoc.exists()) {
       const userData = userDoc.data();
@@ -274,12 +275,27 @@ export const removeRecipeFromUserFavorites = async (recipeId, user) => {
         const updatedFavorites = favoriteRecipes.filter(id => id !== recipeId);
         await updateDoc(userRef, { favoriteRecipes: updatedFavorites });
         console.log(`Recipe with ID ${recipeId} removed from user favorites successfully!`);
+        return updatedFavorites;
       }
     }
   } catch (error) {
     console.error('Error removing recipe from user favorites:', error);
   }
 };
+
+export const fetchFavoritesFromUserFavorites = async (user) => {
+  try {
+    const userRef = doc(db, 'users', user.uid);
+    const userDoc = await getDoc(userRef);
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      const favoriteRecipes = userData.favoriteRecipes || [];
+      return favoriteRecipes;
+    }
+  } catch (error) {
+    console.error('Error fetching user favorites:', error);
+  }
+}
 
 
 

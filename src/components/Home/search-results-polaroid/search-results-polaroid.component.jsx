@@ -1,5 +1,5 @@
 import { Box, IconButton, Tooltip } from "@mui/material";
-import { useState, useContext } from "react";
+import { useState, useContext, } from "react";
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -10,10 +10,17 @@ import { UserContext } from "../../../contexts/user.context";
 
 
 const SearchResultsPolariod = ({ images, title, recipeId, onClick }) => {
-    const { addRecipeToFavorites, removeRecipeFromFavorites } = useContext(UserContext);   
+    const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
 
     const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
     const [isFavorited, setIsFavorited] = useState(false);
+
+    useEffect(() => {
+        setIsFavorited(favoriteRecipes.includes(recipeId));
+    }, [favoriteRecipes, recipeId]);
+
+
+
     const toggleFavorite = async (e, recipeId) => {
       if (isFavorited) {
         await removeRecipeFromFavorites(recipeId);

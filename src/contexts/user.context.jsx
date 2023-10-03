@@ -1,5 +1,5 @@
 import { useEffect,useState,createContext } from "react";
-import { onAuthStateChangedListener, addRecipeToUserFavorites, removeRecipeFromUserFavorites } from "../utils/firebase-utils";
+import { onAuthStateChangedListener, addRecipeToUserFavorites, removeRecipeFromUserFavorites, fetchFavoritesFromUserFavorites } from "../utils/firebase-utils";
 import GeneralLoadingSpinner from "../components/ui/loading-screens/general-loading-spinner.component";
 
 
@@ -14,11 +14,21 @@ export const UserProvider= ({children}) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChangedListener((user) => {
             setUser(user);
-            console.log(user);
+            console.log(user,'from user context');
             setLoading(false);
         });
             return unsubscribe;
     } ,[]);
+
+    useEffect(() => {
+        const fetchFavorites = async () => {
+            if (user) {
+                const favorites = await fetchFavoritesFromUserFavorites(user);
+                setFavoriteRecipes(favorites || []);
+            }
+        }
+        fetchFavorites();
+    }, [user]);
 
     const addRecipeToFavorites = async (recipeId) => {
         console.log(user.uid, recipeId,'from usr context');
