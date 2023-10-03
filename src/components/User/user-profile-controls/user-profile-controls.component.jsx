@@ -12,13 +12,13 @@ const UserProfileControls = ({handleToggle, handleTabChange, activeTab})=>{
         >
         <h2 
         onClick={() => handleTabChange('myRecipes')}
-        style={{ fontWeight: activeTab === 'myRecipes' ? 'bold' : 'normal' }}
+        style={{ color: activeTab === 'myRecipes' ? 'black' : 'grey' }}
         >
         My Recipes
         </h2>
         <h2 
         onClick={() => handleTabChange('favorites')}
-        style={{ fontWeight: activeTab === 'favorites' ? 'bold' : 'normal' }}
+        style={{ color: activeTab === 'favorites' ? 'black' : 'grey' }}
         >
         My Favorite Recipes
         </h2>

@@ -82,7 +82,7 @@ const UserProfile = () => {
   }
 
   return (
-    <Paper elevation={10} sx={{ backgroundColor: "#FCDDBC",  margin:'20px', width:'70%'}}>
+    <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%'}}>
       <UserProfileInformation user={user} />
       <StyledDivider />
        <UserProfileControls
