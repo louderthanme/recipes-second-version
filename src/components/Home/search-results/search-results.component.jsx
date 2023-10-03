@@ -1,5 +1,5 @@
 import { Box, Grid} from "@mui/material";
-import SearchResultsPolariod from "../search-results-polaroid/search-results-polaroid.component";
+import SearchResultsPolaroid from "../search-results-polaroid/search-results-polaroid.component";
 
 const SearchResults = ({searchResults, onClickRecipe}) => {
 
@@ -8,7 +8,7 @@ const SearchResults = ({searchResults, onClickRecipe}) => {
             <Grid container spacing={3}>
                 {searchResults.map((recipe, index) => (
                     <Grid item  sm={12} md={6} lg={3} key={index}>
-                        <SearchResultsPolariod
+                        <SearchResultsPolaroid
                             images={recipe.imageUrls}
                             title={recipe.title}
                             recipeId={recipe.id}

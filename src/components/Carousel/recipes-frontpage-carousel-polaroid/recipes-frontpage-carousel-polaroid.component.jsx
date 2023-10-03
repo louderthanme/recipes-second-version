@@ -55,7 +55,7 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
           }}
           sx={{
             position: 'absolute',
-            top: '30%',  
+            top: '82%',  
             right: '-10px',
             width: '24px',
             height: '24px',
@@ -72,24 +72,26 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
           }
         </IconButton>
       </Tooltip>
-      <IconButton
-        aria-label="share-recipe"
-        size="small"
-        onClick={handleShareClick}
-        sx={{
-          position: 'absolute',
-          top: '70%',  
-          right: '-10px',
-          width: '24px',
-          height: '24px',
-          backgroundColor: blue[500],
-          '&:hover': {
-            backgroundColor: blue[700],
-          },
-        }}
-      >
-        <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
-      </IconButton>
+      <Tooltip title="Share">
+        <IconButton
+          aria-label="share-recipe"
+          size="small"
+          onClick={handleShareClick}
+          sx={{
+            position: 'absolute',
+            top: '70%',  
+            right: '-10px',
+            width: '24px',
+            height: '24px',
+            backgroundColor: blue[500],
+            '&:hover': {
+              backgroundColor: blue[700],
+            },
+          }}
+        >
+          <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
+        </IconButton>
+      </Tooltip>
       {ShareWindowComponent()}
       <Box 
         sx={{ 

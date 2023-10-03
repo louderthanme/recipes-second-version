@@ -9,7 +9,7 @@ import { useShareWindow } from "../../../hooks/useShareWindow";
 import { UserContext } from "../../../contexts/user.context";
 
 
-const SearchResultsPolariod = ({ images, title, recipeId, onClick }) => {
+const SearchResultsPolaroid = ({ images, title, recipeId, onClick }) => {
     const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
 
     const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
@@ -39,18 +39,14 @@ const SearchResultsPolariod = ({ images, title, recipeId, onClick }) => {
                 position: 'relative',
                 padding: '10px',
                 borderRadius: '10px',
-                backgroundColor: 'white'
+                marginX: '2px',
+                backgroundColor: 'white',
+                img: {
+                maxWidth: '100%',
+                maxheight: 'auto'
+                }
             }}
             onClick={onClick}
-            >
-            <Box
-                sx={{
-                position: 'relative',  // New container with relative positioning
-                img: {
-                    maxWidth: '100%',
-                    height: 'auto'
-                }
-                }}
             >
                 <img src={transformedImage} alt={title} style={{ display: 'block' }} />
                 <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
@@ -63,45 +59,46 @@ const SearchResultsPolariod = ({ images, title, recipeId, onClick }) => {
                     }}
                     sx={{
                         position: 'absolute',
-                        top: '30%',  
-                        right: '-16px',
+                        top: '82%',  
+                        right: '-10px',
                         width: '24px',
                         height: '24px',
-                        backgroundColor: grey[500],  // Set to grey[500] for a specific shade of grey
+                        marginY: '2px',
+                        backgroundColor: grey[500],
                         '&:hover': {
-                        backgroundColor: isFavorited ? red[700] : grey[700], // Modify hover color for consistency
+                        backgroundColor: isFavorited ? red[700] : grey[700],
                         },
                     }}
                     >
                     {isFavorited ? 
-                        <FavoriteIcon sx={{ color: red[500], fontSize: '14px' }} /> // red heart when favorited
+                        <FavoriteIcon sx={{ color: red[500], fontSize: '14px' }} />
                         :
-                        <FavoriteBorderIcon sx={{ color: common.white, fontSize: '14px' }} /> // white border heart when not favorited
+                        <FavoriteBorderIcon sx={{ color: common.white, fontSize: '14px' }} />
                     }
                     </IconButton>
                 </Tooltip>
-            
-                <IconButton
+                <Tooltip title="Share">
+                    <IconButton
                     aria-label="share-recipe"
                     size="small"
                     onClick={handleShareClick}
                     sx={{
-                    position: 'absolute',
-                    top: '95%',  
-                    right: '-16px',
-                    width: '24px',
-                    height: '24px',
-                    backgroundColor: blue[500],
-                    '&:hover': {
+                        position: 'absolute',
+                        top: '70%',  // adjusted position
+                        right: '-10px',  // adjusted from '-16px'
+                        width: '24px',
+                        height: '24px',
+                        backgroundColor: blue[500],
+                        '&:hover': {
                         backgroundColor: blue[700],
-                    },
+                        },
                     }}
-                >
-                <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
-                </IconButton>
+                    >
+                    <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
+                    </IconButton>
+                </Tooltip>
                 {ShareWindowComponent()}
-                
-            </Box>
+            
             
             <Box textAlign="center" mt={1} sx={{color:'black'}}>
                 <b>{title}</b>
@@ -110,4 +107,4 @@ const SearchResultsPolariod = ({ images, title, recipeId, onClick }) => {
     )
 }
 
-export default SearchResultsPolariod;
+export default SearchResultsPolaroid;
