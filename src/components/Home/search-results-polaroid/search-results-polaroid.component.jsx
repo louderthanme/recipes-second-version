@@ -1,13 +1,16 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Tooltip } from "@mui/material";
+import { useState, useContext } from "react";
 import ShareIcon from '@mui/icons-material/Share';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { blue, red, common, grey } from '@mui/material/colors';import ShareIcon from '@mui/icons-material/Share';
+import { blue, red, common, grey } from '@mui/material/colors';
 import { transformImage } from "../../../utils/utils";
 import { useShareWindow } from "../../../hooks/useShareWindow";
+import { UserContext } from "../../../contexts/user.context";
 
 
 const SearchResultsPolariod = ({ images, title, recipeId, onClick }) => {
+    const { addRecipeToFavorites, removeRecipeFromFavorites } = useContext(UserContext);   
 
     const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title});
     const [isFavorited, setIsFavorited] = useState(false);
@@ -54,7 +57,7 @@ const SearchResultsPolariod = ({ images, title, recipeId, onClick }) => {
                     sx={{
                         position: 'absolute',
                         top: '30%',  
-                        right: '-10px',
+                        right: '-16px',
                         width: '24px',
                         height: '24px',
                         backgroundColor: grey[500],  // Set to grey[500] for a specific shade of grey
