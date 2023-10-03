@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Paper, Box, Grid, Divider, Button } from '@mui/material';
+import { Paper, Box, Grid, Divider, Button, Tooltip, IconButton } from '@mui/material';
+import { grey, red, common } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 import RecipeShowcaseLoading from '../../components/ui/loading-screens/recipe-showcase-loading.component';
 import InstructionsDisplay from '../../components/Recipe/instructions-display/instructions-display.component';
@@ -8,65 +11,80 @@ import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingr
 import ImageBox from '../../components/Recipe/image-box/image-box.component';
 import DetailsBox from '../../components/Recipe/details-box/details-box.component';
 
-import { updateBoxShadow } from '../../utils/utils'
-import {useShareWindow} from '../../hooks/useShareWindow';
+import { updateBoxShadow } from '../../utils/utils';
+import { useShareWindow } from '../../hooks/useShareWindow';
 
 import { UserContext } from '../../contexts/user.context';
 import { RecipesContext } from '../../contexts/recipe.context';
 
-
 const RecipeShowcase = () => {
-
-  const { user, addRecipeToFavorites, removeRecipeFromFavorites } = useContext(UserContext);
-  const { fetchRecipeById } = useContext(RecipesContext);
-  const { id } = useParams();
-  const navigate = useNavigate();
+  // State hooks
   const [recipe, setRecipe] = useState(null);
   const [displayHeight, setDisplayHeight] = useState(350);
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  // Refs
   const ingredientsRef = useRef(null);
   const instructionsRef = useRef(null);
-  
 
+  // Contexts
+  const { user, addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);
+  const { fetchRecipeById } = useContext(RecipesContext);
+
+  // Router hooks
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  // Custom hooks
+  const [handleShareClick, ShareWindowComponent] = useShareWindow({ title: recipe?.title });
+
+  // Variables
+  const displaysMaxHeight = '300px';
+
+  // Effects
   useEffect(() => {
     const getRecipe = async () => {
       const currentRecipe = await fetchRecipeById(id);
       setRecipe(currentRecipe);
     };
-
     getRecipe();
   }, [id, fetchRecipeById]);
 
-  const displaysMaxHeight= '300px'
-  
   useEffect(() => {
     const handleResize = () => {
       const ingredientsHeight = ingredientsRef.current ? ingredientsRef.current.scrollHeight : 0;
       const instructionsHeight = instructionsRef.current ? instructionsRef.current.scrollHeight : 0;
-      
       const height = Math.max(ingredientsHeight, instructionsHeight);
-      
       setDisplayHeight(height);
-  
-      // Update the box shadow based on new maxHeight
       updateBoxShadow(ingredientsRef.current);
       updateBoxShadow(instructionsRef.current);
     };
-  
-    // Initialize max height and box shadows
     handleResize();
-  
-    // Listen for window resize events
     window.addEventListener('resize', handleResize);
-  
-    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [recipe, displayHeight]);
-  
-  const [handleShareClick, ShareWindowComponent] = useShareWindow({title:recipe?.title});
 
+  useEffect(() => {
+    setIsFavorited(favoriteRecipes.includes(id));
+  }, [favoriteRecipes, id]);
 
+  // Event handlers and other functions
+  const toggleFavorite = async (e) => {
+    if (isFavorited) {
+      await removeRecipeFromFavorites(id);
+    } else {
+      await addRecipeToFavorites(id);
+    }
+    setIsFavorited(!isFavorited);
+  };
+
+  const goToRecipeEdit = () => {
+    navigate(`/recipe/${id}/edit`);
+  };
+
+  // Rendering
   if (!recipe) {
     return <RecipeShowcaseLoading />;
   }
@@ -74,20 +92,44 @@ const RecipeShowcase = () => {
   const { title, ingredients, imageUrls, instructions, time: { prep, cook }, ownerUid, tags } = recipe;
 
 
-  
-
-  const goToRecipeEdit = (id) => {
-    navigate(`/recipe/${id}/edit`);
-  };
-
-
-
   return (
-    <Paper elevation={12} sx={{ backgroundColor: '#fdebd7', width: '70%',  padding: '10px', marginBottom: '30px' }}>
+    <Paper elevation={12} sx={{ backgroundColor: '#fdebd7', width: '70%',  padding: '10px', marginBottom: '30px', position: 'relative' }}>
+      <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
+        <IconButton
+          aria-label="toggle-favorite"
+          size="small"
+          onClick={(e)=>{
+            e.stopPropagation();
+            toggleFavorite(e, id); // Assuming you want to toggle for the current recipe ID
+          }}
+          sx={{
+            position: 'absolute',
+            top: '10px',  // Adjust as needed for padding
+            right: '10px',  // Adjust as needed for padding
+            backgroundColor: grey[500],
+            '&:hover': {
+              backgroundColor: isFavorited ? red[700] : grey[700],
+            },
+          }}
+        >
+          {isFavorited ? 
+            <FavoriteIcon sx={{ color: red[500], fontSize: '24px' }} />
+            :
+            <FavoriteBorderIcon sx={{ color: common.white, fontSize: '24px' }} />
+          }
+        </IconButton>
+      </Tooltip>
     <Grid container spacing={3}>
       {/* First Row */}
       <Grid item xs={12} sm={12} md={12} lg={5}>
-        <Box mt={2}>
+        <Box  
+            sx={{
+                mt: 2,  // default
+                '@media (max-width:960px)': {
+                    mt: 5
+                }
+            }}
+        >
           <ImageBox images={imageUrls} />
         </Box>
       </Grid>
@@ -127,9 +169,6 @@ const RecipeShowcase = () => {
             Share Recipe
           </Button>
           {ShareWindowComponent()}
-          <Button onClick={()=> addRecipeToFavorites(id)}>
-            Add to Favorites
-          </Button>
         </Box>
 
         </Grid>

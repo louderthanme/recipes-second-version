@@ -1,11 +1,15 @@
-import {Box, Typography, Chip} from '@mui/material';
+import {Box, Typography, Chip, useMediaQuery, useTheme} from '@mui/material';
 
 const DetailsBox = ({prep, cook, ingredients, title, tags}) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
+
 return (
     <Box>   
-        <Typography variant='h3' >{title}</Typography>
+      <Typography variant='h3' align={isTablet ? 'center' : 'inherit'}>{title}</Typography>
             
-        <Box marginTop={2} align={'left'} marginLeft={3} > 
+      <Box marginTop={2} align={isMobile ? 'center' : 'left'} marginLeft={isMobile ? 0 : 3}> 
             {
                 prep[0] === 0 && prep[1] === 0 ? (
                   <Typography  > No prep time required </Typography>

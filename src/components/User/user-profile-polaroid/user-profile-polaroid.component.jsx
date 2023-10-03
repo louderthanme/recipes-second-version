@@ -85,7 +85,7 @@ const UserProfilePolaroid = ({ images, title, onClick, onDelete, onEdit, onRemov
       }
 
 
-      { isToggled && user?.uid === ownerUid &&
+      { isToggled && type === "own" && user?.uid === ownerUid &&
           <IconButton
             aria-label="edit-recipe"
             onClick={(e) => {

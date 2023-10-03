@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { TextField, Divider, Select, Toolbar, Button } from "@mui/material";
+import { TextField, Divider, Select, Toolbar, Button, Tab, Tabs } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
@@ -62,7 +62,7 @@ export const StyledSelect = styled(Select)(({ theme }) => ({
 export const StyledDivider = styled(Divider)({
   backgroundColor: '#40000', 
   height: '2px', 
-  margin: '10px 0',
+  margin: '20px 0',
 });
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -130,4 +130,53 @@ export const StyledButton = styled(Button)(({ theme }) => ({
       backgroundColor: "#523d5240", // 50% transparency on hover using HEX
     },
   },
+}));
+
+
+// export const StyledTab = styled(Tab)(({ theme }) => ({
+//   // Mimic the transition for the animation.
+//   transition: '0.3s',
+  
+//   // Default text and underline color.
+//   color: '#523d52',
+//   borderBottom: '1px solid #fcbcfb',
+
+//   // Styles when the tab is selected or active.
+//   "&.Mui-selected": {
+//     color: '#a77da6', 
+//     borderBottom: '2px solid #fcbcfb',
+//   },
+  
+//   // Styles when hovered.
+//   "&:hover": {
+//     color: '#a77da6',
+//     borderBottom: '2px solid #a77da6',
+//   },
+//   "&:focus-visible": {
+//     outline: 'none',
+//   },
+  
+//   // Extra styles related to spacing can be added as per the original component if needed.
+//   margin: theme.spacing(1, 0),
+// }));
+
+export const StyledTabs = styled(Tabs)(({ theme }) => ({
+  // Styling the indicator (the active tab line)
+  "& .MuiTabs-indicator": {
+    backgroundColor: "#a77da6",
+    height: "2px",
+  },
+
+  // Override the color of the text to be black for both unselected and selected tabs
+  "& .MuiTab-root": {
+    color: "black",
+    "&.Mui-selected": {
+      color: "black",
+    },
+  },
+
+  // Override the ripple effect color when the tab is clicked
+  "& .MuiTouchRipple-root": {
+    color: "#desiredColor", // replace #desiredColor with the color you want
+  }
 }));

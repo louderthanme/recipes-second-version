@@ -90,7 +90,6 @@ const UserProfile = () => {
           activeTab={activeTab}
           handleTabChange={handleTabChange}
        />
-      <StyledDivider />
 
       <UserRecipesDisplay
         userRecipes={displayRecipes}

@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { useTheme } from "@emotion/react";
 import RecipeShowcaseImagePolaroid from "../recipe-showcase-image-polaroid/recipe-showcase-image-polaroid.component";
 import Slider from "react-slick";
 import CarouselLoading from "../../ui/loading-screens/carousel-loading.component";
@@ -6,6 +7,7 @@ import { transformImage } from "../../../utils/utils";
 
 
 const RecipeShowcaseImageCarousel = ({ images }) => {
+  const theme = useTheme();
   const settings = {
     dots: false,
     infinite: true,
@@ -24,9 +26,12 @@ const RecipeShowcaseImageCarousel = ({ images }) => {
   }
 
   return (
-    <Box 
+  <Box 
      sx={{ 
-      width: '420px', // set the width
+      width: '420px', // default width for larger screens
+      '@media (max-width: 1650px)': { // when the screen width is 778px or smaller
+        width: '90%', // adjust this value as needed
+      },
       margin: '0 auto', 
       paddingY: '5px', 
     }}>
