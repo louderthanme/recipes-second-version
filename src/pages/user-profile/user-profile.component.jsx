@@ -6,15 +6,18 @@ import { useNavigate } from "react-router-dom";
 import {StyledDivider} from "../../utils/styledComponents"
 import UserProfileLoading from "../../components/ui/loading-screens/user-profile-loading.component";
 
+import UserFavoriteRecipesDisplay from "../../components/User/user-favorite-recipes-display/user-favorite-recipes-display.component";
 import UserProfileInformation from "../../components/User/user-profile-information/user-profile-information.component";
 import UserRecipesDisplay from "../../components/User/user-recipes-display/user-recipes-display.component";
 import UserProfileControls from "../../components/User/user-profile-controls/user-profile-controls.component";
 
 const UserProfile = () => {
   const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes } = useContext(RecipesContext); // Use userRecipes
-  const { user } = useContext(UserContext);
+  const { user, favoriteRecipes } = useContext(UserContext);
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
+
+  console.log('userRecipes:', userRecipes)
   
   const [isToggled, setIsToggled] = useState(false);
 
@@ -28,6 +31,7 @@ const UserProfile = () => {
       fetchUserRecipes(userId);
     }
   }, [userId]);
+
 
   const handleDeleteRecipe = async (recipe) => {
     console.log('recipeId:', recipe.id);
@@ -68,6 +72,15 @@ const UserProfile = () => {
         onEditRecipe={goToRecipeEdit}
         isToggled={isToggled}
       />
+      {/* <UserFavoriteRecipesDisplay
+        userRecipes={favoriteRecipes}
+        onDeleteRecipe={handleDeleteRecipe} 
+        onClickRecipe={goToRecipe}
+        onEditRecipe={goToRecipeEdit}
+        isToggled={isToggled}
+      /> */}
+
+
     </Paper>
   );
 };
