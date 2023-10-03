@@ -10,7 +10,8 @@ const SearchResults = ({searchResults, onClickRecipe}) => {
                     <Grid item  sm={12} md={6} lg={3} key={index}>
                         <SearchResultsPolariod
                             images={recipe.imageUrls}
-                            title={recipe.title}
+                            title={recipe.title}\
+                            recipeId={recipe.id}
                             onClick={() => onClickRecipe(recipe.id)}
                         />
                     </Grid>
