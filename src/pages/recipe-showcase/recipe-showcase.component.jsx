@@ -36,7 +36,7 @@ const RecipeShowcase = () => {
   const navigate = useNavigate();
 
   // Custom hooks
-  const [handleShareClick, ShareWindowComponent] = useShareWindow({ title: recipe?.title });
+  const [handleShareClick, ShareWindowComponent] = useShareWindow({ title: recipe?.title, recipeId: id });
 
   // Variables
   const displaysMaxHeight = '300px';
