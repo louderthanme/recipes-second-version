@@ -177,7 +177,7 @@ const onSubmit = async (data) => {
  // Render edit form
 return (
   // Main paper component for form
-  <Paper elevation={10} sx={{ backgroundColor: '#fdebd7', width:'70%', marginBottom:'40px' }} mb={2}>
+  <Paper elevation={10} sx={{ backgroundColor: '#fdebd7', marginBottom:'40px' }} mb={2}>
     <Box p={6}>
       {/* Header */}
       <Box marginBottom={3}>

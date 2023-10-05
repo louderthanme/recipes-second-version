@@ -12,6 +12,7 @@ const InstructionsDisplay = React.forwardRef(({ instructions, maxHeight, height 
         sx={{
           height: `${height}px`,
           maxHeight: maxHeight,
+          lineHeight: '1em',
           overflow: 'auto',
           '&::-webkit-scrollbar': {
             width: '8px',

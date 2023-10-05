@@ -3,7 +3,7 @@ import RecipeShowcaseImageCarousel from "../../Carousel/recipe-showcase-image-ca
 
 const ImageBox = ({ images }) => {
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" height="auto" width="auto">
+    <Box display="flex" justifyContent="center" alignItems="center" height="auto" width="auto" >
       <RecipeShowcaseImageCarousel images={images} />
     </Box>
   );

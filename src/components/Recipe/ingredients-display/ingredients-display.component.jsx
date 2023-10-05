@@ -12,6 +12,7 @@ const IngredientsDisplay = React.forwardRef(({ ingredients, height, maxHeight },
         sx={{
           height: `${height}px`,
           maxHeight: maxHeight,
+          lineHeight: '1em',
           overflow: 'auto',
           '&::-webkit-scrollbar': {
             width: '8px',
@@ -31,7 +32,7 @@ const IngredientsDisplay = React.forwardRef(({ ingredients, height, maxHeight },
         <List sx={{fontSize:'20px', paddingY:'0px', marginY:'0px'}}>
           {ingredients.map((ingredient, index) => (
             <ListItem key={index}>
-              {ingredient.quantity} {ingredient.unit} of {ingredient.name}
+             - {ingredient.quantity} {ingredient.unit} of {ingredient.name}
             </ListItem>
           ))}
         </List>

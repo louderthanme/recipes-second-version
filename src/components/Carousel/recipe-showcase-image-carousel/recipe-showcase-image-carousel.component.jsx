@@ -28,9 +28,9 @@ const RecipeShowcaseImageCarousel = ({ images }) => {
   return (
   <Box 
      sx={{ 
-      width: '420px', // default width for larger screens
+      width: '90%', // default width for larger screens
       '@media (max-width: 1650px)': { // when the screen width is 778px or smaller
-        width: '90%', // adjust this value as needed
+        width: '80%', // adjust this value as needed
       },
       margin: '0 auto', 
       paddingY: '5px', 

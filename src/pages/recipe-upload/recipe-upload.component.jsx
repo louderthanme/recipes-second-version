@@ -157,7 +157,7 @@ const RecipeUpload = () => {
   
   // Rendering
   return (
-    <Paper elevation={10} sx={{ backgroundColor: "#fdebd7", width:"70%", marginBottom:'40px'  }}>
+    <Paper elevation={10} sx={{ backgroundColor: "#fdebd7", marginBottom:'40px'  }}>
       <Box p={6}>
         <Box marginBottom={3}>
           <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
