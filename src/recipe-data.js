@@ -658,7 +658,606 @@ const recipes = [
       { id: "8", step: "Mix well and serve immediately, or refrigerate for up to 24 hours to let the flavors meld." }
     ],
     tags: ["salsa", "mango", "spicy", "side", "fresh"]
-  }   
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Classic Caesar Salad",
+    ingredients: [
+      { name: "romaine lettuce", quantity: "1", unit: "head" },
+      { name: "garlic clove", quantity: "1", unit: "" },
+      { name: "olive oil", quantity: "1/4", unit: "cup(s)" },
+      { name: "lemon", quantity: "1", unit: "" },
+      { name: "anchovy paste", quantity: "1", unit: "teaspoon(s)" },
+      { name: "egg yolk", quantity: "1", unit: "" },
+      { name: "parmesan cheese", quantity: "1/2", unit: "cup(s)" },
+      { name: "salt", quantity: "1/4", unit: "teaspoon(s)" },
+      { name: "black pepper", quantity: "1/8", unit: "teaspoon(s)" },
+      { name: "croutons", quantity: "1", unit: "cup(s)" }
+    ],
+    time: {
+      prep: ["0", "20"],
+      cook: ["0", "0"]
+    },
+    imageUrls: [
+                "https://res.cloudinary.com/recipeb00k/image/upload/v1696526637/Caesar_2_bz6tbw.jpg",
+                "https://res.cloudinary.com/recipeb00k/image/upload/v1696526633/Caesar_1_x0x1lt.jpg"
+               ],
+    instructions: [
+      { id: "1", step: "Wash and chop the romaine lettuce." },
+      { id: "2", step: "In a bowl, whisk together garlic, lemon juice, anchovy paste, and egg yolk." },
+      { id: "3", step: "While whisking, slowly add olive oil until emulsified." },
+      { id: "4", step: "Stir in half of the parmesan cheese." },
+      { id: "5", step: "Season with salt and black pepper." },
+      { id: "6", step: "Toss the lettuce with the dressing." },
+      { id: "7", step: "Garnish with remaining parmesan cheese and croutons." },
+      { id: "8", step: "Serve immediately." }
+    ],
+    tags: ["salad", "caesar", "classic", "starter", "fresh"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Chocolate Mousse",
+    ingredients: [
+      { name: "dark chocolate", quantity: "200", unit: "gram(s)" },
+      { name: "egg whites", quantity: "4", unit: "" },
+      { name: "granulated sugar", quantity: "50", unit: "gram(s)" },
+      { name: "heavy cream", quantity: "1", unit: "cup(s)" },
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" }
+    ],
+    time: {
+      prep: ["0", "30"],
+      cook: ["0", "0"]
+    },
+    imageUrls: [
+                "https://res.cloudinary.com/recipeb00k/image/upload/v1696526423/Mousse_2_htu225.jpg", 
+                "https://res.cloudinary.com/recipeb00k/image/upload/v1696526423/Mousse_1_emv6x6.jpg"
+              ],
+    instructions: [
+      { id: "1", step: "Melt the dark chocolate over a double boiler or in a microwave." },
+      { id: "2", step: "Whip the heavy cream with vanilla extract until soft peaks form." },
+      { id: "3", step: "In another bowl, whip the egg whites until foamy." },
+      { id: "4", step: "Gradually add the sugar to the egg whites, whipping until stiff peaks form." },
+      { id: "5", step: "Fold the melted chocolate into the whipped cream." },
+      { id: "6", step: "Then gently fold in the egg white mixture until well combined." },
+      { id: "7", step: "Pour the mousse into individual bowls or glasses." },
+      { id: "8", step: "Refrigerate for at least 4 hours, or overnight." },
+      { id: "9", step: "Serve chilled." }
+    ],
+    tags: ["dessert", "chocolate", "mousse", "sweet", "creamy"]
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Vegetable Stir-Fry with Tofu",
+    ingredients: [
+      { name: "firm tofu", quantity: "1", unit: "block" },
+      { name: "soy sauce", quantity: "3", unit: "tablespoon(s)" },
+      { name: "sesame oil", quantity: "2", unit: "tablespoon(s)" },
+      { name: "garlic", quantity: "2", unit: "cloves" },
+      { name: "broccoli", quantity: "1", unit: "cup(s)" },
+      { name: "red bell pepper", quantity: "1", unit: "" },
+      { name: "carrot", quantity: "1", unit: "" },
+      { name: "zucchini", quantity: "1", unit: "" },
+      { name: "ginger", quantity: "1", unit: "teaspoon(s)" },
+      { name: "green onions", quantity: "2", unit: "" }
+    ],
+    time: {
+      prep: ["0", "15"],
+      cook: ["0", "15"]
+    },
+    imageUrls: [
+      "https://res.cloudinary.com/recipeb00k/image/upload/v1696526859/OIP_uqyzub.jpg",
+      "https://res.cloudinary.com/recipeb00k/image/upload/v1696526863/VStirFry_ypl51q.jpg"
+     ],
+    instructions: [
+      { id: "1", step: "Cut the tofu into bite-sized cubes." },
+      { id: "2", step: "In a bowl, mix together soy sauce, sesame oil, and grated ginger." },
+      { id: "3", step: "Heat a pan over medium heat and add a tablespoon of oil." },
+      { id: "4", step: "Add garlic and sauté until fragrant." },
+      { id: "5", step: "Add the tofu cubes and cook until golden brown on all sides." },
+      { id: "6", step: "Remove tofu and set aside." },
+      { id: "7", step: "In the same pan, add the vegetables and stir-fry until they begin to soften." },
+      { id: "8", step: "Return the tofu to the pan and pour over the sauce." },
+      { id: "9", step: "Stir well to combine and cook for another 2-3 minutes." },
+      { id: "10", step: "Garnish with sliced green onions before serving." }
+    ],
+    tags: ["main", "vegetarian", "stir-fry", "asian", "tofu"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Lemon Iced Tea",
+    ingredients: [
+      { name: "black tea bags", quantity: "2", unit: "" },
+      { name: "water", quantity: "4", unit: "cup(s)" },
+      { name: "sugar", quantity: "1/2", unit: "cup(s)" },
+      { name: "lemon", quantity: "1", unit: "" }
+    ],
+    time: {
+      prep: ["0", "5"],
+      cook: ["0", "5"]
+    },
+    imageUrls: [
+                "https://res.cloudinary.com/recipeb00k/image/upload/v1696527094/Lemon-Iced-Tea-Recipe-1024x683_igw6hj.jpg",
+               ],
+    instructions: [
+      { id: "1", step: "Boil 2 cups of water in a pan." },
+      { id: "2", step: "Add the tea bags and let steep for 5 minutes." },
+      { id: "3", step: "Remove the tea bags and discard." },
+      { id: "4", step: "Stir in the sugar until fully dissolved." },
+      { id: "5", step: "Squeeze the juice of the lemon into the tea." },
+      { id: "6", step: "Transfer to a pitcher and add the remaining 2 cups of cold water." },
+      { id: "7", step: "Refrigerate until chilled." },
+      { id: "8", step: "Serve with ice cubes and lemon slices." }
+    ],
+    tags: ["drink", "beverage", "lemon", "tea", "refreshing"]
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Chicken Tikka Masala",
+    ingredients: [
+      { name: "boneless chicken", quantity: "500", unit: "gram(s)" },
+      { name: "yogurt", quantity: "1", unit: "cup(s)" },
+      { name: "tomato puree", quantity: "1", unit: "cup(s)" },
+      { name: "onion", quantity: "1", unit: "" },
+      { name: "garlic cloves", quantity: "3", unit: "" },
+      { name: "ginger", quantity: "1", unit: "inch" },
+      { name: "garam masala", quantity: "1", unit: "teaspoon(s)" },
+      { name: "turmeric powder", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "red chili powder", quantity: "1", unit: "teaspoon(s)" },
+      { name: "heavy cream", quantity: "1/4", unit: "cup(s)" },
+      { name: "salt", quantity: "1", unit: "teaspoon(s)" },
+      { name: "oil", quantity: "2", unit: "tablespoon(s)" }
+    ],
+    time: {
+      prep: ["0", "20"],
+      cook: ["0", "40"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696527379/R_okqocl.jpg"],
+    instructions: [
+      { id: "1", step: "Marinate the chicken pieces in yogurt, half the garam masala, half the red chili powder, and a pinch of salt for at least 2 hours or overnight." },
+      { id: "2", step: "Heat oil in a pan and fry the chicken pieces until they're golden brown. Remove and set aside." },
+      { id: "3", step: "In the same pan, sauté finely chopped onions until translucent." },
+      { id: "4", step: "Add minced garlic and ginger and sauté for another 2 minutes." },
+      { id: "5", step: "Pour in the tomato puree and add the remaining garam masala, turmeric, and red chili powder." },
+      { id: "6", step: "Cook until the oil starts to separate from the mixture." },
+      { id: "7", step: "Return the chicken to the pan and mix well. Cover and cook for 20 minutes." },
+      { id: "8", step: "Stir in the heavy cream and cook for another 5 minutes." },
+      { id: "9", step: "Serve hot with naan or rice." }
+    ],
+    tags: ["main", "chicken", "indian", "spicy", "creamy"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Berry Smoothie",
+    ingredients: [
+      { name: "mixed berries (strawberries, blueberries, raspberries)", quantity: "2", unit: "cup(s)" },
+      { name: "banana", quantity: "1", unit: "" },
+      { name: "yogurt", quantity: "1/2", unit: "cup(s)" },
+      { name: "almond milk", quantity: "1", unit: "cup(s)" },
+      { name: "honey", quantity: "2", unit: "tablespoon(s)" },
+      { name: "chia seeds", quantity: "1", unit: "tablespoon(s)" }
+    ],
+    time: {
+      prep: ["0", "10"],
+      cook: ["0", "0"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696527378/blueberry-smoothie-2238438-16_Hero_1-0901a8305220460da963ef7b210629ea_w7tevf.jpg"],
+    instructions: [
+      { id: "1", step: "Place all the ingredients in a blender." },
+      { id: "2", step: "Blend on high until smooth and creamy." },
+      { id: "3", step: "Pour into glasses and serve immediately." }
+    ],
+    tags: ["drink", "smoothie", "berries", "healthy", "refreshing"]
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Beef Stroganoff",
+    ingredients: [
+      { name: "beef sirloin", quantity: "500", unit: "gram(s)" },
+      { name: "mushrooms", quantity: "1", unit: "cup(s)" },
+      { name: "onion", quantity: "1", unit: "" },
+      { name: "garlic cloves", quantity: "2", unit: "" },
+      { name: "beef broth", quantity: "1", unit: "cup(s)" },
+      { name: "sour cream", quantity: "1/2", unit: "cup(s)" },
+      { name: "Dijon mustard", quantity: "1", unit: "tablespoon(s)" },
+      { name: "butter", quantity: "2", unit: "tablespoon(s)" },
+      { name: "flour", quantity: "2", unit: "tablespoon(s)" },
+      { name: "salt", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "black pepper", quantity: "1/4", unit: "teaspoon(s)" }
+    ],
+    time: {
+      prep: ["0", "15"],
+      cook: ["0", "30"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696527530/R_1_fr2red.jpg"],
+    instructions: [
+      { id: "1", step: "Slice the beef into thin strips, season with salt and pepper." },
+      { id: "2", step: "In a pan, melt the butter and cook the beef until browned. Remove and set aside." },
+      { id: "3", step: "In the same pan, sauté the chopped onions and garlic until translucent." },
+      { id: "4", step: "Add the mushrooms and cook until soft." },
+      { id: "5", step: "Sprinkle the flour over the vegetables and stir to coat." },
+      { id: "6", step: "Slowly pour in the beef broth while stirring." },
+      { id: "7", step: "Return the beef to the pan and let it simmer for about 15 minutes." },
+      { id: "8", step: "Stir in the sour cream and Dijon mustard until the sauce is creamy." },
+      { id: "9", step: "Serve over egg noodles or rice." }
+    ],
+    tags: ["main", "beef", "creamy", "comfort food", "russian"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Quinoa Salad with Veggies",
+    ingredients: [
+      { name: "quinoa", quantity: "1", unit: "cup(s)" },
+      { name: "water", quantity: "2", unit: "cup(s)" },
+      { name: "cherry tomatoes", quantity: "1", unit: "cup(s)" },
+      { name: "cucumber", quantity: "1", unit: "" },
+      { name: "red bell pepper", quantity: "1", unit: "" },
+      { name: "feta cheese", quantity: "1/2", unit: "cup(s)" },
+      { name: "olive oil", quantity: "3", unit: "tablespoon(s)" },
+      { name: "lemon juice", quantity: "2", unit: "tablespoon(s)" },
+      { name: "parsley", quantity: "1/4", unit: "cup(s)" },
+      { name: "salt", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "black pepper", quantity: "1/4", unit: "teaspoon(s)" }
+    ],
+    time: {
+      prep: ["0", "20"],
+      cook: ["0", "15"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696527664/R_lumf5k.jpg"],
+    instructions: [
+      { id: "1", step: "Rinse the quinoa under cold water until the water runs clear." },
+      { id: "2", step: "In a pot, bring 2 cups of water to a boil. Add the quinoa, reduce heat, cover, and simmer for 15 minutes or until quinoa is cooked and water is absorbed." },
+      { id: "3", step: "Fluff the quinoa with a fork and allow it to cool." },
+      { id: "4", step: "In a large bowl, combine the quinoa, chopped tomatoes, diced cucumber, diced red bell pepper, and crumbled feta cheese." },
+      { id: "5", step: "In a small bowl, whisk together the olive oil, lemon juice, salt, and pepper. Pour the dressing over the quinoa mixture." },
+      { id: "6", step: "Toss everything together and garnish with chopped parsley." },
+      { id: "7", step: "Serve cold." }
+    ],
+    tags: ["salad", "quinoa", "vegetarian", "healthy", "refreshing"]
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Classic Margarita",
+    ingredients: [
+      { name: "tequila", quantity: "2", unit: "fluid ounce(s)" },
+      { name: "lime juice", quantity: "1", unit: "fluid ounce(s)" },
+      { name: "Cointreau or triple sec", quantity: "1", unit: "fluid ounce(s)" },
+      { name: "simple syrup", quantity: "1/2", unit: "fluid ounce(s)" },
+      { name: "salt", quantity: "1", unit: "tablespoon(s)" },
+      { name: "lime wedge", quantity: "1", unit: "" }
+    ],
+    time: {
+      prep: ["0", "5"],
+      cook: ["0", "0"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696527799/R_qxdazb.jpg"],
+    instructions: [
+      { id: "1", step: "Rim a glass with a lime wedge and then dip in salt, set aside." },
+      { id: "2", step: "In a shaker, combine the tequila, lime juice, Cointreau, and simple syrup." },
+      { id: "3", step: "Shake until chilled." },
+      { id: "4", step: "Strain the mixture into the prepared glass." },
+      { id: "5", step: "Garnish with a lime wedge." },
+      { id: "6", step: "Serve immediately and enjoy responsibly!" }
+    ],
+    tags: ["drink", "cocktail", "tequila", "refreshing", "party"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Vegetable Samosa",
+    ingredients: [
+      { name: "potatoes", quantity: "2", unit: "" },
+      { name: "green peas", quantity: "1/2", unit: "cup(s)" },
+      { name: "onion", quantity: "1", unit: "" },
+      { name: "cumin seeds", quantity: "1", unit: "teaspoon(s)" },
+      { name: "coriander powder", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "garam masala", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "chili powder", quantity: "1/4", unit: "teaspoon(s)" },
+      { name: "salt", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "all-purpose flour", quantity: "2", unit: "cup(s)" },
+      { name: "water", quantity: "3/4", unit: "cup(s)" },
+      { name: "oil", quantity: "2", unit: "tablespoon(s)" }
+    ],
+    time: {
+      prep: ["0", "30"],
+      cook: ["0", "20"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696527867/R_r6jv9x.jpg"],
+    instructions: [
+      { id: "1", step: "Boil the potatoes until tender. Peel and mash them." },
+      { id: "2", step: "In a pan, heat 1 tablespoon of oil. Add cumin seeds and onions. Sauté until onions are translucent." },
+      { id: "3", step: "Add peas, mashed potatoes, coriander powder, garam masala, chili powder, and salt. Cook for 5 minutes." },
+      { id: "4", step: "In a bowl, mix flour, salt, and remaining oil. Add water little by little and knead into a firm dough." },
+      { id: "5", step: "Roll out the dough into small circles. Cut each circle into half." },
+      { id: "6", step: "Take one-half of the circle, form a cone shape, and fill it with the potato-peas mixture. Seal the edges." },
+      { id: "7", step: "Heat oil in a deep pan and deep fry the samosas until golden brown." },
+      { id: "8", step: "Serve hot with chutney or sauce." }
+    ],
+    tags: ["snack", "indian", "vegetarian", "spicy", "crispy"]
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Creamy Tomato Soup",
+    ingredients: [
+      { name: "ripe tomatoes", quantity: "6", unit: "" },
+      { name: "onion", quantity: "1", unit: "" },
+      { name: "garlic cloves", quantity: "3", unit: "" },
+      { name: "vegetable broth", quantity: "2", unit: "cup(s)" },
+      { name: "heavy cream", quantity: "1/2", unit: "cup(s)" },
+      { name: "butter", quantity: "2", unit: "tablespoon(s)" },
+      { name: "salt", quantity: "1", unit: "teaspoon(s)" },
+      { name: "black pepper", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "sugar", quantity: "1", unit: "teaspoon(s)" },
+      { name: "fresh basil", quantity: "1/4", unit: "cup(s)" }
+    ],
+    time: {
+      prep: ["0", "10"],
+      cook: ["0", "30"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528015/DSCN2374_wyph2q.jpg"],
+    instructions: [
+      { id: "1", step: "Chop the tomatoes, onion, and garlic." },
+      { id: "2", step: "In a large pot, melt butter over medium heat. Add the onions and garlic. Sauté until translucent." },
+      { id: "3", step: "Add tomatoes, vegetable broth, salt, pepper, and sugar to the pot." },
+      { id: "4", step: "Bring to a boil and then simmer for 20 minutes." },
+      { id: "5", step: "Use an immersion blender to puree the soup until smooth or transfer to a blender in batches and blend until smooth." },
+      { id: "6", step: "Stir in heavy cream and chopped basil." },
+      { id: "7", step: "Heat for an additional 5 minutes and serve hot." }
+    ],
+    tags: ["soup", "tomato", "creamy", "comfort food", "vegetarian"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Shrimp Stir-Fry",
+    ingredients: [
+      { name: "shrimp", quantity: "1", unit: "pound(s)" },
+      { name: "broccoli florets", quantity: "2", unit: "cup(s)" },
+      { name: "bell peppers", quantity: "2", unit: "" },
+      { name: "carrots", quantity: "2", unit: "" },
+      { name: "soy sauce", quantity: "3", unit: "tablespoon(s)" },
+      { name: "sesame oil", quantity: "2", unit: "tablespoon(s)" },
+      { name: "garlic cloves", quantity: "2", unit: "" },
+      { name: "ginger", quantity: "1", unit: "tablespoon(s)" },
+      { name: "cornstarch", quantity: "1", unit: "teaspoon(s)" },
+      { name: "water", quantity: "2", unit: "tablespoon(s)" }
+    ],
+    time: {
+      prep: ["0", "15"],
+      cook: ["0", "10"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528143/shrimp-lo-mein-2831_jeqz73.jpg"],
+    instructions: [
+      { id: "1", step: "Clean and devein the shrimp. Set aside." },
+      { id: "2", step: "Slice the bell peppers and carrots thinly." },
+      { id: "3", step: "In a bowl, mix soy sauce, sesame oil, minced garlic, grated ginger, cornstarch, and water." },
+      { id: "4", step: "In a wok or large pan, heat some oil over medium-high heat. Add shrimp and stir-fry until pink." },
+      { id: "5", step: "Add broccoli florets, bell peppers, and carrots. Continue to stir-fry for 5 minutes or until vegetables are tender." },
+      { id: "6", step: "Pour the sauce over the stir-fry and toss to coat evenly." },
+      { id: "7", step: "Serve hot with steamed rice or noodles." }
+    ],
+    tags: ["stir-fry", "shrimp", "Asian", "quick", "seafood"]
+  }, 
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Classic Chocolate Brownies",
+    ingredients: [
+      { name: "unsalted butter", quantity: "1/2", unit: "cup(s)" },
+      { name: "granulated sugar", quantity: "1", unit: "cup(s)" },
+      { name: "eggs", quantity: "2", unit: "" },
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" },
+      { name: "all-purpose flour", quantity: "1/3", unit: "cup(s)" },
+      { name: "cocoa powder", quantity: "1/3", unit: "cup(s)" },
+      { name: "salt", quantity: "1/4", unit: "teaspoon(s)" },
+      { name: "baking powder", quantity: "1/4", unit: "teaspoon(s)" }
+    ],
+    time: {
+      prep: ["0", "15"],
+      cook: ["0", "25"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528266/90a8f98457760f604f47cb4cd3bf4eb1_ihw2jn.jpg"],
+    instructions: [
+      { id: "1", step: "Preheat oven to 350°F (175°C). Grease a square baking pan or line it with parchment paper." },
+      { id: "2", step: "Melt the butter in a medium saucepan. Remove from heat and stir in sugar, eggs, and vanilla extract." },
+      { id: "3", step: "In a separate bowl, combine flour, cocoa powder, salt, and baking powder. Gradually add to the wet mixture and mix until smooth." },
+      { id: "4", step: "Pour the batter into the prepared baking pan and spread evenly." },
+      { id: "5", step: "Bake for 20-25 minutes, or until a toothpick inserted into the center comes out with a few crumbs." },
+      { id: "6", step: "Allow to cool before cutting into squares and serving." }
+    ],
+    tags: ["dessert", "chocolate", "brownies", "sweet", "baking"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Refreshing Mint Iced Tea",
+    ingredients: [
+      { name: "water", quantity: "4", unit: "cup(s)" },
+      { name: "black tea bags", quantity: "4", unit: "" },
+      { name: "fresh mint leaves", quantity: "1/2", unit: "cup(s)" },
+      { name: "sugar", quantity: "1/4", unit: "cup(s)" },
+      { name: "lemon", quantity: "1", unit: "" },
+      { name: "ice cubes", quantity: "2", unit: "cup(s)" }
+    ],
+    time: {
+      prep: ["0", "5"],
+      cook: ["0", "5"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528363/fresh-mint-iced-tea-FEAT_pzrwxh.jpg"],
+    instructions: [
+      { id: "1", step: "In a saucepan, bring 4 cups of water to a boil." },
+      { id: "2", step: "Remove from heat and add the tea bags and mint leaves. Allow to steep for 5 minutes." },
+      { id: "3", step: "Discard the tea bags and mint leaves. Stir in sugar until dissolved." },
+      { id: "4", step: "Allow the tea to cool to room temperature, then refrigerate until cold." },
+      { id: "5", step: "Serve in glasses filled with ice cubes, garnishing with lemon slices." }
+    ],
+    tags: ["drink", "iced tea", "refreshing", "beverage", "summer"]
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Greek Salad",
+    ingredients: [
+      { name: "cucumbers", quantity: "2", unit: "" },
+      { name: "tomatoes", quantity: "4", unit: "" },
+      { name: "red onion", quantity: "1", unit: "" },
+      { name: "feta cheese", quantity: "200", unit: "gram(s)" },
+      { name: "kalamata olives", quantity: "1/2", unit: "cup(s)" },
+      { name: "olive oil", quantity: "1/4", unit: "cup(s)" },
+      { name: "red wine vinegar", quantity: "2", unit: "tablespoon(s)" },
+      { name: "dried oregano", quantity: "1", unit: "teaspoon(s)" },
+      { name: "salt", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "black pepper", quantity: "1/4", unit: "teaspoon(s)" }
+    ],
+    time: {
+      prep: ["0", "15"],
+      cook: ["0", "0"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528428/R_1_dlocek.jpg"],
+    instructions: [
+      { id: "1", step: "Chop cucumbers, tomatoes, and red onion into bite-sized pieces." },
+      { id: "2", step: "In a large bowl, combine cucumbers, tomatoes, red onion, feta cheese, and kalamata olives." },
+      { id: "3", step: "In a separate smaller bowl, whisk together olive oil, red wine vinegar, oregano, salt, and pepper." },
+      { id: "4", step: "Pour the dressing over the salad and toss to combine." },
+      { id: "5", step: "Serve immediately or refrigerate for a short time to let the flavors meld together." }
+    ],
+    tags: ["salad", "Greek", "fresh", "vegetarian", "easy"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Fluffy Pancakes",
+    ingredients: [
+      { name: "all-purpose flour", quantity: "2", unit: "cup(s)" },
+      { name: "baking powder", quantity: "2", unit: "teaspoon(s)" },
+      { name: "salt", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "granulated sugar", quantity: "2", unit: "tablespoon(s)" },
+      { name: "milk", quantity: "1 1/2", unit: "cup(s)" },
+      { name: "eggs", quantity: "2", unit: "" },
+      { name: "unsalted butter", quantity: "1/4", unit: "cup(s)" },
+      { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" }
+    ],
+    time: {
+      prep: ["0", "10"],
+      cook: ["0", "20"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528591/Pancakes-14_n53ng5.jpg"],
+    instructions: [
+      { id: "1", step: "In a large bowl, whisk together flour, baking powder, salt, and sugar." },
+      { id: "2", step: "In another bowl, mix together milk, eggs, melted butter, and vanilla extract." },
+      { id: "3", step: "Pour the wet mixture into the dry ingredients and stir until just combined. Be careful not to overmix." },
+      { id: "4", step: "Heat a non-stick skillet over medium heat and lightly grease with butter or oil." },
+      { id: "5", step: "For each pancake, pour 1/4 cup of batter onto the skillet. Cook until bubbles form on the surface, then flip and cook until golden brown." },
+      { id: "6", step: "Serve with maple syrup, butter, and your favorite toppings." }
+    ],
+    tags: ["breakfast", "pancakes", "fluffy", "sweet", "classic"] 
+  },
+  {
+    ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+    title: "Vegetable Spring Rolls",
+    ingredients: [
+      { name: "rice paper wrappers", quantity: "12", unit: "" },
+      { name: "lettuce leaves", quantity: "12", unit: "" },
+      { name: "carrot", quantity: "1", unit: "" },
+      { name: "cucumber", quantity: "1", unit: "" },
+      { name: "avocado", quantity: "1", unit: "" },
+      { name: "red bell pepper", quantity: "1", unit: "" },
+      { name: "fresh mint leaves", quantity: "1/2", unit: "cup(s)" }
+    ],
+    time: {
+      prep: ["0", "25"],
+      cook: ["0", "0"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528889/spring-roll-recipe-step-by-step-instructions.jpg_tjuwgp.webp"],
+    instructions: [
+      { id: "1", step: "Julienne or thinly slice the carrot, cucumber, avocado, and red bell pepper." },
+      { id: "2", step: "Prepare a bowl of warm water. Dip a rice paper wrapper into the water for about 5-10 seconds, ensuring it's completely submerged." },
+      { id: "3", step: "Lay the softened wrapper on a clean surface. In the center, place a lettuce leaf, a few sticks of each vegetable, and a couple of mint leaves." },
+      { id: "4", step: "Fold the bottom half of the wrapper over the filling, fold in the sides, and then roll tightly upwards. Repeat with remaining wrappers and filling." },
+      { id: "5", step: "Serve immediately with dipping sauce of your choice." }
+    ],
+    tags: ["appetizer", "Asian", "vegetarian", "fresh", "spring rolls"]
+  },
+  {
+    ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+    title: "Chicken Tagine with Apricots",
+    ingredients: [
+      { name: "chicken thighs", quantity: "8", unit: "" },
+      { name: "salt", quantity: "1", unit: "teaspoon(s)" },
+      { name: "black pepper", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "ground cinnamon", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "ground ginger", quantity: "1/2", unit: "teaspoon(s)" },
+      { name: "olive oil", quantity: "2", unit: "tablespoon(s)" },
+      { name: "onion", quantity: "1", unit: "" },
+      { name: "garlic cloves", quantity: "3", unit: "" },
+      { name: "chicken broth", quantity: "2", unit: "cup(s)" },
+      { name: "dried apricots", quantity: "1", unit: "cup(s)" }
+    ],
+    time: {
+      prep: ["0", "20"],
+      cook: ["1", "15"]
+    },
+    imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696528947/6_original_zhfuup.webp"],
+    instructions: [
+      { id: "1", step: "Season chicken thighs with salt, pepper, cinnamon, and ginger." },
+      { id: "2", step: "In a tagine or large heavy-bottomed pot, heat olive oil over medium heat. Brown the chicken on both sides." },
+      { id: "3", step: "Add finely chopped onion and minced garlic, sautéing until the onion is translucent." },
+      { id: "4", step: "Add chicken broth and bring to a boil." },
+      { id: "5", step: "Reduce heat, add dried apricots, cover, and simmer for about 1 hour until chicken is tender and cooked through." },
+      { id: "6", step: "Adjust seasoning if needed, and serve hot with couscous or bread." }
+    ],
+    tags: ["main dish", "Moroccan", "chicken", "tagine", "apricots"]
+ },
+ {
+  ownerUid: "0OzjQN80hvdKxPaAEPJPGatT2JP2",
+  title: "Tiramisu",
+  ingredients: [
+    { name: "egg yolks", quantity: "3", unit: "" },
+    { name: "sugar", quantity: "1/2", unit: "cup(s)" },
+    { name: "mascarpone cheese", quantity: "8", unit: "ounce(s)" },
+    { name: "heavy cream", quantity: "1", unit: "cup(s)" },
+    { name: "vanilla extract", quantity: "1", unit: "teaspoon(s)" },
+    { name: "strong brewed coffee, cooled", quantity: "1", unit: "cup(s)" },
+    { name: "coffee liqueur", quantity: "1/4", unit: "cup(s)" },
+    { name: "ladyfingers", quantity: "24", unit: "" },
+    { name: "unsweetened cocoa powder", quantity: "2", unit: "tablespoon(s)" }
+  ],
+  time: {
+    prep: ["0", "30"],
+    cook: ["0", "0"]
+  },
+  imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696529110/093427de2b2dc88d5e2a6377b3bde44c_ki22gw.jpg"],
+  instructions: [
+    { id: "1", step: "In a heatproof bowl, whisk together egg yolks and sugar. Place over a pot of simmering water (double boiler) and whisk continuously until pale and slightly thickened." },
+    { id: "2", step: "Remove from heat and allow to cool." },
+    { id: "3", step: "In a separate bowl, whip the mascarpone cheese, heavy cream, and vanilla until stiff peaks form." },
+    { id: "4", step: "Fold the egg yolk mixture into the mascarpone mixture." },
+    { id: "5", step: "In a shallow dish, mix together the coffee and coffee liqueur. Quickly dip each ladyfinger into the coffee mixture, ensuring they don't become too soggy." },
+    { id: "6", step: "Layer half of the dipped ladyfingers in the bottom of a serving dish. Spread half of the mascarpone mixture over the ladyfingers. Repeat layers." },
+    { id: "7", step: "Dust the top with cocoa powder." },
+    { id: "8", step: "Refrigerate for at least 4 hours or overnight before serving." }
+  ],
+  tags: ["dessert", "Italian", "coffee", "mascarpone", "tiramisu"]
+},
+{
+  ownerUid: "B7JgxRpvITfg7e0XAAXe2XX6KaF2",
+  title: "Mint Mojito",
+  ingredients: [
+    { name: "fresh mint leaves", quantity: "10", unit: "" },
+    { name: "lime", quantity: "1", unit: "" },
+    { name: "sugar", quantity: "2", unit: "tablespoon(s)" },
+    { name: "white rum", quantity: "2", unit: "ounce(s)" },
+    { name: "soda water", quantity: "1", unit: "cup(s)" },
+    { name: "ice cubes", quantity: "1", unit: "cup(s)" }
+  ],
+  time: {
+    prep: ["0", "5"],
+    cook: ["0", "0"]
+  },
+  imageUrls: ["https://res.cloudinary.com/recipeb00k/image/upload/v1696529205/easy_mint_mojitos_zzwvsx.png"],
+  instructions: [
+    { id: "1", step: "In a glass, muddle the mint leaves and lime wedges." },
+    { id: "2", step: "Add sugar and muddle again." },
+    { id: "3", step: "Fill the glass with ice cubes." },
+    { id: "4", step: "Pour white rum over the ice." },
+    { id: "5", step: "Top off with soda water. Give it a quick stir." },
+    { id: "6", step: "Garnish with a sprig of mint and a slice of lime. Serve immediately." }
+  ],
+  tags: ["drink", "cocktail", "mint", "lime", "rum", "mojito"]
+  }  
 ];
 
 

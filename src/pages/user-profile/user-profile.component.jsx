@@ -65,6 +65,10 @@ const UserProfile = () => {
   const goToRecipeEdit = (id) => {
     navigate(`/recipe/${id}/edit`);
   }
+
+  const goToRecipeUpload = () => {
+    navigate("/recipe/upload");
+  };
   
 
   if (userRecipes === null) {
@@ -83,7 +87,7 @@ const UserProfile = () => {
 
   return (
     <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%'}}>
-      <UserProfileInformation user={user} />
+      <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
       <StyledDivider />
        <UserProfileControls
           handleToggle={handleToggle}
@@ -99,6 +103,7 @@ const UserProfile = () => {
         onRemoveFromFavorites={handleRemoveFromFavorites}
         isToggled={isToggled}
         type={displayType}
+        goToRecipeUpload={goToRecipeUpload}
       />
 
       

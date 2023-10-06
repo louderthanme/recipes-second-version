@@ -31,7 +31,7 @@ const SearchResultsPolaroid = ({ images, title, recipeId, onClick }) => {
     };
     
 
-    const transformedImage = transformImage(images[1], 300, 400);
+    const transformedImage = transformImage(images[0], 300, 400);
 
     return (
         <Box
