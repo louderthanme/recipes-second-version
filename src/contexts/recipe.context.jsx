@@ -147,7 +147,7 @@ const RecipesProvider = ({ children }) => {
 
   const batchDeleteImagesFromCloudinary = async (publicIds) => {
     try {
-      const response = await fetch('api/delete-images', {
+      const response = await fetch('/api/delete-images', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json', 
