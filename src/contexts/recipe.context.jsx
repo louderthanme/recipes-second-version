@@ -132,7 +132,7 @@ const RecipesProvider = ({ children }) => {
       formData.append('image', imageFiles[i]);
     }
     try {
-      const response = await fetch('http://localhost:3001/api/upload', {
+      const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
       });
@@ -147,7 +147,7 @@ const RecipesProvider = ({ children }) => {
 
   const batchDeleteImagesFromCloudinary = async (publicIds) => {
     try {
-      const response = await fetch('http://localhost:3001/api/delete-images', {
+      const response = await fetch('api/delete-images', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json', 

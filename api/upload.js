@@ -17,7 +17,7 @@ cloudinary.config({
     },
   });
   
-  const upload = multer({ storage });
+  const upload = multer({ storage: multer.memoryStorage() });
 
   const multerUploads = upload.array('image', 12);
 
@@ -49,9 +49,18 @@ cloudinary.config({
           if (fileType !== 'image/png' && fileType !== 'image/jpeg') {
             return res.status(400).json({ message: 'Only PNG and JPEG file types are allowed' });
           }
-    
+        
           try {
-            const result = await cloudinary.uploader.upload(file.path);
+            const result = await new Promise((resolve, reject) => {
+              cloudinary.uploader.upload_stream(
+                { resource_type: 'auto' },
+                (error, result) => {
+                  if (error) reject(error);
+                  else resolve(result);
+                }
+              ).end(file.buffer);
+            });
+        
             console.log(`Cloudinary URL: ${result.url}`);
             imageUrls.push(result.url);
           } catch (error) {
@@ -59,6 +68,7 @@ cloudinary.config({
             return res.status(500).json({ message: 'Upload failed' });
           }
         }
+        
     
         res.status(200).json({ message: 'Upload successful', imageUrls });
       })

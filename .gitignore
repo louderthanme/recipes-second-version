@@ -25,3 +25,5 @@ dist-ssr
 rxcipx-dxtx.js
 .env
 README.md
+
+.vercel
