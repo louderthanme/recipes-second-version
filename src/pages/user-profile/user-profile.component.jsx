@@ -86,30 +86,34 @@ const UserProfile = () => {
   }
 
   return (
-    <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%'}}>
-      <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
-      <StyledDivider />
-       <UserProfileControls
-          handleToggle={handleToggle}
-          activeTab={activeTab}
-          handleTabChange={handleTabChange}
-       />
+    <Grid container>
+      <Grid item xs={12} sm={12} md={11}>
+        <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%'}}>
+          <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
+          <StyledDivider />
+          <UserProfileControls
+              handleToggle={handleToggle}
+              activeTab={activeTab}
+              handleTabChange={handleTabChange}
+          />
 
-      <UserRecipesDisplay
-        userRecipes={displayRecipes}
-        onDeleteRecipe={handleDeleteRecipe}
-        onClickRecipe={goToRecipe}
-        onEditRecipe={goToRecipeEdit}
-        onRemoveFromFavorites={handleRemoveFromFavorites}
-        isToggled={isToggled}
-        type={displayType}
-        goToRecipeUpload={goToRecipeUpload}
-      />
+          <UserRecipesDisplay
+            userRecipes={displayRecipes}
+            onDeleteRecipe={handleDeleteRecipe}
+            onClickRecipe={goToRecipe}
+            onEditRecipe={goToRecipeEdit}
+            onRemoveFromFavorites={handleRemoveFromFavorites}
+            isToggled={isToggled}
+            type={displayType}
+            goToRecipeUpload={goToRecipeUpload}
+          />
 
-      
+          
 
 
-    </Paper>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

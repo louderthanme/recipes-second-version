@@ -92,87 +92,91 @@ const RecipeShowcase = () => {
 
 
   return (
-    <Paper elevation={12} sx={{ backgroundColor: '#fdebd7', width: '70%',  padding: '10px', marginBottom: '30px', position: 'relative' }}>
-      <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
-        <IconButton
-          aria-label="toggle-favorite"
-          size="small"
-          onClick={(e)=>{
-            e.stopPropagation();
-            toggleFavorite(e, id); // Assuming you want to toggle for the current recipe ID
-          }}
-          sx={{
-            position: 'absolute',
-            top: '10px',  // Adjust as needed for padding
-            right: '10px',  // Adjust as needed for padding
-            backgroundColor: grey[500],
-            '&:hover': {
-              backgroundColor: isFavorited ? red[700] : grey[700],
-            },
-          }}
-        >
-          {isFavorited ? 
-            <FavoriteIcon sx={{ color: red[500], fontSize: '24px' }} />
-            :
-            <FavoriteBorderIcon sx={{ color: common.white, fontSize: '24px' }} />
-          }
-        </IconButton>
-      </Tooltip>
-    <Grid container spacing={3}>
-      {/* First Row */}
-      <Grid item xs={12} sm={12} md={12} lg={5}>
-        <Box  
-            sx={{
-                mt: 2,  // default
-                '@media (max-width:960px)': {
-                    mt: 5
-                }
-            }}
-        >
-          <ImageBox images={imageUrls} />
-        </Box>
-      </Grid>
-      <Grid item xs={12} sm={12} md={12} lg={7}>
-        <Box p={2}>
-          <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} tags={tags}/>
-        </Box>
-      </Grid>
-      {/* Divider */}
-      <Grid item xs={12}>
-        <Divider />
-      </Grid>
-      {/* Second Row */}
-      <Grid item xs={12} sm={6} md={6} lg={6}>
-        <Box p={2}>
-          <IngredientsDisplay ingredients={ingredients} height={displayHeight} maxHeight={displaysMaxHeight} ref={ingredientsRef} />
-        </Box>
-      </Grid>
-      <Grid item xs={12} sm={6} md={6} lg={6}>
-        <Box p={2}>
-          <InstructionsDisplay instructions={instructions} height={displayHeight} maxHeight={displaysMaxHeight} ref={instructionsRef} />
-        </Box>
-      </Grid>
-      {/* Third Row */}
-      <Grid item xs={12}>
-        <Box p={1} display="flex" justifyContent="center">
-        
-          {user?.uid === ownerUid && (
-            <>
-              <Button variant="contained" onClick={() => goToRecipeEdit(id)}>
-                Edit Recipe
+    <Grid container>
+      <Grid item xs={12} sm={12} md={11}>
+        <Paper elevation={12} sx={{ backgroundColor: '#fdebd7', width: '70%',  padding: '10px', marginBottom: '30px', position: 'relative' }}>
+          <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
+            <IconButton
+              aria-label="toggle-favorite"
+              size="small"
+              onClick={(e)=>{
+                e.stopPropagation();
+                toggleFavorite(e, id);
+              }}
+              sx={{
+                position: 'absolute',
+                top: '10px',  
+                right: '10px', 
+                backgroundColor: grey[500],
+                '&:hover': {
+                  backgroundColor: isFavorited ? red[700] : grey[700],
+                },
+              }}
+            >
+              {isFavorited ? 
+                <FavoriteIcon sx={{ color: red[500], fontSize: '24px' }} />
+                :
+                <FavoriteBorderIcon sx={{ color: common.white, fontSize: '24px' }} />
+              }
+            </IconButton>
+          </Tooltip>
+        <Grid container spacing={3}>
+          {/* First Row */}
+          <Grid item xs={12} sm={12} md={12} lg={5}>
+            <Box  
+                sx={{
+                    mt: 2,  // default
+                    '@media (max-width:960px)': {
+                        mt: 5
+                    }
+                }}
+            >
+              <ImageBox images={imageUrls} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={7}>
+            <Box p={2}>
+              <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} tags={tags}/>
+            </Box>
+          </Grid>
+          {/* Divider */}
+          <Grid item xs={12}>
+            <Divider />
+          </Grid>
+          {/* Second Row */}
+          <Grid item xs={12} sm={6} md={6} lg={6}>
+            <Box p={2}>
+              <IngredientsDisplay ingredients={ingredients} height={displayHeight} maxHeight={displaysMaxHeight} ref={ingredientsRef} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6} lg={6}>
+            <Box p={2}>
+              <InstructionsDisplay instructions={instructions} height={displayHeight} maxHeight={displaysMaxHeight} ref={instructionsRef} />
+            </Box>
+          </Grid>
+          {/* Third Row */}
+          <Grid item xs={12}>
+            <Box p={1} display="flex" justifyContent="center">
+            
+              {user?.uid === ownerUid && (
+                <>
+                  <Button variant="contained" onClick={() => goToRecipeEdit(id)}>
+                    Edit Recipe
+                  </Button>
+                  <Box mx={1}></Box>
+                </>
+              )}
+              <Button variant="contained" color="secondary" onClick={handleShareClick}>
+                Share Recipe
               </Button>
-              <Box mx={1}></Box>
-            </>
-          )}
-          <Button variant="contained" color="secondary" onClick={handleShareClick}>
-            Share Recipe
-          </Button>
-          {ShareWindowComponent()}
-        </Box>
+              {ShareWindowComponent()}
+            </Box>
 
-        </Grid>
+            </Grid>
+          </Grid>
+        </Paper>
       </Grid>
-    </Paper>
+    </Grid>
   );
 };
 
