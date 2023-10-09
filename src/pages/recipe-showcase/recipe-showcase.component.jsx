@@ -5,6 +5,8 @@ import { grey, red, common } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
+import { displaysMaxHeight } from '../../constants/constants';
+
 import RecipeShowcaseLoading from '../../components/ui/loading-screens/recipe-showcase-loading.component';
 import InstructionsDisplay from '../../components/Recipe/instructions-display/instructions-display.component';
 import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingredients-display.component';
@@ -37,9 +39,6 @@ const RecipeShowcase = () => {
 
   // Custom hooks
   const [handleShareClick, ShareWindowComponent] = useShareWindow({ title: recipe?.title, recipeId: id });
-
-  // Variables
-  const displaysMaxHeight = '300px';
 
   // Effects
   useEffect(() => {

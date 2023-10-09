@@ -1,23 +1,22 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Box, IconButton, Tooltip } from "@mui/material";
+import { Box, IconButton, Tooltip, Skeleton } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { blue, red, common, grey } from '@mui/material/colors';import ShareIcon from '@mui/icons-material/Share';
+import { blue, red, common, grey } from '@mui/material/colors';
+import ShareIcon from '@mui/icons-material/Share';
 import { useShareWindow } from "../../../hooks/useShareWindow";
 import { UserContext } from "../../../contexts/user.context"
 
 const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) => {
-
   const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
 
   const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title, recipeId:recipeId});
   const [isFavorited, setIsFavorited] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
       setIsFavorited(favoriteRecipes.includes(recipeId));
   }, [favoriteRecipes, recipeId]);
-
-
 
   const toggleFavorite = async (e, recipeId) => {
     if (isFavorited) {
@@ -27,29 +26,47 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
     }
     setIsFavorited(!isFavorited);
   };
- 
 
   return (
     <Box 
-      sx={{ 
-        position: 'relative',
-        padding: '10px', 
-        borderRadius: '10px',
-        marginX: '2px',
-        backgroundColor: 'white', 
-        img: {
-          maxWidth: '100%',
-          maxheight: 'auto'
-        }
-      }}
-      onClick={onClick}
-    >
-      <img src={image} alt={title} style={{display: 'block'}} />
+    sx={{ 
+      position: 'relative',
+      padding: '10px', 
+      borderRadius: '10px',
+      marginX: '2px',
+      backgroundColor: 'white'
+    }}
+    onClick={onClick}
+  >
+    <img 
+      src={image} 
+      alt={title} 
+      onLoad={() => setImageLoaded(true)} 
+      style={{width: '100%', height: 'auto', display: imageLoaded ? 'block' : 'none'}}
+    />
+
+    {!imageLoaded && 
+      <Box 
+        sx={{ 
+          position: 'relative',
+          width: '100%',
+          paddingBottom: '72%'
+        }}
+      >
+        <Skeleton 
+          variant="rectangular" 
+          width="100%" 
+          height="100%" 
+          style={{position: 'absolute', top: 0, left: 0}} 
+        />
+      </Box>
+    }
+
       <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
         <IconButton
           aria-label="toggle-favorite"
           size="small"
-          onClick={(e)=>{
+          onClick={(e) => {
             e.stopPropagation();
             toggleFavorite(e, recipeId);
           }}
@@ -59,19 +76,20 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
             right: '-10px',
             width: '24px',
             height: '24px',
-            backgroundColor: grey[500],  // Set to grey[500] for a specific shade of grey
+            backgroundColor: grey[500],
             '&:hover': {
-              backgroundColor: isFavorited ? red[700] : grey[700], // Modify hover color for consistency
+              backgroundColor: isFavorited ? red[700] : grey[700],
             },
           }}
         >
           {isFavorited ? 
-            <FavoriteIcon sx={{ color: red[500], fontSize: '14px' }} /> // red heart when favorited
+            <FavoriteIcon sx={{ color: red[500], fontSize: '14px' }} />
             :
-            <FavoriteBorderIcon sx={{ color: common.white, fontSize: '14px' }} /> // white border heart when not favorited
+            <FavoriteBorderIcon sx={{ color: common.white, fontSize: '14px' }} />
           }
         </IconButton>
       </Tooltip>
+      
       <Tooltip title="Share">
         <IconButton
           aria-label="share-recipe"
@@ -92,7 +110,9 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
           <ShareIcon sx={{ color: common.white, fontSize: '14px' }} />
         </IconButton>
       </Tooltip>
+      
       {ShareWindowComponent()}
+      
       <Box 
         sx={{ 
           display: 'flex', 

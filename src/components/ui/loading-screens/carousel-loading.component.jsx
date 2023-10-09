@@ -1,16 +1,12 @@
-import { Skeleton, Paper, Box } from "@mui/material";
+import { Skeleton } from '@mui/material';
+import { Box } from '@mui/material';
 
 const CarouselLoading = () => {
-    return (
-        <Paper elevation={4} sx={{ width: '82%', margin: '0 auto', padding: '20px', backgroundColor: '#c3bcfc' }}>
-          {/* Simulating 3 CarouselPolaroids in the loading state */}
-          {[0].map((index) => (
-            <Box key={index} sx={{ padding: '0 5px' }}>
-              <Skeleton variant="rectangular"  height={200} />
-            </Box>
-          ))}
-        </Paper>
-        );
-    }
+  return (
+    <Box sx={{ width: '82%', margin: '0 auto', padding: '10px', paddingX: '30px', overflow: 'hidden' }}>
+      <Skeleton variant="rectangular" width="100%" height={300} animation="wave" />
+    </Box>
+  );
+};
 
 export default CarouselLoading;

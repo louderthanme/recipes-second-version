@@ -3,45 +3,17 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
 import CarouselLoading from '../../ui/loading-screens/carousel-loading.component';
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from 'react';
 import { Paper, Box, useTheme, useMediaQuery} from '@mui/material';
 import RecipesFrontpageCarouselPolaroid from '../recipes-frontpage-carousel-polaroid/recipes-frontpage-carousel-polaroid.component';
 import { transformImage } from '../../../utils/utils';
+import useSlidesToShow from '../../../hooks/useSlidesToShow';
 
 const RecipesFrontpageCarousel = ({recipes, backgroundColor}) => {
-  const [slidesToShow, setSlidesToShow] = useState(4);
   const theme = useTheme();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const updateSlidesToShow = () => {
-      const width = window.innerWidth;
-  
-      if (width <= theme.breakpoints.values.sm) {
-        setSlidesToShow(1);
-      } else if (width > theme.breakpoints.values.sm && width <= theme.breakpoints.values.md) {
-        setSlidesToShow(2);
-      } else if (width > theme.breakpoints.values.md && width <= theme.breakpoints.values.lg) {
-        setSlidesToShow(2);
-      } else {
-        setSlidesToShow(4);
-      }
-    };
-  
-    // Initialize slides
-    updateSlidesToShow();
-  
-    // Update slides when the window resizes
-    window.addEventListener('resize', updateSlidesToShow);
-  
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', updateSlidesToShow);
-    };
-  }, [theme.breakpoints]);
-  
-  
-
+  const slidesToShow = useSlidesToShow();
+ 
 
   const settings = {
     dots: false,

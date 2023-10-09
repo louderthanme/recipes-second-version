@@ -18,3 +18,5 @@ export const volumeUnits = [
   ];
 
 export const noImageAvailableUrl = "https://res.cloudinary.com/recipeb00k/image/upload/v1695839821/No_Image_Available.png";
+
+export const displaysMaxHeight = '300px'
