@@ -28,13 +28,18 @@ export const getPublicIdFromCloudinaryUrl = (url) => {
 
 export const transformImage = (url, height, width) => {
   const segments = url.split('/');
-  let transformation = `h_${height}`;
+  let transformation = '';
 
-  if (width) {
-    transformation += `,w_${width},c_fill,g_auto`;
+  if (height > width) {
+    // Vertical (portrait) image
+    transformation = `h_${height},c_fill,g_auto`;
+  } else {
+    // Horizontal (landscape) image
+    transformation = `h_${height},w_${width},c_fill,g_auto`;
   }
+
+  transformation += '/q_auto,f_auto';
 
   segments.splice(-2, 0, transformation);
   return segments.join('/');
 };
-
