@@ -76,7 +76,6 @@ export const DotMatrixBackground = styled('div')(({ theme }) => ({
   backgroundImage: 'radial-gradient(#e8e3f1 1px, transparent 2px)',
   backgroundSize: '30px 30px',
 }));
-
 export const StyledSearchBar = styled(TextField)(({ theme }) => ({
   "& .MuiFilledInput-root": {
     background: "rgb(255, 255, 255)",
@@ -93,6 +92,7 @@ export const StyledSearchBar = styled(TextField)(({ theme }) => ({
     paddingBottom: '10px',
   },
   margin: theme.spacing(1, 0),
+  paddingTop: '20px', // Add some top padding to create space for InputAdornment
   '& .MuiInputAdornment-root': {
     height: 'auto !important',
     maxHeight: 'none !important',
