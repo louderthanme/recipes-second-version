@@ -86,9 +86,9 @@ const UserProfile = () => {
   }
 
   return (
-    <Grid container>
+    <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={12} sm={12} md={11}>
-        <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%'}}>
+        <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%', mx:'auto'}}>
           <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
           <StyledDivider />
           <UserProfileControls
