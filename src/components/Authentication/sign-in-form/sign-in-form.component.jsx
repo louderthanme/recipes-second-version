@@ -72,18 +72,18 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
                         </FormControl>
                         <Grid container spacing={1} justifyContent="center"  marginY={2}>
                             <Grid item xs={5}>
-                                <Button type="submit" variant="contained" color="primary">
+                                <Button type="submit" variant="contained" color="secondary">
                                     Sign In with Email
                                 </Button>
                             </Grid>
                         <Grid item xs={1}></Grid>
                             <Grid item xs={5}>
-                                <Button variant="contained" color="primary" onClick={() => googleAuthHandler(setUser)}>
+                                <Button variant="contained" color="secondary" onClick={() => googleAuthHandler(setUser)}>
                                         Sign In with Google
                                 </Button>
                             </Grid>
                         </Grid>
-                    <Typography>Don't have an account? <Button color="primary" onClick={switchToSignUp}>Sign Up</Button></Typography>
+                    <Typography>Don't have an account? <Button color="secondary" onClick={switchToSignUp}>Sign Up</Button></Typography>
                 </form>
             </Box>
         </Paper>

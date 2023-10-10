@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/user.context";
 import { RecipesContext } from "../../contexts/recipe.context";	
-import { Paper} from "@mui/material";
+import { Paper, Grid} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {StyledDivider} from "../../utils/styledComponents"
 import UserProfileLoading from "../../components/ui/loading-screens/user-profile-loading.component";
@@ -16,7 +16,7 @@ const UserProfile = () => {
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
 
-  console.log('userRecipes:', userRecipes)
+  console.log('userRecipes:', userRecipes)  
   
   const [isToggled, setIsToggled] = useState(false);
   const [activeTab, setActiveTab] = useState('myRecipes');
@@ -86,30 +86,47 @@ const UserProfile = () => {
   }
 
   return (
-    <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%'}}>
-      <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
-      <StyledDivider />
-       <UserProfileControls
-          handleToggle={handleToggle}
-          activeTab={activeTab}
-          handleTabChange={handleTabChange}
-       />
+    <Grid container justifyContent="center" alignItems="center">
+      <Grid item xs={12} sm={12} md={11}>
+        <Paper 
+        elevation={10} 
+        sx={{
+          backgroundColor: '#fdebd7',
+          width: '70%',
+          padding: '10px',
+          marginBottom: '30px',
+          position: 'relative',
+          mx: 'auto',
+          '@media (max-width:960px)': {
+            mx: '0', // Remove margins on smaller screens
+            width: '100%',
+          },
+        }}>
+          <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
+          <StyledDivider />
+          <UserProfileControls
+              handleToggle={handleToggle}
+              activeTab={activeTab}
+              handleTabChange={handleTabChange}
+          />
 
-      <UserRecipesDisplay
-        userRecipes={displayRecipes}
-        onDeleteRecipe={handleDeleteRecipe}
-        onClickRecipe={goToRecipe}
-        onEditRecipe={goToRecipeEdit}
-        onRemoveFromFavorites={handleRemoveFromFavorites}
-        isToggled={isToggled}
-        type={displayType}
-        goToRecipeUpload={goToRecipeUpload}
-      />
+          <UserRecipesDisplay
+            userRecipes={displayRecipes}
+            onDeleteRecipe={handleDeleteRecipe}
+            onClickRecipe={goToRecipe}
+            onEditRecipe={goToRecipeEdit}
+            onRemoveFromFavorites={handleRemoveFromFavorites}
+            isToggled={isToggled}
+            type={displayType}
+            goToRecipeUpload={goToRecipeUpload}
+          />
 
-      
+          
 
 
-    </Paper>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

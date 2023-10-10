@@ -43,7 +43,7 @@ const RecipeUpload = () => {
   // Contexts
   const { uploadRecipe, uploadImagesToCloudinary } = useContext(RecipesContext);
   const { user } = useContext(UserContext);
-  
+   
   // Hooks and State
   const [isLoading, setIsLoading] = useState(false); // Loading state for form submission
   const [newRecipeId, setNewRecipeId] = useState(null);
