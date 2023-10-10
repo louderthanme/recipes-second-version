@@ -16,7 +16,7 @@ const UserProfile = () => {
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
 
-  console.log('userRecipes:', userRecipes)
+  console.log('userRecipes:', userRecipes)  
   
   const [isToggled, setIsToggled] = useState(false);
   const [activeTab, setActiveTab] = useState('myRecipes');
