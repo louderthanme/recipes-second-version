@@ -93,6 +93,7 @@ export const StyledSearchBar = styled(TextField)(({ theme }) => ({
     paddingBottom: '10px',
   },
   margin: theme.spacing(1, 0),
+  paddingTop: '20px', // Add some top padding to create space for InputAdornment
   '& .MuiInputAdornment-root': {
     height: 'auto !important',
     maxHeight: 'none !important',
@@ -121,6 +122,7 @@ export const StyledSearchBar = styled(TextField)(({ theme }) => ({
     borderBottom: "2px solid #523d52 !important",
   },
 }));
+
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   "&.MuiButton-root": {
