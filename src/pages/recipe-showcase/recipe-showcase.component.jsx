@@ -94,7 +94,19 @@ const RecipeShowcase = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={12} sm={12} md={11}>
-        <Paper elevation={12} sx={{ backgroundColor: '#fdebd7', width: '70%',  padding: '10px', marginBottom: '30px', position: 'relative', mx:'auto' }}>
+        <Paper 
+        elevation={12} 
+        sx={{
+          backgroundColor: '#fdebd7',
+          width: '70%',
+          padding: '10px',
+          marginBottom: '30px',
+          position: 'relative',
+          mx: 'auto',
+          '@media (max-width:960px)': {
+            mx: '0', // Remove margins on smaller screens
+          },
+        }}>
           <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
             <IconButton
               aria-label="toggle-favorite"

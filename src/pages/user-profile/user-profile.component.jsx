@@ -88,7 +88,19 @@ const UserProfile = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={12} sm={12} md={11}>
-        <Paper elevation={10} sx={{ backgroundColor: "#fdebd7",  margin:'20px', width:'70%', mx:'auto'}}>
+        <Paper 
+        elevation={10} 
+        sx={{
+          backgroundColor: '#fdebd7',
+          width: '70%',
+          padding: '10px',
+          marginBottom: '30px',
+          position: 'relative',
+          mx: 'auto',
+          '@media (max-width:960px)': {
+            mx: '0', // Remove margins on smaller screens
+          },
+        }}>
           <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
           <StyledDivider />
           <UserProfileControls
