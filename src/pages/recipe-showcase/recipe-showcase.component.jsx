@@ -104,7 +104,8 @@ const RecipeShowcase = () => {
           position: 'relative',
           mx: 'auto',
           '@media (max-width:960px)': {
-            mx: '0', // Remove margins on smaller screens
+            mx: '0',
+            width:'100%' // Remove margins on smaller screens
           },
         }}>
           <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>

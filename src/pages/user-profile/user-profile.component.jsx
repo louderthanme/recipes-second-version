@@ -99,6 +99,7 @@ const UserProfile = () => {
           mx: 'auto',
           '@media (max-width:960px)': {
             mx: '0', // Remove margins on smaller screens
+            width: '100%',
           },
         }}>
           <UserProfileInformation user={user} goToRecipeUpload={goToRecipeUpload} />
