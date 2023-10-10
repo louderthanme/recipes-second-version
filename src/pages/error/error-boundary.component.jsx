@@ -1,6 +1,6 @@
 // ErrorBoundary.js
 import React, { useEffect } from 'react';
-import useError from './useError';
+import useError from '../../hooks/useError';
 import ErrorComponent from './ErrorComponent';
 
 const ErrorBoundary = ({ children }) => {
