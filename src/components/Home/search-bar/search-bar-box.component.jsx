@@ -27,7 +27,7 @@ const SearchBarBox = ({ handleChange }) => {
         onChange={handleChange}
         InputProps={{
           startAdornment: (
-            <InputAdornment position="start" style={{ display: 'flex', alignItems: 'center' }}>
+            <InputAdornment position="start" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <SearchIcon />
             </InputAdornment>
           ),
