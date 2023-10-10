@@ -92,7 +92,7 @@ const RecipeShowcase = () => {
 
 
   return (
-    <Grid container>
+    <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={12} sm={12} md={11}>
         <Paper elevation={12} sx={{ backgroundColor: '#fdebd7', width: '70%',  padding: '10px', marginBottom: '30px', position: 'relative' }}>
           <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
