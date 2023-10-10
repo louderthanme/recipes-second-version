@@ -76,6 +76,7 @@ export const DotMatrixBackground = styled('div')(({ theme }) => ({
   backgroundImage: 'radial-gradient(#e8e3f1 1px, transparent 2px)',
   backgroundSize: '30px 30px',
 }));
+
 export const StyledSearchBar = styled(TextField)(({ theme }) => ({
   "& .MuiFilledInput-root": {
     background: "rgb(255, 255, 255)",
