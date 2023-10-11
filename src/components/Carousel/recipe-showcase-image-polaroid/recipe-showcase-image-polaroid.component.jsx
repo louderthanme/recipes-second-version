@@ -25,7 +25,7 @@ const RecipeShowcaseImagePolaroid = ({ image, title, onClick }) => {
                 <Box 
                     sx={{ 
                         position: 'relative',
-                        width: '100%',
+                        width: '90%',
                         paddingBottom: '70%', // 3:4 aspect ratio only while loading
                     }}
                 >

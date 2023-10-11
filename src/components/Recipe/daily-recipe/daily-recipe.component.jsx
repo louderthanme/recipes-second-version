@@ -35,12 +35,12 @@ const DailyRecipe = ({ recipe, date }) => {
                     <Grid item xs={12} sx={{ margin: '10px' }}>
                         <Grid container spacing={2}>
                             {/* ImageBox */}
-                            <Grid item sm={12} xl={6}>
+                            <Grid item xs={12} xl={5}>
                                 <ImageBox images={imageUrls} />
                             </Grid>
     
                             {/* RecipeDetailsWrapper */}
-                            <Grid item sm={12} xl={6}>
+                            <Grid item xs={12} xl={7}>
                                 <RecipeDetailsWrapper title={title} tags={tags} handleShareClick={handleShareClick} ShareWindowComponent={ShareWindowComponent} id={id} />
                             </Grid>
                         </Grid>
