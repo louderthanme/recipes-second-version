@@ -22,9 +22,7 @@ const DailyRecipe = ({ recipe, date }) => {
     
 
     const imageUrls = transformImages(recipe.imageUrls, 300, 400)
-    
     return (
-
         <Paper elevation={4} sx={{ width: '86%', mx: 'auto', backgroundColor: '#bcfcbd' }}>
             <Box m={5} p={1}>
                 <Grid container spacing={2}>
@@ -32,23 +30,27 @@ const DailyRecipe = ({ recipe, date }) => {
                     <Grid item xs={12} mt={1}>
                         <Typography variant='h4' sx={{ textAlign: 'center', fontFamily: 'caveat' }}>{date}</Typography>
                     </Grid>
-
-                    {/* ImageBox */}
-                    <Grid item sm={12} lg={6}>
-                        <ImageBox images={imageUrls} />
-                    </Grid>
-
-                    {/* RecipeDetailsWrapper */}
-                    <Grid item sm={12} lg={6}>
-                        <RecipeDetailsWrapper title={title} tags={tags} handleShareClick={handleShareClick} ShareWindowComponent={ShareWindowComponent} id={id} />
+    
+                    {/* Wrapper for ImageBox and RecipeDetailsWrapper */}
+                    <Grid item xs={12} sx={{ margin: 'your desired margin here' }}>
+                        <Grid container spacing={2}>
+                            {/* ImageBox */}
+                            <Grid item sm={12} xl={6}>
+                                <ImageBox images={imageUrls} />
+                            </Grid>
+    
+                            {/* RecipeDetailsWrapper */}
+                            <Grid item sm={12} xl={6}>
+                                <RecipeDetailsWrapper title={title} tags={tags} handleShareClick={handleShareClick} ShareWindowComponent={ShareWindowComponent} id={id} />
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Box>
         </Paper>
-
     )
 }
-
+    
 export default DailyRecipe;
 
 

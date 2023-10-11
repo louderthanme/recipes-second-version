@@ -17,7 +17,7 @@ const RecipeShowcaseImageCarousel = ({ images }) => {
     centerPadding: '0',
     centerMode: true,
     className: 'polaroid-slider',
-    autoplay: true,
+    autoplay: images.length > 1 ? true : false,
     autoplaySpeed: 3000,
   };
 
