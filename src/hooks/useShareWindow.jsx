@@ -5,14 +5,14 @@ import ShareWindowPortal from "../components/ui/share-window-portal/share-window
 import ShareWindow from "../components/ui/share-window/share-window.component";
 
 export const useShareWindow = (recipe) => {
-  const [showShareWindow, setShowShareWindow] = useState(false);
+  const [showShareWindow, setShowShareWindow] = useState({ show: false });
 
   const handleShareClick = (e) => {
     e.stopPropagation();  
     const rect = e.currentTarget.getBoundingClientRect(); // change from e.target to e.currentTarget
     const x = rect.left;
     const y = rect.top;
-    setShowShareWindow({ show: !showShareWindow.show, x, y });
+    setShowShareWindow(prevState => ({ show: !prevState.show, x, y }));
   };
 
   const closeShareWindow = () => {

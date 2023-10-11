@@ -1,7 +1,6 @@
 import { Box, Paper, Grid, Typography} from "@mui/material"
 import { transformImages } from "../../../utils/utils"
 import GeneralLoadingSpinner from "../../ui/loading-screens/general-loading-spinner.component"
-import { useNavigate } from "react-router-dom/dist"
 import { useShareWindow } from '../../../hooks/useShareWindow'
 
 
@@ -9,6 +8,7 @@ import ImageBox from '../image-box/image-box.component'
 import RecipeDetailsWrapper from '../details-box/recipe-details-wrapper/recipe-details-wrapper.component'
 
 const DailyRecipe = ({ recipe, date }) => {
+    
 
     if (!recipe || !date ) {
         return <GeneralLoadingSpinner />
@@ -16,15 +16,9 @@ const DailyRecipe = ({ recipe, date }) => {
 
     const { title, tags, id } = recipe
 
-    const navigate = useNavigate();
 
     const [handleShareClick, ShareWindowComponent] = useShareWindow({ title: title, recipeId: id });
     
-    const goToRecipe = () => {
-      navigate(`/recipe/${id}`);
-    }
-  
-
     
 
     const imageUrls = transformImages(recipe.imageUrls, 300, 400)
@@ -46,7 +40,7 @@ const DailyRecipe = ({ recipe, date }) => {
 
                     {/* RecipeDetailsWrapper */}
                     <Grid item sm={12} lg={6}>
-                        <RecipeDetailsWrapper title={title} tags={tags} handleShareClick={handleShareClick} ShareWindowComponent={ShareWindowComponent} goToRecipe={goToRecipe} />
+                        <RecipeDetailsWrapper title={title} tags={tags} handleShareClick={handleShareClick} ShareWindowComponent={ShareWindowComponent} id={id} />
                     </Grid>
                 </Grid>
             </Box>
@@ -56,4 +50,8 @@ const DailyRecipe = ({ recipe, date }) => {
 }
 
 export default DailyRecipe;
+
+
+
+
 
