@@ -11,7 +11,8 @@ import RecipeShowcaseLoading from '../../components/ui/loading-screens/recipe-sh
 import InstructionsDisplay from '../../components/Recipe/instructions-display/instructions-display.component';
 import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/Recipe/image-box/image-box.component';
-import DetailsBox from '../../components/Recipe/details-box/details-box.component';
+import BaseDetailsBox from '../../components/Recipe/details-box/base-details-box/base-details-box.component';
+
 
 import { updateBoxShadow } from '../../utils/utils';
 import { useShareWindow } from '../../hooks/useShareWindow';
@@ -149,7 +150,7 @@ const RecipeShowcase = () => {
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={7}>
             <Box p={2}>
-              <DetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} tags={tags}/>
+             <BaseDetailsBox prep={prep} cook={cook} ingredients={ingredients} title={title} tags={tags}/>
             </Box>
           </Grid>
           {/* Divider */}
