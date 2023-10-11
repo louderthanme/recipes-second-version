@@ -32,7 +32,7 @@ const DailyRecipe = ({ recipe, date }) => {
                     </Grid>
     
                     {/* Wrapper for ImageBox and RecipeDetailsWrapper */}
-                    <Grid item xs={12} sx={{ margin: 'your desired margin here' }}>
+                    <Grid item xs={12} sx={{ margin: '10px' }}>
                         <Grid container spacing={2}>
                             {/* ImageBox */}
                             <Grid item sm={12} xl={6}>
@@ -50,7 +50,7 @@ const DailyRecipe = ({ recipe, date }) => {
         </Paper>
     )
 }
-    
+
 export default DailyRecipe;
 
 
