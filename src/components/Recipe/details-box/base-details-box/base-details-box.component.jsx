@@ -9,11 +9,13 @@ const BaseDetailsBox = ({ title, prep, cook, ingredients, tags, children, showPr
     // Set breakpoints for mobile and tablet views
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
+    const showMarginTop = !showPrepCook && !showIngredients;
+
 
     return (
         <Box>
             {/* Display the title */}
-            <Typography variant='h2' align={isTablet ? 'center' : 'inherit'} sx={{ fontFamily: 'caveat' }}>{title}</Typography>
+            <Typography mt={showMarginTop ? 4:0} variant='h2' align={isTablet ? 'center' : 'inherit'} sx={{ fontFamily: 'caveat' }}>{title}</Typography>
             
             <Box marginTop={2} align={isMobile ? 'center' : 'left'} marginLeft={isMobile ? 0 : 3}> 
 
@@ -50,7 +52,7 @@ const BaseDetailsBox = ({ title, prep, cook, ingredients, tags, children, showPr
                     </Typography>
                 )}
 
-                <Box mt={2}>
+                <Box mt={showMarginTop ? 6: 0} >
                     {/* Display tags */}
                     <Typography mb={2} sx={{ fontFamily: 'caveat', fontSize: '22px' }}>
                         Tags:

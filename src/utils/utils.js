@@ -43,3 +43,7 @@ export const transformImage = (url, height, width) => {
   segments.splice(-2, 0, transformation);
   return segments.join('/');
 };
+
+export const transformImages = (urls, height, width) => {
+  return urls.map(url => transformImage(url, height, width));
+};
