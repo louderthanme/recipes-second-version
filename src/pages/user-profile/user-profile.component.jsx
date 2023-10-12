@@ -10,14 +10,13 @@ import UserProfileInformation from "../../components/User/user-profile-informati
 import UserRecipesDisplay from "../../components/User/user-recipes-display/user-recipes-display.component";
 import UserProfileControls from "../../components/User/user-profile-controls/user-profile-controls.component";
 
+
 const UserProfile = () => {
-  const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes, fetchFavoriteRecipes, favoriteFullRecipes } = useContext(RecipesContext); // Use userRecipes
+  const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes, fetchFavoriteRecipes, favoriteFullRecipes,  } = useContext(RecipesContext); // Use userRecipes
   const { user, favoriteRecipes, removeRecipeFromFavorites } = useContext(UserContext);
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
-
-  console.log('userRecipes:', userRecipes)  
-  
+ 
   const [isToggled, setIsToggled] = useState(false);
   const [activeTab, setActiveTab] = useState('myRecipes');
 
@@ -58,7 +57,6 @@ const UserProfile = () => {
   };
 
   const goToRecipe = (id) => {
-    console.log('id:', id)
     navigate(`/recipe/${id}`);
   };
 
@@ -119,6 +117,7 @@ const UserProfile = () => {
             isToggled={isToggled}
             type={displayType}
             goToRecipeUpload={goToRecipeUpload}
+            goToRecipe={goToRecipe}
           />
 
           

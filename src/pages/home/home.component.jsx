@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { RecipesContext } from '../../contexts/recipe.context';
-import { Paper, Grid, Box} from '@mui/material'; // Import Typography from Material-UI
-import { StyledDivider, StyledSearchBar } from '../../utils/styledComponents';
+import { Paper, Grid, Box, Typography} from '@mui/material'; // Import Typography from Material-UI
+import { StyledDivider } from '../../utils/styledComponents';
 import SearchBarBox from '../../components/Home/search-bar/search-bar-box.component';
 import Featured from '../../components/Home/featured/featured.component';
 import SearchResults from '../../components/Home/search-results/search-results.component';
@@ -33,7 +33,9 @@ const Home = () => {
       <Grid item xs={12} sm={12} md={11}>
       <Paper elevation={6} pb={3} style={{ backgroundColor: '#fdebd7', color: 'white', borderRadius: '20px', marginBottom:'30px' }}>
        
-       
+      <Typography variant="h1" fontWeight="bold" mt={2} pt={4} mb={1} textAlign={'center'} sx={{ color: '#750303', fontFamily: 'Caveat' }}>
+        Nibble Notebook
+      </Typography>
         <SearchBarBox handleChange={handleChange} />
         <StyledDivider />
 
