@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,  } from 'react';
 import { Typography, InputAdornment, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { StyledSearchBar } from '../../../utils/styledComponents';
 
 const SearchBarBox = ({ handleChange }) => {
+
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const placeholders = ['Find your next meal!', 'Tacos fusion', 'Easy pasta'];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setPlaceholderIndex((prevIndex) => (prevIndex + 1) % placeholders.length);
-    }, 3000); // Change the placeholder every 3 seconds (adjust as needed)
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);

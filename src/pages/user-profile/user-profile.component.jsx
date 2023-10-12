@@ -87,7 +87,7 @@ const UserProfile = () => {
 
   return (
     <Grid container justifyContent="center" alignItems="center">
-      <Grid item xs={12} sm={12} md={11}>
+      <Grid item xs={12} sm={12} md={12} lg={11}>
         <Paper 
         elevation={10} 
         sx={{
