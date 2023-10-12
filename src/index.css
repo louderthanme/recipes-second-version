@@ -71,6 +71,10 @@ h1 {
   margin-top: 0 !important;
 }
 
+.css-es1obo.MuiInputAdornment-positionStart.css-es1obo:not(.MuiInputAdornment-hiddenLabel) {
+  margin-top: 0 !important;
+}
+
 .css-9mc7sf-MuiInputAdornment-root {
   height: auto !important;
   max-height: none !important;
