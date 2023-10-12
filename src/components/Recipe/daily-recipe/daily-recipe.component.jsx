@@ -2,6 +2,7 @@ import { Box, Paper, Grid, Typography} from "@mui/material"
 import { transformImages } from "../../../utils/utils"
 import GeneralLoadingSpinner from "../../ui/loading-screens/general-loading-spinner.component"
 import { useShareWindow } from '../../../hooks/useShareWindow'
+import { StyledDivider } from "../../../utils/styledComponents"
 
 
 import ImageBox from '../image-box/image-box.component'
@@ -27,9 +28,11 @@ const DailyRecipe = ({ recipe, date }) => {
             <Box m={5} p={1}>
                 <Grid container spacing={2}>
                     {/* Date row */}
-                    <Grid item xs={12} mt={1}>
-                        <Typography variant='h4' sx={{ textAlign: 'center', fontFamily: 'caveat' }}>{date}</Typography>
+                    <Grid item xs={12} mt={3}>
+                        <Typography variant='h3' sx={{ textAlign: 'center', fontFamily: 'Architects Daughter' }}>Recipe for {date}</Typography>
+                        <StyledDivider />
                     </Grid>
+                    
     
                     {/* Wrapper for ImageBox and RecipeDetailsWrapper */}
                     <Grid item xs={12} sx={{ margin: '10px' }}>
