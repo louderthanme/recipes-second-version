@@ -110,7 +110,7 @@ const RecipeShowcase = () => {
             width:'100%' // Remove margins on smaller screens
           },
         }}>
-          <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
+            <Tooltip title={user? isFavorited ? "Remove from Favorites" : "Add to Favorites" : "Login in to add to favorites"}>
             <IconButton
               aria-label="toggle-favorite"
               size="small"

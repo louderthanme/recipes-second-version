@@ -10,7 +10,7 @@ import { UserContext } from "../../../contexts/user.context"
 
 const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) => {
   const theme = useTheme();
-  const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
+  const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes, user } = useContext(UserContext);   
 
   const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title, recipeId:recipeId});
   const [isFavorited, setIsFavorited] = useState(false);
@@ -65,7 +65,7 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
       </Box>
     }
 
-      <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
+        <Tooltip title={user? isFavorited ? "Remove from Favorites" : "Add to Favorites" : "Login in to add to favorites"}>
         <IconButton
           aria-label="toggle-favorite"
           size="small"
