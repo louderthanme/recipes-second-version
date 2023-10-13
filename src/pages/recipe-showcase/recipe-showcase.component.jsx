@@ -93,10 +93,11 @@ const RecipeShowcase = () => {
 
 
   return (
-    <Grid container justifyContent="center" alignItems="center">
+    <Grid container justifyContent="center" alignItems="center" overflow={'hidden'}>
       <Grid item xs={12} sm={12} md={11}>
         <Paper 
-        elevation={12} 
+        elevation={12}
+        overflow="hidden" 
         sx={{
           backgroundColor: '#fdebd7',
           width: '70%',

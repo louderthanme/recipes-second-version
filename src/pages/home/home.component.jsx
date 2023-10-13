@@ -31,11 +31,11 @@ const Home = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={12} sm={12} md={11}>
-      <Paper elevation={6} pb={3} style={{ backgroundColor: '#fdebd7', color: 'white', borderRadius: '20px', marginBottom:'30px' }}>
-       
-      <Typography variant="h1" fontWeight="bold" mt={2} pt={4} mb={1} textAlign={'center'} sx={{ color: '#750303', fontFamily: 'Caveat' }}>
-        Nibble Notebook
-      </Typography>
+        <Paper elevation={6} pb={3} style={{ backgroundColor: '#fdebd7', color: 'white', borderRadius: '20px', marginBottom:'30px' }}>
+        
+        <Typography variant="h1" fontWeight="bold" mt={2} pt={4} mb={1} textAlign={'center'} sx={{ color: '#750303', fontFamily: 'Caveat' }}>
+          Nibble Notebook
+        </Typography>
         <SearchBarBox handleChange={handleChange} />
         <StyledDivider />
 

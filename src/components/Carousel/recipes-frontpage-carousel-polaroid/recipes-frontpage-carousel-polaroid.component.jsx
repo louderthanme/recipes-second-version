@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import useTheme from '@mui/material/styles/useTheme';
 import { Box, IconButton, Tooltip, Skeleton } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -8,6 +9,7 @@ import { useShareWindow } from "../../../hooks/useShareWindow";
 import { UserContext } from "../../../contexts/user.context"
 
 const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) => {
+  const theme = useTheme();
   const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);   
 
   const [handleShareClick, ShareWindowComponent] = useShareWindow({title:title, recipeId:recipeId});
@@ -33,7 +35,8 @@ const RecipesFrontpageCarouselPolaroid = ({ image, title, recipeId, onClick }) =
       position: 'relative',
       padding: '10px', 
       borderRadius: '10px',
-      marginX: '2px',
+      marginX: theme.breakpoints.values.sm ? '30px' : '5px',
+      marginY: '10px',
       backgroundColor: 'white'
     }}
     onClick={onClick}

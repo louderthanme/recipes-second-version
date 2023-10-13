@@ -17,7 +17,7 @@ const RecipesFrontpageCarousel = ({recipes, backgroundColor}) => {
 
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 800,
     slidesToShow: slidesToShow,
     slidesToScroll: 2,
@@ -44,7 +44,10 @@ const RecipesFrontpageCarousel = ({recipes, backgroundColor}) => {
    <Paper elevation={4} sx={{ width: '82%', margin: '0 auto', padding: '10px', paddingX:'30px', backgroundColor: backgroundColor, overflow:'hidden'}}>
       <Slider {...settings}>
         {recipes.map((recipe, index) => (
-          <Box key={index} sx={{ padding: '0 5px' }}>
+          <Box key={index} 
+          sx={{ 
+            padding: '0 5px'             
+            }}>
             <RecipesFrontpageCarouselPolaroid
               image={transformImage(recipe.imageUrls[0], 300, 400)}
               title={recipe.title}
