@@ -13,7 +13,7 @@ import RecipeDetailsWrapper from '../details-box/recipe-details-wrapper/recipe-d
 import { UserContext } from "../../../contexts/user.context"
 
 const DailyRecipe = ({ recipe, date }) => {
-    const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes } = useContext(UserContext);
+    const { addRecipeToFavorites, removeRecipeFromFavorites, favoriteRecipes, user } = useContext(UserContext);
 
     const [isFavorited, setIsFavorited] = useState(false);
     const [currentId, setCurrentId] = useState(null);
@@ -49,7 +49,7 @@ const DailyRecipe = ({ recipe, date }) => {
 
     return (
         <Paper elevation={4} sx={{ width: '86%', mx: 'auto', backgroundColor: '#bcfcbd', position: 'relative' }}>
-            <Tooltip title={isFavorited ? "Remove from Favorites" : "Add to Favorites"}>
+            <Tooltip title={user? isFavorited ? "Remove from Favorites" : "Add to Favorites" : "Login in to add to favorites"}>
                 <IconButton
                     aria-label="toggle-favorite"
                     size="small"
