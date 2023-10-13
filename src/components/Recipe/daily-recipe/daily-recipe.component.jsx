@@ -29,7 +29,7 @@ const DailyRecipe = ({ recipe, date }) => {
                 <Grid container spacing={2}>
                     {/* Date row */}
                     <Grid item xs={12} mt={3}>
-                        <Typography variant='h3' sx={{ textAlign: 'center', fontFamily: 'Architects Daughter' }}>Recipe for {date}</Typography>
+                        <Typography variant='h4' sx={{ textAlign: 'center', fontFamily: 'Caveat', fontWeight:900, color: '#750303' }}>Recipe for {date}</Typography>
                         <StyledDivider />
                     </Grid>
                     

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, FormControlLabel, Switch, Tab } from "@mui/material";
-import { StyledTabs } from '../../../utils/styledComponents';
+import { Box, Switch, Tab } from "@mui/material";
+import { StyledTabs, StyledFormControlLabel } from '../../../utils/styledComponents';
 
 const UserProfileControls = ({ handleToggle, handleTabChange, activeTab }) => {
     const tabIndex = activeTab === 'myRecipes' ? 0 : 1;
@@ -28,7 +28,7 @@ const UserProfileControls = ({ handleToggle, handleTabChange, activeTab }) => {
                 <Tab label="My Favorite Recipes" />
             </StyledTabs>
 
-            <FormControlLabel control={<Switch color="secondary" />} label="Manage" onClick={handleToggle} />
+            <StyledFormControlLabel control={<Switch color="secondary" />}  label="Manage" onClick={handleToggle} />
         </Box>
     );
 }

@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { TextField, Divider, Select, Toolbar, Button, Tab, Tabs } from "@mui/material";
+import { TextField, Divider, Select, Toolbar, Button, Tab, Tabs, FormControlLabel, Chip } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
@@ -156,4 +156,18 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
   "& .MuiTouchRipple-root": {
     color: "#ebd7fd", // replace #desiredColor with the color you want
   }
+}));
+
+
+export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
+  "& .MuiTypography-root": {
+    fontFamily:'Architects Daughter',
+    fontWeight:'bold',
+    fontSize:'20px', 
+  },
+}));
+
+export const StyledChip = styled(Chip)(({ theme }) => ({
+  fontFamily:'Architects Daughter',
+  fontWeight:'bold',
 }));

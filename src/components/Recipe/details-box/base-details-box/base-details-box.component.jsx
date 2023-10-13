@@ -1,5 +1,6 @@
 // Import necessary components from MUI library
 import { Box, Typography, Chip, useMediaQuery, useTheme, Button } from '@mui/material';
+import { StyledChip } from '../../../../utils/styledComponents';
 
 // Create BaseDetailsBox functional component 
 const BaseDetailsBox = ({ title, prep, cook, ingredients, tags, children, showPrepCook = true, showIngredients = true }) => {
@@ -15,7 +16,7 @@ const BaseDetailsBox = ({ title, prep, cook, ingredients, tags, children, showPr
     return (
         <Box>
             {/* Display the title */}
-            <Typography mt={showMarginTop ? 4:0} variant='h2' align={isTablet ? 'center' : 'inherit'} sx={{ fontFamily: 'caveat' }}>{title}</Typography>
+            <Typography mt={showMarginTop ? 4:0} variant='h2' align={isTablet ? 'center' : 'inherit'} sx={{ fontFamily: 'Caveat', color:'#3C371B' }}>{title}</Typography>
             
             <Box marginTop={2} align={isMobile ? 'center' : 'left'} marginLeft={isMobile ? 0 : 3}> 
 
@@ -54,12 +55,12 @@ const BaseDetailsBox = ({ title, prep, cook, ingredients, tags, children, showPr
 
                 <Box mt={showMarginTop ? 6: 0} >
                     {/* Display tags */}
-                    <Typography  textAlign={isTablet ? 'center' : 'inherit'}  mb={2} sx={{ fontFamily: 'caveat', fontSize: '22px' }}>
+                    <Typography  textAlign={isTablet ? 'center' : 'inherit'}  mb={2} sx={{ fontFamily: 'Architects Daughter', fontSize: '22px' }}>
                         Tags:
                     </Typography>
                     <Box display="flex" flexWrap="wrap" gap={1} justifyContent={isTablet ? 'center':'flex-start'}>
                         {tags.map((tag, index) => (
-                            <Chip key={index} label={tag} color="secondary" sx={{ fontFamily: 'Architects Daughter' }} />
+                            <StyledChip key={index} label={tag} color="secondary" />
                         ))}
                     </Box>
                 </Box>
