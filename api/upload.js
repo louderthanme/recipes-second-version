@@ -61,10 +61,8 @@ cloudinary.config({
               ).end(file.buffer);
             });
         
-            console.log(`Cloudinary URL: ${result.url}`);
             imageUrls.push(result.url);
           } catch (error) {
-            console.log(`Error while uploading to Cloudinary:`, error);
             return res.status(500).json({ message: 'Upload failed' });
           }
         }
