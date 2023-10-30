@@ -1,4 +1,3 @@
-Description
 This application allows users to upload and manage recipes. Users can add images, instructions, ingredients, and more to their recipes. The application supports user authentication via email/password and Google authentication. Once authenticated, users can view their profile, showcasing all the recipes they've uploaded or saved to their favorites. The app also features a daily recipe and a carousel of featured recipes. Each recipe showcase includes images and ingredients for quick reference. Additionally, users can share recipes on Facebook, WhatsApp, and Twitter. A search function is available, allowing users to search recipes by tags or keywords.
 
 Technology Stack
