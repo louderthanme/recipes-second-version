@@ -17,10 +17,8 @@ export default async (req, res) => {
 
   try {
     const result = await cloudinary.api.delete_resources(publicIds);
-    console.log(`Delete result: `, result);
     res.status(200).json({ message: 'Images deleted successfully' });
   } catch (error) {
-    console.log(`Error while deleting images from Cloudinary:`, error);
     res.status(500).json({ message: 'Delete images failed' });
   }
 };

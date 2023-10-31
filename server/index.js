@@ -24,14 +24,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-app.use((req, res, next) => {
-  console.log(`New request received: ${req.method} ${req.originalUrl}`);
-  next();
-});
 app.use(express.json());
 
 app.post('/api/upload', upload.array('image', 12), async (req, res) => {
-  console.log('Inside the multi-upload route.');
   const files = req.files;
 
   if (!files || files.length === 0) {
@@ -48,10 +43,8 @@ app.post('/api/upload', upload.array('image', 12), async (req, res) => {
 
     try {
       const result = await cloudinary.uploader.upload(file.path);
-      console.log(`Cloudinary URL: ${result.url}`);
       imageUrls.push(result.url);
     } catch (error) {
-      console.log(`Error while uploading to Cloudinary:`, error);
       return res.status(500).json({ message: 'Upload failed' });
     }
   }
@@ -62,30 +55,22 @@ app.post('/api/upload', upload.array('image', 12), async (req, res) => {
 
 
 app.delete('/api/delete-image', async (req, res) => {
-  console.log('Inside the delete image route.');
-  console.log('req.body:', req.body);  // Debug statement to log req.body
   const { publicId } = req.body;
   
   try {
     const result = await cloudinary.uploader.destroy(publicId);
-    console.log(`Delete result: `, result);
     res.status(200).json({ message: 'Image deleted successfully' });
   } catch (error) {
-    console.log(`Error while deleting image from Cloudinary:`, error);
     res.status(500).json({ message: 'Delete image failed' });
   }
 });
 
 app.delete('/api/delete-images', async (req, res) => {
-  console.log('Inside the delete images route.');
-  console.log('req.body:', req.body);  // Debug statement to log req.body
   const { publicIds } = req.body;
   try{
     const result = await cloudinary.api.delete_resources(publicIds);
-    console.log(`Delete result: `, result);
     res.status(200).json({ message: 'Images deleted successfully' });
   } catch (error) {
-    console.log(`Error while deleting images from Cloudinary:`, error);
     res.status(500).json({ message: 'Delete images failed' });
   }
 });
@@ -95,3 +80,4 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+

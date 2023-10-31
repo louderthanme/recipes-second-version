@@ -1,22 +1,34 @@
+// React and hooks
 import { useContext, useEffect, useState, useRef } from 'react';
+
+// Router
 import { useParams, useNavigate } from 'react-router-dom';
+
+// Material UI components and colors
 import { Paper, Box, Grid, Divider, Button, Tooltip, IconButton } from '@mui/material';
 import { grey, red, common } from '@mui/material/colors';
+
+// Material UI icons
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
+// Constants
 import { displaysMaxHeight } from '../../constants/constants';
 
+// Components
 import RecipeShowcaseLoading from '../../components/ui/loading-screens/recipe-showcase-loading.component';
 import InstructionsDisplay from '../../components/Recipe/instructions-display/instructions-display.component';
 import IngredientsDisplay from '../../components/Recipe/ingredients-display/ingredients-display.component';
 import ImageBox from '../../components/Recipe/image-box/image-box.component';
 import BaseDetailsBox from '../../components/Recipe/details-box/base-details-box/base-details-box.component';
 
-
+// Utils
 import { updateBoxShadow } from '../../utils/utils';
+
+// Hooks
 import { useShareWindow } from '../../hooks/useShareWindow';
 
+// Contexts
 import { UserContext } from '../../contexts/user.context';
 import { RecipesContext } from '../../contexts/recipe.context';
 
@@ -196,3 +208,12 @@ const RecipeShowcase = () => {
 };
 
 export default RecipeShowcase;
+
+/*This component, RecipeShowcase, is responsible for displaying a detailed view of a specific recipe. 
+The function `toggleFavorite` is defined to handle the action of adding or removing a recipe from the user's favorites. If the recipe is already in the favorites, it will be removed, and if it's not, it will be added. The state variable `isFavorited` is updated accordingly.
+The function `goToRecipeEdit` is defined to handle navigation to the edit page for the current recipe.
+The component checks if the `recipe` object exists. If it doesn't, it returns a `RecipeShowcaseLoading` component, which presumably displays a loading state.
+If the `recipe` object does exist, it destructures various properties from the `recipe` object, including `title`, `ingredients`, `imageUrls`, `instructions`, `time`, `ownerUid`, and `tags`.
+The component then returns a `Grid` component that contains a `Paper` component. Inside the `Paper` component, it includes a `Tooltip` and an `IconButton`. The `IconButton` is used to toggle whether the recipe is favorited or not.
+Overall, this component provides a detailed view for a recipe, with options to favorite the recipe and navigate to its edit page.
+*/

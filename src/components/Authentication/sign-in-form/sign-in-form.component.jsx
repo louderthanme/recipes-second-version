@@ -31,7 +31,6 @@ const SignIn = ({switchToSignUp, showSnackbar}) => {
     const onSubmit = async (data) => {
         try { 
             const { user } = await signInUserWithEmailAndPassword(auth, data.email, data.password);
-            console.log(user);
             setUser(user); // Set the user in the context after successful sign in
             showSnackbar("Signed in successfully", "success");
 

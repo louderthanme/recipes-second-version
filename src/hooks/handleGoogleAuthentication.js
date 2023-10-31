@@ -5,7 +5,6 @@ const handleGoogleAuthentication = (showSnackbar, successMessage, errorMessage) 
     try {
         const { user } = await signInWithGoogle();
         setUser(user);
-        console.log(user);
         showSnackbar(successMessage, "success");
     } catch (err) {
         showSnackbar(errorMessage, "error");

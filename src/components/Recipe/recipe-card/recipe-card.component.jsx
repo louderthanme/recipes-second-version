@@ -20,7 +20,6 @@ const propTypes = {
 
 const RecipeCard = ({ recipe }) => {
   const { id, title } = recipe;
-  // console.log(recipe)
   
   const navigate = useNavigate()
   const goToRecipe = () => {

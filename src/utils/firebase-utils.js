@@ -1,4 +1,7 @@
+// Firebase app initialization
 import { initializeApp } from 'firebase/app';
+
+// Firestore imports
 import {
   getFirestore,
   collection,
@@ -14,6 +17,7 @@ import {
   where,
 } from 'firebase/firestore/lite';
 
+// Firebase authentication imports
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -25,6 +29,7 @@ import {
   signInWithPopup
 } from 'firebase/auth';
 
+// Function to chunk an array into smaller arrays of a specified size. Firestore's `in` and `array-contains-any` operators are limited to a maximum of 10 elements in the array, so i need to split bigger arrays
 const chunkArray = (array, size) => {
   const chunkedArr = [];
   let index = 0;
@@ -36,6 +41,7 @@ const chunkArray = (array, size) => {
 };
 
 
+// Firebase configuration object
 const firebaseConfig = {
   apiKey: "AIzaSyB9doOMvl2kSX2hpKnvvgok7OS8u9ebhaE",
   authDomain: "recipes-8b856.firebaseapp.com",

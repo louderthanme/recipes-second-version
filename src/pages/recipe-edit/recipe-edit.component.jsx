@@ -1,9 +1,17 @@
+// React and hooks
 import React, { useContext, useState, useEffect } from 'react';
-import { RecipesContext } from '../../contexts/recipe.context';
-import { useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+
+// Router
+import { useParams, useNavigate } from 'react-router-dom';
+
+// Material UI components
 import { Button, Grid, Paper, Box, FormControl, Typography, LinearProgress } from '@mui/material';
 
+// Contexts
+import { RecipesContext } from '../../contexts/recipe.context';
+
+// Components
 import IngredientsForm from '../../components/Recipe/ingredients-form/ingredients-form.component';
 import InstructionsForm from '../../components/Recipe/instructions-form/instructions-form.component';
 import TimeForm from '../../components/Recipe/time-form/time-form.component';
@@ -13,7 +21,10 @@ import TagForm from '../../components/Recipe/tag-form/tag-form.component';
 import SnackbarFormMessage from '../../components/ui/snackbar-form-message/snackbar-form-message.component';
 import RecipeEditLoading from '../../components/ui/loading-screens/recipe-edit-loading.component';
 
+// Hooks
 import { useSnackbar } from '../../hooks/useSnackbar';
+
+// Constants
 import { noImageAvailableUrl } from '../../constants/constants';
 
 const RecipeEdit = () => {
@@ -59,18 +70,13 @@ const RecipeEdit = () => {
 
   // Handle image selection
   const handleImageChange = (e) => {
-    console.log("newly added images:", Array.from(e.target.files));
-    console.log("Before:", selectedImages);
     setSelectedImages([...selectedImages, ...Array.from(e.target.files)]);
-    console.log("After:", [...selectedImages, ...Array.from(e.target.files)]);
   };
   
   // Handle image deletion
   const handleImageDelete = (imageUrl) => {
     // Remove the image URL from the list of image URLs in the recipe
-    console.log("Before Deletion: ", recipe.imageUrls);
     const remainingImageUrls = recipe.imageUrls.filter(url => url !== imageUrl);
-    console.log("After Deletion: ", remainingImageUrls);
     if(remainingImageUrls.length === 0) {
       remainingImageUrls.push(noImageAvailableUrl);
     }
@@ -265,3 +271,13 @@ return (
 
 
 export default RecipeEdit;
+
+
+/*
+This file defines the RecipeEdit component, which is used to edit an existing recipe.
+The component uses several hooks from React and the react-router-dom library to get the necessary data and handle navigation. It also uses the useForm hook from the react-hook-form library to handle form state and validation.
+The component fetches the recipe to be edited based on the id from the URL parameters. It also sets up form default values and handles form submission, including validation and error handling.
+The component renders a form inside a Paper component for layout. The form includes fields for the recipe title, ingredients, instructions, time, images, and tags. Each of these fields is handled by a separate component.
+The component also includes a button to delete the recipe. When clicked, it triggers the onDelete function which handles the deletion of the recipe.
+The component is exported as RecipeEdit at the end of the file.
+*/

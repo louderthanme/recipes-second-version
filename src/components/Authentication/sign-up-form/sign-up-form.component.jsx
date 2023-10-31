@@ -25,7 +25,6 @@ const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
     const onSubmit = async (data) => {
         try { 
             const {user} = await signUpWithEmailAndPassword(auth, data.email, data.password, data.displayName);
-            console.log(user)
             showSnackbar("Signed up successfully", "success");
         } catch (err) {
             switch (err.code) {
@@ -37,7 +36,6 @@ const SignUpForm = ({ switchToSignIn, showSnackbar }) => {
                     break;
                 default:
                     showSnackbar("An unexpected error occurred. Please try again.", "error");
-                    console.log(err); // Logging any other error to the console
             }
         }
     } 

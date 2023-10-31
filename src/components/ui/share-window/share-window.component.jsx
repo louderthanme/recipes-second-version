@@ -6,7 +6,6 @@ import StopPropagationWrapper from "../stop-propagation-wrapper/stop-propagation
 
 const ShareWindow = ({ x, y, onClose, recipe}) => {
 
-  console.log("ShareWindow: recipe", recipe);
   const location = useLocation();
   const shareUrl = `${window.location.origin}/recipe/${recipe.recipeId}`;
   const theme = useTheme();

@@ -48,7 +48,6 @@ const useDailyRecipeSelector = (recipes) => {
         }
     }, [recipes]);
 
-    console.log("selectedRecipe", selectedRecipe);
 
     return { selectedRecipe, currentDateString };
 };

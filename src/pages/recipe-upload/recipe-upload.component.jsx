@@ -57,32 +57,25 @@ const RecipeUpload = () => {
   
   // Functions and Handlers
   const onSubmit = async (data) => {
-    console.log("onSubmit started"); // Log when onSubmit starts
     setIsLoading(true); // Set loading to true to display a progress bar
 
   
     try {
-      console.log("Selected Images: ", selectedImages); // Log the selected images
   
       let imageUrls = [];
   
       // If images are selected, upload them
       if (selectedImages.length > 0) {
         try {
-          console.log("Uploading images: ", selectedImages); // Log the images that are being uploaded
   
           // Note the change here to handle multiple images
           imageUrls = await uploadImagesToCloudinary(selectedImages);
   
-          console.log("Image URLs received: ", imageUrls); // Log the received image URLs
         } catch (error) {
-          console.log("Image upload failed: ", error); // Log errors if image upload fails
           showSnackbar("Image upload failed. Please try again.", "error");
         }
       }
         
-      console.log("Total Image URLs: ", imageUrls); // Log all the image URLs
-      // if there are no images, add a placeholder image
       if (imageUrls.length === 0 && selectedImages.length === 0) {
         console.log('before adding no image available', imageUrls)
         imageUrls = [noImageAvailableUrl];
@@ -97,21 +90,17 @@ const RecipeUpload = () => {
         data.ownerUid = user.uid;
         data.tags = tags;
   
-        console.log("Uploading recipe with data: ", data); // Log the final data object
   
         const newId = await uploadRecipe(data);
   
-        console.log("Recipe uploaded with ID: ", newId); // Log the new recipe ID
   
         showSnackbar("Recipe uploaded successfully!", "success");
         setNewRecipeId(newId);
         reset();
       } else {
-        console.log("All image uploads failed"); // Log if all image uploads failed
         showSnackbar("All image uploads failed. Please try again.", "error");
       }
     } catch (error) {
-      console.log("An unexpected error occurred: ", error); // Log any unexpected errors
       showSnackbar("An unexpected error occurred. Please try again.", "error");
     }
     setIsLoading(false); // Set loading to false when onSubmit finishes (success or error)
