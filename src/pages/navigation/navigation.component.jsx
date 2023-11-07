@@ -87,3 +87,5 @@ const Navigation = () => {
     </Fragment>
   );
 };
+
+export default Navigation;

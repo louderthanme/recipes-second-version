@@ -102,9 +102,9 @@ const RecipeUpload = () => {
   };
 
   const handleAddTag = (e) => {
-   
     if(e.key === "Enter" || e.key === "Tab" || e.key === "," || e.key === " ") {
       e.preventDefault();
+      
     const newTag = tagInput.trim().toLocaleLowerCase();
       if (newTag && !tags.includes(newTag)) {
         setTags([...tags, newTag]);
