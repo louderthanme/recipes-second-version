@@ -54,46 +54,28 @@ const RecipeUpload = () => {
 
   const navigate = useNavigate();
   const [snackbar, showSnackbar, hideSnackbar] = useSnackbar();
-  
-  // Functions and Handlers
+    // Functions and Handle rs
   const onSubmit = async (data) => {
     setIsLoading(true); // Set loading to true to display a progress bar
-
-  
     try {
-  
       let imageUrls = [];
-  
-      // If images are selected, upload them
       if (selectedImages.length > 0) {
         try {
-  
-          // Note the change here to handle multiple images
           imageUrls = await uploadImagesToCloudinary(selectedImages);
-  
-        } catch (error) {
+          } catch (error) {
           showSnackbar("Image upload failed. Please try again.", "error");
         }
-      }
-        
+      }  
       if (imageUrls.length === 0 && selectedImages.length === 0) {
         console.log('before adding no image available', imageUrls)
         imageUrls = [noImageAvailableUrl];
         console.log('after adding no image available', imageUrls)
       }
-
-      // Only proceed if at least one image upload succeeded or no images were selected
       if (imageUrls.length > 0 || selectedImages.length === 0) {
-
-        
         data.imageUrls = imageUrls;
         data.ownerUid = user.uid;
         data.tags = tags;
-  
-  
         const newId = await uploadRecipe(data);
-  
-  
         showSnackbar("Recipe uploaded successfully!", "success");
         setNewRecipeId(newId);
         reset();
@@ -103,9 +85,8 @@ const RecipeUpload = () => {
     } catch (error) {
       showSnackbar("An unexpected error occurred. Please try again.", "error");
     }
-    setIsLoading(false); // Set loading to false when onSubmit finishes (success or error)
+    setIsLoading(false); //  Set loading to false when onSubmit finishes (success or error)
   };
-  
 
   const onError = (errors, e) => {
     showSnackbar("Error uploading recipe", "error");

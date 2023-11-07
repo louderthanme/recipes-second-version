@@ -1,17 +1,20 @@
-import { Box, Paper, Grid, Typography, Divider, useMediaQuery, useTheme, IconButton} from "@mui/material";
+// Importing necessary Material UI components, icons, and hooks.
+import { Box, Paper, Grid, Typography, Divider, useMediaQuery, useTheme, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import { FacebookShareButton, WhatsappShareButton, TwitterShareButton, FacebookIcon, WhatsappIcon, TwitterIcon } from "react-share";
-import { useLocation } from "react-router-dom";
+// Custom component to prevent event propagation.
 import StopPropagationWrapper from "../stop-propagation-wrapper/stop-propagation-wrapper.component";
 
-const ShareWindow = ({ x, y, onClose, recipe}) => {
+// ShareWindow component responsible for rendering the share options in a popup.
+const ShareWindow = ({ x, y, onClose, recipe }) => {
 
-  const location = useLocation();
+  // Constructing the URL to be shared based on the recipe details.
   const shareUrl = `${window.location.origin}/recipe/${recipe.recipeId}`;
+
   const theme = useTheme();
   let isXSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
-
+  // The component returns a styled Box component that centers the Paper element, which serves as the popup.
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
       <Paper elevation={6}
@@ -25,11 +28,12 @@ const ShareWindow = ({ x, y, onClose, recipe}) => {
           zIndex: 1000
         }}
       >
+        {/* Close button to dismiss the popup */}
         <IconButton
           aria-label="close-share-window"
           onClick={(e) => {
             e.stopPropagation();
-            onClose()
+            onClose();
           }}
           sx={{
             position: 'absolute',
@@ -37,17 +41,18 @@ const ShareWindow = ({ x, y, onClose, recipe}) => {
             right: '-10px',
             width: '20px',
             height: '20px',
-            backgroundColor: '#f44336',  // Or any color you prefer
+            backgroundColor: '#f44336',  
             '&:hover': {
-              backgroundColor: '#e53935',  // Or any color you prefer
+              backgroundColor: '#e53935',  
             },
           }}
         >
           <CloseIcon sx={{ color: '#ffffff', fontSize: '18px' }} />
         </IconButton>
 
+        {/* Main content container */}
         <Grid container direction="column" spacing={3}>
-          {/* Row for Title */}
+          {/* Conditionally rendered title row for larger screens */}
           {!isXSmall && (
             <Grid item xs={12}>
               <Box>
@@ -56,17 +61,19 @@ const ShareWindow = ({ x, y, onClose, recipe}) => {
             </Grid>
           )}
 
-          {/* Row for Divider */}
+          {/* Divider for visual separation, shown only on larger screens */}
           {!isXSmall && (
             <Grid item xs={12}>
               <Divider sx={{ marginTop: -2, marginBottom: -2 }} />
             </Grid>
           )}
 
-          {/* Row for Social Share Buttons */}
+          {/* Social share buttons */}
           <Grid item xs={12}>
             <Box p={0}>
+              {/* Responsive container for share buttons */}
               <Grid container spacing={2} direction={isXSmall ? "column" : "row"} justifyContent="space-between">
+                {/* Facebook share button */}
                 <Grid item>
                   <StopPropagationWrapper>
                     <FacebookShareButton url={shareUrl}>
@@ -74,6 +81,7 @@ const ShareWindow = ({ x, y, onClose, recipe}) => {
                     </FacebookShareButton>
                   </StopPropagationWrapper>
                 </Grid>
+                {/* WhatsApp share button */}
                 <Grid item>
                   <StopPropagationWrapper>
                     <WhatsappShareButton url={shareUrl}>
@@ -81,6 +89,7 @@ const ShareWindow = ({ x, y, onClose, recipe}) => {
                     </WhatsappShareButton>
                   </StopPropagationWrapper>
                 </Grid>
+                {/* Twitter share button */}
                 <Grid item>
                   <StopPropagationWrapper>
                     <TwitterShareButton url={shareUrl}>
@@ -97,4 +106,5 @@ const ShareWindow = ({ x, y, onClose, recipe}) => {
   );
 };
 
+// Making ShareWindow available for import into other components.
 export default ShareWindow;

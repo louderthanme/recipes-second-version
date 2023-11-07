@@ -13,6 +13,10 @@ const Home = () => {
   const { recipes, searchRecipes, searchResults } = useContext(RecipesContext);
   const [isSearching, setIsSearching] = useState(false);
 
+  /* Handles the change event of the search bar input. 
+    If the query length is greater than 0, sets isSearching to true and calls searchRecipes function with the query as argument.
+    If the query length is 0, sets isSearching to false.
+   */
   const handleChange = (e) => {
     const query = e.target.value;
 
