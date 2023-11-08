@@ -68,7 +68,21 @@ const DailyRecipe = ({ recipe, date }) => {
 
     // Render the main component
     return (
-        <Paper elevation={4} sx={{ width: '86%', mx: 'auto', backgroundColor: '#bcfcbd', position: 'relative' }}>
+        <Paper 
+        elevation={4} 
+        sx={{ 
+            width: '86%', 
+            mx: 'auto',
+            backgroundColor: 
+            '#bcfcbd', 
+            position: 'relative',
+            mx: 'auto',
+            '@media (max-width:960px)': {
+                mx: '0',
+                padding:'0', 
+                width: '100%',
+            }            
+            }}>
             {/* Tooltip and IconButton for favorite functionality */}
             <Tooltip title={user ? (isFavorited ? "Remove from Favorites" : "Add to Favorites") : "Login in to add to favorites"}>
                 <IconButton

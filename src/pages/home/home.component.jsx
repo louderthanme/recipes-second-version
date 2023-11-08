@@ -34,9 +34,22 @@ const Home = () => {
 
   return (
     <Grid container justifyContent="center" alignItems="center">
-      <Grid item xs={12} sm={12} md={11}>
-        <Paper elevation={6} pb={3} style={{ backgroundColor: '#fdebd7', color: 'white', borderRadius: '20px', marginBottom:'30px' }}>
-        
+      <Grid item xs={12} sm={12} md={12} lg={11}>
+        <Paper 
+        elevation={10} 
+        sx={{
+          backgroundColor: '#fdebd7',
+          width: '80%',
+          padding: '10px',
+          marginBottom: '30px',
+          position: 'relative',
+          mx: 'auto',
+          '@media (max-width:960px)': {
+            mx: '0',
+            padding:'0', 
+            width: '100%',
+          },
+        }}>
         <Typography variant="h1" fontWeight="bold" mt={2} pt={4} mb={1} textAlign={'center'} sx={{ color: '#750303', fontFamily: 'Caveat' }}>
           Nibble Notebook
         </Typography>
