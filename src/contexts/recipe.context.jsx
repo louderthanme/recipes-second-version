@@ -14,6 +14,11 @@ export const RecipesContext = createContext([]);
 
 const RecipesProvider = ({ children }) => {
   const { user } = useContext(UserContext);
+  
+  const [recipes, setRecipes] = useState([]);
+  const [userRecipes, setUserRecipes] = useState([]); 
+  const [searchResults, setSearchResults] = useState([]);
+  const [favoriteFullRecipes, setFavoriteFullRecipes] = useState([]);
 
   const [state, setState] = useState({
     recipes: [],
