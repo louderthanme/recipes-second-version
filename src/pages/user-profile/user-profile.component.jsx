@@ -12,18 +12,16 @@ import UserProfileInformation from "../../components/User/user-profile-informati
 import UserRecipesDisplay from "../../components/User/user-recipes-display/user-recipes-display.component";
 import UserProfileControls from "../../components/User/user-profile-controls/user-profile-controls.component";
 
-// Main component
+
 const UserProfile = () => {
   // Contexts
   const { userRecipes, fetchUserRecipes, deleteRecipe, setUserRecipes, fetchFavoriteRecipes, favoriteFullRecipes,  } = useContext(RecipesContext);
   const { user, favoriteRecipes, removeRecipeFromFavorites } = useContext(UserContext);
   const userId = user ? user.uid : null;
   const navigate = useNavigate();
- 
-  // State
+   // State
   const [isToggled, setIsToggled] = useState(false);
   const [activeTab, setActiveTab] = useState('myRecipes');
-
   // Handlers
   const handleToggle = () => {  
     setIsToggled(!isToggled);
@@ -34,7 +32,6 @@ const UserProfile = () => {
   const handleRemoveFromFavorites = async (recipeId) => {
     await removeRecipeFromFavorites(recipeId);
   }
-
   // Fetch user recipes on user id change
   useEffect(() => {
     if (userId) {
@@ -58,7 +55,7 @@ const UserProfile = () => {
       console.error('Error deleting recipe:', error);
     }
   };
-
+  
   // Navigation handlers
   const goToRecipe = (id) => {
     navigate(`/recipe/${id}`);
@@ -69,14 +66,14 @@ const UserProfile = () => {
   const goToRecipeUpload = () => {
     navigate("/recipe/upload");
   };
-  
-  // Loading state
+
+
+    // Loading state
   if (userRecipes === null) {
     return <UserProfileLoading />;
   }
-
   // Determine which recipes to display
-  let displayRecipes, displayType;
+  let displayRecipes, displayType;  
   if (activeTab === 'myRecipes') {
     displayRecipes = userRecipes;
     displayType = 'own';
@@ -99,7 +96,8 @@ const UserProfile = () => {
           position: 'relative',
           mx: 'auto',
           '@media (max-width:960px)': {
-            mx: '0', // Remove margins on smaller screens
+            mx: '0',
+            padding:'0', 
             width: '100%',
           },
         }}>

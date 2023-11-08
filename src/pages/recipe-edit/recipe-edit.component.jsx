@@ -183,89 +183,107 @@ const onSubmit = async (data) => {
  // Render edit form
 return (
   // Main paper component for form
-  <Paper elevation={10} sx={{ backgroundColor: '#fdebd7', marginBottom:'40px' }} mb={2}>
-    <Box p={6}>
-      {/* Header */}
-      <Box marginBottom={3}>
-        <Typography variant="h3" fontWeight="bold">
-          Edit Recipe
-        </Typography>
-      </Box>
-      <Box>
-            {isUpdating && <LinearProgress color="secondary" />}
-      </Box>
-      <Box sx={{ opacity: isUpdating ? 0.5 : 1, pointerEvents: isUpdating ? 'none' : 'auto' }} >
-        {/* Form submission */}
-        <form onSubmit={handleSubmit(onSubmit, onError)}>
-          
-          {/* Snackbar for messages */}
-          <SnackbarFormMessage
-            message={snackbar.message}
-            severity={snackbar.severity}
-            position={{ vertical: 'top', horizontal: 'center' }}
-            onClose={handleSnackbarClose}
-          />
+  <Grid container justifyContent="center" alignItems="center">
+    <Grid item xs={12} sm={12} md={12} lg={11}>
+      <Paper 
+      elevation={10} 
+      sx={{
+        backgroundColor: '#fdebd7',
+        width: '80%',
+        padding: '10px',
+        marginBottom: '30px',
+        position: 'relative',
+        mx: 'auto',
+        '@media (max-width:960px)': {
+          mx: '0',
+          padding:'0', 
+          width: '100%',
+        },
+      }}>
+      <Box p={6}>
+        {/* Header */}
+        <Box marginBottom={3}>
+          <Typography variant="h3" fontWeight="bold">
+            Edit Recipe
+          </Typography>
+        </Box>
+        <Box>
+              {isUpdating && <LinearProgress color="secondary" />}
+        </Box>
+        <Box sx={{ opacity: isUpdating ? 0.5 : 1, pointerEvents: isUpdating ? 'none' : 'auto' }} >
+          {/* Form submission */}
+          <form onSubmit={handleSubmit(onSubmit, onError)}>
+            
+            {/* Snackbar for messages */}
+            <SnackbarFormMessage
+              message={snackbar.message}
+              severity={snackbar.severity}
+              position={{ vertical: 'top', horizontal: 'center' }}
+              onClose={handleSnackbarClose}
+            />
 
-          {/* Title input field */}
-          <FormControl fullWidth>
-            <TitleForm control={control} errors={errors} />
-          </FormControl>
-
-          {/* Image input and delete button */}
-          <FormControl fullWidth>
-            <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
-          </FormControl>
-
-          {/* Time input fields (prep and cook time) */}
-          <FormControl fullWidth>
-            <TimeForm control={control} errors={formState.errors} />
-          </FormControl>
-
-          {/* Ingredients input fields */}
-          <FormControl fullWidth>
-            <IngredientsForm control={control} errors={formState.errors} />
-          </FormControl>
-
-          {/* Instructions input fields */}
-          <FormControl fullWidth>
-            <InstructionsForm control={control} errors={formState.errors} />
-          </FormControl>
-          {/* Tags input fields */}
-          <FormControl fullWidth>
-            <TagForm 
-                tags={tags}
-                existingTags={recipe.tags} 
-                setTags={setTags} 
-                tagInput={tagInput} 
-                setTagInput={setTagInput} 
-                handleAddTag={handleAddTag} 
-                handleDeleteTag={handleDeleteTag}
-              />
+            {/* Title input field */}
+            <FormControl fullWidth>
+              <TitleForm control={control} errors={errors} />
             </FormControl>
 
-          {/* Buttons for updating and deleting the recipe */}
-          <Grid container spacing={1} justifyContent="center" mt={5}>
-            {/* Update Recipe Button */}
-            <Grid item xs={5}>
-              <Button fullWidth type="submit" variant="contained" color="secondary">
-                Update Recipe
-              </Button>
-            </Grid>
+            {/* Image input and delete button */}
+            <FormControl fullWidth>
+              <ImageForm handleImageChange={handleImageChange} handleImageDelete={handleImageDelete} recipe={recipe} />
+            </FormControl>
 
-            {/* Spacer */}
-            <Grid item xs={1}></Grid>
+            {/* Time input fields (prep and cook time) */}
+            <FormControl fullWidth>
+              <TimeForm control={control} errors={formState.errors} />
+            </FormControl>
 
-            {/* Delete Recipe Button */}
-            <Grid item xs={5}>
-              <Button fullWidth variant="contained" color="error" onClick={onDelete}>
-                Delete Recipe
-              </Button>
+            {/* Ingredients input fields */}
+            <FormControl fullWidth>
+              <IngredientsForm control={control} errors={formState.errors} />
+            </FormControl>
+
+            {/* Instructions input fields */}
+            <FormControl fullWidth>
+              <InstructionsForm control={control} errors={formState.errors} />
+            </FormControl>
+            {/* Tags input fields */}
+            <FormControl fullWidth>
+              <TagForm 
+                  tags={tags}
+                  existingTags={recipe.tags} 
+                  setTags={setTags} 
+                  tagInput={tagInput} 
+                  setTagInput={setTagInput} 
+                  handleAddTag={handleAddTag} 
+                  handleDeleteTag={handleDeleteTag}
+                />
+              </FormControl>
+
+            {/* Buttons for updating and deleting the recipe */}
+            <Grid container spacing={1} justifyContent="center" mt={5}>
+              {/* Update Recipe Button */}
+              <Grid item xs={5}>
+                <Button fullWidth type="submit" variant="contained" color="secondary">
+                  Update Recipe
+                </Button>
+              </Grid>
+
+              {/* Spacer */}
+              <Grid item xs={1}></Grid>
+
+              {/* Delete Recipe Button */}
+              <Grid item xs={5}>
+                <Button fullWidth variant="contained" color="error" onClick={onDelete}>
+                  Delete Recipe
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
+        </Box>
       </Box>
-    </Box>
-  </Paper>
+    </Paper>
+  </Grid>
+</Grid>
 );
 }
 

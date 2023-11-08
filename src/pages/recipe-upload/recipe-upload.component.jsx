@@ -127,44 +127,62 @@ const RecipeUpload = () => {
   
   // Rendering
   return (
-    <Paper elevation={10} sx={{ backgroundColor: "#fdebd7", marginBottom:'40px'  }}>
-      <Box p={6}>
-        <Box marginBottom={3}>
-          <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
-        </Box>
-        <Box>
-            {isLoading && <LinearProgress color="secondary" />}
-        </Box>
-        <Box sx={{ opacity: isLoading ? 0.5 : 1, pointerEvents: isLoading ? 'none' : 'auto' }}>
-          <form onSubmit={handleSubmit(onSubmit, onError)}>
-            {snackbar.open && (
-              <SnackbarFormMessage
-                message={snackbar.message}
-                severity={snackbar.severity}
-                position={{ vertical: "top", horizontal: "center" }}
-                onClose={handleSnackbarClose}
-              />
-            )}
-            {/* Form Fields */}
-            <FormControl fullWidth><TitleForm control={control} errors={errors} /></FormControl>
-            <FormControl fullWidth><ImageForm handleImageChange={handleImageChange} /></FormControl>
-            <FormControl fullWidth><TimeForm control={control} errors={formState.errors} /></FormControl>
-            <FormControl fullWidth><IngredientsForm control={control} errors={formState.errors} /></FormControl>
-            <FormControl fullWidth><InstructionsForm control={control} errors={formState.errors} /></FormControl>
-            <FormControl fullWidth><TagForm tags={tags} setTags={setTags} tagInput={tagInput} setTagInput={setTagInput}  control={control} errors={formState.errors} handleAddTag={handleAddTag} handleDeleteTag={handleDeleteTag} /></FormControl>
-      
-            {/* Submit Button */}
-            <Grid item xs={12}>
-              <Box marginTop={5}>
-                <Button type="submit" variant="contained" color="secondary" fullWidth>
-                  Upload Recipe
-                </Button>
-              </Box>
-            </Grid>
-          </form>
-        </Box>
-      </Box>
-    </Paper>
+    <Grid container justifyContent="center" alignItems="center">
+      <Grid item xs={12} sm={12} md={12} lg={11}>
+        <Paper 
+        elevation={10} 
+        sx={{
+          backgroundColor: '#fdebd7',
+          width: '80%',
+          padding: '10px',
+          marginBottom: '30px',
+          position: 'relative',
+          mx: 'auto',
+          '@media (max-width:960px)': {
+            mx: '0',
+            padding:'0', 
+            width: '100%',
+          },
+        }}>
+          <Box p={6}>
+            <Box marginBottom={3}>
+              <Typography variant="h3" fontWeight="bold">Recipe Upload Page</Typography>
+            </Box>
+            <Box>
+                {isLoading && <LinearProgress color="secondary" />}
+            </Box>
+            <Box sx={{ opacity: isLoading ? 0.5 : 1, pointerEvents: isLoading ? 'none' : 'auto' }}>
+              <form onSubmit={handleSubmit(onSubmit, onError)}>
+                {snackbar.open && (
+                  <SnackbarFormMessage
+                    message={snackbar.message}
+                    severity={snackbar.severity}
+                    position={{ vertical: "top", horizontal: "center" }}
+                    onClose={handleSnackbarClose}
+                  />
+                )}
+                {/* Form Fields */}
+                <FormControl fullWidth><TitleForm control={control} errors={errors} /></FormControl>
+                <FormControl fullWidth><ImageForm handleImageChange={handleImageChange} /></FormControl>
+                <FormControl fullWidth><TimeForm control={control} errors={formState.errors} /></FormControl>
+                <FormControl fullWidth><IngredientsForm control={control} errors={formState.errors} /></FormControl>
+                <FormControl fullWidth><InstructionsForm control={control} errors={formState.errors} /></FormControl>
+                <FormControl fullWidth><TagForm tags={tags} setTags={setTags} tagInput={tagInput} setTagInput={setTagInput}  control={control} errors={formState.errors} handleAddTag={handleAddTag} handleDeleteTag={handleDeleteTag} /></FormControl>
+          
+                {/* Submit Button */}
+                <Grid item xs={12}>
+                  <Box marginTop={5}>
+                    <Button type="submit" variant="contained" color="secondary" fullWidth>
+                      Upload Recipe
+                    </Button>
+                  </Box>
+                </Grid>
+              </form>
+            </Box>
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

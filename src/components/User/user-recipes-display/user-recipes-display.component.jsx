@@ -43,7 +43,7 @@ const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEdit
         <Box p={3}>
           <Grid container spacing={3}>
             {userRecipes.map((recipe, index) => (
-              <Grid item sm={12} md={6} lg={3} key={index}>
+              <Grid item xs={12} sm={6} lg={3} key={index} sx={{margin:'auto'}}>
                 <UserProfilePolaroid
                   images={recipe.imageUrls}
                   title={recipe.title}
@@ -72,7 +72,7 @@ const UserRecipesDisplay = ({ userRecipes, onDeleteRecipe, onClickRecipe, onEdit
               <Box p={3}>
                 <Grid container spacing={3}>
                   {userRecipes.map((recipe, index) => (
-                    <Grid item sm={12} md={6} lg={3} key={index}>
+                <Grid item xs={12} sm={6} lg={3} key={index} sx={{margin:'auto'}}>  
                       <UserProfilePolaroid
                         images={recipe.imageUrls}
                         title={recipe.title}

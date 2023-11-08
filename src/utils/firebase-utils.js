@@ -246,18 +246,10 @@ export const signInUserWithEmailAndPassword = async (auth, email, password) => {
 export const signInWithGoogle = async () => {
   try {
     const userCredential = await signInWithPopup(auth, googleProvider);
-    console.log('User signed in with Google successfully:', userCredential);
-
     const isNewUser = userCredential._tokenResponse.isNewUser;
-
-    console.log("Is New User?", isNewUser);
-
-      
     if(isNewUser) {
-
-      console.log('This is a new user!');
-      // Store the date of creation in Firebase Firestore or Realtime Database
-      const creationDate = new Date().toISOString();  // Current date and time in ISO format
+     // Store the date of creation in Firebase Firestore or Realtime Database
+      const creationDate = new Date().toISOString(); 
       const userRef = doc(db, 'users', userCredential.user.uid);
       await setDoc(userRef, {
         creationDate: creationDate,
@@ -265,16 +257,14 @@ export const signInWithGoogle = async () => {
         email: userCredential.user.email,
         userId: userCredential.user.uid,
       }, { merge: true }); // The merge: true ensures we don't overwrite existing user data
-    } else {
-      console.log('This is a returning user!');
-    }
-
+    } 
     return userCredential;
   } catch (error) {
-    console.error('Error signing in with Google:', error);
-    throw error;
+      throw error;
   }
 };
+
+
 
 export const addRecipeToUserFavorites = async (recipeId, userId) => {
   console.log("UserId", userId, "Recipe ID:", recipeId);
