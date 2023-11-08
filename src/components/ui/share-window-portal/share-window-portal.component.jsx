@@ -20,9 +20,9 @@ const ShareWindowPortal = ({ children, x, y }) => {
   // Utilizing ReactDOM.createPortal to render the children into the specified DOM node ('el'). This allows for the children to be rendered outside of their parent component's DOM hierarchy.
   return ReactDOM.createPortal(
     <div style={style}>
-      {children} // The content to be rendered within the portal.
+      {children} 
     </div>,
-    el // The destination container in the DOM.
+    el
   );
 };
 

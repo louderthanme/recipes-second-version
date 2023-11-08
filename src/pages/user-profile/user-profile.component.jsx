@@ -93,7 +93,7 @@ const UserProfile = () => {
         elevation={10} 
         sx={{
           backgroundColor: '#fdebd7',
-          width: '70%',
+          width: '80%',
           padding: '10px',
           marginBottom: '30px',
           position: 'relative',
