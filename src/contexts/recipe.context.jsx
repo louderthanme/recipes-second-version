@@ -9,6 +9,7 @@ import {
   fetchRecipesByIdsFromFirestore
 } from '../utils/firebase-utils';
 import { UserContext } from './user.context';
+import { set } from 'react-hook-form';
 
 export const RecipesContext = createContext([]);
 
@@ -31,6 +32,7 @@ const RecipesProvider = ({ children }) => {
     const getRecipes = async () => {
       try {
         const recipesFromFirebase = await fetchRecipes();
+        setRecipes(recipesFromFirebase);
         setState(prevState => ({ ...prevState, recipes: recipesFromFirebase }));
       } catch (error) {
         console.error('Error fetching recipes:', error);
@@ -44,6 +46,7 @@ const RecipesProvider = ({ children }) => {
     if (!userId) return;
     try {
       const recipesFromFirebase = await fetchRecipesByUser(user);
+      setUserRecipes(recipesFromFirebase);
       setState(prevState => ({ ...prevState, userRecipes: recipesFromFirebase }));
     } catch (error) {
       console.error('Error fetching recipes:', error);
