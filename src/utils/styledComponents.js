@@ -142,9 +142,8 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
     height: "2px",
   },
 
-  // Override the color of the text to be black for both unselected and selected tabs
   "& .MuiTab-root": {
-    color: "black",
+    color: "dark grey",
     fontFamily:'Caveat',
     fontWeight:'bold',
     fontSize:'20px', 
