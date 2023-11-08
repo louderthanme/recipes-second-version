@@ -32,6 +32,7 @@ const Navigation = () => {
             <Typography 
               variant="body1" 
               sx={{ 
+                fontFamily: "'Caveat', cursive",
                 display:'inline-block', 
                 fontSize:'16px', 
                 color: "#ffffff", 
@@ -45,7 +46,8 @@ const Navigation = () => {
           </Box>
 
           {/* Upload Recipe Button */}
-          <Button sx={{ fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}>
+          <Button sx={{   fontFamily: "'Caveat', cursive",
+            fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}>
             <Link to="/recipe/upload" style={{ textDecoration: 'none', color: 'inherit' }}>
               Upload Recipe
             </Link>
@@ -57,7 +59,8 @@ const Navigation = () => {
               {/* User Profile Link */}
               <Typography 
                 variant="body1" 
-                sx={{ fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}
+                sx={{  fontFamily: "'Caveat', cursive",
+                fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }}
               >
                 <Link to="/user/profile" style={{ textDecoration: 'none', color: 'inherit' }}>
                   {capitalize(user.displayName)}
@@ -65,7 +68,8 @@ const Navigation = () => {
               </Typography>
 
               {/* Sign Out Button */}
-              <Button sx={{ fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }} onClick={signOutUser}>
+              <Button sx={{   fontFamily: "'Caveat', cursive",
+fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }} onClick={signOutUser}>
                 Sign Out
               </Button>
             </Fragment>

@@ -187,13 +187,13 @@ const RecipeShowcase = () => {
             
               {user?.uid === ownerUid && (
                 <>
-                  <Button variant="contained" color='warning' sx={{fontFamily: 'Architects Daughter'}} onClick={() => goToRecipeEdit(id)}>
+                  <Button variant="contained" color='warning' sx={{fontFamily: 'Caveat'}} onClick={() => goToRecipeEdit(id)}>
                     Edit Recipe
                   </Button>
                   <Box mx={1}></Box>
                 </>
               )}
-              <Button variant="contained" color="secondary" sx={{fontFamily: 'Architects Daughter'}} onClick={handleShareClick}>
+              <Button variant="contained" color="secondary" sx={{fontFamily: 'Caveat'}} onClick={handleShareClick}>
                 Share Recipe
               </Button>
               {ShareWindowComponent()}

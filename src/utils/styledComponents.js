@@ -79,6 +79,7 @@ export const DotMatrixBackground = styled('div')(({ theme }) => ({
 
 export const StyledSearchBar = styled(TextField)(({ theme }) => ({
   "& .MuiFilledInput-root": {
+    fontFamily: "'Caveat', cursive",
     background: "rgb(255, 255, 255)",
     transition: "box-shadow 0.3s",
     "&:hover": {
@@ -161,13 +162,13 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
 
 export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
   "& .MuiTypography-root": {
-    fontFamily:'Architects Daughter',
+    fontFamily:'Caveat',
     fontWeight:'bold',
     fontSize:'20px', 
   },
 }));
 
 export const StyledChip = styled(Chip)(({ theme }) => ({
-  fontFamily:'Architects Daughter',
-  fontWeight:'bold',
+  fontFamily:'Caveat',
+  fontWeight:'semibold',
 }));

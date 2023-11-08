@@ -55,7 +55,7 @@ const BaseDetailsBox = ({ title, prep, cook, ingredients, tags, children, showPr
 
                 <Box mt={showMarginTop ? 6: 0} >
                     {/* Display tags */}
-                    <Typography  textAlign={isTablet ? 'center' : 'inherit'}  mb={2} sx={{ fontFamily: 'Architects Daughter', fontSize: '22px' }}>
+                    <Typography  textAlign={isTablet ? 'center' : 'inherit'}  mb={2} sx={{ fontFamily: 'Caveat', fontSize: '22px' }}>
                         Tags:
                     </Typography>
                     <Box display="flex" flexWrap="wrap" gap={1} justifyContent={isTablet ? 'center':'flex-start'}>

@@ -51,7 +51,7 @@ const UserProfileInformation = ({ user }) => {
             pt={3}
             pr={{ md: 4 }}
           >
-            <Button variant="contained" color="secondary" sx={{fontFamily: 'Architects Daughter'}} onClick={goToRecipeUpload}>
+            <Button variant="contained" color="secondary" sx={{fontFamily: 'Caveat'}} onClick={goToRecipeUpload}>
               Upload a new recipe!
             </Button>
           </Box>
