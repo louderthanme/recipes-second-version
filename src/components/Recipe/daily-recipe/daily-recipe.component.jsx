@@ -1,6 +1,6 @@
 // Importing required components from MUI and icons
 import { Box, Paper, Grid, Typography, Tooltip, IconButton } from "@mui/material";
-import { grey, red } from "@mui/material/colors";
+import { grey, red, common } from "@mui/material/colors";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
