@@ -5,6 +5,7 @@ import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
 dotenv.config();
 
+
 const app = express();
 app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
