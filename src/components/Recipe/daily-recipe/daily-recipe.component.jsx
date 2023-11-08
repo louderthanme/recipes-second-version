@@ -88,7 +88,7 @@ const DailyRecipe = ({ recipe, date }) => {
                     {isFavorited ? 
                         <FavoriteIcon sx={{ color: red[500], fontSize: '24px' }} />
                         :
-                        <FavoriteBorderIcon sx={{ color: grey[500], fontSize: '24px' }} />
+                        <FavoriteBorderIcon sx={{ color: common.white, fontSize: '14px' }} />
                     }
                 </IconButton>
             </Tooltip>
