@@ -68,8 +68,9 @@ const Navigation = () => {
               </Typography>
 
               {/* Sign Out Button */}
-              <Button sx={{   fontFamily: "'Caveat', cursive",
-fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }} onClick={signOutUser}>
+              <Button sx={{   
+                fontFamily: "'Caveat', cursive",
+                fontSize: '14px', color: "#ffffff", '&:hover': { color: '#FF784F' } }} onClick={signOutUser}>
                 Sign Out
               </Button>
             </Fragment>

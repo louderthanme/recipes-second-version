@@ -148,7 +148,8 @@ const RecipeShowcase = () => {
               }
             </IconButton>
           </Tooltip>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
+
           {/* First Row */}
           <Grid item xs={12} sm={12} md={12} lg={5}>
             <Box  
@@ -171,6 +172,8 @@ const RecipeShowcase = () => {
           <Grid item xs={12}>
             <Divider />
           </Grid>
+
+
           {/* Second Row */}
           <Grid item xs={12} sm={6} md={6} lg={6}>
             <Box p={2}>

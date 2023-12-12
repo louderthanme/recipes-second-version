@@ -72,7 +72,6 @@ const DailyRecipe = ({ recipe, date }) => {
         elevation={4} 
         sx={{ 
             width: '86%', 
-            mx: 'auto',
             backgroundColor: 
             '#bcfcbd', 
             position: 'relative',
